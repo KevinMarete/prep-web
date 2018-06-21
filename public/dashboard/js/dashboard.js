@@ -8,11 +8,11 @@ var mainFilterURLs = {
 }
 //tab filters
 var tabFiltersURLs = {
-    'facility_service': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#facility_ownership_chart_filter','#facility_level_chart_filter']}],
+    'facility_service': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#facility_ownership_chart_filter', '#facility_level_chart_filter', '#hiv_service_offered_chart_filter']}],
 }
 //charts
 var charts = {
-    'facility_service': ['facility_ownership_chart','facility_level_chart'],
+    'facility_service': ['facility_ownership_chart', 'facility_level_chart', 'hiv_service_offered_chart', 'facility_count_chart'],
 
 }
 var filters = {}
