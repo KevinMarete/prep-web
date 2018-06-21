@@ -51,10 +51,14 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Facility_service_model->get_facility_ownership($filters);
         } else if ($chartname == 'facility_level_chart') {
             $main_data = $this->Facility_service_model->get_facility_level($filters);
-        }else if ($chartname == 'hiv_service_offered_chart') {
+        } else if ($chartname == 'hiv_service_offered_chart') {
             $main_data = $this->Facility_service_model->get_hiv_service_offered($filters);
-        }else if ($chartname == 'facility_count_chart') {
+        } else if ($chartname == 'facility_count_chart') {
             $main_data = $this->Facility_service_model->get_facility_count($filters);
+        } else if ($chartname == 'support_implementing_partners_chart') {
+            $main_data = $this->Partner_support_model->get_support_implementing_partners($filters);
+        } else if ($chartname == 'partner_supported_component_chart') {
+            $main_data = $this->Partner_support_model->get_partner_supported_component($filters);
         }
         return $main_data;
     }

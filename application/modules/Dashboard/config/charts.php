@@ -37,3 +37,21 @@ $config['facility_count_chart_source'] = 'Source: www.commodities.nascop.org';
 $config['facility_count_chart_has_drilldown'] = TRUE;
 $config['facility_count_chart_filters'] = array('Sub_County', 'County');
 $config['facility_count_chart_filters_default'] = array();
+
+//Support Implementing partners
+$config['support_implementing_partners_chart_chartview'] = 'charts/pie_view';
+$config['support_implementing_partners_chart_title'] = 'Support Implementing Partners';
+$config['support_implementing_partners_chart_yaxis_title'] = 'Partners';
+$config['support_implementing_partners_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['support_implementing_partners_chart_has_drilldown'] = FALSE;
+$config['support_implementing_partners_chart_filters'] = array('Sub_County', 'County');
+$config['support_implementing_partners_chart_filters_default'] = array();
+
+//partner_supported_component_chart
+$config['partner_supported_component_chart_chartview'] = 'charts/column_view';
+$config['partner_supported_component_chart_title'] = 'Partner Supported Components';
+$config['partner_supported_component_chart_yaxis_title'] = 'number of components';
+$config['partner_supported_component_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['partner_supported_component_chart_has_drilldown'] = FALSE;
+$config['partner_supported_component_chart_filters'] = array('Sub_County', 'County');
+$config['partner_supported_component_chart_filters_default'] = array();

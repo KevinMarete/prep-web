@@ -5,15 +5,17 @@ var chartURL = 'Dashboard/get_chart'
 //main filters
 var mainFilterURLs = {
     'facility_service': [{'link': countyURL, 'type': 'County'}],
+    'partner_support': [{'link': countyURL, 'type': 'County'}],
 }
 //tab filters
 var tabFiltersURLs = {
     'facility_service': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#facility_ownership_chart_filter', '#facility_level_chart_filter', '#hiv_service_offered_chart_filter']}],
+    'partner_support': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#partner_supported_component_chart_filter']}],
 }
 //charts
 var charts = {
     'facility_service': ['facility_ownership_chart', 'facility_level_chart', 'hiv_service_offered_chart', 'facility_count_chart'],
-
+    'partner_support': ['support_implementing_partners_chart','partner_supported_component_chart']
 }
 var filters = {}
 var tabName = 'facility_service'

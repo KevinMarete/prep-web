@@ -16,6 +16,7 @@
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
                 <li class="active"><a href="#facility_service" aria-controls="facility_service" role="tab" data-toggle="tab">Facility Service</a></li>
+                <li><a href="#partner_support" aria-controls="partner_support" role="tab" data-toggle="tab"> Partner Support</a></li>
             </ul>
         </nav>
     </div>
