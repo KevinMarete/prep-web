@@ -82,3 +82,39 @@ $config['PrEP_drug_dispensation_chart_source'] = 'Source: www.commodities.nascop
 $config['PrEP_drug_dispensation_chart_chart_has_drilldown'] = FALSE;
 $config['PrEP_drug_dispensation_chart_filters'] = array('Sub_County', 'County');
 $config['PrEP_drug_dispensation_chart_filters_default'] = array();
+
+//Rapid Assessment tool availability chart
+$config['rapid_assessment_tool_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['rapid_assessment_tool_availability_chart_title'] = 'Rapid Assessment Tool(s) Availability';
+$config['rapid_assessment_tool_availability_chart_yaxis_title'] = '% of tools';
+$config['rapid_assessment_tool_availability_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['rapid_assessment_tool_availability_chart_has_drilldown'] = FALSE;
+$config['rapid_assessment_tool_availability_chart_filters'] = array('Sub_County', 'County');
+$config['rapid_assessment_tool_availability_chart_filters_default'] = array();
+
+//PrEP summary tool chart
+$config['prep_summary_tool_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_summary_tool_chart_title'] = 'PrEP Summary Tool(s)';
+$config['prep_summary_tool_chart_yaxis_title'] = '% of tools';
+$config['prep_summary_tool_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['prep_summary_tool_chart_has_drilldown'] = FALSE;
+$config['prep_summary_tool_chart_filters'] = array('Sub_County', 'County');
+$config['prep_summary_tool_chart_filters_default'] = array();
+
+//Clinical Encounter Form chart
+$config['clinical_encounter_form_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['clinical_encounter_form_chart_title'] = 'Clinical Encounter Form';
+$config['clinical_encounter_form_chart_yaxis_title'] = '% of tools';
+$config['clinical_encounter_form_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['clinical_encounter_form_chart_has_drilldown'] = FALSE;
+$config['clinical_encounter_form_chart_filters'] = array('Sub_County', 'County');
+$config['clinical_encounter_form_chart_filters_default'] = array();
+
+//PrEP register availability chart
+$config['prep_register_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_register_availability_chart_title'] = 'PrEP Register Availability';
+$config['prep_register_availability_chart_yaxis_title'] = '% of registers';
+$config['prep_register_availability_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['prep_register_availability_chart_has_drilldown'] = FALSE;
+$config['prep_register_availability_chart_filters'] = array('Sub_County', 'County');
+$config['prep_register_availability_chart_filters_default'] = array();

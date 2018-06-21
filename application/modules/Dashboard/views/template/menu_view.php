@@ -17,6 +17,7 @@
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
                 <li class="active"><a href="#facility_service" aria-controls="facility_service" role="tab" data-toggle="tab">Facility Service</a></li>
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab"> Commodity Management</a></li>
+                <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab"> Communication Advocacy</a></li>
                 <li><a href="#partner_support" aria-controls="partner_support" role="tab" data-toggle="tab"> Partner Support</a></li>
             </ul>
         </nav>

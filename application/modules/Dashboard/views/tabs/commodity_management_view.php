@@ -1,49 +1,51 @@
 <div role="tabpanel" class="tab-pane" id="commodity_management">
     <div class="container-fluid">
-        <div class="col-md-4">
-            <div class="chart-wrapper">
-                <div class="chart-title">
-                    <strong>Application Used To Manage PrEP Commodities</strong>
-                </div>
-                <div class="chart-stage">
-                    <div id="software_managing_prep_commodities_chart"></div>
-                </div>
-                <div class="chart-notes">
-                    <span class="software_managing_prep_commodities_chart_heading heading"></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="chart-wrapper">
-                <div class="chart-title">
-                    <strong>Facilities Source Of ARVs</strong>
-                </div>
-                <div class="chart-stage">
-                    <div id="facility_source_ARVs_chart"></div>
-                </div>
-                <div class="chart-notes">
-                    <span class="facility_source_ARVs_chart_heading heading"></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="chart-wrapper">
-                <div class="chart-title">
-                    <strong>PrEP Drug Dispensation</strong>
-                    <div class="nav navbar-right">
-                        <button data-toggle="modal" data-target="#PrEP_drug_dispensation_chart_filter_modal" class="btn btn-warning btn-xs">
-                            <span class="glyphicon glyphicon-filter"></span>
-                        </button>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Application Used To Manage PrEP Commodities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="software_managing_prep_commodities_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="software_managing_prep_commodities_chart_heading heading"></span>
                     </div>
                 </div>
-                <div class="chart-stage">
-                    <div id="PrEP_drug_dispensation_chart"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Facilities Source Of ARVs</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="facility_source_ARVs_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="facility_source_ARVs_chart_heading heading"></span>
+                    </div>
                 </div>
-                <div class="chart-notes">
-                    <span class="PrEP_drug_dispensation_chart_heading heading"></span>
-                </div>
-            </div>  
-        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>PrEP Drug Dispensation</strong>
+                        <div class="nav navbar-right">
+                            <button data-toggle="modal" data-target="#PrEP_drug_dispensation_chart_filter_modal" class="btn btn-warning btn-xs">
+                                <span class="glyphicon glyphicon-filter"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="PrEP_drug_dispensation_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="PrEP_drug_dispensation_chart_heading heading"></span>
+                    </div>
+                </div>  
+            </div>
+        </div><!--end row-->        
     </div>
 </div>
 <!--modal(s)-->
