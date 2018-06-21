@@ -55,3 +55,30 @@ $config['partner_supported_component_chart_source'] = 'Source: www.commodities.n
 $config['partner_supported_component_chart_has_drilldown'] = FALSE;
 $config['partner_supported_component_chart_filters'] = array('Sub_County', 'County');
 $config['partner_supported_component_chart_filters_default'] = array();
+
+//Software used to manage PrEP commodities chart
+$config['software_managing_prep_commodities_chart_chartview'] = 'charts/column_view';
+$config['software_managing_prep_commodities_chart_title'] = 'Application Used To Manage PrEP Commodities';
+$config['software_managing_prep_commodities_chart_yaxis_title'] = 'No. of tools';
+$config['software_managing_prep_commodities_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['software_managing_prep_commodities_chart_has_drilldown'] = FALSE;
+$config['software_managing_prep_commodities_chart_filters'] = array('Sub_County', 'County');
+$config['software_managing_prep_commodities_chart_filters_default'] = array();
+
+//facility_source_ARVs_chart
+$config['facility_source_ARVs_chart_chartview'] = 'charts/pie_view';
+$config['facility_source_ARVs_chart_title'] = 'Facilities Source Of ARVs';
+$config['facility_source_ARVs_chart_yaxis_title'] = 'Services';
+$config['facility_source_ARVs_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['facility_source_ARVs_chart_has_drilldown'] = FALSE;
+$config['facility_source_ARVs_chart_filters'] = array('Sub_County', 'County');
+$config['facility_source_ARVs_chart_filters_default'] = array();
+
+//PrEP_drug_dispensation_chart
+$config['PrEP_drug_dispensation_chart_chartview'] = 'charts/bar_view';
+$config['PrEP_drug_dispensation_chart_title'] = 'PrEP Drug Dispensation';
+$config['PrEP_drug_dispensation_chart_yaxis_title'] = 'dispensation';
+$config['PrEP_drug_dispensation_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['PrEP_drug_dispensation_chart_chart_has_drilldown'] = FALSE;
+$config['PrEP_drug_dispensation_chart_filters'] = array('Sub_County', 'County');
+$config['PrEP_drug_dispensation_chart_filters_default'] = array();

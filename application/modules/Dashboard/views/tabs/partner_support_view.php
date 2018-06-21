@@ -50,7 +50,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-9">
-                                <select id="support_implementing_partners_chart_filter" size="1" data-filter_type="county_name"></select>
+                                <select id="support_implementing_partners_chart_filter" size="1" data-filter_type="Sub_County"></select>
                             </div>
                             <div class="col-sm-3">
                                 <button id="support_implementing_partners_chart_filter_clear_btn" class="btn btn-danger btn-sm clear_btn"><span class="glyphicon glyphicon-refresh"></span> Reset</button>
@@ -71,7 +71,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-9">
-                                <select id="partner_supported_component_chart_filter" size="1" data-filter_type="county_name"></select>
+                                <select id="partner_supported_component_chart_filter" size="1" data-filter_type="Sub_County"></select>
                             </div>
                             <div class="col-sm-3">
                                 <button id="partner_supported_component_chart_filter_clear_btn" class="btn btn-danger btn-sm clear_btn"><span class="glyphicon glyphicon-refresh"></span> Reset</button>

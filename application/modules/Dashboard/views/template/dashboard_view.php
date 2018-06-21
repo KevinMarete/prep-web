@@ -16,7 +16,9 @@
         <div class="tab-content"><div class="tab-content">
                 <!--facility_service_view-->
                 <?php $this->load->view('tabs/facility_service_view'); ?>
-                <!--partner_support-->
+                <!--commodity_management_view-->
+                <?php $this->load->view('tabs/commodity_management_view'); ?>
+                <!--partner_support_view-->
                 <?php $this->load->view('tabs/partner_support_view'); ?>
             </div>
         </div>

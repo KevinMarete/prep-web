@@ -55,6 +55,12 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Facility_service_model->get_hiv_service_offered($filters);
         } else if ($chartname == 'facility_count_chart') {
             $main_data = $this->Facility_service_model->get_facility_count($filters);
+        } else if ($chartname == 'software_managing_prep_commodities_chart') {
+            $main_data = $this->Commodity_management_model->get_software_managing_prep_commodities($filters);
+        } else if ($chartname == 'facility_source_ARVs_chart') {
+            $main_data = $this->Commodity_management_model->get_facility_source_ARVs($filters);
+        } else if ($chartname == 'PrEP_drug_dispensation_chart') {
+            $main_data = $this->Commodity_management_model->get_PrEP_drug_dispensation($filters);
         } else if ($chartname == 'support_implementing_partners_chart') {
             $main_data = $this->Partner_support_model->get_support_implementing_partners($filters);
         } else if ($chartname == 'partner_supported_component_chart') {

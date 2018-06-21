@@ -85,7 +85,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-9">
-                        <select id="facility_ownership_chart_filter" size="1" data-filter_type="County"></select>
+                        <select id="facility_ownership_chart_filter" size="1" data-filter_type="Sub_County"></select>
                     </div>
                     <div class="col-sm-3">
                         <button id="facility_ownership_chart_filter_clear_btn" class="btn btn-danger btn-sm clear_btn"><span class="glyphicon glyphicon-refresh"></span> Reset</button>
@@ -107,7 +107,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-9">
-                        <select id="facility_level_chart_filter" size="1" data-filter_type="County"></select>
+                        <select id="facility_level_chart_filter" size="1" data-filter_type="Sub_County"></select>
                     </div>
                     <div class="col-sm-3">
                         <button id="facility_level_chart_filter_clear_btn" class="btn btn-danger btn-sm clear_btn"><span class="glyphicon glyphicon-refresh"></span> Reset</button>
@@ -129,7 +129,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-9">
-                        <select id="hiv_service_offered_chart_filter" size="1" data-filter_type="subcounty_name"></select>
+                        <select id="hiv_service_offered_chart_filter" size="1" data-filter_type="Sub_County"></select>
                     </div>
                     <div class="col-sm-3">
                         <button id="hiv_service_offered_chart_filter_clear_btn" class="btn btn-danger btn-sm clear_btn"><span class="glyphicon glyphicon-refresh"></span> Reset</button>
