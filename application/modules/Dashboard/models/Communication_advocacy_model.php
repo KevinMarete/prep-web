@@ -41,6 +41,28 @@ class Communication_advocacy_model extends CI_Model {
         return array('main' => $rapid_assessment_tool_data, 'columns' => $columns);
     }
 
+    public function get_tools_availability($filters) {
+        $columns = array();
+        $response = array();
+        $this->db->select("COUNT(IF(Rapid_Assessment_Screening_Tool = 'YES', 1, NULL)) 'Rapid Assessment Screening Tool', COUNT(IF(Prep_Summary_Reporting_Tool = 'YES', 1, NULL)) 'PrEP Summary Reporting Tool',COUNT(IF(PrEP_register='YES',1,NULL)) 'PrEP Register',COUNT(IF(Clinical_Encounter_Form='YES',1,NULL)) 'Clinical Encounter Form',COUNT(IF(ARV_LMIS_Tool='YES',1,NULL)) 'ARV LMIS Tool',COUNT(IF(Pharmacovigilance_Reporting_Tools='YES',1,NULL)) 'Pharmacovigilance Reporting Tools' ", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $query = $this->db->get('tbl_communication_advocacy');
+        $result = $query->row_array();
+
+        //Add columns
+        $columns = array_keys($result);
+
+        //Add data to response
+        foreach ($columns as $column) {
+            array_push($response, array('name' => $column, 'y' => $result[$column]));
+        }
+        return array('main' => $response, 'columns' => $columns);
+    }
+
     public function get_prep_summary_tool($filters) {
         $columns = array();
         $summary_tool_data = array(
@@ -135,6 +157,39 @@ class Communication_advocacy_model extends CI_Model {
             }
         }
         return array('main' => $clinical_encounter_form_data, 'columns' => $columns);
+    }
+
+    public function get_PrEP_clients_both_ever_initiated_and_currently_on_care($filters) {
+        $columns = array();
+        $prep_clients_data = array(
+            array('type' => 'column', 'name' => 'Ever enrolled', 'data' => array()),
+            array('type' => 'column', 'name' => 'Currently on Care', 'data' => array())
+        );
+
+        $this->db->select("UPPER(Facility) facility, SUM(Clients_Ever_Initiated) ever_enrolled,SUM(Current_Clients) currently_on_care", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('facility');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_communication_advocacy');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['facility'];
+                foreach ($prep_clients_data as $index => $prep_clients) {
+                    if ($prep_clients['name'] == 'Ever enrolled') {
+                        array_push($prep_clients_data[$index]['data'], $result['ever_enrolled']);
+                    } else if ($prep_clients['name'] == 'Currently on Care') {
+                        array_push($prep_clients_data[$index]['data'], $result['currently_on_care']);
+                    }
+                }
+            }
+        }
+        return array('main' => $prep_clients_data, 'columns' => $columns);
     }
 
 }

@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Partner_support_model extends CI_Model {
 
-     public function get_support_implementing_partners($filters) {
-      $columns = array();
+    public function get_support_implementing_partners($filters) {
+        $columns = array();
         $this->db->select("Partner_Support name,COUNT(*)y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
@@ -21,14 +21,16 @@ class Partner_support_model extends CI_Model {
         $this->db->order_by('y', 'DESC');
         $this->db->limit(50);
         $query = $this->db->get('tbl_partner_support');
+        //$query = $this->db->get('tbl_human_resource');
         $results = $query->result_array();
 
         foreach ($results as $result) {
             array_push($columns, $result['name']);
         }
 
-        return array('main' => $results, 'columns' => $columns);   
-     }
+        return array('main' => $results, 'columns' => $columns);
+    }
+
     public function get_partner_supported_component($filters) {
         $columns = array();
         $this->db->select("Partner_Support_Service name,COUNT(*)y", FALSE);

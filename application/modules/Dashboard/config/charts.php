@@ -14,7 +14,7 @@ $config['facility_ownership_chart_filters_default'] = array();
 //facility_level chart
 $config['facility_level_chart_chartview'] = 'charts/column_view';
 $config['facility_level_chart_title'] = 'Facility Level';
-$config['facility_level_chart_yaxis_title'] = 'number of facilities';
+$config['facility_level_chart_yaxis_title'] = 'No. of facilities';
 $config['facility_level_chart_source'] = 'Source: www.commodities.nascop.org';
 $config['facility_level_chart_has_drilldown'] = FALSE;
 $config['facility_level_chart_filters'] = array('Sub_County', 'County');
@@ -50,7 +50,7 @@ $config['support_implementing_partners_chart_filters_default'] = array();
 //partner_supported_component_chart
 $config['partner_supported_component_chart_chartview'] = 'charts/column_view';
 $config['partner_supported_component_chart_title'] = 'Partner Supported Components';
-$config['partner_supported_component_chart_yaxis_title'] = 'number of components';
+$config['partner_supported_component_chart_yaxis_title'] = 'No. of components';
 $config['partner_supported_component_chart_source'] = 'Source: www.commodities.nascop.org';
 $config['partner_supported_component_chart_has_drilldown'] = FALSE;
 $config['partner_supported_component_chart_filters'] = array('Sub_County', 'County');
@@ -83,6 +83,24 @@ $config['PrEP_drug_dispensation_chart_chart_has_drilldown'] = FALSE;
 $config['PrEP_drug_dispensation_chart_filters'] = array('Sub_County', 'County');
 $config['PrEP_drug_dispensation_chart_filters_default'] = array();
 
+//training_national_PrEP_M&E_tools_chart
+$config['training_national_PrEP_ME_tools_chart_chartview'] = 'charts/pie_view';
+$config['training_national_PrEP_ME_tools_chart_title'] = 'Training On National PrEP M&E Tool(s)';
+$config['training_national_PrEP_ME_tools_chart_yaxis_title'] = 'Training';
+$config['training_national_PrEP_ME_tools_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['training_national_PrEP_ME_tools_chart_has_drilldown'] = FALSE;
+$config['training_national_PrEP_ME_tools_chart_filters'] = array('Sub_County', 'County');
+$config['training_national_PrEP_ME_tools_chart_filters_default'] = array();
+
+//cadre_staff_dispensing_PrEP_chart
+$config['cadre_staff_dispensing_PrEP_chart_chartview'] = 'charts/column_view';
+$config['cadre_staff_dispensing_PrEP_chart_title'] = 'Cadre Of Staff Dispensing PrEP';
+$config['cadre_staff_dispensing_PrEP_chart_yaxis_title'] = 'No. of  Staff';
+$config['cadre_staff_dispensing_PrEP_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['cadre_staff_dispensing_PrEP_chart_has_drilldown'] = FALSE;
+$config['cadre_staff_dispensing_PrEP_chart_filters'] = array('Sub_County', 'County');
+$config['cadre_staff_dispensing_PrEP_chart_filters_default'] = array();
+
 //Rapid Assessment tool availability chart
 $config['rapid_assessment_tool_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['rapid_assessment_tool_availability_chart_title'] = 'Rapid Assessment Tool(s) Availability';
@@ -91,6 +109,15 @@ $config['rapid_assessment_tool_availability_chart_source'] = 'Source: www.commod
 $config['rapid_assessment_tool_availability_chart_has_drilldown'] = FALSE;
 $config['rapid_assessment_tool_availability_chart_filters'] = array('Sub_County', 'County');
 $config['rapid_assessment_tool_availability_chart_filters_default'] = array();
+
+//tools_availability_chart
+$config['tools_availability_chart_chartview'] = 'charts/column_view';
+$config['tools_availability_chart_title'] = 'Tools Availability';
+$config['tools_availability_chart_yaxis_title'] = 'Tools';
+$config['tools_availability_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['tools_availability_chart_has_drilldown'] = FALSE;
+$config['tools_availability_chart_filters'] = array('Sub_County', 'County');
+$config['tools_availability_chart_filters_default'] = array();
 
 //PrEP summary tool chart
 $config['prep_summary_tool_chart_chartview'] = 'charts/stacked_column_percent_view';
@@ -104,7 +131,7 @@ $config['prep_summary_tool_chart_filters_default'] = array();
 //Clinical Encounter Form chart
 $config['clinical_encounter_form_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['clinical_encounter_form_chart_title'] = 'Clinical Encounter Form';
-$config['clinical_encounter_form_chart_yaxis_title'] = '% of tools';
+$config['clinical_encounter_form_chart_yaxis_title'] = '% of forms';
 $config['clinical_encounter_form_chart_source'] = 'Source: www.commodities.nascop.org';
 $config['clinical_encounter_form_chart_has_drilldown'] = FALSE;
 $config['clinical_encounter_form_chart_filters'] = array('Sub_County', 'County');
@@ -118,3 +145,12 @@ $config['prep_register_availability_chart_source'] = 'Source: www.commodities.na
 $config['prep_register_availability_chart_has_drilldown'] = FALSE;
 $config['prep_register_availability_chart_filters'] = array('Sub_County', 'County');
 $config['prep_register_availability_chart_filters_default'] = array();
+
+//PrEP_clients_both_ever_initiated_and_currently_on_care_chart
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_title'] = 'PrEP Clients Both Ever Initiated and Currently on Care';
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_yaxis_title'] = 'No. of clients';
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_has_drilldown'] = FALSE;
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_filters'] = array('Sub_County', 'County');
+$config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_filters_default'] = array();

@@ -61,14 +61,22 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Commodity_management_model->get_facility_source_ARVs($filters);
         } else if ($chartname == 'PrEP_drug_dispensation_chart') {
             $main_data = $this->Commodity_management_model->get_PrEP_drug_dispensation($filters);
+        } else if ($chartname == 'training_national_PrEP_ME_tools_chart') {
+            $main_data = $this->Commodity_management_model->get_training_national_PrEP_ME_tools($filters);
+        } else if ($chartname == 'cadre_staff_dispensing_PrEP_chart') {
+            $main_data = $this->Commodity_management_model->get_cadre_staff_dispensing_PrEP($filters);
         } else if ($chartname == 'rapid_assessment_tool_availability_chart') {
             $main_data = $this->Communication_advocacy_model->get_rapid_assessment_tool_availability($filters);
+        } else if ($chartname == 'tools_availability_chart') {
+            $main_data = $this->Communication_advocacy_model->get_tools_availability($filters);
         } else if ($chartname == 'prep_summary_tool_chart') {
             $main_data = $this->Communication_advocacy_model->get_prep_summary_tool($filters);
         } else if ($chartname == 'clinical_encounter_form_chart') {
             $main_data = $this->Communication_advocacy_model->get_clinical_encounter_form($filters);
         } else if ($chartname == 'prep_register_availability_chart') {
             $main_data = $this->Communication_advocacy_model->get_prep_register_availability($filters);
+        } else if ($chartname == 'PrEP_clients_both_ever_initiated_and_currently_on_care_chart') {
+            $main_data = $this->Communication_advocacy_model->get_PrEP_clients_both_ever_initiated_and_currently_on_care($filters);
         } else if ($chartname == 'support_implementing_partners_chart') {
             $main_data = $this->Partner_support_model->get_support_implementing_partners($filters);
         } else if ($chartname == 'partner_supported_component_chart') {
