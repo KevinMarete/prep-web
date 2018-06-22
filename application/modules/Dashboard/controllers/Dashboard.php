@@ -75,6 +75,12 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Communication_advocacy_model->get_clinical_encounter_form($filters);
         } else if ($chartname == 'prep_register_availability_chart') {
             $main_data = $this->Communication_advocacy_model->get_prep_register_availability($filters);
+        } else if ($chartname == 'hepatitis_b_availability_chart') {
+            $main_data = $this->Communication_advocacy_model->get_hepatitis_b_distribution($filters);
+        } else if ($chartname == 'hepatitis_c_availability_chart') {
+            $main_data = $this->Communication_advocacy_model->get_hepatitis_c_distribution($filters);
+        } else if ($chartname == 'creatinine_availability_chart') {
+            $main_data = $this->Communication_advocacy_model->get_creatinine_distribution($filters);
         } else if ($chartname == 'PrEP_clients_both_ever_initiated_and_currently_on_care_chart') {
             $main_data = $this->Communication_advocacy_model->get_PrEP_clients_both_ever_initiated_and_currently_on_care($filters);
         } else if ($chartname == 'support_implementing_partners_chart') {

@@ -146,6 +146,33 @@ $config['prep_register_availability_chart_has_drilldown'] = FALSE;
 $config['prep_register_availability_chart_filters'] = array('Sub_County', 'County');
 $config['prep_register_availability_chart_filters_default'] = array();
 
+//county hepatitis b availablity chart
+$config['hepatitis_b_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['hepatitis_b_availability_chart_title'] = 'Hepatitis B Equipment Availability on Facilities';
+$config['hepatitis_b_availability_chart_yaxis_title'] = '% of hepatitis B equipments';
+$config['hepatitis_b_availability_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['hepatitis_b_availability_chart_has_drilldown'] = FALSE;
+$config['hepatitis_b_availability_chart_filters'] = array('Sub_County', 'County');
+$config['hepatitis_b_availability_chart_filters_default'] = array();
+
+//county hepatitis c availability chart
+$config['hepatitis_c_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['hepatitis_c_availability_chart_title'] = 'Hepatitis C Equipment Availability on Facilities';
+$config['hepatitis_c_availability_chart_yaxis_title'] = '% of hepatitis C equipments';
+$config['hepatitis_c_availability_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['hepatitis_c_availability_chart_has_drilldown'] = FALSE;
+$config['hepatitis_c_availability_chart_filters'] = array('Sub_County', 'County');
+$config['hepatitis_c_availability_chart_filters_default'] = array();
+
+//county creatinine availability chart
+$config['creatinine_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['creatinine_availability_chart_title'] = 'Creatinine Equipment Availability on Facilities';
+$config['creatinine_availability_chart_yaxis_title'] = '% of creatinine equipments';
+$config['creatinine_availability_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['creatinine_availability_chart_has_drilldown'] = FALSE;
+$config['creatinine_availability_chart_filters'] = array('Sub_County', 'County');
+$config['creatinine_availability_chart_filters_default'] = array();
+
 //PrEP_clients_both_ever_initiated_and_currently_on_care_chart
 $config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['PrEP_clients_both_ever_initiated_and_currently_on_care_chart_title'] = 'PrEP Clients Both Ever Initiated and Currently on Care';
