@@ -1,7 +1,7 @@
 <div role="tabpanel" class="tab-pane" id="partner_support">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Support Implementing Partners</strong>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Partner Supported Component(s)</strong>
