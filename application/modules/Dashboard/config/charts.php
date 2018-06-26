@@ -2,14 +2,14 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-//facility_ownership chart
-$config['facility_ownership_chart_chartview'] = 'charts/pie_view';
-$config['facility_ownership_chart_title'] = 'Facility Ownership';
-$config['facility_ownership_chart_yaxis_title'] = '% ownership';
-$config['facility_ownership_chart_source'] = 'Source: www.commodities.nascop.org';
-$config['facility_ownership_chart_has_drilldown'] = FALSE;
-$config['facility_ownership_chart_filters'] = array('Sub_County', 'County');
-$config['facility_ownership_chart_filters_default'] = array();
+//facility_ownership_chart chart
+$config['facility_facility_ownership_chart_chartview'] = 'charts/pie_view';
+$config['facility_facility_ownership_chart_title'] = 'Facility Ownership';
+$config['facility_facility_ownership_chart_yaxis_title'] = '% ownership';
+$config['facility_facility_ownership_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['facility_facility_ownership_chart_has_drilldown'] = FALSE;
+$config['facility_facility_ownership_chart_filters'] = array('Sub_County', 'County');
+$config['facility_facility_ownership_chart_filters_default'] = array();
 
 //facility_facility_level chart
 $config['facility_facility_level_chart_chartview'] = 'charts/column_view';
@@ -91,6 +91,15 @@ $config['commodity_mgmt_facility_level_chart_source'] = 'Source: www.commodities
 $config['commodity_mgmt_facility_level_chart_has_drilldown'] = FALSE;
 $config['commodity_mgmt_facility_level_chart_filters'] = array('Sub_County', 'County');
 $config['commodity_mgmt_facility_level_chart_filters_default'] = array();
+
+//commodity_mgmt_facility_ownership_chart chart
+$config['commodity_mgmt_facility_ownership_chart_chartview'] = 'charts/pie_view';
+$config['commodity_mgmt_facility_ownership_chart_title'] = 'Facility Ownership';
+$config['commodity_mgmt_facility_ownership_chart_yaxis_title'] = '% ownership';
+$config['commodity_mgmt_facility_ownership_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['commodity_mgmt_facility_ownership_chart_has_drilldown'] = FALSE;
+$config['commodity_mgmt_facility_ownership_chart_filters'] = array('Sub_County', 'County');
+$config['commodity_mgmt_facility_ownership_chart_filters_default'] = array();
 
 //Rapid Assessment tool availability chart
 $config['rapid_assessment_tool_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
@@ -182,6 +191,15 @@ $config['communication_adv_facility_level_chart_has_drilldown'] = FALSE;
 $config['communication_adv_facility_level_chart_filters'] = array('Sub_County', 'County');
 $config['communication_adv_facility_level_chart_filters_default'] = array();
 
+//communication_adv_facility_ownership_chart
+$config['communication_adv_facility_ownership_chart_chartview'] = 'charts/pie_view';
+$config['communication_adv_facility_ownership_chart_title'] = 'Facility Ownership';
+$config['communication_adv_facility_ownership_chart_yaxis_title'] = '% ownership';
+$config['communication_adv_facility_ownership_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['communication_adv_facility_ownership_chart_has_drilldown'] = FALSE;
+$config['communication_adv_facility_ownership_chart_filters'] = array('Sub_County', 'County');
+$config['communication_adv_facility_ownership_chart_filters_default'] = array();
+
 //Support Implementing partners
 $config['support_implementing_partners_chart_chartview'] = 'charts/pie_view';
 $config['support_implementing_partners_chart_title'] = 'Support Implementing Partners';
@@ -208,3 +226,12 @@ $config['partner_support_facility_level_chart_source'] = 'Source: www.commoditie
 $config['partner_support_facility_level_chart_has_drilldown'] = FALSE;
 $config['partner_support_facility_level_chart_filters'] = array('Sub_County', 'County');
 $config['partner_support_facility_level_chart_filters_default'] = array();
+
+//partner_support_facility_ownership_chart
+$config['partner_support_facility_ownership_chart_chartview'] = 'charts/pie_view';
+$config['partner_support_facility_ownership_chart_title'] = 'Facility Ownership';
+$config['partner_support_facility_ownership_chart_yaxis_title'] = '% ownership';
+$config['partner_support_facility_ownership_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['partner_support_facility_ownership_chart_has_drilldown'] = FALSE;
+$config['partner_support_facility_ownership_chart_filters'] = array('Sub_County', 'County');
+$config['partner_support_facility_ownership_chart_filters_default'] = array();

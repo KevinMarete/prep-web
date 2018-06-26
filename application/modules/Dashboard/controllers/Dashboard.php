@@ -47,7 +47,7 @@ class Dashboard extends MX_Controller {
     }
 
     public function get_data($chartname, $filters) {
-        if ($chartname == 'facility_ownership_chart') {
+        if ($chartname == 'facility_facility_ownership_chart') {
             $main_data = $this->Facility_service_model->get_facility_ownership($filters);
         } else if ($chartname == 'facility_facility_level_chart') {
             $main_data = $this->Facility_service_model->get_facility_level($filters);
@@ -67,6 +67,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Commodity_management_model->get_cadre_staff_dispensing_PrEP($filters);
         } else if ($chartname == 'commodity_mgmt_facility_level_chart') {
             $main_data = $this->Commodity_management_model->get_facility_level($filters);
+        } else if ($chartname == 'commodity_mgmt_facility_ownership_chart') {
+            $main_data = $this->Commodity_management_model->get_facility_ownership($filters);
         } else if ($chartname == 'rapid_assessment_tool_availability_chart') {
             $main_data = $this->Communication_advocacy_model->get_rapid_assessment_tool_availability($filters);
         } else if ($chartname == 'tools_availability_chart') {
@@ -87,13 +89,17 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Communication_advocacy_model->get_PrEP_clients_both_ever_initiated_and_currently_on_care($filters);
         } else if ($chartname == 'communication_adv_facility_level_chart') {
             $main_data = $this->Communication_advocacy_model->get_facility_level($filters);
+        } else if ($chartname == 'communication_adv_facility_ownership_chart') {
+            $main_data = $this->Communication_advocacy_model->get_facility_ownership($filters);
         } else if ($chartname == 'support_implementing_partners_chart') {
             $main_data = $this->Partner_support_model->get_support_implementing_partners($filters);
         } else if ($chartname == 'partner_supported_component_chart') {
             $main_data = $this->Partner_support_model->get_partner_supported_component($filters);
         } else if ($chartname == 'partner_support_facility_level_chart') {
             $main_data = $this->Partner_support_model->get_facility_level($filters);
-        }
+        }else if ($chartname == 'partner_support_facility_ownership_chart') {
+            $main_data = $this->Partner_support_model->get_facility_ownership($filters);
+        } 
         return $main_data;
     }
 
