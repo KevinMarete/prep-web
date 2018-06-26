@@ -63,7 +63,7 @@ class Partner_support_model extends CI_Model {
         $this->db->group_by('name');
         $this->db->order_by('y', 'DESC');
         $this->db->limit(50);
-        $query = $this->db->get('tbl_communication_advocacy');
+        $query = $this->db->get('tbl_partner_support');
         $results = $query->result_array();
 
         foreach ($results as $result) {
