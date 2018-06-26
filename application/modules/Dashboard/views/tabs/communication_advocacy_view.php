@@ -204,6 +204,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-8">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Facility Count Distribution</strong><span class="label label-warning">Drilldown</span>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="communication_adv_facility_count_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="communication_adv_facility_count_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
         </div><!--end row-->
     </div>
 </div>

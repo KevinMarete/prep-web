@@ -122,6 +122,21 @@
                 </div>
             </div>
         </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Facility Count Distribution</strong><span class="label label-warning">Drilldown</span>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="commodity_mgmt_commodity_mgmt_facility_count_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="commodity_mgmt_facility_count_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
     </div>
 </div>
 <!--modal(s)-->

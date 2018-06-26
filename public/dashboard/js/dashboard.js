@@ -18,10 +18,10 @@ var tabFiltersURLs = {
 }
 //charts
 var charts = {
-    'facility_service': ['facility_facility_ownership_chart', 'facility_facility_level_chart', 'hiv_service_offered_chart', 'facility_count_chart'],
-    'commodity_management': ['software_managing_prep_commodities_chart', 'facility_source_ARVs_chart', 'PrEP_drug_dispensation_chart', 'training_national_PrEP_ME_tools_chart', 'cadre_staff_dispensing_PrEP_chart', 'commodity_mgmt_facility_level_chart', 'commodity_mgmt_facility_ownership_chart'],
-    'communication_advocacy': ['rapid_assessment_tool_availability_chart', 'tools_availability_chart', 'prep_summary_tool_chart', 'clinical_encounter_form_chart', 'prep_register_availability_chart', 'hepatitis_b_availability_chart', 'hepatitis_c_availability_chart', 'creatinine_availability_chart', 'PrEP_clients_both_ever_initiated_and_currently_on_care_chart', 'communication_adv_facility_level_chart', 'communication_adv_facility_ownership_chart'],
-    'partner_support': ['support_implementing_partners_chart', 'partner_supported_component_chart', 'partner_support_facility_level_chart', 'partner_support_facility_ownership_chart']
+    'facility_service': ['facility_facility_ownership_chart', 'facility_facility_level_chart', 'hiv_service_offered_chart', 'facility_facility_count_chart'],
+    'commodity_management': ['software_managing_prep_commodities_chart', 'facility_source_ARVs_chart', 'PrEP_drug_dispensation_chart', 'training_national_PrEP_ME_tools_chart', 'cadre_staff_dispensing_PrEP_chart', 'commodity_mgmt_facility_level_chart', 'commodity_mgmt_facility_ownership_chart','commodity_mgmt_facility_ownership_chart','commodity_mgmt_commodity_mgmt_facility_count_chart'],
+    'communication_advocacy': ['rapid_assessment_tool_availability_chart', 'tools_availability_chart', 'prep_summary_tool_chart', 'clinical_encounter_form_chart', 'prep_register_availability_chart', 'hepatitis_b_availability_chart', 'hepatitis_c_availability_chart', 'creatinine_availability_chart', 'PrEP_clients_both_ever_initiated_and_currently_on_care_chart', 'communication_adv_facility_level_chart', 'communication_adv_facility_ownership_chart','communication_adv_facility_count_chart'],
+    'partner_support': ['support_implementing_partners_chart', 'partner_supported_component_chart', 'partner_support_facility_level_chart', 'partner_support_facility_ownership_chart','partner_support_facility_count_chart']
 }
 var filters = {}
 var tabName = 'facility_service'

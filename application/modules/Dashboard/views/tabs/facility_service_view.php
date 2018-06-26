@@ -63,10 +63,10 @@
                         <strong>Facility Count Distribution</strong><span class="label label-warning">Drilldown</span>
                     </div>
                     <div class="chart-stage">
-                        <div id="facility_count_chart"></div>
+                        <div id="facility_facility_count_chart"></div>
                     </div>
                     <div class="chart-notes">
-                        <span class="facility_count_chart_heading heading"></span>
+                        <span class="facility_facility_count_chart_heading heading"></span>
                     </div>
                 </div>
             </div>
