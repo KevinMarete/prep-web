@@ -262,3 +262,57 @@ $config['partner_support_facility_count_chart_source'] = 'Source: www.commoditie
 $config['partner_support_facility_count_chart_has_drilldown'] = TRUE;
 $config['partner_support_facility_count_chart_filters'] = array('Sub_County', 'County');
 $config['partner_support_facility_count_chart_filters_default'] = array();
+
+//human_resource_facility_level_chart
+$config['human_resource_facility_level_chart_chartview'] = 'charts/column_view';
+$config['human_resource_facility_level_chart_title'] = 'Facility Level';
+$config['human_resource_facility_level_chart_yaxis_title'] = 'No. of facilities';
+$config['human_resource_facility_level_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['human_resource_facility_level_chart_has_drilldown'] = FALSE;
+$config['human_resource_facility_level_chart_filters'] = array('Sub_County', 'County');
+$config['human_resource_facility_level_chart_filters_default'] = array();
+
+//human_resource_facility_ownership_chart
+$config['human_resource_facility_ownership_chart_chartview'] = 'charts/pie_view';
+$config['human_resource_facility_ownership_chart_title'] = 'Facility Ownership';
+$config['human_resource_facility_ownership_chart_yaxis_title'] = '% ownership';
+$config['human_resource_facility_ownership_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['human_resource_facility_ownership_chart_has_drilldown'] = FALSE;
+$config['human_resource_facility_ownership_chart_filters'] = array('Sub_County', 'County');
+$config['human_resource_facility_ownership_chart_filters_default'] = array();
+
+//human_resource_support_implementing_partners_chart
+$config['human_resource_support_implementing_partners_chart_chartview'] = 'charts/pie_view';
+$config['human_resource_support_implementing_partners_chart_title'] = 'Support Implementing Partners';
+$config['human_resource_support_implementing_partners_chart_yaxis_title'] = 'Partners';
+$config['human_resource_support_implementing_partners_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['human_resource_support_implementing_partners_chart_has_drilldown'] = FALSE;
+$config['human_resource_support_implementing_partners_chart_filters'] = array('Sub_County', 'County');
+$config['human_resource_support_implementing_partners_chart_filters_default'] = array();
+
+//human_resource_cadre_staff_dispensing_PrEP_chart
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_chartview'] = 'charts/column_view';
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_title'] = 'Cadre Of Staff Dispensing PrEP';
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_yaxis_title'] = 'No. of  Staff';
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_has_drilldown'] = FALSE;
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_filters'] = array('Sub_County', 'County');
+$config['human_resource_cadre_staff_dispensing_PrEP_chart_filters_default'] = array();
+
+//training_national_PrEP_M&E_tools_chart
+$config['human_resource_training_national_PrEP_ME_tools_chart_chartview'] = 'charts/pie_view';
+$config['human_resource_training_national_PrEP_ME_tools_chart_title'] = 'Training On National PrEP M&E Tool(s)';
+$config['human_resource_training_national_PrEP_ME_tools_chart_yaxis_title'] = 'Training';
+$config['human_resource_training_national_PrEP_ME_tools_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['human_resource_training_national_PrEP_ME_tools_chart_has_drilldown'] = FALSE;
+$config['human_resource_training_national_PrEP_ME_tools_chart_filters'] = array('Sub_County', 'County');
+$config['human_resource_training_national_PrEP_ME_tools_chart_filters_default'] = array();
+
+//human_resource_facility_count_chart
+$config['human_resource_facility_count_chart_chartview'] = 'charts/column_drilldown_view';
+$config['human_resource_facility_count_chart_title'] = 'Facility Count Distribution';
+$config['human_resource_facility_count_chart_yaxis_title'] = 'No. of facilities';
+$config['human_resource_facility_count_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['human_resource_facility_count_chart_has_drilldown'] = TRUE;
+$config['human_resource_facility_count_chart_filters'] = array('Sub_County', 'County');
+$config['human_resource_facility_count_chart_filters_default'] = array();

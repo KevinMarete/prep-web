@@ -103,9 +103,21 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Partner_support_model->get_facility_level($filters);
         } else if ($chartname == 'partner_support_facility_ownership_chart') {
             $main_data = $this->Partner_support_model->get_facility_ownership($filters);
-        }else if ($chartname == 'partner_support_facility_count_chart') {
+        } else if ($chartname == 'partner_support_facility_count_chart') {
             $main_data = $this->Partner_support_model->get_facility_count($filters);
-        } 
+        } else if ($chartname == 'human_resource_facility_level_chart') {
+            $main_data = $this->Human_resource_model->get_facility_level($filters);
+        }  else if ($chartname == 'human_resource_facility_ownership_chart') {
+            $main_data = $this->Human_resource_model->get_facility_ownership($filters);
+        }else if ($chartname == 'human_resource_support_implementing_partners_chart') {
+            $main_data = $this->Human_resource_model->get_support_implementing_partners($filters);
+        }else if ($chartname == 'human_resource_cadre_staff_dispensing_PrEP_chart') {
+            $main_data = $this->Human_resource_model->get_cadre_staff_dispensing_PrEP($filters);
+        }else if ($chartname == 'human_resource_training_national_PrEP_ME_tools_chart') {
+            $main_data = $this->Human_resource_model->get_training_national_PrEP_ME_tools($filters);
+        }else if ($chartname == 'human_resource_facility_count_chart') {
+            $main_data = $this->Human_resource_model->get_facility_count($filters);
+        }
         return $main_data;
     }
 

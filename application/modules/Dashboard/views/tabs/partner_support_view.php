@@ -158,7 +158,7 @@
         </div>
     </div>
 </div>
-<!--facility ownership modal-->
+<!--partner facility ownership modal-->
 <div class="modal fade" id="partner_support_facility_ownership_chart_filter_modal">
     <div class="modal-dialog">
         <div class="modal-content">

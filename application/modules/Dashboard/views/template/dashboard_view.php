@@ -22,6 +22,8 @@
                 <?php $this->load->view('tabs/communication_advocacy_view'); ?>
                 <!--partner_support_view-->
                 <?php $this->load->view('tabs/partner_support_view'); ?>
+                <!--human_resource_view-->
+                <?php $this->load->view('tabs/human_resource_view'); ?>
             </div>
         </div>
         <!--footer-->

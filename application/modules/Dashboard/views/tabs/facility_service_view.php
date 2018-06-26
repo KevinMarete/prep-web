@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!--end row-->
     </div>
 </div>
 <!--modal(s)-->
