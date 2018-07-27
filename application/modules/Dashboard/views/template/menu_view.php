@@ -15,11 +15,11 @@
         <nav class="collapse navbar-collapse" id="filter-navbar">
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
-                <li class="active"><a href="#facility_service" aria-controls="facility_service" role="tab" data-toggle="tab">Facility Service</a></li>
+                <li class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+                <li><a href="#service_delivery" aria-controls="service_delivery" role="tab" data-toggle="tab">Service Delivery</a></li>
+                <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring And Evaluation</a></li>
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
-                <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication Advocacy</a></li>
-                <li><a href="#partner_support" aria-controls="partner_support" role="tab" data-toggle="tab">Partner Support</a></li>
-                <li><a href="#human_resource" aria-controls="human_resource" role="tab" data-toggle="tab">Human Resource</a></li>
+                <li><a href="#communication" aria-controls="communication" role="tab" data-toggle="tab">Communication/Advocacy</a></li>
             </ul>
         </nav>
     </div>

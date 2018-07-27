@@ -1,20 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class County_model extends CI_Model {
+class Patient_adt_model extends CI_Model {
 
-	public function read()
-	{
-		$query = $this->db->get('tbl_county');
+	public function read($conditions)
+	{	
+		$query = $this->db->get_where('tbl_patient_adt', $conditions);
 		return $query->result_array();
 	}
 
 	public function insert($data)
 	{	
-		$this->db->insert('tbl_county',	$data);
+		$this->db->insert('tbl_patient_adt', $data);
 		$count = $this->db->affected_rows();
 		if($count > 0)
-		{
+		{	
 			$data['id'] = $this->db->insert_id();
 			$data['status'] = TRUE;
 		}
@@ -27,7 +27,7 @@ class County_model extends CI_Model {
 
 	public function update($id, $data)
 	{	
-		$this->db->update('tbl_county', $data, array('id' => $id));
+		$this->db->update('tbl_patient_adt', $data, array('id' => $id));
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{
@@ -42,7 +42,7 @@ class County_model extends CI_Model {
 
 	public function delete($id)
 	{	
-		$this->db->delete('tbl_county', array('id' => $id)); 
+		$this->db->delete('tbl_patient_adt', array('id' => $id)); 
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{

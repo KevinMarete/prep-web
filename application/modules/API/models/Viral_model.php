@@ -1,33 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class County_model extends CI_Model {
+class Viral_model extends CI_Model {
 
-	public function read()
+	public function read($conditions)
 	{
-		$query = $this->db->get('tbl_county');
+		$query = $this->db->get_where('tbl_viral', $conditions);
 		return $query->result_array();
 	}
 
 	public function insert($data)
 	{	
-		$this->db->insert('tbl_county',	$data);
-		$count = $this->db->affected_rows();
-		if($count > 0)
-		{
-			$data['id'] = $this->db->insert_id();
-			$data['status'] = TRUE;
-		}
-		else
-		{
-			$data['status'] = FALSE;
-		}
-		return $data;
-	}
-
-	public function update($id, $data)
-	{	
-		$this->db->update('tbl_county', $data, array('id' => $id));
+		$this->db->insert('tbl_viral',	$data);
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{
@@ -40,9 +24,24 @@ class County_model extends CI_Model {
 		return $data;
 	}
 
-	public function delete($id)
+	public function update($test_id, $data)
 	{	
-		$this->db->delete('tbl_county', array('id' => $id)); 
+		$this->db->update('tbl_viral', $data, array('test_id' => $test_id));
+		$count = $this->db->affected_rows();
+		if($count > 0)
+		{
+			$data['status'] = TRUE;
+		}
+		else
+		{
+			$data['status'] = FALSE;
+		}
+		return $data;
+	}
+
+	public function delete($test_id)
+	{	
+		$this->db->delete('tbl_viral', array('test_id' => $test_id)); 
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{

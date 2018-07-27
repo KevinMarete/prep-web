@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class County_model extends CI_Model {
+class Change_reason_model extends CI_Model {
 
 	public function read()
 	{
-		$query = $this->db->get('tbl_county');
+		$query = $this->db->get('tbl_change_reason');
 		return $query->result_array();
 	}
 
 	public function insert($data)
 	{	
-		$this->db->insert('tbl_county',	$data);
+		$this->db->insert('tbl_change_reason',	$data);
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{
@@ -27,7 +27,7 @@ class County_model extends CI_Model {
 
 	public function update($id, $data)
 	{	
-		$this->db->update('tbl_county', $data, array('id' => $id));
+		$this->db->update('tbl_change_reason', $data, array('id' => $id));
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{
@@ -42,7 +42,7 @@ class County_model extends CI_Model {
 
 	public function delete($id)
 	{	
-		$this->db->delete('tbl_county', array('id' => $id)); 
+		$this->db->delete('tbl_change_reason', array('id' => $id)); 
 		$count = $this->db->affected_rows();
 		if($count > 0)
 		{

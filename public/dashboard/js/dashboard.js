@@ -1,33 +1,35 @@
 var countyURL = 'API/county'
 var subcountyURL = 'API/subcounty'
-//var subcountyURL='API/subcounty?county=?'
+var facilityURL = 'API/facility'
 var chartURL = 'Dashboard/get_chart'
 //main filters
 var mainFilterURLs = {
-    'facility_service': [{'link': countyURL, 'type': 'County'}],
-    'commodity_management': [{'link': countyURL, 'type': 'County'}],
-    'communication_advocacy': [{'link': countyURL, 'type': 'County'}],
-    'partner_support': [{'link': countyURL, 'type': 'County'}],
-    'human_resource': [{'link': countyURL, 'type': 'County'}],
+    'summary': [{'link': countyURL, 'type': 'county_name'}],
+    'service_delivery': [{'link': countyURL, 'type': 'county_name'}],
+    'monitoring_evaluation': [{'link': countyURL, 'type': 'county_name'}],
+    'commodity_management': [{'link': countyURL, 'type': 'county_name'}],
+    'communication': [{'link': countyURL, 'type': 'county_name'}],
 }
 //tab filters
 var tabFiltersURLs = {
-    'facility_service': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#facility_facility_ownership_chart_filter', '#facility_facility_level_chart_filter', '#hiv_service_offered_chart_filter']}],
-    'commodity_management': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#PrEP_drug_dispensation_chart_filter', '#training_national_PrEP_ME_tools_chart_filter', '#cadre_staff_dispensing_PrEP_chart_filter', '#commodity_mgmt_facility_level_chart_filter', '#commodity_mgmt_facility_ownership_chart_filter']}],
-    'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#rapid_assessment_tool_availability_chart_filter', '#tools_availability_chart_filter', '#prep_summary_tool_chart_filter', '#clinical_encounter_form_chart_filter', '#prep_register_availability_chart_filter', '#hepatitis_b_availability_chart_filter', '#hepatitis_c_availability_chart_filter', '#creatinine_availability_chart_filter', '#communication_adv_facility_level_chart_filter', '#communication_adv_facility_ownership_chart_filter']}],
-    'partner_support': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#support_implementing_partners_chart_filter', '#partner_supported_component_chart_filter', '#partner_support_facility_level_chart_filter', '#partner_support_facility_ownership_chart_filter']}],
-    'human_resource': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#human_resource_facility_level_chart_filter', '#human_resource_facility_ownership_chart_filter', '#human_resource_support_implementing_partners_chart_filter', '#human_resource_cadre_staff_dispensing_PrEP_chart_filter', '#human_resource_training_national_PrEP_ME_tools_chart_filter']}],
+    'summary': [{'link': subcountyURL, 'type': 'subcounty_name', 'filters': ['#support_implementing_partners_chart_filter', '#facility_ownership_chart_filter', '#facility_level_chart_filter', '#partner_supported_component_chart_filter', '#staff_dispensing_PrEP_chart_filter']}],
+    'service_delivery': [{'link': subcountyURL, 'type': 'subcounty_name', 'filters': ['#hiv_service_offered_chart_filter', '#facility_population_offered_PrEP_chart_filter', '#lab_services_availability_chart_filter', '#hepatitis_b_availability_chart_filter', '#hepatitis_c_availability_chart_filter', '#creatinine_availability_chart_filter']}],
+    'monitoring_evaluation': [{'link': subcountyURL, 'type': 'subcounty_name', 'filters': ['#prep_register_availability_chart_filter', '#rapid_assessment_tool_availability_chart_filter', '#prep_summary_tool_chart_filter', '#clinical_encounter_form_chart_filter', '#training_national_PrEP_ME_tools_chart_filter', '#tools_availability_chart_filter', '#service_providers_training_chart_filter', '#follow_up_method_chart_filter', '#PrEP_clients_both_ever_initiated_and_currently_on_care_chart_filter']}],
+    'commodity_management': [{'link': subcountyURL, 'type': 'subcounty_name', 'filters': ['#cadre_staff_dispensing_PrEP_chart_filter', '#PrEP_drug_dispensation_chart_filter']}],
+    'communication': []
+
 }
 //charts
 var charts = {
-    'facility_service': ['facility_facility_ownership_chart', 'facility_facility_level_chart', 'hiv_service_offered_chart', 'facility_facility_count_chart'],
-    'commodity_management': ['software_managing_prep_commodities_chart', 'facility_source_ARVs_chart', 'PrEP_drug_dispensation_chart', 'training_national_PrEP_ME_tools_chart', 'cadre_staff_dispensing_PrEP_chart', 'commodity_mgmt_facility_level_chart', 'commodity_mgmt_facility_ownership_chart', 'commodity_mgmt_facility_ownership_chart', 'commodity_mgmt_commodity_mgmt_facility_count_chart'],
-    'communication_advocacy': ['rapid_assessment_tool_availability_chart', 'tools_availability_chart', 'prep_summary_tool_chart', 'clinical_encounter_form_chart', 'prep_register_availability_chart', 'hepatitis_b_availability_chart', 'hepatitis_c_availability_chart', 'creatinine_availability_chart', 'PrEP_clients_both_ever_initiated_and_currently_on_care_chart', 'communication_adv_facility_level_chart', 'communication_adv_facility_ownership_chart', 'communication_adv_facility_count_chart'],
-    'partner_support': ['support_implementing_partners_chart', 'partner_supported_component_chart', 'partner_support_facility_level_chart', 'partner_support_facility_ownership_chart', 'partner_support_facility_count_chart'],
-    'human_resource': ['human_resource_facility_level_chart', 'human_resource_facility_ownership_chart', 'human_resource_facility_count_chart', 'human_resource_cadre_staff_dispensing_PrEP_chart', 'human_resource_training_national_PrEP_ME_tools_chart', 'human_resource_support_implementing_partners_chart']
+    'summary': ['support_implementing_partners_chart', 'facility_count_chart', 'staff_dispensing_PrEP_chart', 'partners_percentage_support_chart', 'facility_ownership_chart', 'facility_level_chart', 'partner_supported_component_chart'],
+    'service_delivery': ['creatinine_availability_chart', 'hepatitis_b_availability_chart', 'hepatitis_c_availability_chart', 'hiv_service_offered_chart', 'facility_population_offered_PrEP_chart', 'lab_services_availability_chart'],
+    'monitoring_evaluation': ['prep_register_availability_chart', 'training_national_PrEP_ME_tools_chart', 'rapid_assessment_tool_availability_chart', 'prep_summary_tool_chart', 'tools_availability_chart', 'clinical_encounter_form_chart', 'follow_up_method_chart', 'service_providers_training_chart', 'follow_up_method_chart', 'PrEP_clients_both_ever_initiated_and_currently_on_care_chart'],
+    'commodity_management': ['software_managing_prep_commodities_chart', 'facility_source_ARVs_chart', 'cadre_staff_dispensing_PrEP_chart', 'PrEP_drug_dispensation_chart', 'facility_partner_service_delivery_point_table'],
+    'communication': ['gaps_per_county_chart', 'gaps_per_county_table']
+
 }
 var filters = {}
-var tabName = 'facility_service'
+var tabName = 'summary'
 
 //Autoload
 $(function () {
@@ -168,15 +170,17 @@ function LoadChart(divID, chartURL, chartName, selectedfilters) {
     $(divID).load(chartURL, {'name': chartName, 'selectedfilters': selectedfilters}, function () {
         //Pre-select filters for charts
         $.each($(divID + '_filters').data('filters'), function (key, data) {
-            $(divID + "_filter").val(data).multiselect('refresh');
-            //Output filters
-            var filtermsg = '<b><u>' + key.toUpperCase() + ':</u></b><br/>'
-            if ($.isArray(data)) {
-                filtermsg += data.join('<br/>')
-            } else {
-                filtermsg += data
+            if ($.inArray(key, ['data_year', 'data_month', 'data_date']) == -1) {
+                $(divID + "_filter").val(data).multiselect('refresh');
+                //Output filters
+                var filtermsg = '<b><u>' + key.toUpperCase() + ':</u></b><br/>'
+                if ($.isArray(data)) {
+                    filtermsg += data.join('<br/>')
+                } else {
+                    filtermsg += data
+                }
+                $("." + chartName + "_heading").html(filtermsg)
             }
-            $("." + chartName + "_heading").html(filtermsg)
         });
     });
 }
