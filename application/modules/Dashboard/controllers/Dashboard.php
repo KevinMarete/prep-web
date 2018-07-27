@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard extends MX_Controller {
 
     public function index() {
-        $data['page_title'] = 'PrEP | Dashboard';
+        $data['page_title'] = 'prep | Dashboard';
         $this->load->view('template/dashboard_view', $data);
     }
 
