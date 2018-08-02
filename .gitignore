@@ -1,5 +1,4 @@
 application/config/database.php
-application/modules/FtpService/config/ftpservice.php
 application/logs/*
 
 # exclude everything

@@ -14,16 +14,8 @@
         <?php $this->load->view('template/filter_view'); ?>
         <!--tabbed-panes-->
         <div class="tab-content"><div class="tab-content">
-                <!--facility_service_view-->
-                <?php $this->load->view('tabs/facility_service_view'); ?>
-                <!--commodity_management_view-->
-                <?php $this->load->view('tabs/commodity_management_view'); ?>
                 <!--communication_advocacy_view-->
                 <?php $this->load->view('tabs/communication_advocacy_view'); ?>
-                <!--partner_support_view-->
-                <?php $this->load->view('tabs/partner_support_view'); ?>
-                <!--human_resource_view-->
-                <?php $this->load->view('tabs/human_resource_view'); ?>
             </div>
         </div>
         <!--footer-->
