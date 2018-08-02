@@ -49,6 +49,8 @@ class Dashboard extends MX_Controller {
     public function get_data($chartname, $filters) {
         if ($chartname == 'demand_creation_activities_in_facilities_chart') {
             $main_data = $this->Communication_advocacy_model->get_demand_creation_activities_in_facilities($filters);
+        } else if ($chartname == 'prep_education_availability_in_facilities_chart') {
+            $main_data = $this->Communication_advocacy_model->get_prep_education_activities($filters);
         }
         return $main_data;
     }
