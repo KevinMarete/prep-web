@@ -14,6 +14,16 @@
         <?php $this->load->view('template/filter_view'); ?>
         <!--tabbed-panes-->
         <div class="tab-content"><div class="tab-content">
+                <!--service_delivery_view-->
+                <?php $this->load->view('tabs/service_delivery_view'); ?>
+                <!--laboratory_service_view-->
+                <?php $this->load->view('tabs/laboratory_service_view'); ?>
+                <!--human_resource_view-->
+                <?php $this->load->view('tabs/human_resource_view'); ?>
+                <!--commodity_management_view-->
+                <?php $this->load->view('tabs/commodity_management_view'); ?>
+                <!--monitoring_evaluation_view-->
+                <?php $this->load->view('tabs/monitoring_evaluation_view'); ?>
                 <!--communication_advocacy_view-->
                 <?php $this->load->view('tabs/communication_advocacy_view'); ?>
             </div>

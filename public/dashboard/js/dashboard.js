@@ -4,6 +4,11 @@ var subcountyURL = 'API/subcounty'
 var chartURL = 'Dashboard/get_chart'
 //main filters
 var mainFilterURLs = {
+    'service_delivery': [{'link': countyURL, 'type': 'County'}],
+    'laboratory_service': [{'link': countyURL, 'type': 'County'}],
+    'human_resource': [{'link': countyURL, 'type': 'County'}],
+    'commodity_management': [{'link': countyURL, 'type': 'County'}],
+    'monitoring_evaluation': [{'link': countyURL, 'type': 'County'}],
     'communication_advocacy': [{'link': countyURL, 'type': 'County'}],
 }
 //tab filters
