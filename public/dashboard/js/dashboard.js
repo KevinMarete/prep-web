@@ -8,11 +8,11 @@ var mainFilterURLs = {
 }
 //tab filters
 var tabFiltersURLs = {
-    'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#demand_creation_activities_in_facilities_chart_filter','#prep_education_availability_in_facilities_chart_filter']}],
+    'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#demand_creation_activities_in_facilities_chart_filter','#prep_education_availability_in_facilities_chart_filter','#iec_materials_chart_filter']}],
 }
 //charts
 var charts = {
-    'communication_advocacy': ['demand_creation_activities_in_facilities_chart','prep_education_availability_in_facilities_chart'],
+    'communication_advocacy': ['demand_creation_activities_in_facilities_chart','prep_education_availability_in_facilities_chart','iec_materials_chart'],
 }
 var filters = {}
 var tabName = 'communication_advocacy'
