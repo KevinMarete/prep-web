@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
                 <li><a href="#service_delivery" aria-controls="service_delivery" role="tab" data-toggle="tab">Service Delivery</a></li>
                 <li><a href="#laboratory_service" aria-controls="laboratory_service" role="tab" data-toggle="tab">Laboratory Services</a></li>
-                <li><a href="#human_resource" aria-controls="human_resource" role="tab" data-toggle="tab">Human Resources</a></li>
+                <li><a href="#human_resource" aria-controls="human_resource" role="tab" data-toggle="tab">Human Resource</a></li>
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
                 <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
                 <li class="active"><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication and Advocacy</a></li>
