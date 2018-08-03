@@ -75,7 +75,7 @@ class Monitoring_evaluation_model extends CI_Model {
 
     public function get_pharmacovigilance_tools($filters) {
         $columns = array();
-        $demand_creation_activities_data = array(
+        $pharmacovigilance_tools_data = array(
             array('type' => 'column', 'name' => 'NO', 'data' => array()),
             array('type' => 'column', 'name' => 'YES', 'data' => array())
         );
@@ -93,16 +93,48 @@ class Monitoring_evaluation_model extends CI_Model {
         if ($results) {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
-                foreach ($demand_creation_activities_data as $index => $demand_creation_activities) {
-                    if ($demand_creation_activities['name'] == 'YES') {
-                        array_push($demand_creation_activities_data[$index]['data'], $result['YES']);
-                    } else if ($demand_creation_activities['name'] == 'NO') {
-                        array_push($demand_creation_activities_data[$index]['data'], $result['NO']);
+                foreach ($pharmacovigilance_tools_data as $index => $pharmacovigilance_tools) {
+                    if ($pharmacovigilance_tools['name'] == 'YES') {
+                        array_push($pharmacovigilance_tools_data[$index]['data'], $result['YES']);
+                    } else if ($pharmacovigilance_tools['name'] == 'NO') {
+                        array_push($pharmacovigilance_tools_data[$index]['data'], $result['NO']);
                     }
                 }
             }
         }
-        return array('main' => $demand_creation_activities_data, 'columns' => $columns);
+        return array('main' => $pharmacovigilance_tools_data, 'columns' => $columns);
+    }
+
+    public function get_prep_registers($filters) {
+        $columns = array();
+        $prep_registers_data = array(
+            array('type' => 'column', 'name' => 'NO', 'data' => array()),
+            array('type' => 'column', 'name' => 'YES', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county, COUNT(IF(`PrEP_register` = 'YES', 1, NULL)) YES, COUNT(IF(`PrEP_register` = 'NO', 1, NULL)) NO", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($prep_registers_data as $index => $prep_registers) {
+                    if ($prep_registers['name'] == 'YES') {
+                        array_push($prep_registers_data[$index]['data'], $result['YES']);
+                    } else if ($prep_registers['name'] == 'NO') {
+                        array_push($prep_registers_data[$index]['data'], $result['NO']);
+                    }
+                }
+            }
+        }
+        return array('main' => $prep_registers_data, 'columns' => $columns);
     }
 
 }

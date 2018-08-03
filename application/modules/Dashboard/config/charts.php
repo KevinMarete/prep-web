@@ -28,6 +28,15 @@ $config['pharmacovigilance_tools_chart_has_drilldown'] = FALSE;
 $config['pharmacovigilance_tools_chart_filters'] = array('Sub_County', 'County');
 $config['pharmacovigilance_tools_chart_filters_default'] = array();
 
+//pharmacovigilance_tools_chart 
+$config['prep_register_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_register_chart_title'] = 'PrEP Register';
+$config['prep_register_chart_yaxis_title'] = 'Percent of 100';
+$config['prep_register_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['prep_register_chart_has_drilldown'] = FALSE;
+$config['prep_register_chart_filters'] = array('Sub_County', 'County');
+$config['prep_register_chart_filters_default'] = array();
+
 //demand_creation_activities_in_facilities_chart 
 $config['demand_creation_activities_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['demand_creation_activities_in_facilities_chart_title'] = 'Availability of Demand Creation Activities in Facilities';
