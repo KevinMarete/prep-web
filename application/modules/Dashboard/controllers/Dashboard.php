@@ -47,11 +47,13 @@ class Dashboard extends MX_Controller {
     }
 
     public function get_data($chartname, $filters) {
-        if ($chartname == 'demand_creation_activities_in_facilities_chart') {
+        if ($chartname == 'lmis_tools_chart') {
+            $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
+        } else if ($chartname == 'demand_creation_activities_in_facilities_chart') {
             $main_data = $this->Communication_advocacy_model->get_demand_creation_activities_in_facilities($filters);
         } else if ($chartname == 'prep_education_availability_in_facilities_chart') {
             $main_data = $this->Communication_advocacy_model->get_prep_education_activities($filters);
-        }else if ($chartname == 'iec_materials_chart') {
+        } else if ($chartname == 'iec_materials_chart') {
             $main_data = $this->Communication_advocacy_model->get_iec_materials($filters);
         }
         return $main_data;

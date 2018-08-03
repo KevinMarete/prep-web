@@ -1,6 +1,14 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+//lmis_tools_chart 
+$config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['lmis_tools_chart_title'] = 'LMIS Tools';
+$config['lmis_tools_chart_yaxis_title'] = 'Percent of 100';
+$config['lmis_tools_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['lmis_tools_chart_has_drilldown'] = FALSE;
+$config['lmis_tools_chart_filters'] = array('Sub_County', 'County');
+$config['lmis_tools_chart_filters_default'] = array();
 
 //demand_creation_activities_in_facilities_chart 
 $config['demand_creation_activities_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
