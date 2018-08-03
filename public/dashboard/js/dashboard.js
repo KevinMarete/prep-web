@@ -18,7 +18,7 @@ var tabFiltersURLs = {
 }
 //charts
 var charts = {
-    'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart'],
+    'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart'],
     'communication_advocacy': ['demand_creation_activities_in_facilities_chart', 'prep_education_availability_in_facilities_chart', 'iec_materials_chart'],
 }
 var filters = {}

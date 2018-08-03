@@ -167,5 +167,35 @@ public function get_rapid_assessment_screening_tools($filters) {
         }
         return array('main' => $rapid_assessment_screening_tools_data, 'columns' => $columns);
     }
+ public function get_prep_summmary_tools($filters) {
+        $columns = array();
+        $prep_summmary_tools_data = array(
+            array('type' => 'column', 'name' => 'NO', 'data' => array()),
+            array('type' => 'column', 'name' => 'YES', 'data' => array())
+        );
 
+        $this->db->select("UPPER(County) county, COUNT(IF(`PrEP_summary_reporting_tool` = 'YES', 1, NULL)) YES, COUNT(IF(`PrEP_summary_reporting_tool` = 'NO', 1, NULL)) NO", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($prep_summmary_tools_data as $index => $prep_summmary_tools) {
+                    if ($prep_summmary_tools['name'] == 'YES') {
+                        array_push($prep_summmary_tools_data[$index]['data'], $result['YES']);
+                    } else if ($prep_summmary_tools['name'] == 'NO') {
+                        array_push($prep_summmary_tools_data[$index]['data'], $result['NO']);
+                    }
+                }
+            }
+        }
+        return array('main' => $prep_summmary_tools_data, 'columns' => $columns);
+    }
 }
