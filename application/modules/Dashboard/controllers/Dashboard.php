@@ -55,6 +55,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Monitoring_evaluation_model->get_pharmacovigilance_tools($filters);
         } else if ($chartname == 'prep_register_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_prep_registers($filters);
+        } else if ($chartname == 'rapid_assessment_screening_tools_chart') {
+            $main_data = $this->Monitoring_evaluation_model->get_rapid_assessment_screening_tools($filters);
         } else if ($chartname == 'demand_creation_activities_in_facilities_chart') {
             $main_data = $this->Communication_advocacy_model->get_demand_creation_activities_in_facilities($filters);
         } else if ($chartname == 'prep_education_availability_in_facilities_chart') {
