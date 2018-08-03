@@ -10,7 +10,7 @@ $config['lmis_tools_chart_has_drilldown'] = FALSE;
 $config['lmis_tools_chart_filters'] = array('Sub_County', 'County');
 $config['lmis_tools_chart_filters_default'] = array();
 
-//lmis_tools_chart 
+//clinical_encounter_forms_chart 
 $config['clinical_encounter_forms_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['clinical_encounter_forms_chart_title'] = 'Clinical Encounter Forms';
 $config['clinical_encounter_forms_chart_yaxis_title'] = 'Percent of 100';
@@ -18,6 +18,15 @@ $config['clinical_encounter_forms_chart_source'] = 'Source: www.commodities.nasc
 $config['clinical_encounter_forms_chart_has_drilldown'] = FALSE;
 $config['clinical_encounter_forms_chart_filters'] = array('Sub_County', 'County');
 $config['clinical_encounter_forms_chart_filters_default'] = array();
+
+//pharmacovigilance_tools_chart 
+$config['pharmacovigilance_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['pharmacovigilance_tools_chart_title'] = 'Pharmacovigilance Tools';
+$config['pharmacovigilance_tools_chart_yaxis_title'] = 'Percent of 100';
+$config['pharmacovigilance_tools_chart_source'] = 'Source: www.commodities.nascop.org';
+$config['pharmacovigilance_tools_chart_has_drilldown'] = FALSE;
+$config['pharmacovigilance_tools_chart_filters'] = array('Sub_County', 'County');
+$config['pharmacovigilance_tools_chart_filters_default'] = array();
 
 //demand_creation_activities_in_facilities_chart 
 $config['demand_creation_activities_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';

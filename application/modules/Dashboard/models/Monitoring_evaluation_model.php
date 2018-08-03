@@ -73,4 +73,36 @@ class Monitoring_evaluation_model extends CI_Model {
         return array('main' => $clinical_encounter_forms_data, 'columns' => $columns);
     }
 
+    public function get_pharmacovigilance_tools($filters) {
+        $columns = array();
+        $demand_creation_activities_data = array(
+            array('type' => 'column', 'name' => 'NO', 'data' => array()),
+            array('type' => 'column', 'name' => 'YES', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county, COUNT(IF(`pharmacovigilance_reporting_tools` = 'YES', 1, NULL)) YES, COUNT(IF(`pharmacovigilance_reporting_tools` = 'NO', 1, NULL)) NO", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($demand_creation_activities_data as $index => $demand_creation_activities) {
+                    if ($demand_creation_activities['name'] == 'YES') {
+                        array_push($demand_creation_activities_data[$index]['data'], $result['YES']);
+                    } else if ($demand_creation_activities['name'] == 'NO') {
+                        array_push($demand_creation_activities_data[$index]['data'], $result['NO']);
+                    }
+                }
+            }
+        }
+        return array('main' => $demand_creation_activities_data, 'columns' => $columns);
+    }
+
 }
