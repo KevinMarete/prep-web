@@ -13,12 +13,12 @@ var mainFilterURLs = {
 }
 //tab filters
 var tabFiltersURLs = {
-    'monitoring_evaluation': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#lmis_tools_chart_filter']}],
+    'monitoring_evaluation': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#lmis_tools_chart_filter','#clinical_encounter_forms_chart_filter']}],
     'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#demand_creation_activities_in_facilities_chart_filter', '#prep_education_availability_in_facilities_chart_filter', '#iec_materials_chart_filter']}],
 }
 //charts
 var charts = {
-    'monitoring_evaluation': ['lmis_tools_chart'],
+    'monitoring_evaluation': ['lmis_tools_chart','clinical_encounter_forms_chart'],
     'communication_advocacy': ['demand_creation_activities_in_facilities_chart', 'prep_education_availability_in_facilities_chart', 'iec_materials_chart'],
 }
 var filters = {}
