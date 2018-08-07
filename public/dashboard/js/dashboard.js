@@ -13,13 +13,13 @@ var mainFilterURLs = {
 }
 //tab filters
 var tabFiltersURLs = {
-    'service_delivery': [],
+    'service_delivery': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#prep_focal_person_chart_filter']}],
     'monitoring_evaluation': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#lmis_tools_chart_filter', '#clinical_encounter_forms_chart_filter', '#pharmacovigilance_tools_chart_filter', '#prep_register_chart_filter', '#rapid_assessment_screening_tools_chart_filter']}],
     'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#demand_creation_activities_in_facilities_chart_filter', '#prep_education_availability_in_facilities_chart_filter', '#iec_materials_chart_filter']}],
 }
 //charts
 var charts = {
-    'service_delivery': ['facility_count_chart'],
+    'service_delivery': ['facility_count_chart', 'prep_focal_person_chart'],
     'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart'],
     'communication_advocacy': ['demand_creation_activities_in_facilities_chart', 'prep_education_availability_in_facilities_chart', 'iec_materials_chart'],
 }

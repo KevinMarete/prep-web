@@ -11,6 +11,15 @@ $config['facility_count_chart_has_drilldown'] = TRUE;
 $config['facility_count_chart_filters'] = array('Sub_County', 'County');
 $config['facility_count_chart_filters_default'] = array();
 
+//prep_focal_person_chart 
+$config['prep_focal_person_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_focal_person_chart_title'] = 'PrEP Focal Person';
+$config['prep_focal_person_chart_yaxis_title'] = 'Percent 100';
+$config['prep_focal_person_chart_source'] = 'Source: www.prep.nascop.org';
+$config['prep_focal_person_chart_has_drilldown'] = FALSE;
+$config['prep_focal_person_chart_filters'] = array('Sub_County', 'County');
+$config['prep_focal_person_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';
