@@ -1,4 +1,4 @@
-<div role="tabpanel" class="tab-pane active" id="communication_advocacy">
+<div role="tabpanel" class="tab-pane" id="communication_advocacy">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">

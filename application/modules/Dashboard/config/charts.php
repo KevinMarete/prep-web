@@ -1,6 +1,16 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+//facility_count_chart 
+$config['facility_count_chart_chartview'] = 'charts/column_drilldown_view';
+$config['facility_count_chart_title'] = 'Facility Count';
+$config['facility_count_chart_yaxis_title'] = 'Facility Count';
+$config['facility_count_chart_source'] = 'Source: www.prep.nascop.org';
+$config['facility_count_chart_has_drilldown'] = TRUE;
+$config['facility_count_chart_filters'] = array('Sub_County', 'County');
+$config['facility_count_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';

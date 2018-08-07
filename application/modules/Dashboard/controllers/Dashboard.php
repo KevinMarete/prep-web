@@ -47,7 +47,9 @@ class Dashboard extends MX_Controller {
     }
 
     public function get_data($chartname, $filters) {
-        if ($chartname == 'lmis_tools_chart') {
+        if ($chartname == 'facility_count_chart') {
+            $main_data = $this->Service_delivery_model->get_facility_count($filters);
+        } else if ($chartname == 'lmis_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
         } else if ($chartname == 'clinical_encounter_forms_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_clinical_encounter_forms($filters);
