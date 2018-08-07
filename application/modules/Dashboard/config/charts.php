@@ -47,6 +47,24 @@ $config['creatinine_testing_availability_chart_has_drilldown'] = FALSE;
 $config['creatinine_testing_availability_chart_filters'] = array('Sub_County', 'County');
 $config['creatinine_testing_availability_chart_filters_default'] = array();
 
+//facilities_trained_on_prep_chart 
+$config['facilities_trained_on_prep_chart_chartview'] = 'charts/pie_view';
+$config['facilities_trained_on_prep_chart_title'] = 'Proportion of Facilities Trained on PrEP';
+$config['facilities_trained_on_prep_chart_yaxis_title'] = 'Percent';
+$config['facilities_trained_on_prep_chart_source'] = 'Source: www.prep.nascop.org';
+$config['facilities_trained_on_prep_chart_has_drilldown'] = FALSE;
+$config['facilities_trained_on_prep_chart_filters'] = array('Sub_County', 'County');
+$config['facilities_trained_on_prep_chart_filters_default'] = array();
+
+//distibution_of_facilities_trained_personnel_in_facilities_chart 
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_title'] = 'Distribution of Trained Personnel in Facilities';
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_yaxis_title'] = 'Percent 100';
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_source'] = 'Source: www.prep.nascop.org';
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_has_drilldown'] = FALSE;
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_filters'] = array('Sub_County', 'County');
+$config['distibution_of_facilities_trained_personnel_in_facilities_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';

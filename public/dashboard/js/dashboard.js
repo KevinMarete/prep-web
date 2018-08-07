@@ -15,6 +15,7 @@ var mainFilterURLs = {
 var tabFiltersURLs = {
     'service_delivery': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#prep_focal_person_chart_filter', '#partner_support_chart_filter']}],
     'laboratory_service': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#creatinine_testing_availability_chart_filter']}],
+    'human_resource': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#distibution_of_facilities_trained_personnel_in_facilities_chart_filter']}],
     'monitoring_evaluation': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#lmis_tools_chart_filter', '#clinical_encounter_forms_chart_filter', '#pharmacovigilance_tools_chart_filter', '#prep_register_chart_filter', '#rapid_assessment_screening_tools_chart_filter']}],
     'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#demand_creation_activities_in_facilities_chart_filter', '#prep_education_availability_in_facilities_chart_filter', '#iec_materials_chart_filter']}],
 }
@@ -22,6 +23,7 @@ var tabFiltersURLs = {
 var charts = {
     'service_delivery': ['facility_count_chart', 'prep_focal_person_chart', 'partner_support_chart', 'hiv_services_offered_chart'],
     'laboratory_service': ['creatinine_testing_availability_chart'],
+    'human_resource': ['facilities_trained_on_prep_chart', 'distibution_of_facilities_trained_personnel_in_facilities_chart'],
     'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart'],
     'communication_advocacy': ['demand_creation_activities_in_facilities_chart', 'prep_education_availability_in_facilities_chart', 'iec_materials_chart'],
 }
