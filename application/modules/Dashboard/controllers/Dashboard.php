@@ -51,6 +51,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_facility_count($filters);
         } else if ($chartname == 'prep_focal_person_chart') {
             $main_data = $this->Service_delivery_model->get_prep_focal_person($filters);
+        } else if ($chartname == 'partner_support_chart') {
+            $main_data = $this->Service_delivery_model->get_partner_support($filters);
         } else if ($chartname == 'lmis_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
         } else if ($chartname == 'clinical_encounter_forms_chart') {

@@ -20,6 +20,15 @@ $config['prep_focal_person_chart_has_drilldown'] = FALSE;
 $config['prep_focal_person_chart_filters'] = array('Sub_County', 'County');
 $config['prep_focal_person_chart_filters_default'] = array();
 
+//partner_support_chart 
+$config['partner_support_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['partner_support_chart_title'] = 'Partner Support';
+$config['partner_support_chart_yaxis_title'] = 'Percent 100';
+$config['partner_support_chart_source'] = 'Source: www.prep.nascop.org';
+$config['partner_support_chart_has_drilldown'] = FALSE;
+$config['partner_support_chart_filters'] = array('Sub_County', 'County');
+$config['partner_support_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';
