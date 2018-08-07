@@ -55,6 +55,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_partner_support($filters);
         } else if ($chartname == 'hiv_services_offered_chart') {
             $main_data = $this->Service_delivery_model->get_hiv_services_offered($filters);
+        } else if ($chartname == 'creatinine_testing_availability_chart') {
+            $main_data = $this->Laboratory_service_model->get_creatinine_testing_availability($filters);
         } else if ($chartname == 'lmis_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
         } else if ($chartname == 'clinical_encounter_forms_chart') {

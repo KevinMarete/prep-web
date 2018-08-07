@@ -38,6 +38,15 @@ $config['hiv_services_offered_chart_has_drilldown'] = FALSE;
 $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
 $config['hiv_services_offered_chart_filters_default'] = array();
 
+//creatinine_testing_availability_chart 
+$config['creatinine_testing_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['creatinine_testing_availability_chart_title'] = 'Creatinine Testing Availability';
+$config['creatinine_testing_availability_chart_yaxis_title'] = 'Percent of 100';
+$config['creatinine_testing_availability_chart_source'] = 'Source: www.prep.nascop.org';
+$config['creatinine_testing_availability_chart_has_drilldown'] = FALSE;
+$config['creatinine_testing_availability_chart_filters'] = array('Sub_County', 'County');
+$config['creatinine_testing_availability_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';
