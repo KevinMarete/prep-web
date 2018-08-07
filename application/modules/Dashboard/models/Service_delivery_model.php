@@ -86,9 +86,10 @@ class Service_delivery_model extends CI_Model {
         }
         return array('main' => $facility_focal_person_data, 'columns' => $columns);
     }
-  public function get_partner_support($filters) {
+
+    public function get_partner_support($filters) {
         $columns = array();
-        $facility_focal_person_data = array(
+        $partner_support_data = array(
             array('type' => 'column', 'name' => 'NO', 'data' => array()),
             array('type' => 'column', 'name' => 'YES', 'data' => array())
         );
@@ -106,15 +107,36 @@ class Service_delivery_model extends CI_Model {
         if ($results) {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
-                foreach ($facility_focal_person_data as $index => $facility_focal_person) {
-                    if ($facility_focal_person['name'] == 'YES') {
-                        array_push($facility_focal_person_data[$index]['data'], $result['YES']);
-                    } else if ($facility_focal_person['name'] == 'NO') {
-                        array_push($facility_focal_person_data[$index]['data'], $result['NO']);
+                foreach ($partner_support_data as $index => $partner_support) {
+                    if ($partner_support['name'] == 'YES') {
+                        array_push($partner_support_data[$index]['data'], $result['YES']);
+                    } else if ($partner_support['name'] == 'NO') {
+                        array_push($partner_support_data[$index]['data'], $result['NO']);
                     }
                 }
             }
         }
-        return array('main' => $facility_focal_person_data, 'columns' => $columns);
+        return array('main' => $partner_support_data, 'columns' => $columns);
     }
+
+    public function get_hiv_services_offered($filters) {
+        $columns = array();
+        $this->db->select("Hiv_Service_Provided name,COUNT(*)y", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_hiv_service_offered');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['name']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
+    }
+
 }

@@ -42,7 +42,8 @@
                     }
                 }
             },
-            colors: ['#5cb85c', '#434348', '#5bc0de', '#f7a35c', '#8085e9', '#ff4d4d', '#bdb76b'],
+            //colors: ['#5cb85c', '#434348', '#5bc0de', '#f7a35c', '#8085e9', '#ff4d4d', '#bdb76b'],
+            colors: ['#f7a35c'],
 
             title: {
                 text: '<?php echo $chart_title; ?>'
@@ -73,7 +74,7 @@
                     dataLabels: {
                         enabled: true,
                         //format: '{point.y:.1f}%',
-                        rotation:-90,
+                        rotation: -90,
                     }
                 },
                 pie: {
