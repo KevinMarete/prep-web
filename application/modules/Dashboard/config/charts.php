@@ -65,6 +65,15 @@ $config['distibution_of_facilities_trained_personnel_in_facilities_chart_has_dri
 $config['distibution_of_facilities_trained_personnel_in_facilities_chart_filters'] = array('Sub_County', 'County');
 $config['distibution_of_facilities_trained_personnel_in_facilities_chart_filters_default'] = array();
 
+//facility_source_of_ARVs_chart 
+$config['facility_source_of_ARVs_chart_chartview'] = 'charts/pie_view';
+$config['facility_source_of_ARVs_chart_title'] = 'Source of ARVs in Facilities';
+$config['facility_source_of_ARVs_chart_yaxis_title'] = 'Percent';
+$config['facility_source_of_ARVs_chart_source'] = 'Source: www.prep.nascop.org';
+$config['facility_source_of_ARVs_chart_has_drilldown'] = FALSE;
+$config['facility_source_of_ARVs_chart_filters'] = array('Sub_County', 'County');
+$config['facility_source_of_ARVs_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';

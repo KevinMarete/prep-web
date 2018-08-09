@@ -61,6 +61,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Human_resource_model->get_facilities_trained_on_prep($filters);
         } else if ($chartname == 'distibution_of_facilities_trained_personnel_in_facilities_chart') {
             $main_data = $this->Human_resource_model->get_distibution_of_facilities_trained_personnel_in_facilities($filters);
+        } else if ($chartname == 'facility_source_of_ARVs_chart') {
+            $main_data = $this->Commodity_management_model->get_facility_source_of_ARVs($filters);
         } else if ($chartname == 'lmis_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
         } else if ($chartname == 'clinical_encounter_forms_chart') {
