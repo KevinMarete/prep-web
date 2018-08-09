@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //facility_count_chart 
 $config['facility_count_chart_chartview'] = 'charts/column_drilldown_view';
-$config['facility_count_chart_title'] = 'Facility Count';
+$config['facility_count_chart_title'] = 'Facility Count Distribution';
 $config['facility_count_chart_yaxis_title'] = 'Facility Count';
 $config['facility_count_chart_source'] = 'Source: www.prep.nascop.org';
 $config['facility_count_chart_has_drilldown'] = TRUE;
