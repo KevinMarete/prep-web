@@ -74,6 +74,15 @@ $config['facility_source_of_ARVs_chart_has_drilldown'] = FALSE;
 $config['facility_source_of_ARVs_chart_filters'] = array('Sub_County', 'County');
 $config['facility_source_of_ARVs_chart_filters_default'] = array();
 
+//prep_dispensing_points_in_facilities_chart 
+$config['prep_dispensing_points_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_dispensing_points_in_facilities_chart_title'] = 'PrEP Dispensing Points in Facilities';
+$config['prep_dispensing_points_in_facilities_chart_yaxis_title'] = 'Percent 100';
+$config['prep_dispensing_points_in_facilities_chart_source'] = 'Source: www.prep.nascop.org';
+$config['prep_dispensing_points_in_facilities_chart_has_drilldown'] = FALSE;
+$config['prep_dispensing_points_in_facilities_chart_filters'] = array('Sub_County', 'County');
+$config['prep_dispensing_points_in_facilities_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';

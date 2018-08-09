@@ -1,5 +1,7 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * Description of Commodity_management_model
  *
@@ -25,6 +27,59 @@ class Commodity_management_model extends CI_Model {
         }
 
         return array('main' => $results, 'columns' => $columns);
+    }
+
+    public function get_prep_dispensing_points_in_facilities($filters) {
+        $columns = array();
+        $prep_dispensing_points_data = array(
+            array('type' => 'column', 'name' => 'CCC', 'data' => array()),
+            array('type' => 'column', 'name' => 'DICE', 'data' => array()),
+            array('type' => 'column', 'name' => 'FP Clinic', 'data' => array()),
+            array('type' => 'column', 'name' => 'IPD', 'data' => array()),
+            array('type' => 'column', 'name' => 'MCH', 'data' => array()),
+            array('type' => 'column', 'name' => 'ONE STOP SHOP', 'data' => array()),
+            array('type' => 'column', 'name' => 'OPD', 'data' => array()),
+            array('type' => 'column', 'name' => 'PMTCT Clinic', 'data' => array()),
+            array('type' => 'column', 'name' => 'Other', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county, COUNT(IF(SDP_PrEP_Dispensed = 'CCC', 1, NULL)) CCC,COUNT(IF(SDP_PrEP_Dispensed = 'DICE',1,Null)) DICE,COUNT(IF(SDP_PrEP_Dispensed='FP Clinic',1,NULL)) 'FP Clinic',COUNT(IF(SDP_PrEP_Dispensed='IPD',1,NULL)) IPD,COUNT(IF(SDP_PrEP_Dispensed='MCH',1,NULL)) MCH,COUNT(IF(SDP_PrEP_Dispensed='ONE STOP SHOP',1,NULL)) 'ONE STOP SHOP',COUNT(IF(SDP_PrEP_Dispensed = 'OPD', 1, NULL)) OPD,COUNT(IF(SDP_PrEP_Dispensed = 'PMTCT Clinic', 1, NULL)) 'PMTCT Clinic', COUNT(IF(SDP_PrEP_Dispensed = 'other', 1, NULL)) Other", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_prep_dispensing_point');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($prep_dispensing_points_data as $index => $prep_dispensing_points) {
+                    if ($prep_dispensing_points['name'] == 'CCC') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['CCC']);
+                    } else if ($prep_dispensing_points['name'] == 'DICE') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['DICE']);
+                    } else if ($prep_dispensing_points['name'] == 'Fp Clinic') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['FP Clinic']);
+                    } else if ($prep_dispensing_points['name'] == 'IPD') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['IPD']);
+                    } else if ($prep_dispensing_points['name'] == 'MCH') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['MCH']);
+                    } else if ($prep_dispensing_points['name'] == 'ONE STOP SHOP') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['ONE STOP SHOP']);
+                    } else if ($prep_dispensing_points['name'] == 'PMTCT Clinic') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['PMTCT Clinic']);
+                    } else if ($prep_dispensing_points['name'] == 'OPD') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['OPD']);
+                    } else if ($prep_dispensing_points['name'] == 'Other') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['Other']);
+                    }
+                }
+            }
+        }
+        return array('main' => $prep_dispensing_points_data, 'columns' => $columns);
     }
 
 }
