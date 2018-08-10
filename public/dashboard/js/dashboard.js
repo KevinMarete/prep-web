@@ -13,7 +13,7 @@ var mainFilterURLs = {
 }
 //tab filters
 var tabFiltersURLs = {
-    'service_delivery': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#prep_focal_person_chart_filter', 'facilities_level_distribution_chart_filter', '#partner_support_chart_filter']}],
+    'service_delivery': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#prep_focal_person_chart_filter', '#facilities_level_distribution_chart_filter', '#partner_support_chart_filter', '#service_delivery_points_distribution_chart_filter']}],
     'laboratory_service': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#creatinine_testing_availability_chart_filter']}],
     'human_resource': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#distibution_of_facilities_trained_personnel_in_facilities_chart_filter']}],
     'commodity_management': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#prep_dispensing_points_in_facilities_chart_filter']}],
@@ -22,7 +22,7 @@ var tabFiltersURLs = {
 }
 //charts
 var charts = {
-    'service_delivery': ['facility_count_chart', 'facilities_level_distribution_chart', 'prep_focal_person_chart', 'partner_support_chart', 'hiv_services_offered_chart'],
+    'service_delivery': ['facility_count_chart', 'facilities_level_distribution_chart', 'prep_focal_person_chart', 'partner_support_chart', 'hiv_services_offered_chart', 'service_delivery_points_distribution_chart'],
     'laboratory_service': ['creatinine_testing_availability_chart'],
     'human_resource': ['facilities_trained_on_prep_chart', 'distibution_of_facilities_trained_personnel_in_facilities_chart'],
     'commodity_management': ['facility_source_of_ARVs_chart', 'prep_dispensing_points_in_facilities_chart'],

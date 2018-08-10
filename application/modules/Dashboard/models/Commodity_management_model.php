@@ -43,7 +43,7 @@ class Commodity_management_model extends CI_Model {
             array('type' => 'column', 'name' => 'Other', 'data' => array())
         );
 
-        $this->db->select("UPPER(County) county, COUNT(IF(SDP_PrEP_Dispensed = 'CCC', 1, NULL)) CCC,COUNT(IF(SDP_PrEP_Dispensed = 'DICE',1,Null)) DICE,COUNT(IF(SDP_PrEP_Dispensed='FP Clinic',1,NULL)) 'FP Clinic',COUNT(IF(SDP_PrEP_Dispensed='IPD',1,NULL)) IPD,COUNT(IF(SDP_PrEP_Dispensed='MCH',1,NULL)) MCH,COUNT(IF(SDP_PrEP_Dispensed='ONE STOP SHOP',1,NULL)) 'ONE STOP SHOP',COUNT(IF(SDP_PrEP_Dispensed = 'OPD', 1, NULL)) OPD,COUNT(IF(SDP_PrEP_Dispensed = 'PMTCT Clinic', 1, NULL)) 'PMTCT Clinic', COUNT(IF(SDP_PrEP_Dispensed = 'other', 1, NULL)) Other", FALSE);
+        $this->db->select("UPPER(County) county, COUNT(IF(SDP_PrEP_Dispensed = 'CCC', 1, NULL)) CCC,COUNT(IF(SDP_PrEP_Dispensed = 'DICE',1,Null)) DICE,COUNT(IF(SDP_PrEP_Dispensed='FP Clinic',1,NULL)) 'FP Clinic',COUNT(IF(SDP_PrEP_Dispensed='IPD',1,NULL)) IPD,COUNT(IF(SDP_PrEP_Dispensed='MCH',1,NULL)) MCH,COUNT(IF(SDP_PrEP_Dispensed='ONE STOP SHOP(Everything in one room)',1,NULL)) 'ONE STOP SHOP',COUNT(IF(SDP_PrEP_Dispensed = 'OPD', 1, NULL)) OPD,COUNT(IF(SDP_PrEP_Dispensed = 'PMTCT Clinic', 1, NULL)) 'PMTCT Clinic', COUNT(IF(SDP_PrEP_Dispensed = 'Other', 1, NULL)) Other", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);

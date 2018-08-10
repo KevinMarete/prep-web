@@ -47,6 +47,15 @@ $config['hiv_services_offered_chart_has_drilldown'] = FALSE;
 $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
 $config['hiv_services_offered_chart_filters_default'] = array();
 
+//service_delivery_points_distribution_chart 
+$config['service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['service_delivery_points_distribution_chart_title'] = 'Service Delivery Points Distribution';
+$config['service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
+$config['service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
+$config['service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
+$config['service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
+$config['service_delivery_points_distribution_chart_filters_default'] = array();
+
 //creatinine_testing_availability_chart 
 $config['creatinine_testing_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['creatinine_testing_availability_chart_title'] = 'Creatinine Testing Availability';
