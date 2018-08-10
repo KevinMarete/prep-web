@@ -23,6 +23,56 @@ class Service_delivery_model extends CI_Model {
         return $this->get_facility_count_drilldown(array('main' => $query->result_array()), $filters);
     }
 
+    public function get_facilities_level_distribution($filters) {
+        $columns = array();
+        $prep_dispensing_points_data = array(
+            array('type' => 'column', 'name' => 'Health Center', 'data' => array()),
+            array('type' => 'column', 'name' => 'County Referral Hospital', 'data' => array()),
+            array('type' => 'column', 'name' => 'Sub County Hospital', 'data' => array()),
+            array('type' => 'column', 'name' => 'Dispensary', 'data' => array()),
+            array('type' => 'column', 'name' => 'Other (specify)', 'data' => array()),
+            array('type' => 'column', 'name' => 'National Referral Hospital', 'data' => array()),
+            array('type' => 'column', 'name' => 'DICE', 'data' => array()),
+            array('type' => 'column', 'name' => 'County Hospital', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county, COUNT(IF(Level = 'Health Center', 1, NULL)) 'Health Center', COUNT(IF(Level = 'County Referral Hospital',1,Null)) 'County Referral Hospital', COUNT(IF(Level='Sub County Hospital',1,NULL)) 'Sub County Hospital',COUNT(IF(Level='Dispensary',1,NULL)) Dispensary,COUNT(IF(Level='Other (specify)',1,NULL)) 'Other (specify)',COUNT(IF(Level='National Referral Hospital',1,NULL)) 'National Referral Hospital',COUNT(IF(Level = 'DICE', 1, NULL)) DICE,COUNT(IF(Level = 'County Hospital', 1, NULL)) 'County Hospital'", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_facility_details');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($prep_dispensing_points_data as $index => $prep_dispensing_points) {
+                    if ($prep_dispensing_points['name'] == 'Health Center') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['Health Center']);
+                    } else if ($prep_dispensing_points['name'] == 'County Referral Hospital') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['County Referral Hospital']);
+                    } else if ($prep_dispensing_points['name'] == 'Fp Clinic') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['Sub County Hospital']);
+                    } else if ($prep_dispensing_points['name'] == 'Dispensary') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['Dispensary']);
+                    } else if ($prep_dispensing_points['name'] == 'Other (specify)') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['Other (specify)']);
+                    } else if ($prep_dispensing_points['name'] == 'National Referral Hospital') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['National Referral Hospital']);
+                    } else if ($prep_dispensing_points['name'] == 'County Hospital') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['County Hospital']);
+                    } else if ($prep_dispensing_points['name'] == 'DICE') {
+                        array_push($prep_dispensing_points_data[$index]['data'], $result['DICE']);
+                    }
+                }
+            }
+        }
+        return array('main' => $prep_dispensing_points_data, 'columns' => $columns);
+    }
+
     public function get_facility_count_drilldown($main_data, $filters) {
         $drilldown_data = array();
         $this->db->select("UPPER(County) category, Sub_County name,COUNT(facility)y, UPPER(Sub_County) drilldown", FALSE);

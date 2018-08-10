@@ -11,6 +11,15 @@ $config['facility_count_chart_has_drilldown'] = TRUE;
 $config['facility_count_chart_filters'] = array('Sub_County', 'County');
 $config['facility_count_chart_filters_default'] = array();
 
+//facilities_level_distribution_chart 
+$config['facilities_level_distribution_chart_chartview'] = 'charts/stacked_column_view';
+$config['facilities_level_distribution_chart_title'] = 'Facilties Level Distribution';
+$config['facilities_level_distribution_chart_yaxis_title'] = 'Percent 100';
+$config['facilities_level_distribution_chart_source'] = 'Source: www.prep.nascop.org';
+$config['facilities_level_distribution_chart_has_drilldown'] = FALSE;
+$config['facilities_level_distribution_chart_filters'] = array('Sub_County', 'County');
+$config['facilities_level_distribution_chart_filters_default'] = array();
+
 //prep_focal_person_chart 
 $config['prep_focal_person_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['prep_focal_person_chart_title'] = 'PrEP Focal Person';
