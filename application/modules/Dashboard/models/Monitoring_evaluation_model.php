@@ -224,4 +224,96 @@ class Monitoring_evaluation_model extends CI_Model {
         return array('main' => $prep_summmary_tools_data, 'columns' => $columns);
     }
 
+    public function get_clients_ever_started_on_prep($filters) {
+        $this->db->select("County name,SUM(clients_ever_initiated)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        return $this->get_clients_ever_started_on_prep_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_clients_ever_started_on_prep_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(County) category, Sub_County name,SUM(clients_ever_initiated)y, UPPER(Sub_County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_clients_currently_on_prep($filters) {
+        $this->db->select("County name,SUM(current_clients)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        return $this->get_clients_currently_on_prep_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_clients_currently_on_prep_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(County) category, Sub_County name,SUM(current_clients)y, UPPER(Sub_County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        return array_merge($main_data, $drilldown_data);
+    }
+
 }

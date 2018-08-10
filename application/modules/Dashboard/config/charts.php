@@ -182,6 +182,24 @@ $config['prep_summary_tools_chart_has_drilldown'] = FALSE;
 $config['prep_summary_tools_chart_filters'] = array('Sub_County', 'County');
 $config['prep_summary_tools_chart_filters_default'] = array();
 
+//clients_ever_started_on_prep_chart 
+$config['clients_ever_started_on_prep_chart_chartview'] = 'charts/column_drilldown_view';
+$config['clients_ever_started_on_prep_chart_title'] = 'Clients Ever Started on PrEP';
+$config['clients_ever_started_on_prep_chart_yaxis_title'] = 'Clients Ever Initiated';
+$config['clients_ever_started_on_prep_chart_source'] = 'Source: www.prep.nascop.org';
+$config['clients_ever_started_on_prep_chart_has_drilldown'] = TRUE;
+$config['clients_ever_started_on_prep_chart_filters'] = array('Sub_County', 'County');
+$config['clients_ever_started_on_prep_chart_filters_default'] = array();
+
+//clients_currently_on_prep_chart 
+$config['clients_currently_on_prep_chart_chartview'] = 'charts/column_drilldown_view';
+$config['clients_currently_on_prep_chart_title'] = 'Clients Currently on PrEP';
+$config['clients_currently_on_prep_chart_yaxis_title'] = 'Current Clients';
+$config['clients_currently_on_prep_chart_source'] = 'Source: www.prep.nascop.org';
+$config['clients_currently_on_prep_chart_has_drilldown'] = TRUE;
+$config['clients_currently_on_prep_chart_filters'] = array('Sub_County', 'County');
+$config['clients_currently_on_prep_chart_filters_default'] = array();
+
 //demand_creation_activities_in_facilities_chart 
 $config['demand_creation_activities_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['demand_creation_activities_in_facilities_chart_title'] = 'Availability of Demand Creation Activities in Facilities';

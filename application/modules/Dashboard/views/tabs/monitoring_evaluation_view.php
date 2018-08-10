@@ -135,6 +135,36 @@
                 </div>
             </div>
         </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Clients Ever Started on PrEP</strong> <span class="label label-warning">Drilldown</span>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="clients_ever_started_on_prep_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="clients_ever_started_on_prep_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Clients Currently on PrEP</strong> <span class="label label-warning">Drilldown</span>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="clients_currently_on_prep_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="clients_currently_on_prep_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
     </div>
 </div>
 <!--modal(s)-->
