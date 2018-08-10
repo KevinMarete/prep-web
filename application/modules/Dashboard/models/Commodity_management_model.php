@@ -29,6 +29,41 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $results, 'columns' => $columns);
     }
 
+    public function get_facility_source_of_arvs_by_county($filters) {
+        $columns = array();
+        $arv_source_data = array(
+            array('type' => 'column', 'name' => 'KEMSA-Central Site', 'data' => array()),
+            array('type' => 'column', 'name' => 'Central Sites', 'data' => array()),
+            array('type' => 'column', 'name' => 'KEMSA-Standalone', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county, COUNT(IF(ARV_Source = 'Stand Alone', 1, NULL)) 'KEMSA-Standalone', ,COUNT(IF(ARV_Source = 'Satellites', 1, NULL)) 'Central Sites', COUNT(IF(ARV_Source = 'Central Site', 1, NULL)) 'KEMSA-Central Site'", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_arv_source');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($arv_source_data as $index => $arv_source) {
+                    if ($arv_source['name'] == 'KEMSA-Standalone') {
+                        array_push($arv_source_data[$index]['data'], $result['KEMSA-Standalone']);
+                    } else if ($arv_source['name'] == 'Central Sites') {
+                        array_push($arv_source_data[$index]['data'], $result['Central Sites']);
+                    } else if ($arv_source['name'] == 'KEMSA-Central Site') {
+                        array_push($arv_source_data[$index]['data'], $result['KEMSA-Central Site']);
+                    }
+                }
+            }
+        }
+        return array('main' => $arv_source_data, 'columns' => $columns);
+    }
+
     public function get_prep_dispensing_points_in_facilities($filters) {
         $columns = array();
         $prep_dispensing_points_data = array(

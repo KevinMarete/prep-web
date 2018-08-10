@@ -48,7 +48,7 @@ $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
 $config['hiv_services_offered_chart_filters_default'] = array();
 
 //service_delivery_points_distribution_chart 
-$config['service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
 $config['service_delivery_points_distribution_chart_title'] = 'Service Delivery Points Distribution';
 $config['service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
 $config['service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
@@ -92,8 +92,17 @@ $config['facility_source_of_ARVs_chart_has_drilldown'] = FALSE;
 $config['facility_source_of_ARVs_chart_filters'] = array('Sub_County', 'County');
 $config['facility_source_of_ARVs_chart_filters_default'] = array();
 
+//facility_source_of_arvs_by_county_chart 
+$config['facility_source_of_arvs_by_county_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['facility_source_of_arvs_by_county_chart_title'] = 'Facility Source of ARVs By County';
+$config['facility_source_of_arvs_by_county_chart_yaxis_title'] = 'Percent 100';
+$config['facility_source_of_arvs_by_county_chart_source'] = 'Source: www.prep.nascop.org';
+$config['facility_source_of_arvs_by_county_chart_has_drilldown'] = FALSE;
+$config['facility_source_of_arvs_by_county_chart_filters'] = array('Sub_County', 'County');
+$config['facility_source_of_arvs_by_county_chart_filters_default'] = array();
+
 //prep_dispensing_points_in_facilities_chart 
-$config['prep_dispensing_points_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_dispensing_points_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
 $config['prep_dispensing_points_in_facilities_chart_title'] = 'PrEP Dispensing Points in Facilities';
 $config['prep_dispensing_points_in_facilities_chart_yaxis_title'] = 'Percent 100';
 $config['prep_dispensing_points_in_facilities_chart_source'] = 'Source: www.prep.nascop.org';
