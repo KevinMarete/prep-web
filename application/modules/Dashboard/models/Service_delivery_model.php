@@ -25,7 +25,7 @@ class Service_delivery_model extends CI_Model {
 
     public function get_facilities_level_distribution($filters) {
         $columns = array();
-        $prep_dispensing_points_data = array(
+        $facility_level_distribution_data = array(
             array('type' => 'column', 'name' => 'County Hospital', 'data' => array()),
             array('type' => 'column', 'name' => 'Health Center', 'data' => array()),
             array('type' => 'column', 'name' => 'County Referral Hospital', 'data' => array()),
@@ -49,28 +49,28 @@ class Service_delivery_model extends CI_Model {
         if ($results) {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
-                foreach ($prep_dispensing_points_data as $index => $prep_dispensing_points) {
-                    if ($prep_dispensing_points['name'] == 'County Hospital') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['County Hospital']);
-                    } else if ($prep_dispensing_points['name'] == 'Health Center') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['Health Center']);
-                    } else if ($prep_dispensing_points['name'] == 'County Referral Hospital') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['County Referral Hospital']);
-                    } else if ($prep_dispensing_points['name'] == 'National Referral Hospital') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['National Referral Hospital']);
-                    } else if ($prep_dispensing_points['name'] == 'DICE') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['DICE']);
-                    } else if ($prep_dispensing_points['name'] == 'Other (specify)') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['Other (specify)']);
-                    } else if ($prep_dispensing_points['name'] == 'Dispensary') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['Dispensary']);
-                    } else if ($prep_dispensing_points['name'] == 'Sub County Hospital') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['Sub County Hospital']);
+                foreach ($facility_level_distribution_data as $index => $facility_level_distribution) {
+                    if ($facility_level_distribution['name'] == 'County Hospital') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['County Hospital']);
+                    } else if ($facility_level_distribution['name'] == 'Health Center') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['Health Center']);
+                    } else if ($facility_level_distribution['name'] == 'County Referral Hospital') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['County Referral Hospital']);
+                    } else if ($facility_level_distribution['name'] == 'National Referral Hospital') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['National Referral Hospital']);
+                    } else if ($facility_level_distribution['name'] == 'DICE') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['DICE']);
+                    } else if ($facility_level_distribution['name'] == 'Other (specify)') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['Other (specify)']);
+                    } else if ($facility_level_distribution['name'] == 'Dispensary') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['Dispensary']);
+                    } else if ($facility_level_distribution['name'] == 'Sub County Hospital') {
+                        array_push($facility_level_distribution_data[$index]['data'], $result['Sub County Hospital']);
                     }
                 }
             }
         }
-        return array('main' => $prep_dispensing_points_data, 'columns' => $columns);
+        return array('main' => $facility_level_distribution_data, 'columns' => $columns);
     }
 
     public function get_facility_count_drilldown($main_data, $filters) {
@@ -190,7 +190,7 @@ class Service_delivery_model extends CI_Model {
     }
 public function get_service_delivery_points_distribution($filters) {
         $columns = array();
-        $prep_dispensing_points_data = array(
+        $service_delivery_distribution_data = array(
             array('type' => 'column', 'name' => 'CCC', 'data' => array()),
             array('type' => 'column', 'name' => 'DICE', 'data' => array()),
             array('type' => 'column', 'name' => 'FP Clinic', 'data' => array()),
@@ -215,29 +215,29 @@ public function get_service_delivery_points_distribution($filters) {
         if ($results) {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
-                foreach ($prep_dispensing_points_data as $index => $prep_dispensing_points) {
-                    if ($prep_dispensing_points['name'] == 'CCC') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['CCC']);
-                    } else if ($prep_dispensing_points['name'] == 'DICE') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['DICE']);
-                    } else if ($prep_dispensing_points['name'] == 'Fp Clinic') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['FP Clinic']);
-                    } else if ($prep_dispensing_points['name'] == 'IPD') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['IPD']);
-                    } else if ($prep_dispensing_points['name'] == 'MCH') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['MCH']);
-                    } else if ($prep_dispensing_points['name'] == 'ONE STOP SHOP') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['ONE STOP SHOP']);
-                    } else if ($prep_dispensing_points['name'] == 'PMTCT Clinic') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['PMTCT Clinic']);
-                    } else if ($prep_dispensing_points['name'] == 'OPD') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['OPD']);
-                    } else if ($prep_dispensing_points['name'] == 'Other') {
-                        array_push($prep_dispensing_points_data[$index]['data'], $result['Other']);
+                foreach ($service_delivery_distribution_data as $index => $service_delivery_distribution) {
+                    if ($service_delivery_distribution['name'] == 'CCC') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['CCC']);
+                    } else if ($service_delivery_distribution['name'] == 'DICE') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['DICE']);
+                    } else if ($service_delivery_distribution['name'] == 'Fp Clinic') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['FP Clinic']);
+                    } else if ($service_delivery_distribution['name'] == 'IPD') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['IPD']);
+                    } else if ($service_delivery_distribution['name'] == 'MCH') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['MCH']);
+                    } else if ($service_delivery_distribution['name'] == 'ONE STOP SHOP') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['ONE STOP SHOP']);
+                    } else if ($service_delivery_distribution['name'] == 'PMTCT Clinic') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['PMTCT Clinic']);
+                    } else if ($service_delivery_distribution['name'] == 'OPD') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['OPD']);
+                    } else if ($service_delivery_distribution['name'] == 'Other') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['Other']);
                     }
                 }
             }
         }
-        return array('main' => $prep_dispensing_points_data, 'columns' => $columns);
+        return array('main' => $service_delivery_distribution_data, 'columns' => $columns);
     }
 }

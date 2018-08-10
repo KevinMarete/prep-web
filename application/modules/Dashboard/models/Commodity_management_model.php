@@ -117,4 +117,48 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $prep_dispensing_points_data, 'columns' => $columns);
     }
 
+    public function get_prep_dispensing_software_in_facilities($filters) {
+        $columns = array();
+        $dispensing_software_data = array(
+            array('type' => 'column', 'name' => 'Access ADT', 'data' => array()),
+            array('type' => 'column', 'name' => 'EDDIT', 'data' => array()),
+            array('type' => 'column', 'name' => 'IQ Care', 'data' => array()),
+            array('type' => 'column', 'name' => 'Kenya EMR', 'data' => array()),
+            array('type' => 'column', 'name' => 'OTHER (specify)', 'data' => array()),
+            array('type' => 'column', 'name' => 'Web ADT', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county,COUNT(IF(dispensing_software = 'Access ADT', 1, NULL)) 'Access ADT', COUNT(IF(dispensing_software = 'EDDIT', 1, NULL)) 'EDDIT', COUNT(IF(dispensing_software = 'IQ Care',1,Null)) 'IQ Care',COUNT(IF(dispensing_software='Kenya EMR',1,NULL)) 'Kenya EMR',COUNT(IF(dispensing_software = 'OTHER (specify)', 1, NULL)) 'OTHER (specify)', COUNT(IF(dispensing_software='Web ADT',1,NULL)) 'Web ADT'", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_dispensing_software');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($dispensing_software_data as $index => $dispensing_software) {
+                    if ($dispensing_software['name'] == 'Access ADT') {
+                        array_push($dispensing_software_data[$index]['data'], $result['Access ADT']);
+                    } else if ($dispensing_software['name'] == 'EDDIT') {
+                        array_push($dispensing_software_data[$index]['data'], $result['EDDIT']);
+                    } else if ($dispensing_software['name'] == 'IQ Care') {
+                        array_push($dispensing_software_data[$index]['data'], $result['IQ Care']);
+                    } else if ($dispensing_software['name'] == 'Kenya EMR') {
+                        array_push($dispensing_software_data[$index]['data'], $result['Kenya EMR']);
+                    } else if ($dispensing_software['name'] == 'OTHER (specify)') {
+                        array_push($dispensing_software_data[$index]['data'], $result['OTHER (specify)']);
+                    } else if ($dispensing_software['name'] == 'Web ADT') {
+                        array_push($dispensing_software_data[$index]['data'], $result['Web ADT']);
+                    }
+                }
+            }
+        }
+        return array('main' => $dispensing_software_data, 'columns' => $columns);
+    }
+
 }

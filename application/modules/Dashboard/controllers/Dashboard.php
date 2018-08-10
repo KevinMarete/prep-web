@@ -71,6 +71,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Commodity_management_model->get_facility_source_of_arvs_by_county($filters);
         } else if ($chartname == 'prep_dispensing_points_in_facilities_chart') {
             $main_data = $this->Commodity_management_model->get_prep_dispensing_points_in_facilities($filters);
+        } else if ($chartname == 'prep_dispensing_software_in_facilities_chart') {
+            $main_data = $this->Commodity_management_model->get_prep_dispensing_software_in_facilities($filters);
         } else if ($chartname == 'lmis_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
         } else if ($chartname == 'clinical_encounter_forms_chart') {
