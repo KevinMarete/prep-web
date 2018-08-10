@@ -9,6 +9,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Monitoring_evaluation_model extends CI_Model {
 
+    public function get_overall_availability_of_ME_tools($filters) {
+        $columns = array();
+        $response = array();
+
+        $this->db->select("COUNT(IF(rapid_assessment_screening_tool = 'YES', 1, NULL)) 'Rapid Assessment Screening Tool',COUNT(IF(PrEP_summary_reporting_tool = 'YES', 1, NULL)) 'PrEP Summary Reporting Tool',COUNT(IF(PrEP_register = 'YES', 1, NULL)) 'PrEP Register',COUNT(IF(clinical_encounter_form = 'YES', 1, NULL)) 'Clinical Encounter Form',COUNT(IF(arv_lmis_tool = 'YES', 1, NULL)) 'ARV LMIS Tool', COUNT(IF(pharmacovigilance_reporting_tools = 'YES', 1, NULL)) 'Pharmacovigilance Reporting Tools'", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $result = $query->row_array();
+
+        //Add columns
+        $columns = array_keys($result);
+
+        //Add data to response
+        foreach ($columns as $column) {
+            array_push($response, array('name' => $column, 'y' => $result[$column]));
+        }
+        return array('main' => $response, 'columns' => $columns);
+    }
+
     public function get_lmis_tools($filters) {
         $columns = array();
         $lmis_tools_data = array(
@@ -136,7 +159,8 @@ class Monitoring_evaluation_model extends CI_Model {
         }
         return array('main' => $prep_registers_data, 'columns' => $columns);
     }
-public function get_rapid_assessment_screening_tools($filters) {
+
+    public function get_rapid_assessment_screening_tools($filters) {
         $columns = array();
         $rapid_assessment_screening_tools_data = array(
             array('type' => 'column', 'name' => 'NO', 'data' => array()),
@@ -167,7 +191,8 @@ public function get_rapid_assessment_screening_tools($filters) {
         }
         return array('main' => $rapid_assessment_screening_tools_data, 'columns' => $columns);
     }
- public function get_prep_summmary_tools($filters) {
+
+    public function get_prep_summmary_tools($filters) {
         $columns = array();
         $prep_summmary_tools_data = array(
             array('type' => 'column', 'name' => 'NO', 'data' => array()),
@@ -198,4 +223,5 @@ public function get_rapid_assessment_screening_tools($filters) {
         }
         return array('main' => $prep_summmary_tools_data, 'columns' => $columns);
     }
+
 }

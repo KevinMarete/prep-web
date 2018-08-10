@@ -4,6 +4,21 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
+                        <strong>Overall Availability of M&E Tools</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="overall_availability_of_me_tools_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="overall_availability_of_me_tools_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
                         <strong>LMIS Tools</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#lmis_tools_chart_filter_modal" class="btn btn-warning btn-xs">

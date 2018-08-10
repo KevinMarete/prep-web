@@ -26,7 +26,7 @@ var charts = {
     'laboratory_service': ['creatinine_testing_availability_chart'],
     'human_resource': ['facilities_trained_on_prep_chart', 'distibution_of_facilities_trained_personnel_in_facilities_chart'],
     'commodity_management': ['facility_source_of_ARVs_chart', 'facility_source_of_arvs_by_county_chart', 'prep_dispensing_points_in_facilities_chart', 'prep_dispensing_software_in_facilities_chart'],
-    'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart'],
+    'monitoring_evaluation': ['overall_availability_of_me_tools_chart','lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart'],
     'communication_advocacy': ['demand_creation_activities_in_facilities_chart', 'prep_education_availability_in_facilities_chart', 'iec_materials_chart']
 }
 var filters = {}

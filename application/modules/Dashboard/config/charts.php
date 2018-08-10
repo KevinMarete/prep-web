@@ -119,6 +119,15 @@ $config['prep_dispensing_software_in_facilities_chart_has_drilldown'] = FALSE;
 $config['prep_dispensing_software_in_facilities_chart_filters'] = array('Sub_County', 'County');
 $config['prep_dispensing_software_in_facilities_chart_filters_default'] = array();
 
+//overall_availability_of_me_tools_chart 
+$config['overall_availability_of_me_tools_chart_chartview'] = 'charts/column_view';
+$config['overall_availability_of_me_tools_chart_title'] = 'Overall Availability of M&E Tools';
+$config['overall_availability_of_me_tools_chart_yaxis_title'] = '';
+$config['overall_availability_of_me_tools_chart_source'] = 'Source: www.prep.nascop.org';
+$config['overall_availability_of_me_tools_chart_has_drilldown'] = FALSE;
+$config['overall_availability_of_me_tools_chart_filters'] = array('Sub_County', 'County');
+$config['overall_availability_of_me_tools_chart_filters_default'] = array();
+
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';
