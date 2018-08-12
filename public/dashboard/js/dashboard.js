@@ -25,7 +25,7 @@ var charts = {
     'service_delivery': ['facility_count_chart', 'facilities_level_distribution_chart', 'prep_focal_person_chart', 'partner_support_chart', 'hiv_services_offered_chart', 'service_delivery_points_distribution_chart'],
     'laboratory_service': ['creatinine_testing_availability_chart'],
     'human_resource': ['facilities_trained_on_prep_chart', 'distibution_of_facilities_trained_personnel_in_facilities_chart'],
-    'commodity_management': ['facility_source_of_ARVs_chart', 'facility_source_of_arvs_by_county_chart', 'prep_dispensing_points_in_facilities_chart', 'prep_dispensing_software_in_facilities_chart'],
+    'commodity_management': ['facility_source_of_ARVs_chart', 'facility_source_of_arvs_by_county_chart', 'prep_dispensing_points_in_facilities_chart', 'prep_dispensing_software_in_facilities_chart','prep_dispensing_software_in_facilities_table'],
     'monitoring_evaluation': ['overall_availability_of_me_tools_chart','lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart','clients_ever_started_on_prep_chart','clients_currently_on_prep_chart'],
     'communication_advocacy': ['demand_creation_activities_in_facilities_chart', 'prep_education_availability_in_facilities_chart', 'iec_materials_chart']
 }

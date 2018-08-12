@@ -4,7 +4,7 @@
 	$table_data = json_decode($chart_series_data, TRUE);
 	$count = 0;
 	$tbody = "<tbody>";
-	$overall = array_sum(array_column($table_data, 'total_patients'));
+	$overall = array_sum(array_column($table_data, 'Total'));
 	foreach ($table_data as $row_data) {
 		$tbody .= "<tr>";
 		foreach ($row_data as $key => $value) {

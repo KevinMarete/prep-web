@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-              <div class="col-md-8">
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Facility Source of ARVs by County</strong>
@@ -69,6 +69,21 @@
                     </div>
                     <div class="chart-notes">
                         <span class="prep_dispensing_software_in_facilities_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>PrEP Dispensing Software in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="prep_dispensing_software_in_facilities_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="prep_dispensing_software_in_facilities_table_heading heading"></span>
                     </div>
                 </div>
             </div>
