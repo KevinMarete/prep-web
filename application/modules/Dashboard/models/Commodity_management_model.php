@@ -163,16 +163,14 @@ class Commodity_management_model extends CI_Model {
 
     public function get_prep_dispensing_software_in_facilities_numbers($filters) {
         $columns = array();
-
-        //$this->db->select("UPPER(dispensing_software) county,COUNT(IF(dispensing_software = 'Access ADT', 1, NULL)) 'Access ADT', COUNT(IF(dispensing_software = 'EDDIT', 1, NULL)) 'EDDIT', COUNT(IF(dispensing_software = 'IQ Care',1,Null)) 'IQ Care',COUNT(IF(dispensing_software='Kenya EMR',1,NULL)) 'Kenya EMR',COUNT(IF(dispensing_software = 'OTHER (specify)', 1, NULL)) 'OTHER (specify)', COUNT(IF(dispensing_software='Web ADT',1,NULL)) 'Web ADT',COUNT(*) Total", FALSE);
-        $this->db->select("UPPER(dispensing_software) software, count(*) Total", FALSE);
+        $this->db->select("UPPER(dispensing_software) software,count(*) Total", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
         $this->db->group_by('software');
-        $this->db->order_by('software', 'ASC');
+        //$this->db->order_by('software', 'ASC');
         $query = $this->db->get('tbl_dispensing_software');
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
