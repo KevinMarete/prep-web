@@ -24,17 +24,18 @@ foreach ($table_data as $row_data) {
     $cumulative = $cumulative + $percentage;
     $percentage_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percentage . '%">' . $percentage . '%</div></div>';
     $cumulative_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $cumulative . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $cumulative . '%">' . $cumulative . '%</div></div>';
-    $tbody .= "<td>" . $cumulative_progress_bar . "</td>";
+
     $tbody .= "<td>" . $percentage_progress_bar . "</td>";
+    $tbody .= "<td>" . $cumulative_progress_bar . "</td>";
     $tbody .= "</tr>";
     $count++;
 }
 
-//Add cumulative
-$thead .= "<th>Cumulative Percent</th>";
-
 //Add for percentage
 $thead .= "<th>OVERALL PERCENTAGE</th>";
+
+//Add cumulative
+$thead .= "<th>Cumulative Percent</th>";
 $thead .= "</tr></thead>";
 $tbody .= "</tbody>";
 $dyn_table .= $thead;

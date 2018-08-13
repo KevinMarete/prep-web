@@ -75,6 +75,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Commodity_management_model->get_prep_dispensing_software_in_facilities($filters);
         } else if ($chartname == 'prep_dispensing_software_in_facilities_table') {
             $main_data = $this->Commodity_management_model->get_prep_dispensing_software_in_facilities_numbers($filters);
+        } else if ($chartname == 'prep_product_dispensed_table') {
+            $main_data = $this->Commodity_management_model->get_prep_product_dispensed_numbers($filters);
         } else if ($chartname == 'overall_availability_of_me_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_overall_availability_of_ME_tools($filters);
         } else if ($chartname == 'lmis_tools_chart') {

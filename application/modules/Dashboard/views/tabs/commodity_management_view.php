@@ -86,8 +86,23 @@
                         <span class="prep_dispensing_software_in_facilities_table_heading heading"></span>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>PrEP Regimens Dispensed in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="prep_product_dispensed_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="prep_product_dispensed_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!--modal(s)-->

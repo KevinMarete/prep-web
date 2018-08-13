@@ -175,4 +175,18 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
+    public function get_prep_product_dispensed_numbers($filters) {
+        $columns = array();
+        $this->db->select("UPPER(prep_product_dispensed) prep_product_dispensed, COUNT(*) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('prep_product_dispensed');
+        $this->db->order_by('prep_product_dispensed', 'ASC');
+        $query = $this->db->get('tbl_prep_product');
+        return array('main' => $query->result_array(), 'columns' => $columns);
+    }
+
 }

@@ -128,6 +128,15 @@ $config['prep_dispensing_software_in_facilities_table_has_drilldown'] = FALSE;
 $config['prep_dispensing_software_in_facilities_table_filters'] = array('Sub_County', 'County');
 $config['prep_dispensing_software_in_facilities_table_filters_default'] = array();
 
+//prep_product_dispensed_table
+$config['prep_product_dispensed_table_chartview'] = 'charts/table_view';
+$config['prep_product_dispensed_table_title'] = 'PrEP Regimens Dispensed in Facilities';
+$config['prep_product_dispensed_table_yaxis_title'] = 'Percent 100';
+$config['prep_product_dispensed_table_source'] = 'Source: www.prep.nascop.org';
+$config['prep_product_dispensed_table_has_drilldown'] = FALSE;
+$config['prep_product_dispensed_table_filters'] = array('Sub_County', 'County');
+$config['prep_product_dispensed_table_filters_default'] = array();
+
 //overall_availability_of_me_tools_chart 
 $config['overall_availability_of_me_tools_chart_chartview'] = 'charts/column_view';
 $config['overall_availability_of_me_tools_chart_title'] = 'Overall Availability of M&E Tools';
