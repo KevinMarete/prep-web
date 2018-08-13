@@ -163,14 +163,14 @@ class Commodity_management_model extends CI_Model {
 
     public function get_prep_dispensing_software_in_facilities_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(dispensing_software) software,count(*) Total", FALSE);
+        $this->db->select("UPPER(dispensing_software) software_in_use, COUNT(*) Frequency", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('software');
-        //$this->db->order_by('software', 'ASC');
+        $this->db->group_by('software_in_use');
+        $this->db->order_by('software_in_use', 'ASC');
         $query = $this->db->get('tbl_dispensing_software');
         return array('main' => $query->result_array(), 'columns' => $columns);
     }

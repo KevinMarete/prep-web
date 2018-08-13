@@ -5,7 +5,7 @@ $table_data = json_decode($chart_series_data, TRUE);
 $count = 0;
 $cumulative = 0;
 $tbody = "<tbody>";
-$overall = array_sum(array_column($table_data, 'Total'));
+$overall = array_sum(array_column($table_data, 'Frequency'));
 foreach ($table_data as $row_data) {
     $tbody .= "<tr>";
     foreach ($row_data as $key => $value) {
@@ -21,17 +21,17 @@ foreach ($table_data as $row_data) {
         }
     }
     $percentage = round(($value / $overall) * 100, 1);
-    $cumulative = $percentage + $cumulative;
-    $progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percentage . '%">' . $percentage . '%</div></div>';
-    $cumulative_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $cumulative . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $cumulative . '%">' . $cumulative . '%</div></div>';
-    $tbody .= "<td>" . $cumulative_bar . "</td>";
-    $tbody .= "<td>" . $progress_bar . "</td>";
+    $cumulative = $cumulative + $percentage;
+    $percentage_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percentage . '%">' . $percentage . '%</div></div>';
+    $cumulative_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $cumulative . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $cumulative . '%">' . $cumulative . '%</div></div>';
+    $tbody .= "<td>" . $cumulative_progress_bar . "</td>";
+    $tbody .= "<td>" . $percentage_progress_bar . "</td>";
     $tbody .= "</tr>";
     $count++;
 }
 
 //Add cumulative
-$thead .= "<th>Cumulative</th>";
+$thead .= "<th>Cumulative Percent</th>";
 
 //Add for percentage
 $thead .= "<th>OVERALL PERCENTAGE</th>";
@@ -50,7 +50,7 @@ echo $dyn_table;
         //Add search input
         $('.distribution_table thead th').each(function () {
             var title = $('.distribution_table thead th').eq($(this).index()).text();
-            $(this).html('<input type="text" placeholder="Search ' + title.toLowerCase() + '"" />');
+            $(this).html('<input type="text" placeholder="Search ' + title.toUpperCase() + '"" />');
         });
 
         //DataTable
