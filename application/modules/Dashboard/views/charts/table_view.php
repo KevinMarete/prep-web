@@ -35,7 +35,7 @@ foreach ($table_data as $row_data) {
 $thead .= "<th>OVERALL PERCENTAGE</th>";
 
 //Add cumulative
-$thead .= "<th>Cumulative Percent</th>";
+$thead .= "<th>CUMULATIVE PERCENTAGE</th>";
 $thead .= "</tr></thead>";
 $tbody .= "</tbody>";
 $dyn_table .= $thead;
@@ -49,10 +49,10 @@ echo $dyn_table;
     $(function () {
 
         //Add search input
-        $('.distribution_table thead th').each(function () {
+        /**$('.distribution_table thead th').each(function () {
             var title = $('.distribution_table thead th').eq($(this).index()).text();
             $(this).html('<input type="text" placeholder="Search ' + title.toUpperCase() + '"" />');
-        });
+        });**/
 
         //DataTable
         var table = $('.distribution_table').DataTable({

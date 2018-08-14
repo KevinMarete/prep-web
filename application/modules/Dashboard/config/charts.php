@@ -103,16 +103,34 @@ $config['facility_source_of_arvs_by_county_chart_filters_default'] = array();
 
 //prep_dispensing_points_in_facilities_chart 
 $config['prep_dispensing_points_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['prep_dispensing_points_in_facilities_chart_title'] = 'PrEP Dispensing Points in Facilities';
+$config['prep_dispensing_points_in_facilities_chart_title'] = 'PrEP Dispensing Points in Facilities (By County)';
 $config['prep_dispensing_points_in_facilities_chart_yaxis_title'] = 'Percent 100';
 $config['prep_dispensing_points_in_facilities_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_dispensing_points_in_facilities_chart_has_drilldown'] = FALSE;
 $config['prep_dispensing_points_in_facilities_chart_filters'] = array('Sub_County', 'County');
 $config['prep_dispensing_points_in_facilities_chart_filters_default'] = array();
 
+//prep_product_dispensed_table
+$config['prep_product_dispensed_table_chartview'] = 'charts/table_view';
+$config['prep_product_dispensed_table_title'] = 'PrEP Regimens Dispensed in Facilities';
+$config['prep_product_dispensed_table_yaxis_title'] = 'Percent 100';
+$config['prep_product_dispensed_table_source'] = 'Source: www.prep.nascop.org';
+$config['prep_product_dispensed_table_has_drilldown'] = FALSE;
+$config['prep_product_dispensed_table_filters'] = array('Sub_County', 'County');
+$config['prep_product_dispensed_table_filters_default'] = array();
+
+//prep_product_dispensed_chart
+$config['prep_product_dispensed_chart_chartview'] = 'charts/stacked_column_view';
+$config['prep_product_dispensed_chart_title'] = 'PrEP Regimens Dispensed in Facilities (By County)';
+$config['prep_product_dispensed_chart_yaxis_title'] = 'Count';
+$config['prep_product_dispensed_chart_source'] = 'Source: www.prep.nascop.org';
+$config['prep_product_dispensed_chart_has_drilldown'] = FALSE;
+$config['prep_product_dispensed_chart_filters'] = array('Sub_County', 'County');
+$config['prep_product_dispensed_chart_filters_default'] = array();
+
 //prep_dispensing_software_in_facilities_chart 
 $config['prep_dispensing_software_in_facilities_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['prep_dispensing_software_in_facilities_chart_title'] = 'PrEP Dispensing Software in Facilities';
+$config['prep_dispensing_software_in_facilities_chart_title'] = 'PrEP Dispensing Software in Facilities (By County)';
 $config['prep_dispensing_software_in_facilities_chart_yaxis_title'] = 'Percent 100';
 $config['prep_dispensing_software_in_facilities_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_dispensing_software_in_facilities_chart_has_drilldown'] = FALSE;
@@ -127,15 +145,6 @@ $config['prep_dispensing_software_in_facilities_table_source'] = 'Source: www.pr
 $config['prep_dispensing_software_in_facilities_table_has_drilldown'] = FALSE;
 $config['prep_dispensing_software_in_facilities_table_filters'] = array('Sub_County', 'County');
 $config['prep_dispensing_software_in_facilities_table_filters_default'] = array();
-
-//prep_product_dispensed_table
-$config['prep_product_dispensed_table_chartview'] = 'charts/table_view';
-$config['prep_product_dispensed_table_title'] = 'PrEP Regimens Dispensed in Facilities';
-$config['prep_product_dispensed_table_yaxis_title'] = 'Percent 100';
-$config['prep_product_dispensed_table_source'] = 'Source: www.prep.nascop.org';
-$config['prep_product_dispensed_table_has_drilldown'] = FALSE;
-$config['prep_product_dispensed_table_filters'] = array('Sub_County', 'County');
-$config['prep_product_dispensed_table_filters_default'] = array();
 
 //overall_availability_of_me_tools_chart 
 $config['overall_availability_of_me_tools_chart_chartview'] = 'charts/column_view';

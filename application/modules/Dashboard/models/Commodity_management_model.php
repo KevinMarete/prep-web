@@ -189,4 +189,40 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
+    public function get_prep_product_dispensed($filters) {
+        $columns = array();
+        $lmis_tools_data = array(
+            array('type' => 'column', 'name' => 'TDF', 'data' => array()),
+            array('type' => 'column', 'name' => 'TDF/3TC', 'data' => array()),
+            array('type' => 'column', 'name' => 'TDF/FTC', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county, COUNT(IF(prep_product_dispensed='TDF/FTC', 1, NULL)) 'TDF/FTC', COUNT(IF(prep_product_dispensed='TDF/3TC', 1, NULL)) 'TDF/3TC', COUNT(IF(prep_product_dispensed = 'TDF', 1, NULL)) TDF", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $this->db->order_by('county','ASC');
+        $query = $this->db->get('tbl_prep_product');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($lmis_tools_data as $index => $lmis_tools) {
+                    if ($lmis_tools['name'] == 'TDF/FTC') {
+                        array_push($lmis_tools_data[$index]['data'], $result['TDF/FTC']);
+                    } else if ($lmis_tools['name'] == 'TDF/3TC') {
+                        array_push($lmis_tools_data[$index]['data'], $result['TDF/3TC']);
+                    } else if ($lmis_tools['name'] == 'TDF') {
+                        array_push($lmis_tools_data[$index]['data'], $result['TDF']);
+                    }
+                }
+            }
+        }
+        return array('main' => $lmis_tools_data, 'columns' => $columns);
+    }
+
 }
