@@ -59,8 +59,32 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_hiv_services_offered($filters);
         } else if ($chartname == 'service_delivery_points_distribution_chart') {
             $main_data = $this->Service_delivery_model->get_service_delivery_points_distribution($filters);
-        } else if ($chartname == 'creatinine_testing_availability_chart') {
-            $main_data = $this->Laboratory_service_model->get_creatinine_testing_availability($filters);
+        } else if ($chartname == 'access_creatinine_testing_facilities_chart') {
+            $main_data = $this->Laboratory_service_model->get_access_creatinine_testing_availability($filters);
+        } else if ($chartname == 'creatinine_testing_equipment_availability_chart') {
+            $main_data = $this->Laboratory_service_model->get_creatinine_testing_equipment_availability($filters);
+        } else if ($chartname == 'offsite_onsite_creatinine_testing_chart') {
+            $main_data = $this->Laboratory_service_model->get_offsite_onsite_creatinine_testing($filters);
+        } else if ($chartname == 'access_hep_b_testing_facilities_table') {
+            $main_data = $this->Laboratory_service_model->get_access_hep_b_testing_numbers($filters);
+        } else if ($chartname == 'access_hep_b_testing_facilities_chart') {
+            $main_data = $this->Laboratory_service_model->get_access_hep_b_testing_facilities($filters);
+        } else if ($chartname == 'hep_b_testing_equipment_availability_chart') {
+            $main_data = $this->Laboratory_service_model->get_hep_b_testing_equipment_availability($filters);
+        } else if ($chartname == 'offsite_onsite_hep_b_testing_chart') {
+            $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_b_testing($filters);
+        } else if ($chartname == 'offsite_onsite_hep_b_testing_table') {
+            $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_b_testing_numbers($filters);
+        } else if ($chartname == 'access_hep_c_testing_facilities_table') {
+            $main_data = $this->Laboratory_service_model->get_access_hep_c_testing_numbers($filters);
+        } else if ($chartname == 'access_hep_c_testing_facilities_chart') {
+            $main_data = $this->Laboratory_service_model->get_access_hep_c_testing_facilities($filters);
+        } else if ($chartname == 'hep_c_testing_equipment_availability_chart') {
+            $main_data = $this->Laboratory_service_model->get_hep_c_testing_equipment_availability($filters);
+        } else if ($chartname == 'offsite_onsite_hep_c_testing_chart') {
+            $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing($filters);
+        } else if ($chartname == 'offsite_onsite_hep_c_testing_table') {
+            $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing_numbers($filters);
         } else if ($chartname == 'facilities_trained_on_prep_chart') {
             $main_data = $this->Human_resource_model->get_facilities_trained_on_prep($filters);
         } else if ($chartname == 'distibution_of_facilities_trained_personnel_in_facilities_chart') {

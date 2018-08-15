@@ -191,7 +191,7 @@ class Commodity_management_model extends CI_Model {
 
     public function get_prep_product_dispensed($filters) {
         $columns = array();
-        $lmis_tools_data = array(
+        $product_dispensed_data = array(
             array('type' => 'column', 'name' => 'TDF', 'data' => array()),
             array('type' => 'column', 'name' => 'TDF/3TC', 'data' => array()),
             array('type' => 'column', 'name' => 'TDF/FTC', 'data' => array())
@@ -211,18 +211,18 @@ class Commodity_management_model extends CI_Model {
         if ($results) {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
-                foreach ($lmis_tools_data as $index => $lmis_tools) {
-                    if ($lmis_tools['name'] == 'TDF/FTC') {
-                        array_push($lmis_tools_data[$index]['data'], $result['TDF/FTC']);
-                    } else if ($lmis_tools['name'] == 'TDF/3TC') {
-                        array_push($lmis_tools_data[$index]['data'], $result['TDF/3TC']);
-                    } else if ($lmis_tools['name'] == 'TDF') {
-                        array_push($lmis_tools_data[$index]['data'], $result['TDF']);
+                foreach ($product_dispensed_data as $index => $product_dispensed) {
+                    if ($product_dispensed['name'] == 'TDF/FTC') {
+                        array_push($product_dispensed_data[$index]['data'], $result['TDF/FTC']);
+                    } else if ($product_dispensed['name'] == 'TDF/3TC') {
+                        array_push($product_dispensed_data[$index]['data'], $result['TDF/3TC']);
+                    } else if ($product_dispensed['name'] == 'TDF') {
+                        array_push($product_dispensed_data[$index]['data'], $result['TDF']);
                     }
                 }
             }
         }
-        return array('main' => $lmis_tools_data, 'columns' => $columns);
+        return array('main' => $product_dispensed_data, 'columns' => $columns);
     }
 
 }
