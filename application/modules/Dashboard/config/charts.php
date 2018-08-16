@@ -236,6 +236,24 @@ $config['distibution_of_facilities_trained_personnel_in_facilities_chart_has_dri
 $config['distibution_of_facilities_trained_personnel_in_facilities_chart_filters'] = array('Sub_County', 'County');
 $config['distibution_of_facilities_trained_personnel_in_facilities_chart_filters_default'] = array();
 
+//health_care_workers_trained_on_prep_chart 
+$config['health_care_workers_trained_on_prep_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['health_care_workers_trained_on_prep_chart_title'] = 'Health Care Workers Trained for PrEP in Facilities (By County)';
+$config['health_care_workers_trained_on_prep_chart_yaxis_title'] = 'Percent of 100';
+$config['health_care_workers_trained_on_prep_chart_source'] = 'Source: www.prep.nascop.org';
+$config['health_care_workers_trained_on_prep_chart_has_drilldown'] = FALSE;
+$config['health_care_workers_trained_on_prep_chart_filters'] = array('Sub_County', 'County');
+$config['health_care_workers_trained_on_prep_chart_filters_default'] = array();
+
+//health_care_workers_trained_on_prep_table 
+$config['health_care_workers_trained_on_prep_table_chartview'] = 'charts/table_view';
+$config['health_care_workers_trained_on_prep_table_title'] = 'Health Care Workers Trained for PrEP';
+$config['health_care_workers_trained_on_prep_table_yaxis_title'] = 'Percent of 100';
+$config['health_care_workers_trained_on_prep_table_source'] = 'Source: www.prep.nascop.org';
+$config['health_care_workers_trained_on_prep_table_has_drilldown'] = FALSE;
+$config['health_care_workers_trained_on_prep_table_filters'] = array('Sub_County', 'County');
+$config['health_care_workers_trained_on_prep_table_filters_default'] = array();
+
 //facility_source_of_ARVs_chart 
 $config['facility_source_of_ARVs_chart_chartview'] = 'charts/pie_view';
 $config['facility_source_of_ARVs_chart_title'] = 'Source of ARVs in Facilities';
