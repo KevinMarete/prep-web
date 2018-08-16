@@ -94,6 +94,47 @@
             </div>
         </div><!--end row-->
         <div class="row">
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Availability of Creatinine Reagents in Relation to Equipment</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="creatinine_reagents_availability_in_relation_to_equipment_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="creatinine_reagents_availability_in_relation_to_equipment_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Unavailability of Creatinine Reagents in Relation to Equipment</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="creatinine_reagents_unavailability_in_relation_to_equipment_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="creatinine_reagents_unavailability_in_relation_to_equipment_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Onsite and Offsite Access to Creatinine Testing</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="onsite_offsite_access_to_creatinine_testing_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="onsite_offsite_access_to_creatinine_testing_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">

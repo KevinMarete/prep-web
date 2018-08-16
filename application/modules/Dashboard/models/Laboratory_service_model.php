@@ -165,6 +165,48 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
+    public function get_creatinine_availability_reagents_in_relation_to_equipment_numbers($filters) {
+        $columns = array();
+        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Reagents,COUNT(IF(Creatinine_Reagents='YES',1,NULL)) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('Creatinine_Equipment');
+        $this->db->order_by('Creatinine_Equipment', 'ASC');
+        $query = $this->db->get('tbl_laboratory_service');
+        return array('main' => $query->result_array(), 'columns' => $columns);
+    }
+
+    public function get_creatinine_unavailability_reagents_in_relation_to_equipment_numbers($filters) {
+        $columns = array();
+        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Reagents,COUNT(IF(Creatinine_Reagents='NO',1,NULL)) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('Creatinine_Equipment');
+        $this->db->order_by('Creatinine_Equipment', 'ASC');
+        $query = $this->db->get('tbl_laboratory_service');
+        return array('main' => $query->result_array(), 'columns' => $columns);
+    }
+
+    public function get_onsite_offsite_access_to_creatinine_testing_numbers($filters) {
+        $columns = array();
+        $this->db->select("UPPER(`Creatinine On/Off Site`) onsite_offsite,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('onsite_offsite');
+        $this->db->order_by('onsite_offsite', 'ASC');
+        $query = $this->db->get('tbl_laboratory_service');
+        return array('main' => $query->result_array(), 'columns' => $columns);
+    }
+
     public function get_access_hep_b_testing_facilities($filters) {
         $columns = array();
         $hep_b_testing_data = array(
