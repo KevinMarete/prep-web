@@ -83,6 +83,15 @@ $config['offsite_onsite_creatinine_testing_chart_has_drilldown'] = FALSE;
 $config['offsite_onsite_creatinine_testing_chart_filters'] = array('Sub_County', 'County');
 $config['offsite_onsite_creatinine_testing_chart_filters_default'] = array();
 
+//access_creatinine_testing_in_relation_to_equipment_availability_table 
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_chartview'] = 'charts/table_view';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_title'] = 'Access to Creatinine Testing in Relation to Equipment Availability';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_yaxis_title'] = 'Percent of 100';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_source'] = 'Source: www.prep.nascop.org';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_has_drilldown'] = FALSE;
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_filters'] = array('Sub_County', 'County');
+$config['access_creatinine_testing_in_relation_to_equipment_availability_table_filters_default'] = array();
+
 //access_hep_b_testing_facilities_table 
 $config['access_hep_b_testing_facilities_table_chartview'] = 'charts/table_view';
 $config['access_hep_b_testing_facilities_table_title'] = 'Access to Hep-B Testing in Facilities';

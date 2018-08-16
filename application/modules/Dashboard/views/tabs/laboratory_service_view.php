@@ -61,22 +61,25 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Access to Hep-B Testing in Facilities</strong>
+                        <strong>Access to Creatinine Testing in Relation to Equipment Availability</strong>
                     </div>
                     <div class="chart-stage">
-                        <div id="access_hep_b_testing_facilities_table"></div>
+                        <div id="access_creatinine_testing_in_relation_to_equipment_availability_table"></div>
                     </div>
                     <div class="chart-notes">
-                        <span class="access_hep_b_testing_facilities_table_heading heading"></span>
+                        <span class="access_creatinine_testing_in_relation_to_equipment_availability_table_heading heading"></span>
                     </div>
                 </div>
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Access to Hep-B Testing in Facilities (By County)</strong>
@@ -91,6 +94,19 @@
                     </div>
                     <div class="chart-notes">
                         <span class="access_hep_b_testing_facilities_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Access to Hep-B Testing in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="access_hep_b_testing_facilities_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="access_hep_b_testing_facilities_table_heading heading"></span>
                     </div>
                 </div>
             </div>
@@ -116,7 +132,7 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Offsite vs Onsite Hep-B Testing (By County)</strong>
@@ -134,9 +150,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Offsite vs Onsite Hep-B Testing</strong>
@@ -150,23 +164,8 @@
                 </div>
             </div>
         </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
-                        <strong>Access to Hep-C Testing in Facilities</strong>
-                    </div>
-                    <div class="chart-stage">
-                        <div id="access_hep_c_testing_facilities_table"></div>
-                    </div>
-                    <div class="chart-notes">
-                        <span class="access_hep_c_testing_facilities_table_heading heading"></span>
-                    </div>
-                </div>
-            </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row">          
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Access to Hep-C Testing in Facilities (By County)</strong>
@@ -181,6 +180,19 @@
                     </div>
                     <div class="chart-notes">
                         <span class="access_hep_c_testing_facilities_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Access to Hep-C Testing in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="access_hep_c_testing_facilities_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="access_hep_c_testing_facilities_table_heading heading"></span>
                     </div>
                 </div>
             </div>
@@ -206,7 +218,7 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Offsite vs Onsite Hep-C Testing (By County)</strong>
@@ -224,9 +236,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Offsite vs Onsite Hep-C Testing</strong>

@@ -65,6 +65,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Laboratory_service_model->get_creatinine_testing_equipment_availability($filters);
         } else if ($chartname == 'offsite_onsite_creatinine_testing_chart') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_creatinine_testing($filters);
+        } else if ($chartname == 'access_creatinine_testing_in_relation_to_equipment_availability_table') {
+            $main_data = $this->Laboratory_service_model->get_access_creatinine_testing_in_relation_to_equipment_availability_numbers($filters);
         } else if ($chartname == 'access_hep_b_testing_facilities_table') {
             $main_data = $this->Laboratory_service_model->get_access_hep_b_testing_numbers($filters);
         } else if ($chartname == 'access_hep_b_testing_facilities_chart') {
