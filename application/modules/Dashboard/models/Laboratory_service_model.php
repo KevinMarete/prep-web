@@ -119,6 +119,38 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
+    public function get_access_creatinine_testing_in_relation_to_equipment_availability($filters) {
+        $columns = array();
+        $creatinine_testing_equipment_relation_data = array(
+            array('type' => 'column', 'name' => 'NO', 'data' => array()),
+            array('type' => 'column', 'name' => 'YES', 'data' => array())
+        );
+
+        $this->db->select("UPPER(County) county,COUNT(IF(Creatinine_Equipment='YES', 1, NULL) AND IF(Creatinine_Testing='YES',1,NULL)) YES, COUNT(IF(Creatinine_Equipment = 'NO', 1, NULL) AND IF(Creatinine_Testing='YES',1,NULL)) NO", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('county');
+        $query = $this->db->get('tbl_laboratory_service');
+        $results = $query->result_array();
+
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['county'];
+                foreach ($creatinine_testing_equipment_relation_data as $index => $creatinine_testing_equipment_relation) {
+                    if ($creatinine_testing_equipment_relation['name'] == 'YES') {
+                        array_push($creatinine_testing_equipment_relation_data[$index]['data'], $result['YES']);
+                    } else if ($creatinine_testing_equipment_relation['name'] == 'NO') {
+                        array_push($creatinine_testing_equipment_relation_data[$index]['data'], $result['NO']);
+                    }
+                }
+            }
+        }
+        return array('main' => $creatinine_testing_equipment_relation_data, 'columns' => $columns);
+    }
+
     public function get_access_creatinine_testing_in_relation_to_equipment_availability_numbers($filters) {
         $columns = array();
         $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Equipment,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Frequency", FALSE);

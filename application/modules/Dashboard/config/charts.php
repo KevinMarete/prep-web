@@ -83,6 +83,15 @@ $config['offsite_onsite_creatinine_testing_chart_has_drilldown'] = FALSE;
 $config['offsite_onsite_creatinine_testing_chart_filters'] = array('Sub_County', 'County');
 $config['offsite_onsite_creatinine_testing_chart_filters_default'] = array();
 
+//access_creatinine_testing_in_relation_to_equipment_availability_chart 
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_title'] = 'Access to Creatinine Testing in Relation to Equipment Availability (By County)';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_yaxis_title'] = 'Percent of 100';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_source'] = 'Source: www.prep.nascop.org';
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_has_drilldown'] = FALSE;
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_filters'] = array('Sub_County', 'County');
+$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_filters_default'] = array();
+
 //access_creatinine_testing_in_relation_to_equipment_availability_table 
 $config['access_creatinine_testing_in_relation_to_equipment_availability_table_chartview'] = 'charts/table_view';
 $config['access_creatinine_testing_in_relation_to_equipment_availability_table_title'] = 'Access to Creatinine Testing in Relation to Equipment Availability';
