@@ -123,6 +123,21 @@
                 </div>
             </div>
         </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Population Receiving PrEP in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="population_receiving_prep_in_facilities_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="population_receiving_prep_in_facilities_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
     </div>
 </div>
 <!--modal(s)-->

@@ -191,19 +191,19 @@ class Service_delivery_model extends CI_Model {
 
     public function get_facility_level_prep_availability_numbers($filters) {
         $columns = array();
-        $this->db->select("Level name,COUNT(*) Frequency", FALSE);
+        $this->db->select("Level level,COUNT(*) Frequency", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('name');
+        $this->db->group_by('level');
         $this->db->limit(50);
         $query = $this->db->get('tbl_facility_details');
         $results = $query->result_array();
 
         foreach ($results as $result) {
-            array_push($columns, $result['name']);
+            array_push($columns, $result['level']);
         }
 
         return array('main' => $results, 'columns' => $columns);
@@ -260,6 +260,26 @@ class Service_delivery_model extends CI_Model {
             }
         }
         return array('main' => $service_delivery_distribution_data, 'columns' => $columns);
+    }
+
+    public function get_population_receiving_prep_in_facilities_numbers($filters) {
+        $columns = array();
+        $this->db->select("Population population,COUNT(*) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('population');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_prep_population');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['population']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
     }
 
 }

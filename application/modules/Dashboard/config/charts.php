@@ -65,6 +65,15 @@ $config['service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
 $config['service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
 $config['service_delivery_points_distribution_chart_filters_default'] = array();
 
+//population_receiving_prep_in_facilities_table 
+$config['population_receiving_prep_in_facilities_table_chartview'] = 'charts/table_view';
+$config['population_receiving_prep_in_facilities_table_title'] = 'Population Receiving PrEP in Facilities';
+$config['population_receiving_prep_in_facilities_table_yaxis_title'] = 'Percent 100';
+$config['population_receiving_prep_in_facilities_table_source'] = 'Source: www.prep.nascop.org';
+$config['population_receiving_prep_in_facilities_table_has_drilldown'] = FALSE;
+$config['population_receiving_prep_in_facilities_table_filters'] = array('Sub_County', 'County');
+$config['population_receiving_prep_in_facilities_table_filters_default'] = array();
+
 //access_creatinine_testing_facilities_chart 
 $config['access_creatinine_testing_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['access_creatinine_testing_facilities_chart_title'] = 'Access to Creatinine Testing in Facilities';
