@@ -4,13 +4,13 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Facility Count Distribution</strong> <span class="label label-warning">Drilldown</span>
+                        <strong>Facility Count Distribution (By County)</strong> <span class="label label-warning">Drilldown</span>
                     </div>
                     <div class="chart-stage">
-                        <div id="facility_count_chart"></div>
+                        <div id="facility_count_distribution_chart"></div>
                     </div>
                     <div class="chart-notes">
-                        <span class="facility_count_chart_heading heading"></span>
+                        <span class="facility_count_distribution_chart_heading heading"></span>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Facilties Level Distribution</strong>
+                        <strong>Facilties Level Distribution (By County)</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#facilities_level_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -94,7 +94,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Service Delivery Points Distribution</strong>
+                        <strong>Service Delivery Points Distribution (By County)</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#service_delivery_points_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>

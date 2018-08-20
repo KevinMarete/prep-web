@@ -2,18 +2,18 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-//facility_count_chart 
-$config['facility_count_chart_chartview'] = 'charts/column_drilldown_view';
-$config['facility_count_chart_title'] = 'Facility Count Distribution';
-$config['facility_count_chart_yaxis_title'] = 'Facility Count';
-$config['facility_count_chart_source'] = 'Source: www.prep.nascop.org';
-$config['facility_count_chart_has_drilldown'] = TRUE;
-$config['facility_count_chart_filters'] = array('Sub_County', 'County');
-$config['facility_count_chart_filters_default'] = array();
+//facility_count_distribution_chart 
+$config['facility_count_distribution_chart_chartview'] = 'charts/column_drilldown_view';
+$config['facility_count_distribution_chart_title'] = 'Facility Count Distribution (By County)';
+$config['facility_count_distribution_chart_yaxis_title'] = 'Count of Facility';
+$config['facility_count_distribution_chart_source'] = 'Source: www.prep.nascop.org';
+$config['facility_count_distribution_chart_has_drilldown'] = TRUE;
+$config['facility_count_distribution_chart_filters'] = array('Sub_County', 'County');
+$config['facility_count_distribution_chart_filters_default'] = array();
 
 //facilities_level_distribution_chart 
 $config['facilities_level_distribution_chart_chartview'] = 'charts/stacked_column_view';
-$config['facilities_level_distribution_chart_title'] = 'Facilties Level Distribution';
+$config['facilities_level_distribution_chart_title'] = 'Facilties Level Distribution (By County)';
 $config['facilities_level_distribution_chart_yaxis_title'] = 'Percent 100';
 $config['facilities_level_distribution_chart_source'] = 'Source: www.prep.nascop.org';
 $config['facilities_level_distribution_chart_has_drilldown'] = FALSE;
@@ -49,7 +49,7 @@ $config['hiv_services_offered_chart_filters_default'] = array();
 
 //service_delivery_points_distribution_chart 
 $config['service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['service_delivery_points_distribution_chart_title'] = 'Service Delivery Points Distribution';
+$config['service_delivery_points_distribution_chart_title'] = 'Service Delivery Points Distribution (By County)';
 $config['service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
 $config['service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
 $config['service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
