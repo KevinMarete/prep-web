@@ -29,7 +29,7 @@ class Human_resource_model extends CI_Model {
         return array('main' => $results, 'columns' => $columns);
     }
 
-    public function get_distibution_of_facilities_trained_personnel_in_facilities($filters) {
+    public function get_distibution_of_facilities_trained_personnel($filters) {
         $columns = array();
         $trained_personnel_data = array(
             array('type' => 'column', 'name' => 'NO', 'data' => array()),
@@ -61,7 +61,7 @@ class Human_resource_model extends CI_Model {
         return array('main' => $trained_personnel_data, 'columns' => $columns);
     }
 
-    public function get_health_care_workers_trained_on_prep_in_facilities($filters) {
+    public function get_health_care_workers_trained_on_prep($filters) {
         $columns = array();
         $hcw_trained_data = array(
             array('type' => 'column', 'name' => '1-3', 'data' => array()),

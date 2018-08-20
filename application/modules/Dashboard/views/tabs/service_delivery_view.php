@@ -158,10 +158,10 @@
                         <strong>Population Receiving PrEP in Facilities</strong>
                     </div>
                     <div class="chart-stage">
-                        <div id="population_receiving_prep_in_facilities_table"></div>
+                        <div id="population_receiving_prep_table"></div>
                     </div>
                     <div class="chart-notes">
-                        <span class="population_receiving_prep_in_facilities_table_heading heading"></span>
+                        <span class="population_receiving_prep_table_heading heading"></span>
                     </div>
                 </div>
             </div>

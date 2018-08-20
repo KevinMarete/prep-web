@@ -64,7 +64,21 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $arv_source_data, 'columns' => $columns);
     }
 
-    public function get_prep_dispensing_points_in_facilities($filters) {
+    public function get_prep_dispensing_points_numbers($filters) {
+        $columns = array();
+        $this->db->select("SDP_PrEP_Dispensed where_prep_is_dispensed, COUNT(*) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('where_prep_is_dispensed');
+        $this->db->order_by('where_prep_is_dispensed', 'ASC');
+        $query = $this->db->get('tbl_prep_dispensing_point');
+        return array('main' => $query->result_array(), 'columns' => $columns);
+    }
+
+    public function get_prep_dispensing_points($filters) {
         $columns = array();
         $prep_dispensing_points_data = array(
             array('type' => 'column', 'name' => 'CCC', 'data' => array()),
@@ -117,7 +131,7 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $prep_dispensing_points_data, 'columns' => $columns);
     }
 
-    public function get_prep_dispensing_software_in_facilities($filters) {
+    public function get_prep_dispensing_software($filters) {
         $columns = array();
         $dispensing_software_data = array(
             array('type' => 'column', 'name' => 'Access ADT', 'data' => array()),
@@ -161,7 +175,7 @@ class Commodity_management_model extends CI_Model {
         return array('main' => $dispensing_software_data, 'columns' => $columns);
     }
 
-    public function get_prep_dispensing_software_in_facilities_numbers($filters) {
+    public function get_prep_dispensing_software_numbers($filters) {
         $columns = array();
         $this->db->select("UPPER(dispensing_software) software_in_use, COUNT(*) Frequency", FALSE);
         if (!empty($filters)) {
@@ -204,7 +218,7 @@ class Commodity_management_model extends CI_Model {
             }
         }
         $this->db->group_by('county');
-        $this->db->order_by('county','ASC');
+        $this->db->order_by('county', 'ASC');
         $query = $this->db->get('tbl_prep_product');
         $results = $query->result_array();
 

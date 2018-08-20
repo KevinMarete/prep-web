@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Communication_advocacy_model extends CI_Model {
 
-    public function get_demand_creation_activities_in_facilities($filters) {
+    public function get_demand_creation_activities($filters) {
         $columns = array();
         $demand_creation_activities_data = array(
             array('type' => 'column', 'name' => 'NO', 'data' => array()),

@@ -302,7 +302,7 @@ class Service_delivery_model extends CI_Model {
         return array('main' => $results, 'columns' => $columns);
     }
 
-    public function get_population_receiving_prep_in_facilities_numbers($filters) {
+    public function get_population_receiving_prep_numbers($filters) {
         $columns = array();
         $this->db->select("Population population,COUNT(*) Frequency", FALSE);
         if (!empty($filters)) {

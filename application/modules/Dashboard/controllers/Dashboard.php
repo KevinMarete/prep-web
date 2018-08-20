@@ -65,8 +65,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_current_service_delivery_points_distribution($filters);
         } else if ($chartname == 'preferred_service_delivery_point_table') {
             $main_data = $this->Service_delivery_model->get_prep_preffered_sdp_numbers($filters);
-        } else if ($chartname == 'population_receiving_prep_in_facilities_table') {
-            $main_data = $this->Service_delivery_model->get_population_receiving_prep_in_facilities_numbers($filters);
+        } else if ($chartname == 'population_receiving_prep_table') {
+            $main_data = $this->Service_delivery_model->get_population_receiving_prep_numbers($filters);
         } else if ($chartname == 'access_creatinine_testing_facilities_chart') {
             $main_data = $this->Laboratory_service_model->get_access_creatinine_testing_availability($filters);
         } else if ($chartname == 'creatinine_testing_equipment_availability_chart') {
@@ -105,26 +105,28 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing_numbers($filters);
         } else if ($chartname == 'facilities_trained_on_prep_chart') {
             $main_data = $this->Human_resource_model->get_facilities_trained_on_prep($filters);
-        } else if ($chartname == 'distibution_of_facilities_trained_personnel_in_facilities_chart') {
-            $main_data = $this->Human_resource_model->get_distibution_of_facilities_trained_personnel_in_facilities($filters);
+        } else if ($chartname == 'distibution_of_facilities_trained_personnel_chart') {
+            $main_data = $this->Human_resource_model->get_distibution_of_facilities_trained_personnel($filters);
         } else if ($chartname == 'health_care_workers_trained_on_prep_chart') {
-            $main_data = $this->Human_resource_model->get_health_care_workers_trained_on_prep_in_facilities($filters);
+            $main_data = $this->Human_resource_model->get_health_care_workers_trained_on_prep($filters);
         } else if ($chartname == 'health_care_workers_trained_on_prep_table') {
             $main_data = $this->Human_resource_model->get_health_care_workers_trained_on_prep_numbers($filters);
         } else if ($chartname == 'facility_source_of_ARVs_chart') {
             $main_data = $this->Commodity_management_model->get_facility_source_of_ARVs($filters);
         } else if ($chartname == 'facility_source_of_arvs_by_county_chart') {
             $main_data = $this->Commodity_management_model->get_facility_source_of_arvs_by_county($filters);
-        } else if ($chartname == 'prep_dispensing_points_in_facilities_chart') {
-            $main_data = $this->Commodity_management_model->get_prep_dispensing_points_in_facilities($filters);
-        } else if ($chartname == 'prep_dispensing_software_in_facilities_chart') {
-            $main_data = $this->Commodity_management_model->get_prep_dispensing_software_in_facilities($filters);
+        } else if ($chartname == 'prep_dispensing_points_table') {
+            $main_data = $this->Commodity_management_model->get_prep_dispensing_points_numbers($filters);
+        } else if ($chartname == 'prep_dispensing_points_chart') {
+            $main_data = $this->Commodity_management_model->get_prep_dispensing_points($filters);
+        } else if ($chartname == 'prep_dispensing_software_chart') {
+            $main_data = $this->Commodity_management_model->get_prep_dispensing_software($filters);
         } else if ($chartname == 'prep_product_dispensed_table') {
             $main_data = $this->Commodity_management_model->get_prep_product_dispensed_numbers($filters);
         } else if ($chartname == 'prep_product_dispensed_chart') {
             $main_data = $this->Commodity_management_model->get_prep_product_dispensed($filters);
-        } else if ($chartname == 'prep_dispensing_software_in_facilities_table') {
-            $main_data = $this->Commodity_management_model->get_prep_dispensing_software_in_facilities_numbers($filters);
+        } else if ($chartname == 'prep_dispensing_software_table') {
+            $main_data = $this->Commodity_management_model->get_prep_dispensing_software_numbers($filters);
         } else if ($chartname == 'overall_availability_of_me_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_overall_availability_of_ME_tools($filters);
         } else if ($chartname == 'lmis_tools_chart') {
@@ -143,9 +145,9 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Monitoring_evaluation_model->get_clients_ever_started_on_prep($filters);
         } else if ($chartname == 'clients_currently_on_prep_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_clients_currently_on_prep($filters);
-        } else if ($chartname == 'demand_creation_activities_in_facilities_chart') {
-            $main_data = $this->Communication_advocacy_model->get_demand_creation_activities_in_facilities($filters);
-        } else if ($chartname == 'prep_education_availability_in_facilities_chart') {
+        } else if ($chartname == 'demand_creation_activities_chart') {
+            $main_data = $this->Communication_advocacy_model->get_demand_creation_activities($filters);
+        } else if ($chartname == 'prep_education_availability_chart') {
             $main_data = $this->Communication_advocacy_model->get_prep_education_activities($filters);
         } else if ($chartname == 'iec_materials_chart') {
             $main_data = $this->Communication_advocacy_model->get_iec_materials($filters);
