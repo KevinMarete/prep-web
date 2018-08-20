@@ -47,6 +47,15 @@ $config['hiv_services_offered_chart_has_drilldown'] = FALSE;
 $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
 $config['hiv_services_offered_chart_filters_default'] = array();
 
+//facility_level_prep_availability_table 
+$config['facility_level_prep_availability_table_chartview'] = 'charts/table_view';
+$config['facility_level_prep_availability_table_title'] = 'PrEP Availability by Facilties Level';
+$config['facility_level_prep_availability_table_yaxis_title'] = 'Percent 100';
+$config['facility_level_prep_availability_table_source'] = 'Source: www.prep.nascop.org';
+$config['facility_level_prep_availability_table_has_drilldown'] = FALSE;
+$config['facility_level_prep_availability_table_filters'] = array('Sub_County', 'County');
+$config['facility_level_prep_availability_table_filters_default'] = array();
+
 //service_delivery_points_distribution_chart 
 $config['service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
 $config['service_delivery_points_distribution_chart_title'] = 'Service Delivery Points Distribution (By County)';

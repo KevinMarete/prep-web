@@ -51,6 +51,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_facility_count($filters);
         } else if ($chartname == 'facilities_level_distribution_chart') {
             $main_data = $this->Service_delivery_model->get_facilities_level_distribution($filters);
+        } else if ($chartname == 'facility_level_prep_availability_table') {
+            $main_data = $this->Service_delivery_model->get_facility_level_prep_availability_numbers($filters);
         } else if ($chartname == 'prep_focal_person_chart') {
             $main_data = $this->Service_delivery_model->get_prep_focal_person($filters);
         } else if ($chartname == 'partner_support_chart') {

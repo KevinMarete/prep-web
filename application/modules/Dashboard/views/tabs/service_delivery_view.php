@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div><!--end row-->
-          <div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
@@ -76,7 +76,7 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Hiv Services in Facilities</strong>
@@ -86,6 +86,19 @@
                     </div>
                     <div class="chart-notes">
                         <span class="hiv_services_offered_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>PrEP Availability by Facility Level</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="facility_level_prep_availability_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="facility_level_prep_availability_table_heading heading"></span>
                     </div>
                 </div>
             </div>
