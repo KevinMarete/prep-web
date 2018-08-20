@@ -209,7 +209,27 @@ class Service_delivery_model extends CI_Model {
         return array('main' => $results, 'columns' => $columns);
     }
 
-    public function get_service_delivery_points_distribution($filters) {
+    public function get_current_service_delivery_points_distribution_numbers($filters) {
+        $columns = array();
+        $this->db->select("Service_Delivery_Point current_sdp_by_facilities,COUNT(*) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('current_sdp_by_facilities');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_service_delivery_point');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['current_sdp_by_facilities']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
+    }
+
+    public function get_current_service_delivery_points_distribution($filters) {
         $columns = array();
         $service_delivery_distribution_data = array(
             array('type' => 'column', 'name' => 'CCC', 'data' => array()),

@@ -56,14 +56,23 @@ $config['facility_level_prep_availability_table_has_drilldown'] = FALSE;
 $config['facility_level_prep_availability_table_filters'] = array('Sub_County', 'County');
 $config['facility_level_prep_availability_table_filters_default'] = array();
 
-//service_delivery_points_distribution_chart 
-$config['service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['service_delivery_points_distribution_chart_title'] = 'Service Delivery Points Distribution (By County)';
-$config['service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
-$config['service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
-$config['service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
-$config['service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
-$config['service_delivery_points_distribution_chart_filters_default'] = array();
+//current_service_delivery_points_distribution_table 
+$config['current_service_delivery_points_distribution_table_chartview'] = 'charts/table_view';
+$config['current_service_delivery_points_distribution_table_title'] = 'Distribution of Current Service Delivery Points (By County)';
+$config['current_service_delivery_points_distribution_table_yaxis_title'] = 'Percent of 100';
+$config['current_service_delivery_points_distribution_table_source'] = 'Source: www.prep.nascop.org';
+$config['current_service_delivery_points_distribution_table_has_drilldown'] = FALSE;
+$config['current_service_delivery_points_distribution_table_filters'] = array('Sub_County', 'County');
+$config['current_service_delivery_points_distribution_table_filters_default'] = array();
+
+//current_service_delivery_points_distribution_chart 
+$config['current_service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
+$config['current_service_delivery_points_distribution_chart_title'] = 'Distribution of Current Service Delivery Points (By County)';
+$config['current_service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
+$config['current_service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
+$config['current_service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
+$config['current_service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
+$config['current_service_delivery_points_distribution_chart_filters_default'] = array();
 
 //preferred_service_delivery_point_table 
 $config['preferred_service_delivery_point_table_chartview'] = 'charts/table_view';
