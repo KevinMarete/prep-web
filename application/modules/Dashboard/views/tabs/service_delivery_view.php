@@ -117,57 +117,56 @@
                     <span class="current_service_delivery_points_distribution_table_heading heading"></span>
                 </div>
             </div>
-        </div>
-    </div><!--end row-->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="chart-wrapper">
-                <div class="chart-title">
-                    <strong>Distribution of Current Service Delivery Points (By County)</strong>
-                    <div class="nav navbar-right">
-                        <button data-toggle="modal" data-target="#current_service_delivery_points_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
-                            <span class="glyphicon glyphicon-filter"></span>
-                        </button>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Distribution of Current Service Delivery Points (By County)</strong>
+                        <div class="nav navbar-right">
+                            <button data-toggle="modal" data-target="#current_service_delivery_points_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
+                                <span class="glyphicon glyphicon-filter"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="current_service_delivery_points_distribution_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="current_service_delivery_points_distribution_chart_heading heading"></span>
                     </div>
                 </div>
-                <div class="chart-stage">
-                    <div id="current_service_delivery_points_distribution_chart"></div>
-                </div>
-                <div class="chart-notes">
-                    <span class="current_service_delivery_points_distribution_chart_heading heading"></span>
+            </div>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Distribution of Preferred Service Delivery Points</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="preferred_service_delivery_point_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="preferred_service_delivery_point_table_heading heading"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div><!--end row-->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="chart-wrapper">
-                <div class="chart-title">
-                    <strong>Distribution of Preferred Service Delivery Points</strong>
-                </div>
-                <div class="chart-stage">
-                    <div id="preferred_service_delivery_point_table"></div>
-                </div>
-                <div class="chart-notes">
-                    <span class="preferred_service_delivery_point_table_heading heading"></span>
+            <div class="col-md-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Population Receiving PrEP in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="population_receiving_prep_in_facilities_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="population_receiving_prep_in_facilities_table_heading heading"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="chart-wrapper">
-                <div class="chart-title">
-                    <strong>Population Receiving PrEP in Facilities</strong>
-                </div>
-                <div class="chart-stage">
-                    <div id="population_receiving_prep_in_facilities_table"></div>
-                </div>
-                <div class="chart-notes">
-                    <span class="population_receiving_prep_in_facilities_table_heading heading"></span>
-                </div>
-            </div>
-        </div>
-    </div><!--end row-->
-</div>
+        </div><!--end row-->
+    </div>
 </div>
 <!--modal(s)-->
 <!--facilities_level_distribution_chart filter modal-->
