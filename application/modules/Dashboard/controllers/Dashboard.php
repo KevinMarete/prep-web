@@ -61,6 +61,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_hiv_services_offered($filters);
         } else if ($chartname == 'service_delivery_points_distribution_chart') {
             $main_data = $this->Service_delivery_model->get_service_delivery_points_distribution($filters);
+        } else if ($chartname == 'preferred_service_delivery_point_table') {
+            $main_data = $this->Service_delivery_model->get_prep_preffered_sdp_numbers($filters);
         } else if ($chartname == 'population_receiving_prep_in_facilities_table') {
             $main_data = $this->Service_delivery_model->get_population_receiving_prep_in_facilities_numbers($filters);
         } else if ($chartname == 'access_creatinine_testing_facilities_chart') {

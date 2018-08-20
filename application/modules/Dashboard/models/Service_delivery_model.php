@@ -262,6 +262,26 @@ class Service_delivery_model extends CI_Model {
         return array('main' => $service_delivery_distribution_data, 'columns' => $columns);
     }
 
+    public function get_prep_preffered_sdp_numbers($filters) {
+        $columns = array();
+        $this->db->select("Preferred_Sdp preferred_sdp_by_facilities,COUNT(*) Frequency", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('preferred_sdp_by_facilities');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_prep_preferred_sdp');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['preferred_sdp_by_facilities']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
+    }
+
     public function get_population_receiving_prep_in_facilities_numbers($filters) {
         $columns = array();
         $this->db->select("Population population,COUNT(*) Frequency", FALSE);

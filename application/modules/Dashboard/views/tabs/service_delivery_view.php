@@ -127,6 +127,21 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
+                        <strong>Distribution of Preferred Service Delivery Points</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="preferred_service_delivery_point_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="preferred_service_delivery_point_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
                         <strong>Population Receiving PrEP in Facilities</strong>
                     </div>
                     <div class="chart-stage">

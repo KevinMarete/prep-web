@@ -65,6 +65,15 @@ $config['service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
 $config['service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
 $config['service_delivery_points_distribution_chart_filters_default'] = array();
 
+//preferred_service_delivery_point_table 
+$config['preferred_service_delivery_point_table_chartview'] = 'charts/table_view';
+$config['preferred_service_delivery_point_table_title'] = 'Distribution of Preferred Service Delivery Points';
+$config['preferred_service_delivery_point_table_yaxis_title'] = 'Percent 100';
+$config['preferred_service_delivery_point_table_source'] = 'Source: www.prep.nascop.org';
+$config['preferred_service_delivery_point_table_has_drilldown'] = FALSE;
+$config['preferred_service_delivery_point_table_filters'] = array('Sub_County', 'County');
+$config['preferred_service_delivery_point_table_filters_default'] = array();
+
 //population_receiving_prep_in_facilities_table 
 $config['population_receiving_prep_in_facilities_table_chartview'] = 'charts/table_view';
 $config['population_receiving_prep_in_facilities_table_title'] = 'Population Receiving PrEP in Facilities';
