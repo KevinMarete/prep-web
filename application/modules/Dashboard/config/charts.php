@@ -92,6 +92,15 @@ $config['population_receiving_prep_table_has_drilldown'] = FALSE;
 $config['population_receiving_prep_table_filters'] = array('Sub_County', 'County');
 $config['population_receiving_prep_table_filters_default'] = array();
 
+//overall_access_baseline_laboratory_tests_chart 
+$config['overall_access_baseline_laboratory_tests_chart_chartview'] = 'charts/column_percent_view';
+$config['overall_access_baseline_laboratory_tests_chart_title'] = 'Overall Access to Baseline Laboratory Tests';
+$config['overall_access_baseline_laboratory_tests_chart_yaxis_title'] = 'Percent 100';
+$config['overall_access_baseline_laboratory_tests_chart_source'] = 'Source: www.prep.nascop.org';
+$config['overall_access_baseline_laboratory_tests_chart_has_drilldown'] = FALSE;
+$config['overall_access_baseline_laboratory_tests_chart_filters'] = array('Sub_County', 'County');
+$config['overall_access_baseline_laboratory_tests_chart_filters_default'] = array();
+
 //access_creatinine_testing_facilities_chart 
 $config['access_creatinine_testing_facilities_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['access_creatinine_testing_facilities_chart_title'] = 'Access to Creatinine Testing in Facilities';

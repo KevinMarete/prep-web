@@ -67,6 +67,8 @@ class Dashboard extends MX_Controller {
             $main_data = $this->Service_delivery_model->get_prep_preffered_sdp_numbers($filters);
         } else if ($chartname == 'population_receiving_prep_table') {
             $main_data = $this->Service_delivery_model->get_population_receiving_prep_numbers($filters);
+        } else if ($chartname == 'overall_access_baseline_laboratory_tests_chart') {
+            $main_data = $this->Laboratory_service_model->get_overall_access_baseline_laboratory_tests($filters);
         } else if ($chartname == 'access_creatinine_testing_facilities_chart') {
             $main_data = $this->Laboratory_service_model->get_access_creatinine_testing_availability($filters);
         } else if ($chartname == 'creatinine_testing_equipment_availability_chart') {
