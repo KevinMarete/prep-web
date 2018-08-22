@@ -195,14 +195,14 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_onsite_offsite_access_to_creatinine_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(`Creatinine On/Off Site`) onsite_offsite,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Frequency", FALSE);
+        $this->db->select("UPPER(`Creatinine On/Off Site`) creatinine_on_offsite,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Frequency", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('onsite_offsite');
-        $this->db->order_by('onsite_offsite', 'ASC');
+        $this->db->group_by('creatinine_on_offsite');
+        $this->db->order_by('creatinine_on_offsite', 'ASC');
         $query = $this->db->get('tbl_laboratory_service');
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
@@ -429,14 +429,14 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_offsite_onsite_hep_c_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(`Hep-C On/Off Site`) on_offsite, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(`Hep-C On/Off Site`) hep_c_on_offsite, COUNT(*) Frequency", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('on_offsite');
-        $this->db->order_by('on_offsite', 'ASC');
+        $this->db->group_by('hep_c_on_offsite');
+        $this->db->order_by('hep_c_on_offsite', 'ASC');
         $query = $this->db->get('tbl_laboratory_service');
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
