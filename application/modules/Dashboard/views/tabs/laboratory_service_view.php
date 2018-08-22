@@ -14,6 +14,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Overall Availability of Laboratory Testing Equipment</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="overall_laboratory_testing_equipment_availability_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="overall_laboratory_testing_equipment_availability_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
