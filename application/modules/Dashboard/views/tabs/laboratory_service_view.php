@@ -27,6 +27,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Overall Access to On/Offsite Laboratory Testing</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="overall_access_on_offsite_laboratory_testing_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="overall_access_on_offsite_laboratory_testing_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">

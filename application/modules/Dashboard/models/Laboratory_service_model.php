@@ -55,6 +55,29 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $response, 'columns' => $columns);
     }
 
+    public function get_overall_access_on_offsite_laboratory_testing($filters) {
+        $columns = array();
+        $response = array();
+
+        $this->db->select("COUNT(IF(`Creatinine On/Off Site`='On - Site',1,NULL))/COUNT(*)*100 Creatinine, COUNT(IF(`Hep-B On/Off Site`='On - Site',1,NULL))/COUNT(*)*100 'Hep B', COUNT(IF(`Hep-C On/Off Site`='On - Site',1,NULL))/COUNT(*)*100 'Hep C'", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $query = $this->db->get('tbl_laboratory_service');
+        $result = $query->row_array();
+
+        //add columns
+        $columns = array_keys($result);
+
+        //add data to response
+        foreach ($columns as $column) {
+            array_push($response, array('name' => $column, 'y' => $result[$column]));
+        }
+        return array('main' => $response, 'columns' => $columns);
+    }
+
     public function get_access_creatinine_testing_availability($filters) {
         $columns = array();
         $creatinine_testing_data = array(
