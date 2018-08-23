@@ -13,21 +13,27 @@
         <!--filter-->
         <?php $this->load->view('template/filter_view'); ?>
         <!--tabbed-panes-->
-        <div class="tab-content"><div class="tab-content">
-                <!--service_delivery_view-->
-                <?php $this->load->view('tabs/service_delivery_view'); ?>
-                <!--laboratory_service_view-->
-                <?php $this->load->view('tabs/laboratory_service_view'); ?>
-                <!--human_resource_view-->
-                <?php $this->load->view('tabs/human_resource_view'); ?>
-                <!--commodity_management_view-->
-                <?php $this->load->view('tabs/commodity_management_view'); ?>
-                <!--monitoring_evaluation_view-->
-                <?php $this->load->view('tabs/monitoring_evaluation_view'); ?>
-                <!--communication_advocacy_view-->
-                <?php $this->load->view('tabs/communication_advocacy_view'); ?>
-            </div>
+        <div class="tab-content">
+            <!--service_delivery_view-->
+            <?php $this->load->view('tabs/service_delivery_view'); ?>
+            <!--laboratory_summary_view-->
+            <?php $this->load->view('tabs/laboratory_summary_view'); ?>
+            <!--laboratory_creatinine_view-->
+            <?php $this->load->view('tabs/laboratory_creatinine_view'); ?>
+            <!--laboratory_hep_b_view-->
+            <?php $this->load->view('tabs/laboratory_hep_b_view'); ?>
+            <!--laboratory_hep_c_view-->
+            <?php $this->load->view('tabs/laboratory_hep_c_view'); ?>
+            <!--human_resource_view-->
+            <?php $this->load->view('tabs/human_resource_view'); ?>
+            <!--commodity_management_view-->
+            <?php $this->load->view('tabs/commodity_management_view'); ?>
+            <!--monitoring_evaluation_view-->
+            <?php $this->load->view('tabs/monitoring_evaluation_view'); ?>
+            <!--communication_advocacy_view-->
+            <?php $this->load->view('tabs/communication_advocacy_view'); ?>
         </div>
+
         <!--footer-->
         <hr>
         <p class="small text-muted">NASCOP &copy; 2017-<?php echo date('Y'); ?>. All Rights Reserved</p>

@@ -16,7 +16,18 @@
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
                 <li class="active"><a href="#service_delivery" aria-controls="service_delivery" role="tab" data-toggle="tab">Service Delivery</a></li>
-                <li><a href="#laboratory_service" aria-controls="laboratory_service" role="tab" data-toggle="tab">Laboratory Service</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Laboratory Service
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#laboratory_summary" aria-controls="laboratory_summary" role="tab" data-toggle="tab">Summary</a></li>
+                        <li><a href="#laboratory_creatinine" aria-controls="laboratory_creatinine" role="tab" data-toggle="tab">Creatinine</a></li>
+                        <li><a href="#laboratory_hep_b" aria-controls="laboratory_hep_b" role="tab" data-toggle="tab">Hep B</a></li>
+                        <li><a href="#laboratory_hep_c" aria-controls="laboratory_hep_c" role="tab" data-toggle="tab">Hep C</a></li>
+                    </ul>
+                </li>
                 <li><a href="#human_resource" aria-controls="human_resource" role="tab" data-toggle="tab">Human Resource</a></li>
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
                 <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
