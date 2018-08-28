@@ -52,14 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'Admin';
 $route['admin'] = 'Admin';
-$route['manager/login'] = 'Manager/load_page/user/login/Login';
-$route['manager/forgot_pass'] = 'Manager/load_page/user/forgot/Forgot Password';
-$route['manager/register_account'] = 'Manager/load_page/user/register/New Account';
-
-$route['user/create_account'] = 'Manager/user/create_account';
-$route['user/authenticate'] = 'Manager/user/authenticate';
-$route['user/reset_account'] = 'Manager/user/reset_account';
-$route['manager/logout'] = 'Manager/user/logout';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
