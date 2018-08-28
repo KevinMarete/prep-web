@@ -59,6 +59,7 @@ class Auth_login extends CI_Controller {
 
     public function home() {
         $data['content_view'] = 'pages/dashboard_view';
+//        redirect('Dashboard/Dashboard');
         $data['page_title'] = 'prep';
         $this->load->view('template/template_view', $data);
     }
