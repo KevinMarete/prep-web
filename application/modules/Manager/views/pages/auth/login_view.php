@@ -7,16 +7,8 @@
         <meta name="description" content="NASCOP">
         <meta name="author" content="NASCOP">
         <title>PrEP | Login</title>
-        <!-- Bootstrap Core CSS -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
-        <!-- MetisMenu CSS -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/metisMenu/metisMenu.min.css'; ?>" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/css/sb-admin-2.css'; ?>" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
-        <!--favicon-->
-        <link rel="shortcut icon" type="text/css" href="<?php echo base_url() . 'public/dashboard/img/favicon.ico'; ?>">
+        <!--style_view-->
+        <?php $this->load->view('style_view'); ?>
     </head>
     <body>
         <div class="container">
@@ -48,10 +40,10 @@
                         }
                         ?>
                         <div class="panel-body">
-                            <form role="form" action="<?php echo base_url() . 'Manager/Auth/Auth_login/loginMe'; ?>" method="POST">
+                            <form role="form" action="<?php echo base_url() . 'manager/loginme'; ?>" method="POST">
                                 <fieldset>
                                     <div class="form-group has-feedback">
-                                        <input class="form-control" placeholder="E-mail" name="email" id="email" type="email" autofocus required>
+                                        <input class="form-control" placeholder="E-mail Address" name="email" id="email" type="email" autofocus required>
                                         <span class="help-block glyphicon glyphicon-envelope form-control-feedback"></span>
                                     </div>
                                     <div class="form-group has-feedback">
@@ -69,21 +61,14 @@
                             <center><b>Not yet registered ?</b> 
                                 <br>
                                 </b>
-                                <a href="<?php echo base_url('Manager/register'); ?>">Register here <i class="fa fa-arrow-circle-o-right"></i></a>
+                                <a href="<?php echo base_url('manager/register'); ?>">Register here <i class="fa fa-arrow-circle-o-right"></i></a>
                             </center>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- jQuery -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/jquery/jquery.min.js'; ?>"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/bootstrap/js/bootstrap.min.js'; ?>"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/metisMenu/metisMenu.min.js'; ?>"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/js/sb-admin-2.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url() . 'public/manager/js/auth.js'; ?>"></script>
+        <!--script_view-->
+        <?php $this->load->view('script_view'); ?>
     </body>
 </html>

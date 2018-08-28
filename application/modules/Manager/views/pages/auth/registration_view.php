@@ -7,16 +7,8 @@
         <meta name="description" content="NASCOP">
         <meta name="author" content="NASCOP">
         <title>PrEP | Register</title>
-        <!-- Bootstrap Core CSS -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
-        <!-- MetisMenu CSS -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/metisMenu/metisMenu.min.css'; ?>" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/css/sb-admin-2.css'; ?>" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
-        <!--favicon-->
-        <link rel="shortcut icon" type="text/css" href="<?php echo base_url() . 'public/dashboard/img/favicon.ico'; ?>">
+        <!--styles_view-->
+        <?php $this->load->view('style_view'); ?>
     </head>
     <body>
         <div class="container"><!-- container class is used to centered  the body of the browser with some decent width-->
@@ -49,78 +41,68 @@
                         ?>
 
                         <div class="panel-body">
-                            <form role="form" action="<?php echo base_url() . 'Manager/Auth/Auth_user'; ?>" method="POST">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">First Name</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" placeholder="First Name" name="first_name" type="text" autofocus required="">
-                                            <span class="help-block"></span>
-                                        </div>
-                                    </div>  
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Last Name</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" placeholder="Last Name" name="last_name" type="text" autofocus required="">
-                                            <span class="help-block"></span>
-                                        </div>
+                            <form role="form" action="<?php echo base_url() . 'manager/user'; ?>" method="POST">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">First Name</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="First Name" name="first_name" type="text" autofocus required="">
+                                        <span class="help-block"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">E-mail</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" placeholder="E-mail" name="user_email" type="email" autofocus required="">
-                                            <span class="help-block"></span>
-                                        </div>
+                                </div>  
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Last Name</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="Last Name" name="last_name" type="text" autofocus required="">
+                                        <span class="help-block"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Mobile Number</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" placeholder="Mobile Number" name="user_mobile" type="text" required="">
-                                            <span class="help-block"></span>
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">E-mail</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="E-mail Address" name="user_email" type="email" autofocus required="">
+                                        <span class="help-block"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Password</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" placeholder="Password" name="user_password" id="user_password" type="password" required="">
-                                            <span class="help-block"></span>
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Mobile Number</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="07xxxxxxxx" name="user_mobile" type="text" required="">
+                                        <span class="help-block"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Confirm Password</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" placeholder="Confirm Password" name="confirm_password" id="confirm_password" type="password" onkeyup="checkPasswordMatch();">
-                                            <span class="help-block msg"></span>
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Password</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="Password" name="user_password" id="user_password" type="password" required="">
+                                        <span class="help-block"></span>
                                     </div>
-                                    <!--hidden input for roleId-->
-                                    <div class="form-group">
-                                        <input name="roleId" type="hidden" value="2">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Confirm Password</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="Confirm Password" name="confirm_password" id="confirm_password" type="password" onkeyup="checkPasswordMatch();">
+                                        <span class="help-block msg"></span>
                                     </div>
-                                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register" name="register" id="submit_button" >
+                                </div>
+                                <!--hidden input for roleId-->
+                                <div class="form-group">
+                                    <input name="roleId" type="hidden" value="2">
+                                </div>
+                                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register" name="register" id="submit_button" >
 
-                                </fieldset>
                             </form>
                             <center>
                                 <b>Already registered ?</b> 
                                 <br>
                                 </b>
-                                <a href="<?php echo base_url('Manager'); ?>">Login here <i class="fa fa-arrow-circle-o-right"></i></a>
+                                <a href="<?php echo base_url('manager'); ?>">Login here <i class="fa fa-arrow-circle-o-right"></i></a>
                             </center>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- jQuery -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/jquery/jquery.min.js'; ?>"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/bootstrap/js/bootstrap.min.js'; ?>"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/metisMenu/metisMenu.min.js'; ?>"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/js/sb-admin-2.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url() . 'public/manager/js/auth.js'; ?>"></script>
+        <!--script_view-->
+        <?php $this->load->view('script_view'); ?>
     </body>
-
 </html>
