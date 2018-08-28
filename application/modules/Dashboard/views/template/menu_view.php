@@ -32,10 +32,10 @@
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
                 <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
                 <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication and Advocacy</a></li>
-                <!--<li>hbj</li>-->
+
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user fa-fw">  <span class="caret"></span></i>                      
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -45,7 +45,7 @@
                                 <i class="fa fa-user fa-fw"></i> 
                                 <?= $this->session->userdata('first_name'); ?>
                                 <?= $this->session->userdata('last_name'); ?>
-                            </a>                   
+                            </a> 
                         </li>
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url() . 'Admin/Auth/Auth_login/user_logout'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

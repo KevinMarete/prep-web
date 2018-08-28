@@ -1,5 +1,5 @@
-var countyURL = 'API/county'
-var subcountyURL = 'API/subcounty'
+var countyURL = '../API/county'
+var subcountyURL = '../API/subcounty'
 //var subcountyURL='API/subcounty?county=?'
 var chartURL = 'Dashboard/get_chart'
 //main filters
