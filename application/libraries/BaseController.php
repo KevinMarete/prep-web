@@ -28,7 +28,7 @@ class BaseController extends CI_Controller {
     function isLoggedIn() {
         $isLoggedIn = $this->session->userdata('isLoggedIn');
         if (!isset($isLoggedIn) || $isLoggedIn != TRUE) {
-            redirect('Admin/Auth/Auth_login');
+            redirect('Manager/Auth/Auth_login');
         } else {
             $this->roleId = $this->session->userdata('roleId');
             $this->id = $this->session->userdata('id');
@@ -41,8 +41,8 @@ class BaseController extends CI_Controller {
     /**
      * This function is used to check the access
      */
-    function isAdmin() {
-        if ($this->role != ROLE_ADMIN) {
+    function isManager() {
+        if ($this->role != ROLE_Manager) {
             return true;
         } else {
             return false;
@@ -53,7 +53,7 @@ class BaseController extends CI_Controller {
      * This function is used to check the access
      */
     function isTicketter() {
-        if ($this->role != ROLE_ADMIN || $this->role != ROLE_MANAGER) {
+        if ($this->role != ROLE_Manager || $this->role != ROLE_MANAGER) {
             return true;
         } else {
             return false;
