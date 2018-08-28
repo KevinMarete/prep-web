@@ -50,11 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'Dashboard';
-$route['ftp'] = 'FtpService';
-$route['upload'] = 'FtpService/upload';
-$route['files/(:any)'] = 'FtpService/get_files/$1';
-$route['analysis'] = 'FtpService/analysis';
+$route['default_controller'] = 'Admin';
 $route['admin'] = 'Admin';
 $route['manager/login'] = 'Manager/load_page/user/login/Login';
 $route['manager/forgot_pass'] = 'Manager/load_page/user/forgot/Forgot Password';
@@ -64,21 +60,6 @@ $route['user/create_account'] = 'Manager/user/create_account';
 $route['user/authenticate'] = 'Manager/user/authenticate';
 $route['user/reset_account'] = 'Manager/user/reset_account';
 $route['manager/logout'] = 'Manager/user/logout';
-
-$route['manager/dashboard'] = 'Manager/load_template/dashboard/dashboard/Dashboard/0';
-$route['manager/profile'] = 'Manager/load_template/user/profile/Profile/0';
-$route['manager/(:any)/(:any)'] = 'Manager/load_template/$1/$2/$2';
-
-$route['manager/orders/reports'] = 'Manager/load_template/orders/reports/Reports/0';
-$route['manager/orders/view/(:any)/(:any)'] = 'Manager/load_template/orders/cdrr_maps/View Orders/0/$1/$2';
-$route['manager/orders/allocation'] = 'Manager/load_template/orders/allocation/Allocation/0';
-$route['manager/orders/reporting_rates'] = 'Manager/load_template/orders/reporting_rates/Reporting Rates/0';
-$route['manager/orders/edit_allocation/(:any)'] = 'Manager/load_template/orders/edit_allocation/Edit Allocation/0/$1';
-
-$route['manager/update_profile'] = 'Manager/user/update_profile';
-$route['manager/update_password'] = 'Manager/user/update_password';
-$route['manager/admin/assign'] = 'Manager/load_template/admin/assign/Assign/0';
-$route['manager/assign_scope'] = 'Manager/orders/assign_scope';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

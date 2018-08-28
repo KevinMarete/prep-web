@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Facility Count Distribution (By County)</strong> <span class="label label-warning">Drilldown</span>
+                        <strong>Facility Distribution by County</strong> <span class="label label-warning">Drilldown</span>
                     </div>
                     <div class="chart-stage">
                         <div id="facility_count_distribution_chart"></div>
