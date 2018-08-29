@@ -47,9 +47,7 @@ class Dashboard extends MX_Controller {
     }
 
     public function get_data($chartname, $filters) {
-        if ($chartname == 'facility_count_distribution_chart') {
-            $main_data = $this->Service_delivery_model->get_facility_count($filters);
-        } else if ($chartname == 'facilities_level_distribution_chart') {
+        if ($chartname == 'facilities_level_distribution_chart') {
             $main_data = $this->Service_delivery_model->get_facilities_level_distribution($filters);
         } else if ($chartname == 'facility_level_prep_availability_table') {
             $main_data = $this->Service_delivery_model->get_facility_level_prep_availability_numbers($filters);

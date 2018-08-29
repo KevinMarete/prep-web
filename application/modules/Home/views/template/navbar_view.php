@@ -16,14 +16,12 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="#banner">Home</a></li>
                             <li class=""><a href="#prep_journey">PrEP Journey</a></li>
+                            <li class=""><a href="#facility">Facility</a></li>
                             <li class=""><a href="#service">Services</a></li>
                             <li class=""><a href="#about">About</a></li>
                             <li class=""><a href="#testimonial">Testimonial</a></li>
                             <li class=""><a href="#contact">Contact</a></li>
-                            <li><a href="<?php echo base_url('Manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in">
-                                        login
-                                    </span>
-                                </a>
+                            <li><a href="<?php echo base_url('Manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in">login</span></a>
                             </li>
                         </ul>
                     </div>

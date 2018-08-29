@@ -70,7 +70,27 @@
                 </div>
             </div>
         </section>
-        <!--/ service-->
+        <!--facility chart-->
+        <section id="facility" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                <strong>Facility Distribution by County</strong> <span class="label label-warning">Drilldown</span>
+                            </div>
+                            <div class="chart-stage">
+                                <div id="facility_count_distribution_chart"></div>
+                            </div>
+                            <div class="chart-notes">
+                                <span class="facility_count_distribution_chart_heading heading"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!--cta-->
         <section id="cta-1" class="section-padding">
             <div class="container">
@@ -292,6 +312,148 @@
         <!--script_view-->
         <?php $this->load->view('template/script_view'); ?>
 
-    </body>
+        <script>
+            var chartURL = 'Home/get_chart'
+            var countyURL = 'API/County'
+            var filters = {}
+            $(document).ready(function () {
+                var charts = ['facility_count_distribution_chart']
 
+                //Add filter to chart then load chart
+                setChartFilter('')
+
+                //Load Charts
+                $.each(charts, function (key, chartName) {
+                    LoadChart('#' + chartName, chartURL, chartName, {})
+                });
+
+                //Filter click Event
+                $(".filter_btn").on("click", FilterBtnHandler);
+
+                //Clear click Event
+                $(".clear_btn").on("click", ClearBtnHandler);
+            });
+
+            function setChartFilter(chartName, filterURL) {
+                $.ajax({
+                    url: filterURL,
+                    datatype: 'JSON',
+                    success: function (data) {
+                        filterID = '#' + chartName + '_filter'
+                        //Create multiselect box
+                        CreateSelectBox(filterID, '100%', 10)
+                        //Add data to selectbox
+                        $(filterID + " option").remove();
+                        $.each(data, function (i, v) {
+                            $(filterID).append($("<option value='" + v.name + "'>" + v.name.toUpperCase() + "</option>"));
+                        });
+                        $(filterID).multiselect('rebuild');
+                        //$(filterID).data('filter_type', 'drug');
+                    },
+                    complete: function () {
+                        LoadChart('#' + chartName, chartURL, chartName, {})
+                    }
+                });
+            }
+
+            function CreateSelectBox(elementID, width, limit) {
+                $(elementID).val('').multiselect({
+                    enableCaseInsensitiveFiltering: true,
+                    enableFiltering: true,
+                    disableIfEmpty: true,
+                    maxHeight: 300,
+                    buttonWidth: width,
+                    nonSelectedText: 'None selected',
+                    includeSelectAllOption: false,
+                    selectAll: false,
+                    onChange: function (option, checked) {
+                        //Get selected options.
+                        var selectedOptions = $(elementID + ' option:selected');
+                        if (selectedOptions.length >= limit) {
+                            //Disable all other checkboxes.
+                            var nonSelectedOptions = $(elementID + ' option').filter(function () {
+                                return !$(this).is(':selected');
+                            });
+                            nonSelectedOptions.each(function () {
+                                var input = $('input[value="' + $(this).val() + '"]');
+                                input.prop('disabled', true);
+                                input.parent('li').addClass('disabled');
+                            });
+                        } else {
+                            //Enable all checkboxes.
+                            $(elementID + ' option').each(function () {
+                                var input = $('input[value="' + $(this).val() + '"]');
+                                input.prop('disabled', false);
+                                input.parent('li').addClass('disabled');
+                            });
+                        }
+                    }
+                });
+            }
+
+            function LoadSpinner(divID) {
+                var spinner = new Spinner().spin()
+                $(divID).empty('')
+                $(divID).height('auto')
+                $(divID).append(spinner.el)
+            }
+
+            function LoadChart(divID, chartURL, chartName, selectedfilters) {
+                //Load Spinner
+                LoadSpinner(divID)
+                //Load Chart*
+                $(divID).load(chartURL, {'name': chartName, 'selectedfilters': selectedfilters}, function () {
+                    //Pre-select filters for charts
+                    $.each($(divID + '_filters').data('filters'), function (key, data) {
+                        if ($.inArray(key, ['county', 'subcounty']) == -1) {
+                            $(divID + "_filter").val(data).multiselect('refresh');
+                            //Output filters
+                            var filtermsg = '<b><u>' + key.toUpperCase() + ':</u></b><br/>'
+                            if ($.isArray(data)) {
+                                filtermsg += data.join('<br/>')
+                            } else {
+                                filtermsg += data
+                            }
+                            $("." + chartName + "_heading").html(filtermsg)
+                        }
+                    });
+                });
+            }
+
+            function FilterBtnHandler(e) {
+                var filterName = String($(e.target).attr("id")).replace('_btn', '')
+                var filterID = "#" + filterName
+                var filterType = $(filterID).data('filter_type')
+                var chartName = filterName.replace('_filter', '')
+                var chartID = "#" + chartName
+
+
+                if ($(filterID).val() != null) {
+                    filters[filterType] = $(filterID).val()
+                }
+
+                LoadChart(chartID, chartURL, chartName, filters)
+
+                //Hide Modal
+                $(filterID + '_modal').modal('hide')
+            }
+
+            function ClearBtnHandler(e) {
+                var filterName = String($(e.target).attr("id")).replace('_clear_btn', '')
+                var filterID = "#" + filterName
+                var filterType = $(filterID).data('filter_type')
+
+                //Clear filterType
+                filters[filterType] = {}
+
+                //Filter multiple multiselect
+                $(filterID).multiselect('deselectAll', false);
+                $(filterID).multiselect('updateButtonText');
+                $(filterID).multiselect('refresh');
+
+                //Trigger filter event
+                $(filterID + '_btn').trigger('click');
+            }
+        </script>
+    </body>
 </html>
