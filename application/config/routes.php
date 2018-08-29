@@ -55,6 +55,7 @@ $route['default_controller'] = 'Home';
 $route['manager'] = 'Manager';
 $route['manager/loginme'] = 'Manager/Auth/Auth_login/loginMe';
 $route['manager/register'] = 'Manager/register';
+$route['manager/logout']='Manager/Auth/Auth_login/user_logout';
 $route['manager/user']='Manager/Auth/Auth_user';
 $route['dashboard'] = 'Dashboard/Dashboard';
 

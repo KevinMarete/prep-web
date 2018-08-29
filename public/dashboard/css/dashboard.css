@@ -4,7 +4,7 @@
 }
 
 .active-tab {
-    color: #f00;
+    color: red;
 }
 
 .dropdown-menu li a {

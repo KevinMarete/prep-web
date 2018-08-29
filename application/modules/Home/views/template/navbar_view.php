@@ -21,7 +21,7 @@
                             <li class=""><a href="#about">About</a></li>
                             <li class=""><a href="#testimonial">Testimonial</a></li>
                             <li class=""><a href="#contact">Contact</a></li>
-                            <li><a href="<?php echo base_url('Manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in">login</span></a>
+                            <li><a href="<?php echo base_url('manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in">login</span></a>
                             </li>
                         </ul>
                     </div>

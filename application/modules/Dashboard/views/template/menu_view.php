@@ -48,7 +48,7 @@
                             </a> 
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo base_url() . 'Manager/Auth/Auth_login/user_logout'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<?php echo base_url() . 'manager/logout'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
