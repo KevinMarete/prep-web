@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse" id="filter_view">
     <div class="container">
         <div class="navbar-collapse collapse center-block" id="navbar-filter">
             <div class="navbar-form navbar-center" role="search">

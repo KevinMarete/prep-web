@@ -21,7 +21,7 @@
                             <li class=""><a href="#about">About</a></li>
                             <li class=""><a href="#testimonial">Testimonial</a></li>
                             <li class=""><a href="#contact">Contact</a></li>
-                            <li><a href="<?php echo base_url('manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in">login</span></a>
+                            <li><a href="<?php echo base_url('manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in"></span> login</a>
                             </li>
                         </ul>
                     </div>
@@ -44,6 +44,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+<section id="prep_journey" class="banner">
+    <div class="container-fluid">
+        <div class="row">
         </div>
     </div>
 </section>

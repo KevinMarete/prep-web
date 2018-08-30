@@ -32,17 +32,20 @@
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
                 <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
                 <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication and Advocacy</a></li>
-
+                <li><a href="<?php echo base_url('ftp'); ?>" target="_blank"><span class="glyphicon glyphicon-file"></span>Resources</a>
+                <li><a href="#faqs" aria-controls="faqs" role="tab" data-toggle="tab">FAQs</a></li>
+                <li><a href="#manage_user" aria-controls="manage_user" role="tab" data-toggle="tab">Manage Users</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user fa-fw">  <span class="caret"></span></i>                      
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-user"></i>  <i class="caret"></i>                      
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
                             <a href="#">
-                                <?= $this->session->userdata('role'); ?>
+                                <b><?= $this->session->userdata('role'); ?></b>
                                 <br>
-                                <i class="fa fa-user fa-fw"></i> 
+                                <br>
+                                <i class="glyphicon glyphicon-user"></i> 
                                 <?= $this->session->userdata('first_name'); ?>
                                 <?= $this->session->userdata('last_name'); ?>
                             </a> 
@@ -56,4 +59,3 @@
         </nav>
     </div>
 </div>
-<script src = "<?php echo base_url() . 'public/admin/js/nav_dropdown.js'; ?>"></script>

@@ -32,8 +32,11 @@
             <?php $this->load->view('tabs/monitoring_evaluation_view'); ?>
             <!--communication_advocacy_view-->
             <?php $this->load->view('tabs/communication_advocacy_view'); ?>
+            <!--user_manager_view-->
+            <?php $this->load->view('tabs/manage_user_view'); ?>
+            <!--faq_view-->
+            <?php $this->load->view('tabs/faq_view'); ?>
         </div>
-
         <!--footer-->
         <hr>
         <p class="small text-muted">NASCOP &copy; 2017-<?php echo date('Y'); ?>. All Rights Reserved</p>

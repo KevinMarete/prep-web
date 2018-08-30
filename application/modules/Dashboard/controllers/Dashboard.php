@@ -1,10 +1,12 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+require APPPATH . '/libraries/BaseController.php';
 
-class Dashboard extends MX_Controller {
+class Dashboard extends BaseController {
 
     public function index() {
+        $this->isLoggedIn();
         $data['page_title'] = 'prep | Dashboard';
         $this->load->view('template/dashboard_view', $data);
     }

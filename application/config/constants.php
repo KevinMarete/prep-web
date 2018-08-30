@@ -89,3 +89,4 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 /* * ** USER DEFINED CONSTANTS ********* */
 define('ROLE_ADMIN', '1');
 define('ROLE_MANAGER', '2');
+define('ROLE_NORMAL_USER', '3');
