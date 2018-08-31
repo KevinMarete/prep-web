@@ -7,7 +7,8 @@ class Ftp extends BaseController {
 
     function index() {
         $this->isLoggedIn();
-        $this->load->view('template/elfinder');
+        $data['page_title'] = 'prep | Ftp';
+        $this->load->view('template/elfinder', $data);
     }
 
 }

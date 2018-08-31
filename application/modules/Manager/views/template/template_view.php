@@ -14,10 +14,8 @@
     <div id="wrapper">
         <!-- Navigation -->
         <?php $this->load->view('navbar_view'); ?>
-
         <!-- Content -->
-        <?php $this->load->view($content_view); ?>
-        
+        <?php $this->load->view($content_view); ?>        
     </div>
     <!--Scripts-->
     <?php $this->load->view('scripts_view'); ?>

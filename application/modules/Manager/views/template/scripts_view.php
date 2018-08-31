@@ -1,11 +1,13 @@
+<!-- elFinder JS (REQUIRED) -->
+<script src="<?php echo base_url() . 'public/ftp/file_manager/js/elfinder.min.js'; ?>"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/bootstrap/js/bootstrap.min.js'; ?>"></script>
 <!--highcharts-->
-<script src="<?php echo base_url().'public/dashboard/lib/highcharts/js/highcharts.js';?>"></script>
-<script src="<?php echo base_url().'public/dashboard/lib/highcharts/js/exporting.js';?>"></script>
-<script src="<?php echo base_url().'public/dashboard/lib/highcharts/js/offline-exporting.js';?>"></script>
-<script src="<?php echo base_url().'public/dashboard/lib/highcharts/js/drilldown.js';?>"></script>
-<script src="<?php echo base_url().'public/dashboard/lib/highcharts/js/export-data.js';?>"></script>
+<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/highcharts.js'; ?>"></script>
+<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/exporting.js'; ?>"></script>
+<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/offline-exporting.js'; ?>"></script>
+<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/drilldown.js'; ?>"></script>
+<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/export-data.js'; ?>"></script>
 <!-- Metis Menu Plugin JavaScript -->
 <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/metisMenu/metisMenu.min.js'; ?>"></script>
 <!-- Morris Charts JavaScript -->
@@ -30,22 +32,22 @@
 <!--bootstrap-multiselect-->
 <script src="<?php echo base_url() . 'public/manager/lib/bootstrap-multiselect/js/bootstrap-multiselect.js'; ?>"></script>
 <!--disable_back_button-->
-<script type="text/javascript" src="<?php echo base_url().'public/dashboard/js/disable_back_button.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/js/disable_back_button.js'; ?>"></script>
 <!--spin-->
-<script type="text/javascript" src="<?php echo base_url().'public/dashboard/js/spin.min.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/js/spin.min.js'; ?>"></script>
 <!--bootbox-->
-<script type="text/javascript" src="<?php echo base_url().'public/manager/lib/bootbox/js/bootbox.min.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/manager/lib/bootbox/js/bootbox.min.js'; ?>"></script>
 <!--sweetalert-->
-<script type="text/javascript" src="<?php echo base_url().'public/manager/js/sweetalert.min.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/manager/js/sweetalert.min.js'; ?>"></script>
 <!--tabledit-->
-<script type="text/javascript" src="<?php echo base_url().'public/manager/js/jquery.tabledit.min.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/manager/js/jquery.tabledit.min.js'; ?>"></script>
 <!--jexcel-->
-<script type="text/javascript" src="<?php echo base_url().'public/manager/lib/jexcel/js/excel-formula.min.js';?>"></script>
-<script type="text/javascript" src="<?php echo base_url().'public/manager/lib/jexcel/js/jquery.jexcel.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/manager/lib/jexcel/js/excel-formula.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/manager/lib/jexcel/js/jquery.jexcel.js'; ?>"></script>
 <!-- Custom Theme JavaScript -->
 <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/js/sb-admin-2.js'; ?>"></script>
 <script type="text/javascript">
-$(function(){
-	$('.<?=  $page_name;?>').addClass("active-page");
-});
+    $(function () {
+        $('.<?= $page_name; ?>').addClass("active-page");
+    });
 </script>

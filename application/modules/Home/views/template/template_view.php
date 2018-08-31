@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>PrEP</title>
+        <title><?php echo $page_title; ?></title>
         <?php $this->load->view('template/style_view'); ?>
     </head>
 

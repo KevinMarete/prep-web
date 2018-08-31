@@ -60,6 +60,7 @@ $route['manager/register'] = 'Manager/register';
 $route['manager/login'] = 'Manager/Auth/Auth_login';
 $route['manager/logout'] = 'Manager/Auth/Auth_login/user_logout';
 $route['manager/user'] = 'Manager/Auth/Auth_user';
+$route['manager/ftp'] = 'Manager/Ftp';
 $route['dashboard'] = 'Dashboard/Dashboard';
 
 $route['404_override'] = '';

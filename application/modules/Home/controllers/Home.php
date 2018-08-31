@@ -5,7 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends MX_Controller {
 
     public function index() {
-        $this->load->view('template/template_view');
+        $data['page_title'] = 'prep | Home';
+        $this->load->view('template/template_view',$data);
     }
 
     public function get_chart() {
@@ -48,7 +49,7 @@ class Home extends MX_Controller {
     public function get_data($chartname, $filters) {
         if ($chartname == 'facility_count_distribution_chart') {
             $main_data = $this->home_model->get_facility_count($filters);
-        } 
+        }
         return $main_data;
     }
 

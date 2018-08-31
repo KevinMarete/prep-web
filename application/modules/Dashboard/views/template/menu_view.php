@@ -32,9 +32,7 @@
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
                 <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
                 <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication and Advocacy</a></li>
-                <li><a href="<?php echo base_url('ftp'); ?>" target="_blank"><span class="glyphicon glyphicon-file"></span>Resources</a>
-                <li><a href="#faqs" aria-controls="faqs" role="tab" data-toggle="tab">FAQs</a></li>
-                <li><a href="#manage_user" aria-controls="manage_user" role="tab" data-toggle="tab">Manage Users</a></li>
+                <li><a href="<?php echo base_url('manager/ftp'); ?>" target="_blank"><span class="glyphicon glyphicon-wrench"></span>Setting</a>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-user"></i>  <i class="caret"></i>                      

@@ -29,10 +29,18 @@
 <!--bootstrap-sweetalert-->
 <link href="<?php echo base_url() . 'public/manager/lib/bootstrap-sweetalert/css/sweetalert.min.css'; ?>" rel="stylesheet">
 <!--jexcel-->
- <link href="<?php echo base_url() . 'public/manager/lib/jexcel/css/jquery.jexcel.css'; ?>" rel="stylesheet">
+<link href="<?php echo base_url() . 'public/manager/lib/jexcel/css/jquery.jexcel.css'; ?>" rel="stylesheet">
 <!-- Manager -->
 <link href="<?php echo base_url() . 'public/manager/css/custom.css'; ?>" rel="stylesheet">
 <!--favicon-->
-<link rel="shortcut icon" type="text/css" href="<?php echo base_url() . 'public/dashboard/img/favicon.ico'; ?>">   
-<!-- jQuery js-->
-<script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/datatables/js/jquery-1.12.4.js'; ?>"></script>
+<link rel="shortcut icon" type="text/css" href="<?php echo base_url() . 'public/ftp/img/favicon.ico'; ?>">  
+<!-- jQuery and jQuery UI (REQUIRED) -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/ftp/file_manager/libs/css/jquery/jquery-ui.css'; ?>">
+<!-- elFinder CSS (REQUIRED) -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/ftp/file_manager/css/elfinder.min.css'; ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/ftp/file_manager/css/theme.css'; ?>">
+<!-- Ftp -->
+<link href="<?php echo base_url() . 'public/ftp/css/ftp.css'; ?>" rel="stylesheet"> 
+<!-- jQuery and jQuery UI (REQUIRED) -->
+<script type="text/javascript" src="<?php echo base_url() . 'public/ftp/file_manager/libs/js/jquery/jquery.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/ftp/file_manager/libs/js/jquery/jquery-ui.min.js'; ?>"></script>

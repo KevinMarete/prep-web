@@ -17,7 +17,8 @@
             <ul class="dropdown-menu dropdown-user">
                 <li>
                     <a href="#">
-                        <?= $this->session->userdata('role'); ?>
+                        <b> <?= $this->session->userdata('role'); ?></b>
+                        <br>
                         <br>
                         <i class="fa fa-user fa-fw"></i> 
                         <?= $this->session->userdata('first_name'); ?>
@@ -33,4 +34,18 @@
         <!-- /.dropdown -->
     </ul>
     <!-- /.navbar-top-links -->
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a class="dashboard" href="<?php echo base_url() . 'ftp'; ?>"><i class="fa fa-file-archive-o fa-fw"></i> Resources</a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url() . 'ftp'; ?>"><i class="fa fa-users"></i> Users</a> 
+                </li>
+            </ul>
+
+        </div>
+        <!--/.sidebar-collapse -->
+    </div>
 </nav>

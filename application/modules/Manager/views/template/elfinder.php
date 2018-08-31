@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>PrEP</title>
+        <title><?php echo $page_title;?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" /> 
         <!-- elFinder initialization (REQUIRED) -->
         <?php $this->load->view('styles_view'); ?>
@@ -21,7 +21,9 @@
         <!--navbar-->
         <?php $this->load->view('navbar_view'); ?>
         <!-- Element where elFinder will be created (REQUIRED) -->
-        <div id="elfinder"></div>
+        <div id="page-wrapper">
+            <div id="elfinder"></div>
+        </div>
         <?php $this->load->view('scripts_view'); ?>
     </body>
 </html>
