@@ -20,7 +20,7 @@
 <!-- pivotTable-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/home/lib/pivotTable/css/pivot.css'; ?>">
 <!--dashboard-->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/dashboard/css/dashboard.css'; ?>">
+<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/dashboard/css/dashboard.css'; ?>">-->
 <!--jquery-->
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/jquery/dist/jquery.min.js'; ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/home/css/style.css'; ?>">

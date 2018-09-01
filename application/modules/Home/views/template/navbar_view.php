@@ -17,6 +17,7 @@
                             <li class="active"><a href="#banner">Home</a></li>
                             <li class=""><a href="#prep_journey">PrEP Journey</a></li>
                             <li class=""><a href="#facility">Facility</a></li>
+                            <li class=""><a href="#status_in_kenya">Status in Kenya</a></li>
                             <li class=""><a href="#service">Services</a></li>
                             <li class=""><a href="#about">About</a></li>
                             <li class=""><a href="#testimonial">Testimonial</a></li>
