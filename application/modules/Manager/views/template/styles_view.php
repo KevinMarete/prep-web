@@ -1,3 +1,4 @@
+<link rel="shortcut icon" type="text/css" href="<?php echo base_url() . 'public/home/img/favicon.ico'; ?>">
 <!-- Bootstrap Core CSS -->
 <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
 <!-- MetisMenu CSS -->
@@ -6,41 +7,17 @@
 <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/morrisjs/morris.css'; ?>" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
-<!-- DataTables CSS -->
-<link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/datatables-plugins/dataTables.bootstrap.css'; ?>" rel="stylesheet">
-<!--Jquery DataTables-->
-<link href=".<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/datatables/css/jquery.dataTables.min.css'; ?>" rel="stylesheet">
-<!--DataTables buttons-->
-<link href=".<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/datatables/css/buttons.dataTables.min.css'; ?>" rel="stylesheet">
-<!---DataTables select css-->
-<link href=".<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/datatables/css/select.dataTables.min.css'; ?>" rel="stylesheet">
-<!-- DataTables Responsive CSS -->
-<link href=".<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/datatables-responsive/dataTables.responsive.css'; ?>" rel="stylesheet">
 <!-- Sb-Manager CSS -->
 <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/css/sb-admin-2.css'; ?>" rel="stylesheet">
-<!--select2 css-->
-<link href="<?php echo base_url() . 'public/manager/lib/select2/css/select2.min.css'; ?>" rel="stylesheet" type="text/css">
-<!--datepicker-->
-<link href="<?php echo base_url() . 'public/manager/lib/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker.min.css'; ?>" rel="stylesheet" type="text/css">
-<!--chosen css-->
-<link href="<?php echo base_url() . 'public/manager/lib/chosen_v1.8.3/chosen.min.css'; ?>" rel="stylesheet" type="text/css">
-<!--bootstrap-multiselect-->
-<link href="<?php echo base_url() . 'public/manager/lib/bootstrap-multiselect/css/bootstrap-multiselect.css'; ?>" rel="stylesheet" type="text/css">
-<!--bootstrap-sweetalert-->
-<link href="<?php echo base_url() . 'public/manager/lib/bootstrap-sweetalert/css/sweetalert.min.css'; ?>" rel="stylesheet">
-<!--jexcel-->
-<link href="<?php echo base_url() . 'public/manager/lib/jexcel/css/jquery.jexcel.css'; ?>" rel="stylesheet">
-<!-- Manager -->
-<link href="<?php echo base_url() . 'public/manager/css/custom.css'; ?>" rel="stylesheet">
-<!--favicon-->
-<link rel="shortcut icon" type="text/css" href="<?php echo base_url() . 'public/ftp/img/favicon.ico'; ?>">  
-<!-- jQuery and jQuery UI (REQUIRED) -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/ftp/file_manager/libs/css/jquery/jquery-ui.css'; ?>">
-<!-- elFinder CSS (REQUIRED) -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/ftp/file_manager/css/elfinder.min.css'; ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/ftp/file_manager/css/theme.css'; ?>">
+<!--data tables-->
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/jQueryupload/css/theme.css'; ?>">
 <!-- Ftp -->
-<link href="<?php echo base_url() . 'public/ftp/css/ftp.css'; ?>" rel="stylesheet"> 
-<!-- jQuery and jQuery UI (REQUIRED) -->
-<script type="text/javascript" src="<?php echo base_url() . 'public/ftp/file_manager/libs/js/jquery/jquery.min.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo base_url() . 'public/ftp/file_manager/libs/js/jquery/jquery-ui.min.js'; ?>"></script>
+<link href="<?php echo base_url() . 'public/jQueryupload/css/dashboard.css'; ?>" rel="stylesheet">
+<!-- blueimp Gallery styles -->
+<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link rel="stylesheet" href="<?php echo base_url() . 'public/jQueryupload/css/jquery.fileupload.css'; ?>">
+<link rel="stylesheet" href="<?php echo base_url() . 'public/jQueryupload/css/jquery.fileupload-ui.css'; ?>">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

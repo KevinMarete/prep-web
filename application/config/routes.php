@@ -54,13 +54,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Home';
 $route['manager'] = 'Manager';
 $route['home'] = 'Home';
-$route['ftp'] = 'Ftp';
+$route['file_upload'] = 'File_upload';
 $route['manager/loginme'] = 'Manager/Auth/Auth_login/loginMe';
 $route['manager/register'] = 'Manager/register';
 $route['manager/login'] = 'Manager/Auth/Auth_login';
 $route['manager/logout'] = 'Manager/Auth/Auth_login/user_logout';
 $route['manager/user'] = 'Manager/Auth/Auth_user';
-$route['manager/ftp'] = 'Manager/Ftp';
+$route['manager/file_upload'] = 'Manager/File_upload';
 $route['dashboard'] = 'Dashboard/Dashboard';
 
 $route['404_override'] = '';

@@ -38,10 +38,10 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a class="dashboard" href="<?php echo base_url() . 'ftp'; ?>"><i class="fa fa-file-archive-o fa-fw"></i> Resources</a>
+                    <a class="dashboard" href="<?php echo base_url() . 'manager/file_upload'; ?>"><i class="fa fa-file-archive-o fa-fw"></i> Resources</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url() . 'ftp'; ?>"><i class="fa fa-users"></i> Users</a> 
+                    <a href="<?php echo base_url() . 'users'; ?>"><i class="fa fa-users"></i> Users</a> 
                 </li>
             </ul>
 
