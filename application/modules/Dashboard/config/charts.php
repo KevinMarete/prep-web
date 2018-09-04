@@ -76,7 +76,7 @@ $config['preferred_service_delivery_point_table_filters_default'] = array();
 
 //population_receiving_prep_table 
 $config['population_receiving_prep_table_chartview'] = 'charts/table_view';
-$config['population_receiving_prep_table_title'] = 'Population Receiving PrEP in Facilities';
+$config['population_receiving_prep_table_title'] = 'Key Populations Targeted by PrEP';
 $config['population_receiving_prep_table_yaxis_title'] = 'Percent 100';
 $config['population_receiving_prep_table_source'] = 'Source: www.prep.nascop.org';
 $config['population_receiving_prep_table_has_drilldown'] = FALSE;

@@ -140,7 +140,7 @@
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Population Receiving PrEP in Facilities</strong>
+                        <strong>Key Populations Targeted by PrEP</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="population_receiving_prep_table"></div>

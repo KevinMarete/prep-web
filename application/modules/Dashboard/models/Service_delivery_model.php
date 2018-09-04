@@ -132,7 +132,7 @@ class Service_delivery_model extends CI_Model {
             }
         }
         $this->db->group_by('name');
-        $this->db->limit(50);
+        $this->db->order_by('y', 'DESC');
         $query = $this->db->get('tbl_hiv_service_offered');
         $results = $query->result_array();
 
@@ -152,7 +152,7 @@ class Service_delivery_model extends CI_Model {
             }
         }
         $this->db->group_by('level');
-        $this->db->limit(50);
+        $this->db->order_by('Numbers', 'DESC');
         $query = $this->db->get('tbl_facility_details');
         $results = $query->result_array();
 
@@ -172,7 +172,7 @@ class Service_delivery_model extends CI_Model {
             }
         }
         $this->db->group_by('current_sdp_by_facilities');
-        $this->db->limit(50);
+        $this->db->order_by('Numbers', 'DESC');
         $query = $this->db->get('tbl_service_delivery_point');
         $results = $query->result_array();
 
@@ -245,7 +245,7 @@ class Service_delivery_model extends CI_Model {
             }
         }
         $this->db->group_by('preferred_sdp_by_facilities');
-        $this->db->limit(50);
+        $this->db->order_by('Numbers', 'DESC');
         $query = $this->db->get('tbl_prep_preferred_sdp');
         $results = $query->result_array();
 
@@ -265,7 +265,7 @@ class Service_delivery_model extends CI_Model {
             }
         }
         $this->db->group_by('population');
-        $this->db->limit(50);
+        $this->db->order_by('Numbers', 'DESC');
         $query = $this->db->get('tbl_prep_population');
         $results = $query->result_array();
 
