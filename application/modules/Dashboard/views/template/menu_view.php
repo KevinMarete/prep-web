@@ -33,7 +33,7 @@
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
                 <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
                 <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication and Advocacy</a></li>
-                <li><a href="<?php echo base_url('manager/file_upload'); ?>" target="_blank"><span class="glyphicon glyphicon-wrench"></span>Setting</a>
+                <li><a href="<?php echo base_url('manager/file_upload'); ?>" onclick="window.location.reload(true);"><span class="glyphicon glyphicon-wrench"></span>Setting</a>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-user"></i>  <i class="caret"></i>                      

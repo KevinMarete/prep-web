@@ -6,7 +6,7 @@
 <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/raphael/raphael.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/morrisjs/morris.min.js'; ?>"></script>
 <!--disable_back_button-->
-<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/js/disable_back_button.js'; ?>"></script>
+<!--<script type="text/javascript" src="<?php // echo base_url() . 'public/dashboard/js/disable_back_button.js'; ?>"></script>-->
 <!--nav-bar drop-down js-->
 <script type="text/javascript" src="<?php echo base_url() . 'public/manager/js/nav_dropdown.js'; ?>"></script>
 <!--bootbox-->

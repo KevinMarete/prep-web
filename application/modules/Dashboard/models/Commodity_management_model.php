@@ -66,7 +66,7 @@ class Commodity_management_model extends CI_Model {
 
     public function get_prep_dispensing_points_numbers($filters) {
         $columns = array();
-        $this->db->select("SDP_PrEP_Dispensed where_prep_is_dispensed, COUNT(*) Frequency", FALSE);
+        $this->db->select("SDP_PrEP_Dispensed where_prep_is_dispensed, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -177,7 +177,7 @@ class Commodity_management_model extends CI_Model {
 
     public function get_prep_dispensing_software_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(dispensing_software) software_in_use, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(dispensing_software) software_in_use, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -191,7 +191,7 @@ class Commodity_management_model extends CI_Model {
 
     public function get_prep_product_dispensed_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(prep_product_dispensed) prep_product_dispensed, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(prep_product_dispensed) prep_product_dispensed, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);

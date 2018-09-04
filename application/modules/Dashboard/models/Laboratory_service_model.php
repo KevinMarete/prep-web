@@ -176,7 +176,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_access_hep_b_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(Hep_B_Testing) Hep_B_Testing, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(Hep_B_Testing) Hep_B_Testing, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -222,7 +222,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_access_creatinine_testing_in_relation_to_equipment_availability_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Equipment,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Frequency", FALSE);
+        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Equipment,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -236,7 +236,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_creatinine_availability_reagents_in_relation_to_equipment_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Reagents,COUNT(IF(Creatinine_Reagents='YES',1,NULL)) Frequency", FALSE);
+        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Reagents,COUNT(IF(Creatinine_Reagents='YES',1,NULL)) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -250,7 +250,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_creatinine_unavailability_reagents_in_relation_to_equipment_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Reagents,COUNT(IF(Creatinine_Reagents='NO',1,NULL)) Frequency", FALSE);
+        $this->db->select("UPPER(Creatinine_Equipment) Creatinine_Reagents,COUNT(IF(Creatinine_Reagents='NO',1,NULL)) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -264,7 +264,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_onsite_offsite_access_to_creatinine_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(`Creatinine On/Off Site`) creatinine_on_offsite,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Frequency", FALSE);
+        $this->db->select("UPPER(`Creatinine On/Off Site`) creatinine_on_offsite,COUNT(IF(Creatinine_Testing='YES',1,NULL)) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -374,7 +374,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_offsite_onsite_hep_b_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(`Hep-B On/Off Site`) Hep_B_on_offsite, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(`Hep-B On/Off Site`) Hep_B_on_offsite, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -388,7 +388,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_access_hep_c_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(Hep_C_Testing) Hep_C_Testing, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(Hep_C_Testing) Hep_C_Testing, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -498,7 +498,7 @@ class Laboratory_service_model extends CI_Model {
 
     public function get_offsite_onsite_hep_c_testing_numbers($filters) {
         $columns = array();
-        $this->db->select("UPPER(`Hep-C On/Off Site`) hep_c_on_offsite, COUNT(*) Frequency", FALSE);
+        $this->db->select("UPPER(`Hep-C On/Off Site`) hep_c_on_offsite, COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);

@@ -115,7 +115,7 @@ class Human_resource_model extends CI_Model {
 
         //add data to response
         foreach ($columns as $column) {
-            array_push($response, array('hcw_trained_on_prep' => $column, 'Frequency' => $result[$column]));
+            array_push($response, array('hcw_trained_on_prep' => $column, 'Numbers' => $result[$column]));
         }
         return array('main' => $response, 'columns' => $columns);
     }

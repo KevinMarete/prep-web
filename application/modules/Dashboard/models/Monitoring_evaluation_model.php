@@ -233,7 +233,6 @@ class Monitoring_evaluation_model extends CI_Model {
         }
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
-        $this->db->limit(50);
         $query = $this->db->get('tbl_monitoring_evaluation');
         return $this->get_clients_ever_started_on_prep_drilldown(array('main' => $query->result_array()), $filters);
     }

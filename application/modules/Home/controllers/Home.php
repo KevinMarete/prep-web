@@ -6,7 +6,7 @@ class Home extends MX_Controller {
 
     public function index() {
         $data['page_title'] = 'prep | Home';
-        $this->load->view('template/template_view',$data);
+        $this->load->view('template/template_view', $data);
     }
 
     public function get_chart() {
