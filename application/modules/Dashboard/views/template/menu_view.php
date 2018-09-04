@@ -16,6 +16,7 @@
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
                 <li class="active"><a href="#service_delivery" aria-controls="service_delivery" role="tab" data-toggle="tab">Service Delivery</a></li>
+                <li><a href="#partner" aria-controls="partner" role="tab" data-toggle="tab">Partner</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Laboratory Service

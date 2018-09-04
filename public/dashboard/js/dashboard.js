@@ -5,6 +5,7 @@ var chartURL = 'Dashboard/get_chart'
 //main filters
 var mainFilterURLs = {
     'service_delivery': [{'link': countyURL, 'type': 'County'}],
+    'partner': [{'link': countyURL, 'type': 'County'}],
     'laboratory_summary': [{'link': countyURL, 'type': 'County'}],
     'laboratory_creatinine': [{'link': countyURL, 'type': 'County'}],
     'laboratory_hep_b': [{'link': countyURL, 'type': 'County'}],
@@ -17,6 +18,7 @@ var mainFilterURLs = {
 //tab filters
 var tabFiltersURLs = {
     'service_delivery': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#prep_focal_person_chart_filter', '#facilities_level_distribution_chart_filter', '#partner_support_chart_filter', '#current_service_delivery_points_distribution_chart_filter']}],
+    'partner': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#partner_support_chart_filter']}],
     'laboratory_summary': [],
     'laboratory_creatinine': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#access_creatinine_testing_facilities_chart_filter', '#creatinine_testing_equipment_availability_chart_filter', '#offsite_onsite_creatinine_testing_chart_filter', '#access_creatinine_testing_in_relation_to_equipment_availability_chart_filter']}],
     'laboratory_hep_b': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#access_hep_b_testing_facilities_chart_filter', '#hep_b_testing_equipment_availability_chart_filter', '#offsite_onsite_hep_b_testing_chart_filter']}],
@@ -28,7 +30,8 @@ var tabFiltersURLs = {
 }
 //charts
 var charts = {
-    'service_delivery': ['facilities_level_distribution_chart', 'prep_focal_person_chart', 'partner_support_chart', 'hiv_services_offered_chart', 'facility_level_prep_availability_table', 'current_service_delivery_points_distribution_table', 'current_service_delivery_points_distribution_chart', 'preferred_service_delivery_point_table', 'population_receiving_prep_table'],
+    'service_delivery': ['facilities_level_distribution_chart', 'prep_focal_person_chart', 'hiv_services_offered_chart', 'facility_level_prep_availability_table', 'current_service_delivery_points_distribution_table', 'current_service_delivery_points_distribution_chart', 'preferred_service_delivery_point_table', 'population_receiving_prep_table'],
+    'partner': ['partner_support_chart'],
     'laboratory_summary': ['overall_access_baseline_laboratory_tests_chart', 'overall_laboratory_testing_equipment_availability_chart', 'overall_access_on_offsite_laboratory_testing_chart'],
     'laboratory_creatinine': ['access_creatinine_testing_facilities_chart', 'creatinine_testing_equipment_availability_chart', 'offsite_onsite_creatinine_testing_chart', 'access_creatinine_testing_in_relation_to_equipment_availability_chart', 'access_creatinine_testing_in_relation_to_equipment_availability_table', 'creatinine_reagents_availability_in_relation_to_equipment_table', 'creatinine_reagents_unavailability_in_relation_to_equipment_table', 'onsite_offsite_access_to_creatinine_testing_table'],
     'laboratory_hep_b': ['access_hep_b_testing_facilities_chart', 'access_hep_b_testing_facilities_table', 'hep_b_testing_equipment_availability_chart', 'offsite_onsite_hep_b_testing_chart', 'offsite_onsite_hep_b_testing_table'],

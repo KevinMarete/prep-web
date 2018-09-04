@@ -55,8 +55,6 @@ class Dashboard extends BaseController {
             $main_data = $this->Service_delivery_model->get_facility_level_prep_availability_numbers($filters);
         } else if ($chartname == 'prep_focal_person_chart') {
             $main_data = $this->Service_delivery_model->get_prep_focal_person($filters);
-        } else if ($chartname == 'partner_support_chart') {
-            $main_data = $this->Service_delivery_model->get_partner_support($filters);
         } else if ($chartname == 'hiv_services_offered_chart') {
             $main_data = $this->Service_delivery_model->get_hiv_services_offered($filters);
         } else if ($chartname == 'current_service_delivery_points_distribution_table') {
@@ -67,6 +65,8 @@ class Dashboard extends BaseController {
             $main_data = $this->Service_delivery_model->get_prep_preffered_sdp_numbers($filters);
         } else if ($chartname == 'population_receiving_prep_table') {
             $main_data = $this->Service_delivery_model->get_population_receiving_prep_numbers($filters);
+        } else if ($chartname == 'partner_support_chart') {
+            $main_data = $this->Partner_model->get_partner_support($filters);
         } else if ($chartname == 'overall_access_baseline_laboratory_tests_chart') {
             $main_data = $this->Laboratory_service_model->get_overall_access_baseline_laboratory_tests($filters);
         } else if ($chartname == 'overall_laboratory_testing_equipment_availability_chart') {
