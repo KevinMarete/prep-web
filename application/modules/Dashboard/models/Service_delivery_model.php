@@ -145,7 +145,7 @@ class Service_delivery_model extends CI_Model {
 
     public function get_facility_level_prep_availability_numbers($filters) {
         $columns = array();
-        $this->db->select("Level level,COUNT(*) Frequency", FALSE);
+        $this->db->select("Level level,COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -165,7 +165,7 @@ class Service_delivery_model extends CI_Model {
 
     public function get_current_service_delivery_points_distribution_numbers($filters) {
         $columns = array();
-        $this->db->select("Service_Delivery_Point current_sdp_by_facilities,COUNT(*) Frequency", FALSE);
+        $this->db->select("Service_Delivery_Point current_sdp_by_facilities,COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -238,7 +238,7 @@ class Service_delivery_model extends CI_Model {
 
     public function get_prep_preffered_sdp_numbers($filters) {
         $columns = array();
-        $this->db->select("Preferred_Sdp preferred_sdp_by_facilities,COUNT(*) Frequency", FALSE);
+        $this->db->select("Preferred_Sdp preferred_sdp_by_facilities,COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -258,7 +258,7 @@ class Service_delivery_model extends CI_Model {
 
     public function get_population_receiving_prep_numbers($filters) {
         $columns = array();
-        $this->db->select("Population population,COUNT(*) Frequency", FALSE);
+        $this->db->select("Population population,COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);

@@ -5,7 +5,7 @@ $table_data = json_decode($chart_series_data, TRUE);
 $count = 0;
 $cumulative = 0;
 $tbody = "<tbody>";
-$overall = array_sum(array_column($table_data, 'Frequency'));
+$overall = array_sum(array_column($table_data, 'Numbers'));
 foreach ($table_data as $row_data) {
     $tbody .= "<tr>";
     foreach ($row_data as $key => $value) {
@@ -20,22 +20,17 @@ foreach ($table_data as $row_data) {
             $tbody .= "<td>" . number_format($value) . "</td>";
         }
     }
-    $percentage = round(($value / $overall) * 100, 1);
-    $cumulative = $cumulative + $percentage;
-    $percentage_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percentage . '%">' . $percentage . '%</div></div>';
-    $cumulative_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $cumulative . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $cumulative . '%">' . $cumulative . '%</div></div>';
-
-    $tbody .= "<td>" . $percentage_progress_bar . "</td>";
-    $tbody .= "<td>" . $cumulative_progress_bar . "</td>";
+    $percent = round(($value / $overall) * 100, 1);
+    $percent_progress_bar = '<div class="progress"><div class="progress-bar-info" role="progressbar" aria-valuenow="' . $percent . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percent . '%">' . $percent . '%</div></div>';
+    
+    $tbody .= "<td>" . $percent_progress_bar . "</td>";
     $tbody .= "</tr>";
     $count++;
 }
 
-//Add for percentage
-$thead .= "<th>OVERALL PERCENTAGE</th>";
+//Add for percent
+$thead .= "<th>PERCENT</th>";
 
-//Add cumulative
-$thead .= "<th>CUMULATIVE PERCENTAGE</th>";
 $thead .= "</tr></thead>";
 $tbody .= "</tbody>";
 $dyn_table .= $thead;
