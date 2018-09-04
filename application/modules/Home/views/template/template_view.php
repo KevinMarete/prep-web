@@ -97,143 +97,91 @@
                                         chart.hideLoading();
                                         clearTimeout(fail);
                                         chart.addSeriesAsDrilldown(e.point, {
-                                        name: e.point.name,
+                                            name: e.point.name,
                                             data: data,
                                             dataLabels: {
-                                                    enabled: true,
-                                                    format: '{point.name}'
-                                                    }
-                                            });
-                                            });
-                                } 
-                                                this.setTitle(null, {text: e.point.name});
+                                                enabled: true,
+                                                format: '{point.name}'
+                                            }
+                                        });
+                                    });
+                                }
+                                this.setTitle(null, {text: e.point.name});
                             },
-                                            drillup: function () {
-                                            this.setTitle(null, {text: ''});
-                                                }
-                                                    }
+                            drillup: function () {
+                                this.setTitle(null, {text: ''});
+                            }
+                        }
                     },
-                                                        title: {
-                                                            text: 'COUNTY AND SUB COUNTY'
+                    title: {
+                        text: 'COUNTY AND SUB COUNTY'
                     },
-                                                                subtitle: {
+                    subtitle: {
                         text: '',
-                                                                floating: true,
+                        floating: true,
                         align: 'right',
-                                                                        y: 50,
-                                                                        style: {                             fontSize: '16px'
+                        y: 50,
+                        style: {fontSize: '16px'
                         }
                     },
                     legend: small ? {} : {
-                                                                        layout: 'vertical',
-                                                                            align: 'right',
+                        layout: 'vertical',
+                        align: 'right',
                         verticalAlign: 'middle'
-                                                                                },
+                    },
                     colorAxis: {
                         min: 0,
                         minColor: '#E6E7E8',
-                                                                                maxColor: '#781006'
+                        maxColor: '#781006'
                     },
-                                                                                    mapNavigation: {
+                    mapNavigation: {
                         enabled: true,
-                                                                                buttonOptions: {
-                                                                            verticalAlign: 'bottom'
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
                         }
                     },
-                                                                        plotOptions: {
-                                                                map: {
+                    plotOptions: {
+                        map: {
                             states: {
-                                                                hover: {
+                                hover: {
                                     color: '#ee6e6e'
                                 }
-                                                                }
+                            }
                         }
                     },
                     series: [{
-                                                                    data: data,
+                            data: data,
                             name: 'KENYA',
-                                                                    dataLabels: {
-                                                                    enabled: true,
-                                                                        format: '{point.properties.postal-code}'
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.properties.postal-code}'
                             }
-                                                                    }, {
-                                                                    type: 'mapline',
+                        }, {
+                            type: 'mapline',
                             data: separators,
-                                                                    color: 'silver',
-                                                                    enableMouseTracking: false,
-                                                                    animation: {
+                            color: 'silver',
+                            enableMouseTracking: false,
+                            animation: {
                                 duration: 500
-                                                                        }
-                        }],
-                                                                        drilldown: {
-                        activeDataLabelStyle: {
-                                                                        color: '#FFFFFF',
-                                                                            textDecoration: 'none',
-                                                                            textOutline: '1px #000000'
-                        },
-                                                                        drillUpButton: {
-                                                                    relativeTo: 'spacingBox',
-                                                                position: {
-                                                            x: 0,
-                                                            y: 60
                             }
-                                                        }
-                                                        }
+                        }],
+                    drilldown: {
+                        activeDataLabelStyle: {
+                            color: '#FFFFFF',
+                            textDecoration: 'none',
+                            textOutline: '1px #000000'
+                        },
+                        drillUpButton: {
+                            relativeTo: 'spacingBox',
+                            position: {
+                                x: 0,
+                                y: 60
+                            }
+                        }
+                    }
                 });
             });
         </script>
-    </section>
-    <!--service-->
-    <section id="service" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <h2 class="ser-title">Our Service</h2>
-                    <hr class="botm-line">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris cillum.</p>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="service-info">
-                        <div class="icon">
-                            <i class="fa fa-stethoscope"></i>
-                        </div>
-                        <div class="icon-info">
-                            <h4>24 Hour Support</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="service-info">
-                        <div class="icon">
-                            <i class="fa fa-ambulance"></i>
-                        </div>
-                        <div class="icon-info">
-                            <h4>Emergency Services</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="service-info">
-                        <div class="icon">
-                            <i class="fa fa-user-md"></i>
-                        </div>
-                        <div class="icon-info">
-                            <h4>Medical Counseling</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="service-info">
-                        <div class="icon">
-                            <i class="fa fa-medkit"></i>
-                        </div>
-                        <div class="icon-info">
-                            <h4>Premium Healthcare</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
     <!--cta-->
     <section id="cta-1" class="section-padding">
@@ -384,54 +332,6 @@
         </div>
     </section>
     <!--/ doctor team-->
-    <!--testimonial-->
-    <section id="testimonial" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="ser-title">see what patients are saying?</h2>
-                    <hr class="botm-line">
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="testi-details">
-                        <!-- Paragraph -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="testi-info">
-                        <!-- User Image -->
-                        <a href="#"><img src="<?php echo base_url() . 'public/home/img/thumb.png'; ?>" alt="" class="img-responsive"></a>
-                        <!-- User Name -->
-                        <h3>Alex<span>Texas</span></h3>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="testi-details">
-                        <!-- Paragraph -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="testi-info">
-                        <!-- User Image -->
-                        <a href="#"><img src="<?php echo base_url() . 'public/home/img/thumb.png'; ?>" alt="" class="img-responsive"></a>
-                        <!-- User Name -->
-                        <h3>Alex<span>Texas</span></h3>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="testi-details">
-                        <!-- Paragraph -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="testi-info">
-                        <!-- User Image -->
-                        <a href="#"><img src="<?php echo base_url() . 'public/home/img/thumb.png'; ?>" alt="" class="img-responsive"></a>
-                        <!-- User Name -->
-                        <h3>Alex<span>Texas</span></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/ testimonial-->
     <!--cta 2-->
     <section id="cta-2" class="section-padding">
         <div class="container">

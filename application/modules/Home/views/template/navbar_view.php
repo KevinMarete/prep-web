@@ -18,9 +18,7 @@
                             <li class=""><a href="#prep_journey">PrEP Journey</a></li>
                             <li class=""><a href="#facility">Facility</a></li>
                             <li class=""><a href="#status_in_kenya">Status in Kenya</a></li>
-                            <li class=""><a href="#service">Services</a></li>
                             <li class=""><a href="#about">About</a></li>
-                            <li class=""><a href="#testimonial">Testimonial</a></li>
                             <li class=""><a href="#contact">Contact</a></li>
                             <li><a href="<?php echo base_url('manager'); ?>" target="_blank"><span class="glyphicon glyphicon-log-in"></span> login</a>
                             </li>
