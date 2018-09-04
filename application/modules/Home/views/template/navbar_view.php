@@ -10,7 +10,8 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img src="<?php echo base_url() . 'public/home/img/logo.png'; ?>" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+<!--                        <a class="navbar-brand" href="#"><img src="<?php echo base_url() . 'public/home/img/logo.png'; ?>" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>-->
+                        <a class="navbar-brand" href="#">PrEP</a>
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                         <ul class="nav navbar-nav">
@@ -30,9 +31,6 @@
         <div class="container">
             <div class="row">
                 <div class="banner-info">
-                    <div class="banner-logo text-center">
-                        <img src="<?php echo base_url() . 'public/home/img/logo.png'; ?>" class="img-responsive">
-                    </div>
                     <div class="banner-text text-center">
                         <h1 class="white">Healthcare at your desk!!</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>tempor incididunt ut labore et dolore magna aliqua.</p>
