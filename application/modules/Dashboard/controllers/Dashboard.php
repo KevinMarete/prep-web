@@ -63,7 +63,7 @@ class Dashboard extends BaseController {
             $main_data = $this->Service_delivery_model->get_current_service_delivery_points_distribution($filters);
         } else if ($chartname == 'preferred_service_delivery_point_table') {
             $main_data = $this->Service_delivery_model->get_prep_preffered_sdp_numbers($filters);
-        } else if ($chartname == 'population_receiving_prep_table') {
+        } else if ($chartname == 'population_receiving_prep_chart') {
             $main_data = $this->Service_delivery_model->get_population_receiving_prep_numbers($filters);
         } else if ($chartname == 'partner_support_chart') {
             $main_data = $this->Partner_model->get_partner_support($filters);

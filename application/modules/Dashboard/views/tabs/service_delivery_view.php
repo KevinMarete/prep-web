@@ -124,10 +124,10 @@
                         <strong>Key Populations Targeted by PrEP</strong>
                     </div>
                     <div class="chart-stage">
-                        <div id="population_receiving_prep_table"></div>
+                        <div id="population_receiving_prep_chart"></div>
                     </div>
                     <div class="chart-notes">
-                        <span class="population_receiving_prep_table_heading heading"></span>
+                        <span class="population_receiving_prep_chart_heading heading"></span>
                     </div>
                 </div>
             </div>
