@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //facilities_level_distribution_chart 
 $config['facilities_level_distribution_chart_chartview'] = 'charts/stacked_column_view';
-$config['facilities_level_distribution_chart_title'] = 'Facilties Level Distribution (By County)';
+$config['facilities_level_distribution_chart_title'] = 'Distribution of Facilities by Level per County';
 $config['facilities_level_distribution_chart_yaxis_title'] = 'Percent 100';
 $config['facilities_level_distribution_chart_source'] = 'Source: www.prep.nascop.org';
 $config['facilities_level_distribution_chart_has_drilldown'] = FALSE;

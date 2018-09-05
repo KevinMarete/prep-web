@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Facilties Level Distribution (By County)</strong>
+                        <strong>Distribution of Facilities by Level per County</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#facilities_level_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
