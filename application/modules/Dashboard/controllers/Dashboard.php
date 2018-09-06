@@ -67,6 +67,8 @@ class Dashboard extends BaseController {
             $main_data = $this->Service_delivery_model->get_population_receiving_prep_numbers($filters);
         } else if ($chartname == 'partner_support_chart') {
             $main_data = $this->Partner_model->get_partner_support($filters);
+        } else if ($chartname == 'key_populations_targeted_by_prep_partner_chart') {
+            $main_data = $this->Partner_model->get_key_populations_targeted_by_prep_partner($filters);
         } else if ($chartname == 'overall_access_baseline_laboratory_tests_chart') {
             $main_data = $this->Laboratory_service_model->get_overall_access_baseline_laboratory_tests($filters);
         } else if ($chartname == 'overall_laboratory_testing_equipment_availability_chart') {

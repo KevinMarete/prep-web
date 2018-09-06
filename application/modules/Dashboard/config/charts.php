@@ -76,12 +76,21 @@ $config['preferred_service_delivery_point_table_filters_default'] = array();
 
 //population_receiving_prep_chart 
 $config['population_receiving_prep_chart_chartview'] = 'charts/column_drilldown_view';
-$config['population_receiving_prep_chart_title'] = 'Key Populations Targeted by PrEP';
+$config['population_receiving_prep_chart_title'] = 'Key Populations Targeted by PrEP Partners';
 $config['population_receiving_prep_chart_yaxis_title'] = 'Count';
 $config['population_receiving_prep_chart_source'] = 'Source: www.prep.nascop.org';
 $config['population_receiving_prep_chart_has_drilldown'] = TRUE;
 $config['population_receiving_prep_chart_filters'] = array('Sub_County', 'County');
 $config['population_receiving_prep_chart_filters_default'] = array();
+
+//key_populations_targeted_by_prep_partner_chart 
+$config['key_populations_targeted_by_prep_partner_chart_chartview'] = 'charts/column_drilldown_view';
+$config['key_populations_targeted_by_prep_partner_chart_title'] = 'Key Populations Targeted by PrEP';
+$config['key_populations_targeted_by_prep_partner_chart_yaxis_title'] = 'Count';
+$config['key_populations_targeted_by_prep_partner_chart_source'] = 'Source: www.prep.nascop.org';
+$config['key_populations_targeted_by_prep_partner_chart_has_drilldown'] = TRUE;
+$config['key_populations_targeted_by_prep_partner_chart_filters'] = array('Sub_County', 'County');
+$config['key_populations_targeted_by_prep_partner_chart_filters_default'] = array();
 
 //overall_access_baseline_laboratory_tests_chart 
 $config['overall_access_baseline_laboratory_tests_chart_chartview'] = 'charts/column_percent_view';
