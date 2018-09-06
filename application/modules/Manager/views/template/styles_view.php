@@ -9,10 +9,7 @@
 <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/vendor/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
 <!-- Sb-Manager CSS -->
 <link href="<?php echo base_url() . 'public/manager/lib/sbadmin2/dist/css/sb-admin-2.css'; ?>" rel="stylesheet">
-<!--data tables-->
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/jQueryupload/css/theme.css'; ?>">
-<!-- Ftp -->
 <link href="<?php echo base_url() . 'public/jQueryupload/css/dashboard.css'; ?>" rel="stylesheet">
 <!-- blueimp Gallery styles -->
 <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
