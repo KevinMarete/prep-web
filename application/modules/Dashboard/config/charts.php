@@ -274,7 +274,7 @@ $config['offsite_onsite_hep_c_testing_table_filters_default'] = array();
 
 //facilities_trained_on_prep_chart 
 $config['facilities_trained_on_prep_chart_chartview'] = 'charts/pie_view';
-$config['facilities_trained_on_prep_chart_title'] = 'Proportion of Facilities Trained on PrEP';
+$config['facilities_trained_on_prep_chart_title'] = 'Proportion of Facilities with Personnel Trained on PrEP';
 $config['facilities_trained_on_prep_chart_yaxis_title'] = 'Percent';
 $config['facilities_trained_on_prep_chart_source'] = 'Source: www.prep.nascop.org';
 $config['facilities_trained_on_prep_chart_has_drilldown'] = FALSE;
@@ -283,7 +283,7 @@ $config['facilities_trained_on_prep_chart_filters_default'] = array();
 
 //distibution_of_facilities_trained_personnel_chart 
 $config['distibution_of_facilities_trained_personnel_chart_chartview'] = 'charts/stacked_column_percent_view';
-$config['distibution_of_facilities_trained_personnel_chart_title'] = 'Distribution of Trained Personnel in Facilities';
+$config['distibution_of_facilities_trained_personnel_chart_title'] = 'Distribution of Trained Personnel in Facilities by County';
 $config['distibution_of_facilities_trained_personnel_chart_yaxis_title'] = 'Percent 100';
 $config['distibution_of_facilities_trained_personnel_chart_source'] = 'Source: www.prep.nascop.org';
 $config['distibution_of_facilities_trained_personnel_chart_has_drilldown'] = FALSE;

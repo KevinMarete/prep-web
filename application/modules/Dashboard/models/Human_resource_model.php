@@ -65,11 +65,11 @@ class Human_resource_model extends CI_Model {
         $columns = array();
         $hcw_trained_data = array(
             array('type' => 'column', 'name' => '1-3', 'data' => array()),
-            array('type' => 'column', 'name' => '3-6', 'data' => array()),
-            array('type' => 'column', 'name' => '>6', 'data' => array()),
+            array('type' => 'column', 'name' => '4-6', 'data' => array()),
+            array('type' => 'column', 'name' => '>7', 'data' => array()),
         );
 
-        $this->db->select("UPPER(County) county, COUNT(IF(hcw_trained_on_prep > 0, 1, NULL) AND IF(hcw_trained_on_prep <= 3, 1, NULL)) '1-3', COUNT(IF(hcw_trained_on_prep > 3, 1, NULL) AND IF(hcw_trained_on_prep <= 6, 1, NULL)) '3-6', COUNT(IF(hcw_trained_on_prep > 6, 1, NULL)) '>6'", FALSE);
+        $this->db->select("UPPER(County) county, COUNT(IF(hcw_trained_on_prep > 0, 1, NULL) AND IF(hcw_trained_on_prep <= 3, 1, NULL)) '1-3', COUNT(IF(hcw_trained_on_prep > 3, 1, NULL) AND IF(hcw_trained_on_prep <= 6, 1, NULL)) '4-6', COUNT(IF(hcw_trained_on_prep > 6, 1, NULL)) '>7'", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -83,10 +83,10 @@ class Human_resource_model extends CI_Model {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
                 foreach ($hcw_trained_data as $index => $hcw_trained) {
-                    if ($hcw_trained['name'] == '>6') {
-                        array_push($hcw_trained_data[$index]['data'], $result['>6']);
-                    } else if ($hcw_trained['name'] == '3-6') {
-                        array_push($hcw_trained_data[$index]['data'], $result['3-6']);
+                    if ($hcw_trained['name'] == '>7') {
+                        array_push($hcw_trained_data[$index]['data'], $result['>7']);
+                    } else if ($hcw_trained['name'] == '4-6') {
+                        array_push($hcw_trained_data[$index]['data'], $result['4-6']);
                     } else if ($hcw_trained['name'] == '1-3') {
                         array_push($hcw_trained_data[$index]['data'], $result['1-3']);
                     }
@@ -101,7 +101,7 @@ class Human_resource_model extends CI_Model {
         $columns = array();
         $response = array();
 
-        $this->db->select("COUNT(IF(hcw_trained_on_prep > 0, 1, NULL) AND IF(hcw_trained_on_prep <= 3, 1, NULL)) '1-3', COUNT(IF(hcw_trained_on_prep > 3, 1, NULL) AND IF(hcw_trained_on_prep <= 6, 1, NULL)) '3-6', COUNT(IF(hcw_trained_on_prep > 6, 1, NULL)) '>6'", FALSE);
+        $this->db->select("COUNT(IF(hcw_trained_on_prep > 0, 1, NULL) AND IF(hcw_trained_on_prep <= 3, 1, NULL)) '1-3', COUNT(IF(hcw_trained_on_prep > 3, 1, NULL) AND IF(hcw_trained_on_prep <= 6, 1, NULL)) '4-6', COUNT(IF(hcw_trained_on_prep > 6, 1, NULL)) '>7'", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);

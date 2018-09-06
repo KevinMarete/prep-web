@@ -4,7 +4,7 @@
             <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Proportion of Facilities Trained on PrEP</strong>
+                        <strong>Proportion of Facilities with Personnel Trained on PrEP</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="facilities_trained_on_prep_chart"></div>
@@ -17,7 +17,7 @@
             <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Distribution of Trained Personnel in Facilities</strong>
+                        <strong>Distribution of Trained Personnel in Facilities by County</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#distibution_of_facilities_trained_personnel_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
