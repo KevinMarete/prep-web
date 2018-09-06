@@ -31,7 +31,7 @@ var tabFiltersURLs = {
 //charts
 var charts = {
     'service_delivery': ['facilities_level_distribution_chart', 'prep_focal_person_chart', 'hiv_services_offered_chart', 'facility_level_prep_availability_table', 'current_service_delivery_points_distribution_table', 'current_service_delivery_points_distribution_chart', 'preferred_service_delivery_point_table', 'population_receiving_prep_chart'],
-    'partner': ['partner_support_chart','key_populations_targeted_by_prep_partner_chart'],
+    'partner': ['partner_support_chart', 'key_populations_targeted_by_prep_partner_chart', 'service_delivery_point_by_partner_chart'],
     'laboratory_summary': ['overall_access_baseline_laboratory_tests_chart', 'overall_laboratory_testing_equipment_availability_chart', 'overall_access_on_offsite_laboratory_testing_chart'],
     'laboratory_creatinine': ['access_creatinine_testing_facilities_chart', 'creatinine_testing_equipment_availability_chart', 'offsite_onsite_creatinine_testing_chart', 'access_creatinine_testing_in_relation_to_equipment_availability_chart', 'access_creatinine_testing_in_relation_to_equipment_availability_table', 'creatinine_reagents_availability_in_relation_to_equipment_table', 'creatinine_reagents_unavailability_in_relation_to_equipment_table', 'onsite_offsite_access_to_creatinine_testing_table'],
     'laboratory_hep_b': ['access_hep_b_testing_facilities_chart', 'access_hep_b_testing_facilities_table', 'hep_b_testing_equipment_availability_chart', 'offsite_onsite_hep_b_testing_chart', 'offsite_onsite_hep_b_testing_table'],

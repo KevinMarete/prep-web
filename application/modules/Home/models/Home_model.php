@@ -25,13 +25,13 @@ class Home_model extends CI_Model {
 
     public function get_facility_count_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(County) category, Sub_County name,COUNT(facility)y, UPPER(Sub_County) drilldown", FALSE);
+        $this->db->select("UPPER(County) category, Sub_County name,COUNT(facility)y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('drilldown');
+        $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_facility_details');
         $sub_data = $query->result_array();

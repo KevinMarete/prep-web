@@ -21,7 +21,7 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-5">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Key Populations Targeted by PrEP Partners</strong>
@@ -31,6 +31,19 @@
                     </div>
                     <div class="chart-notes">
                         <span class="key_populations_targeted_by_prep_partner_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Service Delivery Points by Partners</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="service_delivery_point_by_partner_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="service_delivery_point_by_partner_chart_heading heading"></span>
                     </div>
                 </div>
             </div>
