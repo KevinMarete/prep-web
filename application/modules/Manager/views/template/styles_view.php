@@ -17,4 +17,12 @@
 <link rel="stylesheet" href="<?php echo base_url() . 'public/jQueryupload/css/jquery.fileupload.css'; ?>">
 <link rel="stylesheet" href="<?php echo base_url() . 'public/jQueryupload/css/jquery.fileupload-ui.css'; ?>">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<noscript><link rel="stylesheet" href="<?php echo base_url() . 'public/jQueryupload/css/jquery.fileupload-noscript.css'; ?>"></noscript>
+<noscript><link rel="stylesheet" href="<?php echo base_url() . 'public/jQueryupload/css/jquery.fileupload-ui-noscript.css'; ?>"></noscript>
+<style>
+    /* Hide Angular JS elements before initializing */
+    .ng-cloak {
+        display: none;
+    }
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -54,13 +54,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Home';
 $route['manager'] = 'Manager';
 $route['home'] = 'Home';
-$route['file_upload'] = 'File_upload';
+$route['manager/manage_users'] = 'Manager/Manager/manage_users';
+
+$route['manager/user_list'] = 'Manager/User_manager/user_list';
+$route['manager/user_add'] = 'Manager/User_manager/user_add';
+
 $route['manager/loginme'] = 'Manager/Auth/Auth_login/loginMe';
 $route['manager/register'] = 'Manager/register';
 $route['manager/login'] = 'Manager/Auth/Auth_login';
 $route['manager/logout'] = 'Manager/Auth/Auth_login/user_logout';
 $route['manager/user'] = 'Manager/Auth/Auth_user';
-$route['manager/file_upload'] = 'Manager/File_upload';
+
+$route['manager/file_upload'] = 'Manager/Manager/file_upload';
+
 $route['dashboard'] = 'Dashboard/Dashboard';
 
 $route['404_override'] = '';

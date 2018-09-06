@@ -21,10 +21,10 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>PrEP Focal Person</strong>
+                        <strong>PrEP Focal Person in Facilities by County</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#prep_focal_person_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -39,13 +39,10 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-
-        <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Distribution of Hiv Services in Facilities</strong>
+                        <strong>Distribution of Hiv Services in Facilities Assessed Nationally</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="hiv_services_offered_chart"></div>
@@ -55,6 +52,8 @@
                     </div>
                 </div>
             </div>
+        </div><!--end row-->
+        <div class="row">
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
@@ -68,9 +67,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Current Service Delivery Points Numbers</strong>

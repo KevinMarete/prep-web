@@ -70,6 +70,7 @@
                                         <span class="help-block"></span>
                                     </div>
                                 </div>
+                                <div class="row"></div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Password</label>
                                     <div class="col-md-9">

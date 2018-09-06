@@ -13,7 +13,7 @@ $config['facilities_level_distribution_chart_filters_default'] = array();
 
 //prep_focal_person_chart 
 $config['prep_focal_person_chart_chartview'] = 'charts/stacked_column_percent_view';
-$config['prep_focal_person_chart_title'] = 'PrEP Focal Person';
+$config['prep_focal_person_chart_title'] = 'PrEP Focal Person in Facilities by County';
 $config['prep_focal_person_chart_yaxis_title'] = 'Percent 100';
 $config['prep_focal_person_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_focal_person_chart_has_drilldown'] = FALSE;
@@ -22,7 +22,7 @@ $config['prep_focal_person_chart_filters_default'] = array();
 
 //hiv_services_offered_chart 
 $config['hiv_services_offered_chart_chartview'] = 'charts/column_view';
-$config['hiv_services_offered_chart_title'] = 'Distribution of Hiv Services in Facilities';
+$config['hiv_services_offered_chart_title'] = 'Distribution of Hiv Services in Facilities Assessed Nationally';
 $config['hiv_services_offered_chart_yaxis_title'] = 'Count';
 $config['hiv_services_offered_chart_source'] = 'Source: www.prep.nascop.org';
 $config['hiv_services_offered_chart_has_drilldown'] = FALSE;

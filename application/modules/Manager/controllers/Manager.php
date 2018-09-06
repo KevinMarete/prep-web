@@ -18,7 +18,6 @@ class Manager extends BaseController {
     public function home() {
         $this->isLoggedIn();
         redirect('dashboard');
-        //$data['content_view'] = 'pages/dashboard_view';
         $data['page_title'] = 'prep';
         $this->load->view('template/template_view', $data);
     }
@@ -26,6 +25,20 @@ class Manager extends BaseController {
     //function register user
     public function register() {
         $this->load->view('pages/auth/registration_view');
+    }
+
+    public function file_upload() {
+        $this->isLoggedIn();
+        $data['page_title'] = 'prep | Doc';
+        $data['content_view'] = 'pages/file_upload_view';
+        $this->load->view('template/template_view', $data);
+    }
+
+    public function manage_users() {
+        $this->isLoggedIn();
+        $data['page_title'] = 'prep | User';
+        $data['content_view'] = 'pages/user_manager_view';
+        $this->load->view('template/template_view', $data);
     }
 
 }
