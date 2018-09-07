@@ -41,4 +41,11 @@ class Manager extends BaseController {
         $this->load->view('template/template_view', $data);
     }
 
+    public function facility_update() {
+        $this->isLoggedIn();
+        $data['page_title'] = 'prep | Facility';
+        $data['content_view'] = 'pages/facility_view';
+        $this->load->view('template/template_view', $data);
+    }
+
 }

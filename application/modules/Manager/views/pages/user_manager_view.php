@@ -41,16 +41,6 @@
                 ],
             });
 
-            //datepicker
-            $('.datepicker').datepicker({
-                autoclose: true,
-                format: "yyyy-mm-dd",
-                todayHighlight: true,
-                orientation: "top auto",
-                todayBtn: true,
-                todayHighlight: true,
-            });
-
             //set input/textarea/select event when change value, remove class error and remove text help block 
             $("input").change(function () {
                 $(this).parent().parent().removeClass('has-error');
@@ -66,9 +56,6 @@
             });
 
         });
-
-
-
         function add_user()
         {
             save_method = 'add';
@@ -236,7 +223,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3">Mobile</label>
                                 <div class="col-md-9">
-                                    <input name="mobile" placeholder="mobile" class="form-control" type="text">                                    
+                                    <input name="mobile" placeholder="07XXXXXXXX" class="form-control" type="text">                                    
                                     <span class="help-block"></span>
                                 </div>
                             </div>

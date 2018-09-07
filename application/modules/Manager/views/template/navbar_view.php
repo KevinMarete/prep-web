@@ -43,6 +43,9 @@
                 <li>
                     <a href="<?php echo base_url() . 'manager/manage_users'; ?>"><i class="fa fa-users"></i> Users</a> 
                 </li>
+                <li>
+                    <a href="<?php echo base_url() . 'manager/facility_update'; ?>"><i class="fa fa-building"></i> Facility Update</a> 
+                </li>
             </ul>
 
         </div>
