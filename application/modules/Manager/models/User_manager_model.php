@@ -10,8 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User_manager_model extends CI_Model {
 
     var $table = 'auth_tbl_users';
-    var $column_order = array('first_name', 'last_name', 'email', 'role', 'mobile');
-    var $column_search = array('first_name', 'last_name', 'email', 'role', 'mobile');
+    var $column_order = array('first_name', 'last_name', 'email', 'roleId', 'mobile');
+    var $column_search = array('first_name', 'last_name', 'email', 'roleId', 'mobile');
     var $order = array('id' => 'desc');
 
     public function __construct() {

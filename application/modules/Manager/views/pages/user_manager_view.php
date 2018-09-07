@@ -208,7 +208,6 @@
                                     <span class="help-block"></span>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-3">Last Name</label>
                                 <div class="col-md-9">
@@ -216,7 +215,6 @@
                                     <span class="help-block"></span>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-3">Email</label>
                                 <div class="col-md-9">
@@ -224,14 +222,13 @@
                                     <span class="help-block"></span>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-3">Role</label>
                                 <div class="col-md-9">
                                     <select name="roleId" class="form-control">
                                         <option value="">--Role--</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="manager">Manager</option>
+                                        <option value="1">Admin</option>
+                                        <option value="2">Manager</option>
                                     </select>
                                     <span class="help-block"></span>
                                 </div>
@@ -243,7 +240,13 @@
                                     <span class="help-block"></span>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Password</label>
+                                <div class="col-md-9">
+                                    <input name="password" placeholder="Password" class="form-control" type="text">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

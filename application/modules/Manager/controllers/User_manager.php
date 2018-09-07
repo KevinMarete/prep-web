@@ -48,13 +48,33 @@ class User_manager extends CI_Controller {
 
     public function user_add() {
         $this->_validate();
-        $insert = $this->user->save($_POST);
+        $data = array(
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'email' => $this->input->post('email'),
+            'mobile' => $this->input->post('mobile'),
+            'password' => md5($this->input->post('password')),
+            'roleId' => $this->input->post('roleId'),
+            'createdDtm' => date('Y-m-d H:i:s'),
+            'updatedDtm' => date('Y-m-d H:i:s')
+        );
+        $insert = $this->user->save($data);
         echo json_encode(array("status" => TRUE));
     }
 
     public function user_update() {
         $this->_validate();
-        $this->user->update(array('id' => $this->input->post('id')), $_POST);
+        $data = array(
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'email' => $this->input->post('email'),
+            'mobile' => $this->input->post('mobile'),
+            'password' => md5($this->input->post('password')),
+            'roleId' => $this->input->post('roleId'),
+            'createdDtm' => date('Y-m-d H:i:s'),
+            'updatedDtm' => date('Y-m-d H:i:s')
+        );
+        $this->user->update(array('id' => $this->input->post('id')), $data);
         echo json_encode(array("status" => TRUE));
     }
 
