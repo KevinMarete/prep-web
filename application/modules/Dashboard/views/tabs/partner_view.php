@@ -48,6 +48,21 @@
                 </div>
             </div>
         </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Distribution of Trained Workers by Partners</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="hcw_trained_by_partner_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="hcw_trained_by_partner_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
     </div>
 </div>
 <!--partner_support_chart filter modal-->

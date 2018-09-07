@@ -144,4 +144,52 @@ class Partner_model extends CI_Model {
         return array('main' => $service_delivery_distribution_data, 'columns' => $columns);
     }
 
+    public function get_hcw_trained_by_partner($filters) {
+        $this->db->select("ps.implementing_partner name,COUNT(IF(tp.hcw_trained_on_prep = 'YES', 1, NULL))y, ps.implementing_partner drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->from('tbl_partner_support ps');
+        $this->db->join('tbl_trained_personnel tp', 'tp.id=ps.id', 'left');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get();
+        return $this->get_hcw_trained_by_partner_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_hcw_trained_by_partner_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(ps.implementing_partner) category, tp.hcw_trained_on_prep name,COUNT(IF(tp.hcw_trained_on_prep = 'YES', 1, NULL))y", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->from('tbl_partner_support ps');
+        $this->db->join('tbl_trained_personnel tp', 'tp.id=ps.id', 'left');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $sub_data = $this->db->get()->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        return array_merge($main_data, $drilldown_data);
+    }
+
 }

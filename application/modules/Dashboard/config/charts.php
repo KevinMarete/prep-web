@@ -99,7 +99,16 @@ $config['service_delivery_point_by_partner_chart_yaxis_title'] = 'Count';
 $config['service_delivery_point_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
 $config['service_delivery_point_by_partner_chart_has_drilldown'] = FALSE;
 $config['service_delivery_point_by_partner_chart_filters'] = array('Sub_County', 'County');
-$config['partner_support_chart_filters_default'] = array();
+$config['service_delivery_point_by_partner_chart_filters_default'] = array();
+
+//hcw_trained_by_partner_chart 
+$config['hcw_trained_by_partner_chart_chartview'] = 'charts/column_drilldown_view';
+$config['hcw_trained_by_partner_chart_title'] = 'Distribution of Trained Workers by Partners';
+$config['hcw_trained_by_partner_chart_yaxis_title'] = 'Count';
+$config['hcw_trained_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
+$config['hcw_trained_by_partner_chart_has_drilldown'] = TRUE;
+$config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
+$config['hcw_trained_by_partner_chart_filters_default'] = array();
 
 //overall_access_baseline_laboratory_tests_chart 
 $config['overall_access_baseline_laboratory_tests_chart_chartview'] = 'charts/column_percent_view';
