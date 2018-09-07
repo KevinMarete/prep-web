@@ -7,13 +7,11 @@
     $(function () {
         var chartDIV = '<?php echo $chart_name . "_container"; ?>'
         var chart;
-
         // function to sort the stacks
         var sortData = function (chartSource) {
             var series = chartSource.series;
             var axis = chartSource.xAxis[0];
             var categories = [];
-
             if ($.isArray(series)) {
                 var ser = $.grep(series, function (ser, seriesIndex) {
                     return ser.visible;
@@ -28,27 +26,24 @@
                 });
             }
 
-            /**categories.sort(function (a, b) {
-             var aName = a.name.toLowerCase();
-             var bName = b.name.toLowerCase();
-             var aTotal = a.stackTotal;
-             var bTotal = b.stackTotal;
-             if (aTotal === bTotal) {
-             return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
-             } else {
-             return ((aTotal > bTotal) ? -1 : ((aTotal < bTotal) ? 1 : 0));
-             }
-             });**/
-
+            categories.sort(function (a, b) {
+                var aName = a.name.toLowerCase();
+                var bName = b.name.toLowerCase();
+                var aTotal = a.stackTotal;
+                var bTotal = b.stackTotal;
+                if (aTotal === bTotal) {
+                    return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+                } else {
+                    return ((aTotal > bTotal) ? -1 : ((aTotal < bTotal) ? 1 : 0));
+                }
+            });
             var mappedIndex = $.map(categories, function (category, index) {
                 return category.index;
             });
-
             categories = $.map(categories, function (category, index) {
                 return category.name;
             });
             axis.setCategories(categories);
-
             $.each(series, function (seriesIndex, ser) {
                 var data = $.map(mappedIndex, function (mappedIndex, origIndex) {
                     return ser.data[mappedIndex].y;
@@ -56,26 +51,23 @@
                 ser.setData(data);
             });
         };
-
         // chart start
         $(document).ready(function () {
             Highcharts.setOptions({
                 global: {
                     useUTC: false,
-
                 },
                 lang: {
                     decimalPoint: '.',
                     thousandsSep: ','
                 },
             });
-
             chart = new Highcharts.Chart({
                 chart: {
                     renderTo: chartDIV,
                     type: 'column'
                 },
-                colors: ['#5cb85c', '#434348', '#5bc0de', '#f7a35c', '#8085e9', '#ff4d4d', '#bdb76b', '#FF1493', '#CD5C5C', '#0000CD'],
+                colors: ['#5cb85c', '#434348', '#5bc0de', '#f7a35c', '#8085e9', '#ff4d4d', '#bdb76b'],
                 title: {
                     text: '<?php echo $chart_title; ?>'
                 },
@@ -130,10 +122,9 @@
                 },
                 series: <?php echo $chart_series_data; ?>
             },
-                    function (chart) {
-                        sortData(chart);
-                    });
+            function (chart) {
+                sortData(chart);
+            });
         });
-
     });
 </script>

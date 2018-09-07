@@ -42,7 +42,7 @@ class Partner_model extends CI_Model {
     }
 
     public function get_key_populations_targeted_by_prep_partner($filters) {
-        $this->db->select("ps.implementing_partner name,COUNT(*)y, ps.implementing_partner drilldown", FALSE);
+        $this->db->select("ps.implementing_partner name,COUNT(pp.Population)y, ps.implementing_partner drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -58,7 +58,7 @@ class Partner_model extends CI_Model {
 
     public function get_key_populations_targeted_by_prep_partner_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(ps.implementing_partner) category, pp.Population name,COUNT(*)y", FALSE);
+        $this->db->select("UPPER(ps.implementing_partner) category, pp.Population name,COUNT(pp.Population)y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
