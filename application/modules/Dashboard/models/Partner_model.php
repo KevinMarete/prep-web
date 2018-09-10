@@ -192,4 +192,24 @@ class Partner_model extends CI_Model {
         return array_merge($main_data, $drilldown_data);
     }
 
+    public function get_partner_facility_numbers($filters) {
+//        $columns = array();
+//        $this->db->select("Level category,County,Sub_County,implementing_partner,COUNT(*) Numbers", FALSE);
+//        if (!empty($filters)) {
+//            foreach ($filters as $category => $filter) {
+//                $this->db->where_in($category, $filter);
+//            }
+//        }
+//        $this->db->group_by('category');
+//        $this->db->order_by('Numbers', 'DESC');
+//        $query = $this->db->get('tbl_partner_support');
+//        $results = $query->result_array();
+//
+//        foreach ($results as $result) {
+//            array_push($columns, $result['category']);
+//        }
+//
+//        return array('main' => $results, 'columns' => $columns);
+    }
+
 }

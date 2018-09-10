@@ -66,7 +66,7 @@ class Service_delivery_model extends CI_Model {
             array('type' => 'column', 'name' => 'YES', 'data' => array())
         );
 
-        $this->db->select("UPPER(County) county, COUNT(IF(Focal_Person = 'YES', 1, NULL)) YES, COUNT(IF(Focal_Person = 'NO', 1, NULL)) NO", FALSE);
+        $this->db->select("UPPER(County) county,UPPER(County) drilldown, COUNT(IF(Focal_Person = 'YES', 1, NULL)) YES, COUNT(IF(Focal_Person = 'NO', 1, NULL)) NO", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -233,7 +233,11 @@ class Service_delivery_model extends CI_Model {
         }
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
+        $this->db->where('Population !=', 'MSM - Men who have sex with men');
+        $this->db->where('Population !=', 'PWID');
         $query = $this->db->get('tbl_prep_population');
+//        print_r(json_encode($query->result_array()));
+//        die();
         return $this->get_population_receiving_prep_numbers_drilldown(array('main' => $query->result_array()), $filters);
     }
 

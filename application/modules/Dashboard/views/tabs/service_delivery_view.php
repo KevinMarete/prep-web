@@ -118,7 +118,9 @@
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Key Populations Targeted by PrEP</strong>
+                        <strong>Populations Targeted for PrEP by Facilities 
+                            <span class="label label-danger">Conflicting ID for PWID and MSM</span>
+                        </strong>
                     </div>
                     <div class="chart-stage">
                         <div id="population_receiving_prep_chart"></div>

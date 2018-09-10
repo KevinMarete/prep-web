@@ -12,7 +12,7 @@ $config['facilities_level_distribution_chart_filters'] = array('Sub_County', 'Co
 $config['facilities_level_distribution_chart_filters_default'] = array();
 
 //prep_focal_person_chart 
-$config['prep_focal_person_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['prep_focal_person_chart_chartview'] = 'charts/pie_view';
 $config['prep_focal_person_chart_title'] = 'PrEP Focal Person in Facilities by County';
 $config['prep_focal_person_chart_yaxis_title'] = 'Percent 100';
 $config['prep_focal_person_chart_source'] = 'Source: www.prep.nascop.org';
@@ -67,7 +67,7 @@ $config['preferred_service_delivery_point_table_filters_default'] = array();
 
 //population_receiving_prep_chart 
 $config['population_receiving_prep_chart_chartview'] = 'charts/column_drilldown_view';
-$config['population_receiving_prep_chart_title'] = 'Key Populations Targeted by PrEP';
+$config['population_receiving_prep_chart_title'] = 'Populations Targeted for PrEP by Facilities';
 $config['population_receiving_prep_chart_yaxis_title'] = 'Count';
 $config['population_receiving_prep_chart_source'] = 'Source: www.prep.nascop.org';
 $config['population_receiving_prep_chart_has_drilldown'] = TRUE;
@@ -103,12 +103,21 @@ $config['service_delivery_point_by_partner_chart_filters_default'] = array();
 
 //hcw_trained_by_partner_chart 
 $config['hcw_trained_by_partner_chart_chartview'] = 'charts/column_drilldown_view';
-$config['hcw_trained_by_partner_chart_title'] = 'Distribution of Trained Workers by Partners';
+$config['hcw_trained_by_partner_chart_title'] = 'Distribution of Trained Workers by Partners ';
 $config['hcw_trained_by_partner_chart_yaxis_title'] = 'Count';
 $config['hcw_trained_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
 $config['hcw_trained_by_partner_chart_has_drilldown'] = TRUE;
 $config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
 $config['hcw_trained_by_partner_chart_filters_default'] = array();
+
+//partner_facility_table 
+$config['partner_facility_table_chartview'] = 'charts/table_view';
+$config['partner_facility_table_title'] = 'Partner Facility Numbers ';
+$config['partner_facility_table_yaxis_title'] = 'Count';
+$config['partner_facility_table_source'] = 'Source: www.prep.nascop.org';
+$config['partner_facility_table_has_drilldown'] = TRUE;
+$config['partner_facility_table_filters'] = array('Sub_County', 'County');
+$config['partner_facility_table_filters_default'] = array();
 
 //overall_access_baseline_laboratory_tests_chart 
 $config['overall_access_baseline_laboratory_tests_chart_chartview'] = 'charts/column_percent_view';
