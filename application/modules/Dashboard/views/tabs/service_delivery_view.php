@@ -1,10 +1,12 @@
 <div role="tabpanel" class="tab-pane active" id="service_delivery">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Distribution of Facilities by Level per County</strong>
+                        <strong>Distribution of Facilities by Level
+                            <span class="label label-danger">Conflicting ID for Dice and Other (specify)</span>
+                        </strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#facilities_level_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -19,12 +21,10 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>PrEP Focal Person in Facilities by County</strong>
+                        <strong>PrEP Focal Person in Facilities</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#prep_focal_person_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -39,7 +39,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Hiv Services in Facilities Assessed Nationally</strong>
@@ -49,6 +51,26 @@
                     </div>
                     <div class="chart-notes">
                         <span class="hiv_services_offered_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Distribution of Current Service Delivery Points
+                            <span class="label label-danger">Conflicting Id for PMTCT Clinic,MCH,Other and IPD</span>
+                        </strong>
+                        <div class="nav navbar-right">
+                            <button data-toggle="modal" data-target="#current_service_delivery_points_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
+                                <span class="glyphicon glyphicon-filter"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="current_service_delivery_points_distribution_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="current_service_delivery_points_distribution_chart_heading heading"></span>
                     </div>
                 </div>
             </div>
@@ -82,26 +104,6 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
-                        <strong>Distribution of Current Service Delivery Points (By County)</strong>
-                        <div class="nav navbar-right">
-                            <button data-toggle="modal" data-target="#current_service_delivery_points_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
-                                <span class="glyphicon glyphicon-filter"></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="chart-stage">
-                        <div id="current_service_delivery_points_distribution_chart"></div>
-                    </div>
-                    <div class="chart-notes">
-                        <span class="current_service_delivery_points_distribution_chart_heading heading"></span>
-                    </div>
-                </div>
-            </div>
-        </div><!--end row-->
-        <div class="row">
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
@@ -118,7 +120,9 @@
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Key Populations Targeted by PrEP</strong>
+                        <strong>Populations Targeted for PrEP by Facilities 
+                            <span class="label label-danger">Conflicting ID for PWID and MSM</span>
+                        </strong>
                     </div>
                     <div class="chart-stage">
                         <div id="population_receiving_prep_chart"></div>

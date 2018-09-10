@@ -63,6 +63,21 @@
                 </div>
             </div>
         </div><!--end row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Partner Facility Numbers</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="partner_facility_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="partner_facility_table_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
     </div>
 </div>
 <!--partner_support_chart filter modal-->

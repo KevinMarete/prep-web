@@ -3,7 +3,6 @@ $dyn_table = "<table class='table table-bordered table-condensed table-hover tab
 $thead = "<thead><tr>";
 $table_data = json_decode($chart_series_data, TRUE);
 $count = 0;
-$cumulative = 0;
 $tbody = "<tbody>";
 $overall = array_sum(array_column($table_data, 'Numbers'));
 foreach ($table_data as $row_data) {
@@ -27,10 +26,8 @@ foreach ($table_data as $row_data) {
     $tbody .= "</tr>";
     $count++;
 }
-
-//Add for percent
+//Add for percentage
 $thead .= "<th>PERCENT</th>";
-
 $thead .= "</tr></thead>";
 $tbody .= "</tbody>";
 $dyn_table .= $thead;
@@ -44,10 +41,10 @@ echo $dyn_table;
     $(function () {
 
         //Add search input
-        /**$('.distribution_table thead th').each(function () {
+        $('.distribution_table thead th').each(function () {
             var title = $('.distribution_table thead th').eq($(this).index()).text();
-            $(this).html('<input type="text" placeholder="Search ' + title.toUpperCase() + '"" />');
-        });**/
+            //$(this).html('<input type="text" placeholder="Search ' + title.toUpperCase() + '"" />');
+        });
 
         //DataTable
         var table = $('.distribution_table').DataTable({

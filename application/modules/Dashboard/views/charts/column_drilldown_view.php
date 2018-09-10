@@ -2,7 +2,7 @@
 <div id="<?php echo $chart_name; ?>_container"></div>
 <input type="hidden" data-filters="<?php echo $selectedfilters; ?>" id="<?php echo $chart_name; ?>_filters"/>
 
-<!--highcharts_configuration-->
+<!--high charts_configuration-->
 <script type="text/javascript">
     $(function () {
         var chartDIV = '<?php echo $chart_name . "_container"; ?>'
@@ -20,7 +20,6 @@
 
         Highcharts.chart(chartDIV, {
             chart: {
-                //type: 'bar',
                 type: 'column',
                 events: {
                     drilldown: function (e) {
@@ -42,8 +41,7 @@
                     }
                 }
             },
-            //colors: ['#5cb85c', '#434348', '#5bc0de', '#f7a35c', '#8085e9', '#ff4d4d', '#bdb76b'],
-            colors: ['#f7a35c'],
+            colors: ['#008080'],
 
             title: {
                 text: '<?php echo $chart_title; ?>'
