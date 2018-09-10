@@ -29,6 +29,15 @@ $config['hiv_services_offered_chart_has_drilldown'] = FALSE;
 $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
 $config['hiv_services_offered_chart_filters_default'] = array();
 
+//current_service_delivery_points_distribution_chart 
+$config['current_service_delivery_points_distribution_chart_chartview'] = 'charts/column_drilldown_view';
+$config['current_service_delivery_points_distribution_chart_title'] = 'Distribution of Current Service Delivery Points';
+$config['current_service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
+$config['current_service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
+$config['current_service_delivery_points_distribution_chart_has_drilldown'] = TRUE;
+$config['current_service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
+$config['current_service_delivery_points_distribution_chart_filters_default'] = array();
+
 //facility_level_prep_availability_table 
 $config['facility_level_prep_availability_table_chartview'] = 'charts/table_view';
 $config['facility_level_prep_availability_table_title'] = 'PrEP Availability by Facilties Level';
@@ -46,15 +55,6 @@ $config['current_service_delivery_points_distribution_table_source'] = 'Source: 
 $config['current_service_delivery_points_distribution_table_has_drilldown'] = FALSE;
 $config['current_service_delivery_points_distribution_table_filters'] = array('Sub_County', 'County');
 $config['current_service_delivery_points_distribution_table_filters_default'] = array();
-
-//current_service_delivery_points_distribution_chart 
-$config['current_service_delivery_points_distribution_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['current_service_delivery_points_distribution_chart_title'] = 'Distribution of Current Service Delivery Points (By County)';
-$config['current_service_delivery_points_distribution_chart_yaxis_title'] = 'Percent of 100';
-$config['current_service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
-$config['current_service_delivery_points_distribution_chart_has_drilldown'] = FALSE;
-$config['current_service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
-$config['current_service_delivery_points_distribution_chart_filters_default'] = array();
 
 //preferred_service_delivery_point_table 
 $config['preferred_service_delivery_point_table_chartview'] = 'charts/table_view';
