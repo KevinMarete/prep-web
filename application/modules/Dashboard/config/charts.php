@@ -21,11 +21,11 @@ $config['prep_focal_person_chart_filters'] = array('Sub_County', 'County');
 $config['prep_focal_person_chart_filters_default'] = array();
 
 //hiv_services_offered_chart 
-$config['hiv_services_offered_chart_chartview'] = 'charts/column_view';
-$config['hiv_services_offered_chart_title'] = 'Distribution of Hiv Services in Facilities Assessed Nationally';
+$config['hiv_services_offered_chart_chartview'] = 'charts/column_drilldown_view';
+$config['hiv_services_offered_chart_title'] = 'Distribution of Hiv Services in Facilities';
 $config['hiv_services_offered_chart_yaxis_title'] = 'Count';
 $config['hiv_services_offered_chart_source'] = 'Source: www.prep.nascop.org';
-$config['hiv_services_offered_chart_has_drilldown'] = FALSE;
+$config['hiv_services_offered_chart_has_drilldown'] = TRUE;
 $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
 $config['hiv_services_offered_chart_filters_default'] = array();
 
@@ -111,7 +111,7 @@ $config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
 $config['hcw_trained_by_partner_chart_filters_default'] = array();
 
 //partner_facility_table 
-$config['partner_facility_table_chartview'] = 'charts/table_view';
+//$config['partner_facility_table_chartview'] = 'charts/table_view';
 $config['partner_facility_table_title'] = 'Partner Facility Numbers ';
 $config['partner_facility_table_yaxis_title'] = 'Count';
 $config['partner_facility_table_source'] = 'Source: www.prep.nascop.org';
