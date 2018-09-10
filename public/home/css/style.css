@@ -5,6 +5,17 @@
     Author URL: https://bootstrapmade.com
 */
 
+/*Custom Styling */
+
+/**/
+ .large_numbers {
+  font-weight: 600;
+  font-size: 300%;
+  color:#EA6045;
+}
+
+/*End of Custom Styling*/
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 20px;
@@ -33,6 +44,7 @@ h1, h2, h3, h4, h5, h6
     font-weight: 600;
     color: #222222;
 }
+
 a, a:hover, a:focus, a:active{
     outline: none;
 }
