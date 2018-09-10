@@ -1,10 +1,12 @@
 <div role="tabpanel" class="tab-pane active" id="service_delivery">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Distribution of Facilities by Level per County</strong>
+                        <strong>Distribution of Facilities by Level
+                            <span class="label label-danger">Conflicting ID for Dice and Other (specify)</span>
+                        </strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#facilities_level_distribution_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -19,9 +21,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>PrEP Focal Person in Facilities</strong>
@@ -39,6 +39,8 @@
                     </div>
                 </div>
             </div>
+        </div><!--end row-->
+        <div class="row">
             <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">

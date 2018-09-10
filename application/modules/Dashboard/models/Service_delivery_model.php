@@ -8,55 +8,138 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author k
  */
 class Service_delivery_model extends CI_Model {
+    /* public function get_facilities_level_distribution($filters) {
+      $columns = array();
+      $facility_level_distribution_data = array(
+      array('type' => 'column', 'name' => 'County Hospital', 'data' => array()),
+      array('type' => 'column', 'name' => 'Health Center', 'data' => array()),
+      array('type' => 'column', 'name' => 'County Referral Hospital', 'data' => array()),
+      array('type' => 'column', 'name' => 'National Referral Hospital', 'data' => array()),
+      array('type' => 'column', 'name' => 'DICE', 'data' => array()),
+      array('type' => 'column', 'name' => 'Other (specify)', 'data' => array()),
+      array('type' => 'column', 'name' => 'Dispensary', 'data' => array()),
+      array('type' => 'column', 'name' => 'Sub County Hospital', 'data' => array())
+      );
+
+      $this->db->select("UPPER(County) county,COUNT(IF(Level = 'County Hospital', 1, NULL)) 'County Hospital', COUNT(IF(Level = 'Health Center', 1, NULL)) 'Health Center', COUNT(IF(Level = 'County Referral Hospital',1,Null)) 'County Referral Hospital',COUNT(IF(Level='National Referral Hospital',1,NULL)) 'National Referral Hospital',COUNT(IF(Level = 'DICE', 1, NULL)) DICE, COUNT(IF(Level='Other (specify)',1,NULL)) 'Other (specify)', COUNT(IF(Level='Dispensary',1,NULL)) Dispensary, COUNT(IF(Level='Sub County Hospital',1,NULL)) 'Sub County Hospital'", FALSE);
+      if (!empty($filters)) {
+      foreach ($filters as $category => $filter) {
+      $this->db->where_in($category, $filter);
+      }
+      }
+      $this->db->group_by('county');
+      $query = $this->db->get('tbl_facility_details');
+      $results = $query->result_array();
+
+      if ($results) {
+      foreach ($results as $result) {
+      $columns[] = $result['county'];
+      foreach ($facility_level_distribution_data as $index => $facility_level_distribution) {
+      if ($facility_level_distribution['name'] == 'County Hospital') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['County Hospital']);
+      } else if ($facility_level_distribution['name'] == 'Health Center') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['Health Center']);
+      } else if ($facility_level_distribution['name'] == 'County Referral Hospital') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['County Referral Hospital']);
+      } else if ($facility_level_distribution['name'] == 'National Referral Hospital') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['National Referral Hospital']);
+      } else if ($facility_level_distribution['name'] == 'DICE') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['DICE']);
+      } else if ($facility_level_distribution['name'] == 'Other (specify)') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['Other (specify)']);
+      } else if ($facility_level_distribution['name'] == 'Dispensary') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['Dispensary']);
+      } else if ($facility_level_distribution['name'] == 'Sub County Hospital') {
+      array_push($facility_level_distribution_data[$index]['data'], $result['Sub County Hospital']);
+      }
+      }
+      }
+      }
+      return array('main' => $facility_level_distribution_data, 'columns' => $columns);
+      } */
 
     public function get_facilities_level_distribution($filters) {
-        $columns = array();
-        $facility_level_distribution_data = array(
-            array('type' => 'column', 'name' => 'County Hospital', 'data' => array()),
-            array('type' => 'column', 'name' => 'Health Center', 'data' => array()),
-            array('type' => 'column', 'name' => 'County Referral Hospital', 'data' => array()),
-            array('type' => 'column', 'name' => 'National Referral Hospital', 'data' => array()),
-            array('type' => 'column', 'name' => 'DICE', 'data' => array()),
-            array('type' => 'column', 'name' => 'Other (specify)', 'data' => array()),
-            array('type' => 'column', 'name' => 'Dispensary', 'data' => array()),
-            array('type' => 'column', 'name' => 'Sub County Hospital', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county,COUNT(IF(Level = 'County Hospital', 1, NULL)) 'County Hospital', COUNT(IF(Level = 'Health Center', 1, NULL)) 'Health Center', COUNT(IF(Level = 'County Referral Hospital',1,Null)) 'County Referral Hospital',COUNT(IF(Level='National Referral Hospital',1,NULL)) 'National Referral Hospital',COUNT(IF(Level = 'DICE', 1, NULL)) DICE, COUNT(IF(Level='Other (specify)',1,NULL)) 'Other (specify)', COUNT(IF(Level='Dispensary',1,NULL)) Dispensary, COUNT(IF(Level='Sub County Hospital',1,NULL)) 'Sub County Hospital'", FALSE);
+        $this->db->select("Level name,COUNT(*)y, UPPER(Level) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->where('Level !=', 'Dice');
+        $this->db->where('Level !=', 'Other (specify)');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_facility_details');
-        $results = $query->result_array();
+        return $this->get_facilities_level_distribution_drilldown(array('main' => $query->result_array()), $filters);
+    }
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($facility_level_distribution_data as $index => $facility_level_distribution) {
-                    if ($facility_level_distribution['name'] == 'County Hospital') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['County Hospital']);
-                    } else if ($facility_level_distribution['name'] == 'Health Center') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['Health Center']);
-                    } else if ($facility_level_distribution['name'] == 'County Referral Hospital') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['County Referral Hospital']);
-                    } else if ($facility_level_distribution['name'] == 'National Referral Hospital') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['National Referral Hospital']);
-                    } else if ($facility_level_distribution['name'] == 'DICE') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['DICE']);
-                    } else if ($facility_level_distribution['name'] == 'Other (specify)') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['Other (specify)']);
-                    } else if ($facility_level_distribution['name'] == 'Dispensary') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['Dispensary']);
-                    } else if ($facility_level_distribution['name'] == 'Sub County Hospital') {
-                        array_push($facility_level_distribution_data[$index]['data'], $result['Sub County Hospital']);
+    public function get_facilities_level_distribution_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Level) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_facility_details');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $facility_level_distribution_data, 'columns' => $columns);
+        $drilldown_data = $this->get_facilities_level_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_facilities_level_distribution_drilldown_level2($drilldown_data, $filters) {
+        $this->db->select("UPPER(County) category, Sub_County name,COUNT(*)y", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_facility_details');
+        $population_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                foreach ($main_data['data'] as $item) {
+                    $filter_value = $item['name'];
+                    $filter_name = $item['drilldown'];
+
+                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                    foreach ($population_data as $population) {
+                        if ($filter_name == $population['category']) {
+                            unset($population['category']);
+                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                        }
+                    }
+                    $counter += 1;
+                }
+            }
+        }
+        return $drilldown_data;
     }
 
     /*     * public function get_prep_focal_person($filters) {
@@ -193,46 +276,6 @@ class Service_delivery_model extends CI_Model {
         return array('main' => $results, 'columns' => $columns);
     }
 
-    public function get_facility_level_prep_availability_numbers($filters) {
-        $columns = array();
-        $this->db->select("Level level,COUNT(*) Numbers", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('level');
-        $this->db->order_by('Numbers', 'DESC');
-        $query = $this->db->get('tbl_facility_details');
-        $results = $query->result_array();
-
-        foreach ($results as $result) {
-            array_push($columns, $result['level']);
-        }
-
-        return array('main' => $results, 'columns' => $columns);
-    }
-
-    public function get_current_service_delivery_points_distribution_numbers($filters) {
-        $columns = array();
-        $this->db->select("Service_Delivery_Point current_sdp_by_facilities,COUNT(*) Numbers", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('current_sdp_by_facilities');
-        $this->db->order_by('Numbers', 'DESC');
-        $query = $this->db->get('tbl_service_delivery_point');
-        $results = $query->result_array();
-
-        foreach ($results as $result) {
-            array_push($columns, $result['current_sdp_by_facilities']);
-        }
-
-        return array('main' => $results, 'columns' => $columns);
-    }
-
     public function get_current_service_delivery_points_distribution($filters) {
         $columns = array();
         $service_delivery_distribution_data = array(
@@ -284,6 +327,46 @@ class Service_delivery_model extends CI_Model {
             }
         }
         return array('main' => $service_delivery_distribution_data, 'columns' => $columns);
+    }
+
+    public function get_facility_level_prep_availability_numbers($filters) {
+        $columns = array();
+        $this->db->select("Level level,COUNT(*) Numbers", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('level');
+        $this->db->order_by('Numbers', 'DESC');
+        $query = $this->db->get('tbl_facility_details');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['level']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
+    }
+
+    public function get_current_service_delivery_points_distribution_numbers($filters) {
+        $columns = array();
+        $this->db->select("Service_Delivery_Point current_sdp_by_facilities,COUNT(*) Numbers", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('current_sdp_by_facilities');
+        $this->db->order_by('Numbers', 'DESC');
+        $query = $this->db->get('tbl_service_delivery_point');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['current_sdp_by_facilities']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
     }
 
     public function get_prep_preffered_sdp_numbers($filters) {
