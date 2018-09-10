@@ -41,7 +41,7 @@
                     }
                 }
             },
-            colors: ['#f7a35c'],
+            colors: ['#008080'],
 
             title: {
                 text: '<?php echo $chart_title; ?>'

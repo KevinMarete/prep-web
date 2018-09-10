@@ -24,7 +24,7 @@
             <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>PrEP Focal Person in Facilities by County</strong>
+                        <strong>PrEP Focal Person in Facilities</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#prep_focal_person_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
