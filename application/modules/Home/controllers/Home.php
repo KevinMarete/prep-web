@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends MX_Controller {
 
     public function index() {
-        $data['page_title'] = 'prep | Home';
+        $data['page_title'] = 'PrEP | Home';
         $this->load->view('template/template_view', $data);
     }
 

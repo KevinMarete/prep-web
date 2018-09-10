@@ -8,23 +8,21 @@
             <div class="col-md-4 col-sm-4">
                 <h3>Contact Info</h3>
                 <div class="space"></div>
-                <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>321 Awesome Street<br> New York, NY 17022</p>
+                <p><i class="fa fa-home fa-fw pull-left fa-2x"></i>National AIDs &amp; STI Control Programme<br>  Afya Annex, Kenyatta National Hospital</p>
                 <div class="space"></div>
-                <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i>info@companyname.com</p>
+                <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>P.O. Box 19361-00202 Nairobi, Kenya</p>
                 <div class="space"></div>
-                <p><i class="fa fa-phone fa-fw pull-left fa-2x"></i>+1 800 123 1234</p>
+                <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i>ulizanascop@gmail.com</p>
+                <div class="space"></div>
+                <p><i class="fa fa-phone fa-fw pull-left fa-2x"></i>(+254)726460000</p>
             </div>
             <div class="col-md-8 col-sm-8 marb20">
                 <div class="contact-info">
-                    <h3 class="cnt-ttl">Having Any Query! Or Book an appointment</h3>
+                    <h3 class="cnt-ttl">Having Any Query!</h3>
                     <div class="space"></div>
                     <div id="sendmessage">Your message has been sent. Thank you!</div>
                     <div id="errormessage"></div>
                     <form action="" method="post" role="form" class="contactForm">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control br-radius-zero" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                            <div class="validation"></div>
-                        </div>
                         <div class="form-group">
                             <input type="email" class="form-control br-radius-zero" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                             <div class="validation"></div>
