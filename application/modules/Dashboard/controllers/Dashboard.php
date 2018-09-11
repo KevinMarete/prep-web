@@ -119,9 +119,7 @@ class Dashboard extends BaseController {
             $main_data = $this->Laboratory_service_model->get_hep_c_reagents($filters);
         } else if ($chartname == 'offsite_onsite_hep_c_testing_table') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing_numbers($filters);
-        } else if ($chartname == 'facilities_trained_on_prep_chart') {
-            $main_data = $this->Human_resource_model->get_facilities_trained_on_prep($filters);
-        } else if ($chartname == 'distibution_of_facilities_trained_personnel_chart') {
+        }else if ($chartname == 'distibution_of_facilities_trained_personnel_chart') {
             $main_data = $this->Human_resource_model->get_distibution_of_facilities_trained_personnel($filters);
         } else if ($chartname == 'health_care_workers_trained_on_prep_chart') {
             $main_data = $this->Human_resource_model->get_health_care_workers_trained_on_prep($filters);

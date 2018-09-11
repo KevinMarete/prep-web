@@ -4,7 +4,7 @@
         <button class="btn btn-default btn-sm" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
         <br />
         <br />
-        <table id="table" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+        <table id="table" class="table table-condensed table-hover table-bordered table-responsive" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>First Name</th>

@@ -1,20 +1,7 @@
 <div role="tabpanel" class="tab-pane" id="human_resource">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
-                        <strong>Proportion of Facilities with Personnel Trained on PrEP</strong>
-                    </div>
-                    <div class="chart-stage">
-                        <div id="facilities_trained_on_prep_chart"></div>
-                    </div>
-                    <div class="chart-notes">
-                        <span class="facilities_trained_on_prep_chart_heading heading"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Trained Personnel in Facilities by County</strong>

@@ -9,56 +9,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Human_resource_model extends CI_Model {
 
-    public function get_facilities_trained_on_prep($filters) {
-        $columns = array();
-        $this->db->select("trained_on_prep name,COUNT(*)y", FALSE);
+    public function get_distibution_of_facilities_trained_personnel($filters) {
+        $this->db->select("trained_on_prep name,Count(*)y, UPPER(trained_on_prep) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
         $this->db->group_by('name');
-        $this->db->limit(50);
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_trained_personnel');
-        $results = $query->result_array();
-
-        foreach ($results as $result) {
-            array_push($columns, $result['name']);
-        }
-
-        return array('main' => $results, 'columns' => $columns);
+        return $this->get_distibution_of_facilities_trained_personnel_drilldown(array('main' => $query->result_array()), $filters);
     }
 
-    public function get_distibution_of_facilities_trained_personnel($filters) {
-        $columns = array();
-        $trained_personnel_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(trained_on_prep = 'YES', 1, NULL)) YES, COUNT(IF(trained_on_prep = 'NO', 1, NULL)) NO", FALSE);
+    public function get_distibution_of_facilities_trained_personnel_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(trained_on_prep) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_trained_personnel');
-        $results = $query->result_array();
+        $sub_data = $query->result_array();
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($trained_personnel_data as $index => $trained_personnel) {
-                    if ($trained_personnel['name'] == 'YES') {
-                        array_push($trained_personnel_data[$index]['data'], $result['YES']);
-                    } else if ($trained_personnel['name'] == 'NO') {
-                        array_push($trained_personnel_data[$index]['data'], $result['NO']);
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $trained_personnel_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_health_care_workers_trained_on_prep($filters) {
@@ -118,6 +112,42 @@ class Human_resource_model extends CI_Model {
             array_push($response, array('hcw_trained_on_prep' => $column, 'Numbers' => $result[$column]));
         }
         return array('main' => $response, 'columns' => $columns);
+    }
+
+    public function get_distribution_drilldown_level2($drilldown_data, $filters) {
+        $this->db->select("UPPER(County) category, Sub_County name,COUNT(*)y", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_trained_personnel');
+        $population_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                foreach ($main_data['data'] as $item) {
+                    $filter_value = $item['name'];
+                    $filter_name = $item['drilldown'];
+
+                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                    foreach ($population_data as $population) {
+                        if ($filter_name == $population['category']) {
+                            unset($population['category']);
+                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                        }
+                    }
+                    $counter += 1;
+                }
+            }
+        }
+        return $drilldown_data;
     }
 
 }
