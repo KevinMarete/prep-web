@@ -4,6 +4,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/home/css/font-awesome.min.css'; ?>">
 <!--bootstrap-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/home/lib/bootstrap/dist/css/bootstrap.min.css'; ?>">
+
+<!--booststrap 4 -->
+<!--link rel="stylesheet" type="text/css" href="<?php //echo base_url() . 'public/home/lib/bootstrap4/dist/css/bootstrap.min.css'; ?>"-->
+
 <!--bootstrap-toggle-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/home/lib/bootstrap-toggle/css/bootstrap-toggle.min.css'; ?>">
 <!--bootstrap-multiselect-->
@@ -23,4 +27,5 @@
 <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/dashboard/css/dashboard.css'; ?>">-->
 <!--jquery-->
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/jquery/dist/jquery.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/bootstrap/js/carousel.js'; ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'public/home/css/style.css'; ?>">
