@@ -58,7 +58,20 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Hep-B Reagents in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="hep_b_reagents_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="hep_b_reagents_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Access to Hep-B Testing in Facilities</strong>
@@ -71,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Offsite vs Onsite Hep-B Testing</strong>

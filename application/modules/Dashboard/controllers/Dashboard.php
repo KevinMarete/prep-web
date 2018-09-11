@@ -51,9 +51,7 @@ class Dashboard extends BaseController {
     public function get_data($chartname, $filters) {
         if ($chartname == 'facilities_level_distribution_chart') {
             $main_data = $this->Service_delivery_model->get_facilities_level_distribution($filters);
-        } else if ($chartname == 'facility_level_prep_availability_table') {
-            $main_data = $this->Service_delivery_model->get_facility_level_prep_availability_numbers($filters);
-        } else if ($chartname == 'prep_focal_person_chart') {
+        }else if ($chartname == 'prep_focal_person_chart') {
             $main_data = $this->Service_delivery_model->get_prep_focal_person($filters);
         } else if ($chartname == 'hiv_services_offered_chart') {
             $main_data = $this->Service_delivery_model->get_hiv_services_offered($filters);
@@ -87,24 +85,26 @@ class Dashboard extends BaseController {
             $main_data = $this->Laboratory_service_model->get_creatinine_testing_equipment($filters);
         } else if ($chartname == 'offsite_onsite_creatinine_testing_chart') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_creatinine_testing($filters);
-        } else if ($chartname == 'access_creatinine_testing_in_relation_to_equipment_availability_chart') {
-            $main_data = $this->Laboratory_service_model->get_access_creatinine_testing_in_relation_to_equipment_availability($filters);
+        } else if ($chartname == 'creatinine_reagents_chart') {
+            $main_data = $this->Laboratory_service_model->get_creatinine_reagents($filters);
         } else if ($chartname == 'access_creatinine_testing_in_relation_to_equipment_availability_table') {
             $main_data = $this->Laboratory_service_model->get_access_creatinine_testing_in_relation_to_equipment_availability_numbers($filters);
         } else if ($chartname == 'creatinine_reagents_availability_in_relation_to_equipment_table') {
             $main_data = $this->Laboratory_service_model->get_creatinine_availability_reagents_in_relation_to_equipment_numbers($filters);
         } else if ($chartname == 'creatinine_reagents_unavailability_in_relation_to_equipment_table') {
             $main_data = $this->Laboratory_service_model->get_creatinine_unavailability_reagents_in_relation_to_equipment_numbers($filters);
-        } else if ($chartname == 'onsite_offsite_access_to_creatinine_testing_table') {
-            $main_data = $this->Laboratory_service_model->get_onsite_offsite_access_to_creatinine_testing_numbers($filters);
-        } else if ($chartname == 'access_hep_b_testing_facilities_table') {
-            $main_data = $this->Laboratory_service_model->get_access_hep_b_testing_numbers($filters);
         } else if ($chartname == 'access_hep_b_testing_facilities_chart') {
             $main_data = $this->Laboratory_service_model->get_access_hep_b_testing($filters);
         } else if ($chartname == 'hep_b_testing_equipment_availability_chart') {
             $main_data = $this->Laboratory_service_model->get_hep_b_testing_equipment($filters);
         } else if ($chartname == 'offsite_onsite_hep_b_testing_chart') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_b_testing($filters);
+        } else if ($chartname == 'hep_b_reagents_chart') {
+            $main_data = $this->Laboratory_service_model->get_hep_b_reagents($filters);
+        } else if ($chartname == 'access_hep_b_testing_facilities_table') {
+            $main_data = $this->Laboratory_service_model->get_access_hep_b_testing_numbers($filters);
+        } else if ($chartname == 'access_hep_b_testing_facilities_table') {
+            $main_data = $this->Laboratory_service_model->get_access_hep_b_testing_numbers($filters);
         } else if ($chartname == 'offsite_onsite_hep_b_testing_table') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_b_testing_numbers($filters);
         } else if ($chartname == 'access_hep_c_testing_facilities_table') {
@@ -115,6 +115,8 @@ class Dashboard extends BaseController {
             $main_data = $this->Laboratory_service_model->get_hep_c_testing_equipment($filters);
         } else if ($chartname == 'offsite_onsite_hep_c_testing_chart') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing($filters);
+        } else if ($chartname == 'hep_c_reagents_chart') {
+            $main_data = $this->Laboratory_service_model->get_hep_c_reagents($filters);
         } else if ($chartname == 'offsite_onsite_hep_c_testing_table') {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing_numbers($filters);
         } else if ($chartname == 'facilities_trained_on_prep_chart') {

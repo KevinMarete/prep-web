@@ -38,15 +38,6 @@ $config['current_service_delivery_points_distribution_chart_has_drilldown'] = TR
 $config['current_service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
 $config['current_service_delivery_points_distribution_chart_filters_default'] = array();
 
-//facility_level_prep_availability_table 
-$config['facility_level_prep_availability_table_chartview'] = 'charts/table_view';
-$config['facility_level_prep_availability_table_title'] = 'PrEP Availability by Facilties Level';
-$config['facility_level_prep_availability_table_yaxis_title'] = 'Percent 100';
-$config['facility_level_prep_availability_table_source'] = 'Source: www.prep.nascop.org';
-$config['facility_level_prep_availability_table_has_drilldown'] = FALSE;
-$config['facility_level_prep_availability_table_filters'] = array('Sub_County', 'County');
-$config['facility_level_prep_availability_table_filters_default'] = array();
-
 //current_service_delivery_points_distribution_table 
 $config['current_service_delivery_points_distribution_table_chartview'] = 'charts/table_view';
 $config['current_service_delivery_points_distribution_table_title'] = 'Distribution of Current Service Delivery Points (By County)';
@@ -119,33 +110,6 @@ $config['partner_facility_table_has_drilldown'] = TRUE;
 $config['partner_facility_table_filters'] = array('Sub_County', 'County');
 $config['partner_facility_table_filters_default'] = array();
 
-//overall_access_baseline_laboratory_tests_chart 
-$config['overall_access_baseline_laboratory_tests_chart_chartview'] = 'charts/column_percent_view';
-$config['overall_access_baseline_laboratory_tests_chart_title'] = 'Overall Access to Baseline Laboratory Tests';
-$config['overall_access_baseline_laboratory_tests_chart_yaxis_title'] = 'Percent 100';
-$config['overall_access_baseline_laboratory_tests_chart_source'] = 'Source: www.prep.nascop.org';
-$config['overall_access_baseline_laboratory_tests_chart_has_drilldown'] = FALSE;
-$config['overall_access_baseline_laboratory_tests_chart_filters'] = array('Sub_County', 'County');
-$config['overall_access_baseline_laboratory_tests_chart_filters_default'] = array();
-
-//overall_laboratory_testing_equipment_availability_chart 
-$config['overall_laboratory_testing_equipment_availability_chart_chartview'] = 'charts/column_percent_view';
-$config['overall_laboratory_testing_equipment_availability_chart_title'] = 'Overall Availability of Laboratory Testing Equipment';
-$config['overall_laboratory_testing_equipment_availability_chart_yaxis_title'] = 'Percent 100';
-$config['overall_laboratory_testing_equipment_availability_chart_source'] = 'Source: www.prep.nascop.org';
-$config['overall_laboratory_testing_equipment_availability_chart_has_drilldown'] = FALSE;
-$config['overall_laboratory_testing_equipment_availability_chart_filters'] = array('Sub_County', 'County');
-$config['overall_laboratory_testing_equipment_availability_chart_filters_default'] = array();
-
-//overall_access_on_offsite_laboratory_testing_chart 
-$config['overall_access_on_offsite_laboratory_testing_chart_chartview'] = 'charts/column_percent_view';
-$config['overall_access_on_offsite_laboratory_testing_chart_title'] = 'Overall Access to On/Offsite Laboratory Testing';
-$config['overall_access_on_offsite_laboratory_testing_chart_yaxis_title'] = 'Percent 100';
-$config['overall_access_on_offsite_laboratory_testing_chart_source'] = 'Source: www.prep.nascop.org';
-$config['overall_access_on_offsite_laboratory_testing_chart_has_drilldown'] = FALSE;
-$config['overall_access_on_offsite_laboratory_testing_chart_filters'] = array('Sub_County', 'County');
-$config['overall_access_on_offsite_laboratory_testing_chart_filters_default'] = array();
-
 //access_creatinine_testing_facilities_chart 
 $config['access_creatinine_testing_facilities_chart_chartview'] = 'charts/column_drilldown_view';
 $config['access_creatinine_testing_facilities_chart_title'] = 'Access to Creatinine Testing in Facilities';
@@ -173,14 +137,14 @@ $config['offsite_onsite_creatinine_testing_chart_has_drilldown'] = TRUE;
 $config['offsite_onsite_creatinine_testing_chart_filters'] = array('Sub_County', 'County');
 $config['offsite_onsite_creatinine_testing_chart_filters_default'] = array();
 
-//access_creatinine_testing_in_relation_to_equipment_availability_chart 
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_title'] = 'Access to Creatinine Testing in Relation to Equipment Availability (By County)';
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_yaxis_title'] = 'Percent of 100';
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_source'] = 'Source: www.prep.nascop.org';
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_has_drilldown'] = FALSE;
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_filters'] = array('Sub_County', 'County');
-$config['access_creatinine_testing_in_relation_to_equipment_availability_chart_filters_default'] = array();
+//creatinine_reagents_chart 
+$config['creatinine_reagents_chart_chartview'] = 'charts/column_drilldown_view';
+$config['creatinine_reagents_chart_title'] = 'Creatinine Reagents in Facilities';
+$config['creatinine_reagents_chart_yaxis_title'] = 'Facility Count';
+$config['creatinine_reagents_chart_source'] = 'Source: www.prep.nascop.org';
+$config['creatinine_reagents_chart_has_drilldown'] = TRUE;
+$config['creatinine_reagents_chart_filters'] = array('Sub_County', 'County');
+$config['creatinine_reagents_chart_filters_default'] = array();
 
 //access_creatinine_testing_in_relation_to_equipment_availability_table 
 $config['access_creatinine_testing_in_relation_to_equipment_availability_table_chartview'] = 'charts/table_view';
@@ -209,15 +173,6 @@ $config['creatinine_reagents_unavailability_in_relation_to_equipment_table_has_d
 $config['creatinine_reagents_unavailability_in_relation_to_equipment_table_filters'] = array('Sub_County', 'County');
 $config['creatinine_reagents_unavailability_in_relation_to_equipment_table_filters_default'] = array();
 
-//onsite_offsite_access_to_creatinine_testing_table 
-$config['onsite_offsite_access_to_creatinine_testing_table_chartview'] = 'charts/table_view';
-$config['onsite_offsite_access_to_creatinine_testing_table_title'] = 'Onsite and Offsite Access to Creatinine Testing';
-$config['onsite_offsite_access_to_creatinine_testing_table_yaxis_title'] = 'Percent of 100';
-$config['onsite_offsite_access_to_creatinine_testing_table_source'] = 'Source: www.prep.nascop.org';
-$config['onsite_offsite_access_to_creatinine_testing_table_has_drilldown'] = FALSE;
-$config['onsite_offsite_access_to_creatinine_testing_table_filters'] = array('Sub_County', 'County');
-$config['onsite_offsite_access_to_creatinine_testing_table_filters_default'] = array();
-
 //access_hep_b_testing_facilities_chart 
 $config['access_hep_b_testing_facilities_chart_chartview'] = 'charts/column_drilldown_view';
 $config['access_hep_b_testing_facilities_chart_title'] = 'Access to Hep-B Testing in Facilities';
@@ -244,6 +199,15 @@ $config['offsite_onsite_hep_b_testing_chart_source'] = 'Source: www.prep.nascop.
 $config['offsite_onsite_hep_b_testing_chart_has_drilldown'] = TRUE;
 $config['offsite_onsite_hep_b_testing_chart_filters'] = array('Sub_County', 'County');
 $config['offsite_onsite_hep_b_testing_chart_filters_default'] = array();
+
+//hep_b_reagents_chart 
+$config['hep_b_reagents_chart_chartview'] = 'charts/column_drilldown_view';
+$config['hep_b_reagents_chart_title'] = 'Hep-B Reagents in Facilities';
+$config['hep_b_reagents_chart_yaxis_title'] = 'Facility Count';
+$config['hep_b_reagents_chart_source'] = 'Source: www.prep.nascop.org';
+$config['hep_b_reagents_chart_has_drilldown'] = TRUE;
+$config['hep_b_reagents_chart_filters'] = array('Sub_County', 'County');
+$config['hep_b_reagents_chart_filters_default'] = array();
 
 //access_hep_b_testing_facilities_table 
 $config['access_hep_b_testing_facilities_table_chartview'] = 'charts/table_view';
@@ -289,6 +253,15 @@ $config['offsite_onsite_hep_c_testing_chart_source'] = 'Source: www.prep.nascop.
 $config['offsite_onsite_hep_c_testing_chart_has_drilldown'] = TRUE;
 $config['offsite_onsite_hep_c_testing_chart_filters'] = array('Sub_County', 'County');
 $config['offsite_onsite_hep_c_testing_chart_filters_default'] = array();
+
+//hep_c_reagents_chart 
+$config['hep_c_reagents_chart_chartview'] = 'charts/column_drilldown_view';
+$config['hep_c_reagents_chart_title'] = 'Hep-C Reagents in Facilities';
+$config['hep_c_reagents_chart_yaxis_title'] = 'Facility Count';
+$config['hep_c_reagents_chart_source'] = 'Source: www.prep.nascop.org';
+$config['hep_c_reagents_chart_has_drilldown'] = TRUE;
+$config['hep_c_reagents_chart_filters'] = array('Sub_County', 'County');
+$config['hep_c_reagents_chart_filters_default'] = array();
 
 //access_hep_c_testing_facilities_table 
 $config['access_hep_c_testing_facilities_table_chartview'] = 'charts/table_view';
