@@ -36,7 +36,24 @@
                             <hr class="botm-line">
                         </div>
                 </div>
-                <div class="col-md-12">
+            </div>
+            <div>
+                <div class="row">
+                  <ul class="nav nav-tabs" id="status_tabs" role="tablist" >
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#summary" id="summary-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="true" >Summary</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#facilities" id="facilities-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false" >Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#partners" id="partners-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false" >Partners</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tab-content" id="status_tabsContent">
+                <div class="tab-pane fade in active col-md-12" id="summary" role="tabpanel" aria-labelledby="summary-tab" >
                     <div class="col-sm-6 col-md-4">
                         <div class="">
                           <div class="text-center">
@@ -64,9 +81,10 @@
                           </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="col-md-12">
+
+
+                <div class="tab-pane fade col-md-12" id="facilities" role="tabpanel" aria-labelledby="facilities">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             Facility Distribution by County<span class="label label-warning">Drilldown</span>
@@ -78,8 +96,29 @@
                             <span class="facility_count_distribution_chart_heading heading"></span>
                         </div>
                     </div>
+                    <div id="container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
                 </div>
-                <div id="container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
+
+
+
+                <div class="tab-pane fade col-md-12" id="partners" role="tabpanel" aria-labelledby="partners">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Partner Facility Numbers<span class="label label-warning">Drilldown</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <div class="chart-stage">
+                                <div id="partner_facility_table"></div>
+                            </div>
+                            <div class="chart-notes">
+                                <span class="partner_facility_table_heading heading"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
+                </div>
+
+                </div>
             </div>
         </div>
         <script>
@@ -220,7 +259,7 @@
     </section>
     <!--about-->
 
-    <section id="resources" class="section-padding">
+    <section id="gallery" class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-12">
@@ -230,74 +269,94 @@
                     </div>
                 </div>
           </div>
+          <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="galleryModalLabel">Gallery Title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
 
-          <div id="carousel-example-generic" class="col-md-12 carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
+            <div id="carousel-example-generic" class="col-md-12 carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              </ol>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
-                <div class="carousel-caption">
-                  <h5>First</h5>
-                  <p>First caption</p>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
+                  <div class="carousel-caption">
+                    <h5>First</h5>
+                    <p>First caption</p>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Second Title</h5>
+                    <p>Second Caption</p>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Third Title</h5>
+                    <p>Third Caption</p>
+                  </div>
                 </div>
               </div>
-              <div class="item">
-                <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
-                <div class="carousel-caption">
-                  <h5>Second Title</h5>
-                  <p>Second Caption</p>
-                </div>
-              </div>
-              <div class="item">
-                <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
-                <div class="carousel-caption">
-                  <h5>Third Title</h5>
-                  <p>Third Caption</p>
-                </div>
-              </div>
+
+              <!-- Controls -->
+              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          </div>
+          </div>
+          </div>
+
           &nbsp;
+          <div class="container">
           <div class="row">
             <hr>
             <div class="col-md-4">
               <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="..." class="img-thumbnail">
               <h5>Gallery Title</h5>
-              <p><a href="#">View</a></p>
+              <p><a href="#" data-toggle="modal" data-target="#galleryModal">View</a></p>
             </div>
             <div class="col-md-4">
               <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="..." class="img-thumbnail">
               <h5>Gallery Title</h5>
-              <p><a href="#">View</a></p>
+              <p><a href="#" data-toggle="modal" data-target="#galleryModal"  >View</a></p>
             </div>
             <div class="col-md-4">
               <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="..." class="img-thumbnail">
               <h5>Gallery Title</h5>
-              <p><a href="#">View</a></p>
+              <p><a href="#" data-toggle="modal" data-target="#galleryModal" >View</a></p>
             </div>
 
           </div>
         </div>
+        </div>
     </section>
 
-    <section id="national_policies_guidelines" class="section-padding">
+    <section id="policies" class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-12">
@@ -390,26 +449,6 @@
                   </div>
                 </div>
             </div>
-            <div class="row">
-              <div class="col-md-9 col-sm-8 col-xs-12">
-                  <div style="visibility: visible;" class="col-sm-9 more-features-box">
-                      <div class="more-features-box-text">
-                          <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
-                          <div class="more-features-box-text-description">
-                              <h3>Question One</h3>
-                              <p>Stub Answer One</p>
-                          </div>
-                      </div>
-                      <div class="more-features-box-text">
-                          <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
-                          <div class="more-features-box-text-description">
-                              <h3>Question Two</h3>
-                              <p>Stub Answer Two</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
         </div>
     </section>
     <!--/ about-->
@@ -422,147 +461,15 @@
     <?php $this->load->view('template/script_view'); ?>
 
     <script>
-        var chartURL = 'Home/get_chart'
-        var countyURL = 'API/County'
-        var filters = {}
-        $(document).ready(function () {
-            var charts = ['facility_count_distribution_chart']
 
-            //Add filter to chart then load chart
-            setChartFilter('')
+    $('#status_tabs a[href="#summary"]').tab('show')
 
-            //Load Charts
-            $.each(charts, function (key, chartName) {
-                LoadChart('#' + chartName, chartURL, chartName, {})
-            });
+    $('#status_tabs a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
 
-            //Filter click Event
-            $(".filter_btn").on("click", FilterBtnHandler);
-
-            //Clear click Event
-            $(".clear_btn").on("click", ClearBtnHandler);
-        });
-
-        function setChartFilter(chartName, filterURL) {
-            $.ajax({
-                url: filterURL,
-                datatype: 'JSON',
-                success: function (data) {
-                    filterID = '#' + chartName + '_filter'
-                    //Create multiselect box
-                    CreateSelectBox(filterID, '100%', 10)
-                    //Add data to selectbox
-                    $(filterID + " option").remove();
-                    $.each(data, function (i, v) {
-                        $(filterID).append($("<option value='" + v.name + "'>" + v.name.toUpperCase() + "</option>"));
-                    });
-                    $(filterID).multiselect('rebuild');
-                    //$(filterID).data('filter_type', 'drug');
-                },
-                complete: function () {
-                    LoadChart('#' + chartName, chartURL, chartName, {})
-                }
-            });
-        }
-
-        function CreateSelectBox(elementID, width, limit) {
-            $(elementID).val('').multiselect({
-                enableCaseInsensitiveFiltering: true,
-                enableFiltering: true,
-                disableIfEmpty: true,
-                maxHeight: 300,
-                buttonWidth: width,
-                nonSelectedText: 'None selected',
-                includeSelectAllOption: false,
-                selectAll: false,
-                onChange: function (option, checked) {
-                    //Get selected options.
-                    var selectedOptions = $(elementID + ' option:selected');
-                    if (selectedOptions.length >= limit) {
-                        //Disable all other checkboxes.
-                        var nonSelectedOptions = $(elementID + ' option').filter(function () {
-                            return !$(this).is(':selected');
-                        });
-                        nonSelectedOptions.each(function () {
-                            var input = $('input[value="' + $(this).val() + '"]');
-                            input.prop('disabled', true);
-                            input.parent('li').addClass('disabled');
-                        });
-                    } else {
-                        //Enable all checkboxes.
-                        $(elementID + ' option').each(function () {
-                            var input = $('input[value="' + $(this).val() + '"]');
-                            input.prop('disabled', false);
-                            input.parent('li').addClass('disabled');
-                        });
-                    }
-                }
-            });
-        }
-
-        function LoadSpinner(divID) {
-            var spinner = new Spinner().spin()
-            $(divID).empty('')
-            $(divID).height('auto')
-            $(divID).append(spinner.el)
-        }
-
-        function LoadChart(divID, chartURL, chartName, selectedfilters) {
-            //Load Spinner
-            LoadSpinner(divID)
-            //Load Chart*
-            $(divID).load(chartURL, {'name': chartName, 'selectedfilters': selectedfilters}, function () {
-                //Pre-select filters for charts
-                $.each($(divID + '_filters').data('filters'), function (key, data) {
-                    if ($.inArray(key, ['county', 'subcounty']) == -1) {
-                        $(divID + "_filter").val(data).multiselect('refresh');
-                        //Output filters
-                        var filtermsg = '<b><u>' + key.toUpperCase() + ':</u></b><br/>'
-                        if ($.isArray(data)) {
-                            filtermsg += data.join('<br/>')
-                        } else {
-                            filtermsg += data
-                        }
-                        $("." + chartName + "_heading").html(filtermsg)
-                    }
-                });
-            });
-        }
-
-        function FilterBtnHandler(e) {
-            var filterName = String($(e.target).attr("id")).replace('_btn', '')
-            var filterID = "#" + filterName
-            var filterType = $(filterID).data('filter_type')
-            var chartName = filterName.replace('_filter', '')
-            var chartID = "#" + chartName
-
-
-            if ($(filterID).val() != null) {
-                filters[filterType] = $(filterID).val()
-            }
-
-            LoadChart(chartID, chartURL, chartName, filters)
-
-            //Hide Modal
-            $(filterID + '_modal').modal('hide')
-        }
-
-        function ClearBtnHandler(e) {
-            var filterName = String($(e.target).attr("id")).replace('_clear_btn', '')
-            var filterID = "#" + filterName
-            var filterType = $(filterID).data('filter_type')
-
-            //Clear filterType
-            filters[filterType] = {}
-
-            //Filter multiple multiselect
-            $(filterID).multiselect('deselectAll', false);
-            $(filterID).multiselect('updateButtonText');
-            $(filterID).multiselect('refresh');
-
-            //Trigger filter event
-            $(filterID + '_btn').trigger('click');
-        }
     </script>
+
 </body>
 </html>

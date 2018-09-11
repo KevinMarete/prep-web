@@ -68,6 +68,13 @@ hr.botm-line {
     border: 0;
     margin: 20px 0 20px 0;
 }
+hr.botm-line-auto {
+    height: 3px;
+    width: 60px;
+    background: #ffb737;
+    border: 0;
+    margin: auto;
+}
 
 /***************************************
 banner
@@ -173,8 +180,9 @@ banner
     color: #fff;
 }
 .banner-text h1{
-    font-family: 'Candal', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 35px;
+    font-weight: 1000;
     text-transform: uppercase;
     padding-bottom:15px;
 }

@@ -40,13 +40,20 @@
         <div class="container">
             <div class="row">
                 <div class="banner-info">
-                    <div class="banner-text text-center">
-                        <h1 class="white"><u>Vision</u></h1>
-                        <p>Zero New Infections in Kenya</p>
-                        <h1 class="white"><u>Our Goal</u></h1>
-                        <p>Contribute to ending the AIDS epidemic by 2030 and achieving universal access to comprehensive and highly effective HIV prevention</p>
-                        <h1 class="white"><u>Mission</u></h1>
-                        <p>To provide sustainable access to safe, affordable and quality PrEP services in combination with other HIV prevention interventions</p>
+                    <div class="text-center banner-text">
+                        <p class="white">Vision</p>
+                        <span class="text-center"><hr class="botm-line-auto"></span>
+                        <h3 class="white">Zero New Infections in Kenya</h3>
+                        &nbsp;
+                        <p class="white">Our Goal</p>
+                        <span class="text-center"><hr class="botm-line-auto"></span>
+                        <h3 class="white">Contribute to ending the AIDS epidemic by 2030 and achieving universal access to comprehensive and highly effective HIV prevention</h3>
+                        &nbsp;
+                        &nbsp;
+
+                        <p class="white">Mission</p>
+                        <span class="text-center"><hr class="botm-line-auto"></span>
+                        <h3 class="white">To provide sustainable access to safe, affordable and quality PrEP services in combination with other HIV prevention interventions</h3>
                         <a href="#faq" class="btn btn-appoint">What is PrEP?</a>
                     </div>
                     <div class="overlay-detail text-center">
