@@ -44,7 +44,9 @@
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Distribution of Hiv Services in Facilities Assessed Nationally</strong>
+                        <strong>Distribution of Hiv Services in Facilities
+                            <span class="label label-danger">Conflicting Id for PrEP, PEP,HTS,ART,PMTCT,KP SErvice,VMMC</span>
+                        </strong>
                     </div>
                     <div class="chart-stage">
                         <div id="hiv_services_offered_chart"></div>
