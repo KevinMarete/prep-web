@@ -18,8 +18,6 @@
             <?php $this->load->view('tabs/service_delivery_view'); ?>
             <!--partner_view-->
             <?php $this->load->view('tabs/partner_view'); ?>
-            <!--laboratory_summary_view-->
-            <?php $this->load->view('tabs/laboratory_summary_view'); ?>
             <!--laboratory_creatinine_view-->
             <?php $this->load->view('tabs/laboratory_creatinine_view'); ?>
             <!--laboratory_hep_b_view-->

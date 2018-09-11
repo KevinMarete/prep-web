@@ -78,114 +78,144 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $response, 'columns' => $columns);
     }
 
-    public function get_access_creatinine_testing_availability($filters) {
-        $columns = array();
-        $creatinine_testing_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(Creatinine_Testing='YES', 1, NULL)) YES, COUNT(IF(Creatinine_Testing = 'NO', 1, NULL)) NO", FALSE);
+    public function get_access_creatinine_testing($filters) {
+        $this->db->select("Creatinine_Testing name,COUNT(*)y, UPPER(Creatinine_Testing) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($creatinine_testing_data as $index => $creatinine_testing) {
-                    if ($creatinine_testing['name'] == 'YES') {
-                        array_push($creatinine_testing_data[$index]['data'], $result['YES']);
-                    } else if ($creatinine_testing['name'] == 'NO') {
-                        array_push($creatinine_testing_data[$index]['data'], $result['NO']);
-                    }
-                }
-            }
-        }
-        return array('main' => $creatinine_testing_data, 'columns' => $columns);
+        //print_r(json_encode($query->result_array()));
+        //die();
+        return $this->get_access_creatinine_testing_drilldown(array('main' => $query->result_array()), $filters);
     }
 
-    public function get_creatinine_testing_equipment_availability($filters) {
-        $columns = array();
-        $creatinine_testing_equipment_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(Creatinine_Equipment='YES', 1, NULL)) YES, COUNT(IF(Creatinine_Equipment = 'NO', 1, NULL)) NO", FALSE);
+    public function get_access_creatinine_testing_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Creatinine_Testing) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
+        $sub_data = $query->result_array();
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($creatinine_testing_equipment_data as $index => $creatinine_testing_equipment) {
-                    if ($creatinine_testing_equipment['name'] == 'YES') {
-                        array_push($creatinine_testing_equipment_data[$index]['data'], $result['YES']);
-                    } else if ($creatinine_testing_equipment['name'] == 'NO') {
-                        array_push($creatinine_testing_equipment_data[$index]['data'], $result['NO']);
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $creatinine_testing_equipment_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_creatinine_testing_equipment($filters) {
+        $this->db->select("Creatinine_Equipment name,COUNT(*)y, UPPER(Creatinine_Equipment) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        return $this->get_creatinine_testing_equipment_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_creatinine_testing_equipment_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Creatinine_Equipment) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_offsite_onsite_creatinine_testing($filters) {
-        $columns = array();
-        $offsite_onsite_data = array(
-            array('type' => 'column', 'name' => 'Off - Site', 'data' => array()),
-            array('type' => 'column', 'name' => 'On - Site', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`Creatinine On/Off Site`='On - Site', 1, NULL)) 'On - Site', COUNT(IF(`Creatinine On/Off Site` = 'Off - Site', 1, NULL)) 'Off - Site'", FALSE);
+        $this->db->select("REPLACE(REPLACE(`Creatinine On/Off Site`,'-','_'),' ','_') name,COUNT(*)y, UPPER(REPLACE(REPLACE(`Creatinine On/Off Site`,'-','_'),' ','_')) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
+        return $this->get_offsite_onsite_creatinine_testing_drilldown(array('main' => $query->result_array()), $filters);
+    }
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($offsite_onsite_data as $index => $offsite_onsite) {
-                    if ($offsite_onsite['name'] == 'On - Site') {
-                        array_push($offsite_onsite_data[$index]['data'], $result['On - Site']);
-                    } else if ($offsite_onsite['name'] == 'Off - Site') {
-                        array_push($offsite_onsite_data[$index]['data'], $result['Off - Site']);
+    public function get_offsite_onsite_creatinine_testing_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(REPLACE(REPLACE(`Creatinine On/Off Site`,'-','_'),' ','_')) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $offsite_onsite_data, 'columns' => $columns);
-    }
-
-    public function get_access_hep_b_testing_numbers($filters) {
-        $columns = array();
-        $this->db->select("UPPER(Hep_B_Testing) Hep_B_Testing, COUNT(*) Numbers", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('Hep_B_Testing');
-        $this->db->order_by('Hep_B_Testing', 'ASC');
-        $query = $this->db->get('tbl_laboratory_service');
-        return array('main' => $query->result_array(), 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_access_creatinine_testing_in_relation_to_equipment_availability($filters) {
@@ -276,100 +306,156 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
-    public function get_access_hep_b_testing_facilities($filters) {
-        $columns = array();
-        $hep_b_testing_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(Hep_B_Testing='YES', 1, NULL)) YES, COUNT(IF(Hep_B_Testing = 'NO', 1, NULL)) NO", FALSE);
+    public function get_access_hep_b_testing($filters) {
+        $this->db->select("Hep_B_Testing name,COUNT(*)y, UPPER(Hep_B_Testing) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($hep_b_testing_data as $index => $hep_b_testing) {
-                    if ($hep_b_testing['name'] == 'YES') {
-                        array_push($hep_b_testing_data[$index]['data'], $result['YES']);
-                    } else if ($hep_b_testing['name'] == 'NO') {
-                        array_push($hep_b_testing_data[$index]['data'], $result['NO']);
-                    }
-                }
-            }
-        }
-        return array('main' => $hep_b_testing_data, 'columns' => $columns);
+        return $this->get_access_hep_b_testing_drilldown(array('main' => $query->result_array()), $filters);
     }
 
-    public function get_hep_b_testing_equipment_availability($filters) {
-        $columns = array();
-        $hep_b_testing_equipment_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(Hep_B_Equipment='YES', 1, NULL)) YES, COUNT(IF(Hep_B_Equipment = 'NO', 1, NULL)) NO", FALSE);
+    public function get_access_hep_b_testing_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Hep_B_Testing) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
+        $sub_data = $query->result_array();
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($hep_b_testing_equipment_data as $index => $hep_b_testing_equipment) {
-                    if ($hep_b_testing_equipment['name'] == 'YES') {
-                        array_push($hep_b_testing_equipment_data[$index]['data'], $result['YES']);
-                    } else if ($hep_b_testing_equipment['name'] == 'NO') {
-                        array_push($hep_b_testing_equipment_data[$index]['data'], $result['NO']);
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $hep_b_testing_equipment_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_hep_b_testing_equipment($filters) {
+        $this->db->select("Hep_B_Equipment name,COUNT(*)y, UPPER(Hep_B_Equipment) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        return $this->get_hep_b_testing_equipment_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_hep_b_testing_equipment_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Hep_B_Equipment) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_offsite_onsite_hep_b_testing($filters) {
-        $columns = array();
-        $hep_b_offsite_onsite_data = array(
-            array('type' => 'column', 'name' => 'Off - Site', 'data' => array()),
-            array('type' => 'column', 'name' => 'On - Site', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`Hep-B On/Off Site`='On - Site', 1, NULL)) 'On - Site', COUNT(IF(`Hep-B On/Off Site` = 'Off - Site', 1, NULL)) 'Off - Site'", FALSE);
+        $this->db->select("REPLACE(REPLACE(`Hep-B On/Off Site`,'-','_'),' ','_') name,COUNT(*)y, UPPER(REPLACE(REPLACE(`Hep-B On/Off Site`,'-','_'),' ','_')) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
+        return $this->get_offsite_onsite_hep_b_testing_drilldown(array('main' => $query->result_array()), $filters);
+    }
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($hep_b_offsite_onsite_data as $index => $hep_b_offsite_onsite) {
-                    if ($hep_b_offsite_onsite['name'] == 'On - Site') {
-                        array_push($hep_b_offsite_onsite_data[$index]['data'], $result['On - Site']);
-                    } else if ($hep_b_offsite_onsite['name'] == 'Off - Site') {
-                        array_push($hep_b_offsite_onsite_data[$index]['data'], $result['Off - Site']);
+    public function get_offsite_onsite_hep_b_testing_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(REPLACE(REPLACE(`Hep-B On/Off Site`,'-','_'),' ','_')) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $hep_b_offsite_onsite_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_access_hep_b_testing_numbers($filters) {
+        $columns = array();
+        $this->db->select("UPPER(Hep_B_Testing) Hep_B_Testing, COUNT(*) Numbers", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('Hep_B_Testing');
+        $this->db->order_by('Hep_B_Testing', 'ASC');
+        $query = $this->db->get('tbl_laboratory_service');
+        return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
     public function get_offsite_onsite_hep_b_testing_numbers($filters) {
@@ -386,6 +472,144 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
+    public function get_access_hep_c_testing($filters) {
+        $this->db->select("Hep_C_Testing name,COUNT(*)y, UPPER(Hep_C_Testing) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        return $this->get_access_hep_c_testing_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_access_hep_c_testing_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Hep_C_Testing) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_hep_c_testing_equipment($filters) {
+        $this->db->select("Hep_C_Equipment name,COUNT(*)y, UPPER(Hep_C_Equipment) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        return $this->get_hep_c_testing_equipment_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_hep_c_testing_equipment_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(Hep_C_Equipment) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_offsite_onsite_hep_c_testing($filters) {
+        $this->db->select("REPLACE(REPLACE(`Hep-C On/Off Site`,'-','_'),' ','_') name,COUNT(*)y, UPPER(REPLACE(REPLACE(`Hep-C On/Off Site`,'-','_'),' ','_')) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        return $this->get_offsite_onsite_hep_c_testing_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_offsite_onsite_hep_c_testing_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(REPLACE(REPLACE(`Hep-C On/Off Site`,'-','_'),' ','_')) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_laboratory_service');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
     public function get_access_hep_c_testing_numbers($filters) {
         $columns = array();
         $this->db->select("UPPER(Hep_C_Testing) Hep_C_Testing, COUNT(*) Numbers", FALSE);
@@ -400,102 +624,6 @@ class Laboratory_service_model extends CI_Model {
         return array('main' => $query->result_array(), 'columns' => $columns);
     }
 
-    public function get_access_hep_c_testing_facilities($filters) {
-        $columns = array();
-        $hep_c_testing_equipment_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(Hep_C_Testing='YES', 1, NULL)) YES, COUNT(IF(Hep_C_Testing = 'NO', 1, NULL)) NO", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('county');
-        $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($hep_c_testing_equipment_data as $index => $hep_c_testing_equipment) {
-                    if ($hep_c_testing_equipment['name'] == 'YES') {
-                        array_push($hep_c_testing_equipment_data[$index]['data'], $result['YES']);
-                    } else if ($hep_c_testing_equipment['name'] == 'NO') {
-                        array_push($hep_c_testing_equipment_data[$index]['data'], $result['NO']);
-                    }
-                }
-            }
-        }
-        return array('main' => $hep_c_testing_equipment_data, 'columns' => $columns);
-    }
-
-    public function get_hep_c_testing_equipment_availability($filters) {
-        $columns = array();
-        $hep_c_testing_equipment_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(Hep_C_Equipment='YES', 1, NULL)) YES, COUNT(IF(Hep_C_Equipment = 'NO', 1, NULL)) NO", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('county');
-        $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($hep_c_testing_equipment_data as $index => $hep_c_testing_equipment) {
-                    if ($hep_c_testing_equipment['name'] == 'YES') {
-                        array_push($hep_c_testing_equipment_data[$index]['data'], $result['YES']);
-                    } else if ($hep_c_testing_equipment['name'] == 'NO') {
-                        array_push($hep_c_testing_equipment_data[$index]['data'], $result['NO']);
-                    }
-                }
-            }
-        }
-        return array('main' => $hep_c_testing_equipment_data, 'columns' => $columns);
-    }
-
-    public function get_offsite_onsite_hep_c_testing($filters) {
-        $columns = array();
-        $hep_c_offsite_onsite_data = array(
-            array('type' => 'column', 'name' => 'Off - Site', 'data' => array()),
-            array('type' => 'column', 'name' => 'On - Site', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`Hep-C On/Off Site`='On - Site', 1, NULL)) 'On - Site', COUNT(IF(`Hep-C On/Off Site` = 'Off - Site', 1, NULL)) 'Off - Site'", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('county');
-        $query = $this->db->get('tbl_laboratory_service');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($hep_c_offsite_onsite_data as $index => $hep_c_offsite_onsite) {
-                    if ($hep_c_offsite_onsite['name'] == 'On - Site') {
-                        array_push($hep_c_offsite_onsite_data[$index]['data'], $result['On - Site']);
-                    } else if ($hep_c_offsite_onsite['name'] == 'Off - Site') {
-                        array_push($hep_c_offsite_onsite_data[$index]['data'], $result['Off - Site']);
-                    }
-                }
-            }
-        }
-        return array('main' => $hep_c_offsite_onsite_data, 'columns' => $columns);
-    }
-
     public function get_offsite_onsite_hep_c_testing_numbers($filters) {
         $columns = array();
         $this->db->select("UPPER(`Hep-C On/Off Site`) hep_c_on_offsite, COUNT(*) Numbers", FALSE);
@@ -508,6 +636,42 @@ class Laboratory_service_model extends CI_Model {
         $this->db->order_by('hep_c_on_offsite', 'ASC');
         $query = $this->db->get('tbl_laboratory_service');
         return array('main' => $query->result_array(), 'columns' => $columns);
+    }
+
+    public function get_distribution_drilldown_level2($drilldown_data, $filters) {
+        $this->db->select("UPPER(County) category, Sub_County name,COUNT(*)y", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_laboratory_service');
+        $population_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                foreach ($main_data['data'] as $item) {
+                    $filter_value = $item['name'];
+                    $filter_name = $item['drilldown'];
+
+                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                    foreach ($population_data as $population) {
+                        if ($filter_name == $population['category']) {
+                            unset($population['category']);
+                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                        }
+                    }
+                    $counter += 1;
+                }
+            }
+        }
+        return $drilldown_data;
     }
 
 }

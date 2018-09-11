@@ -22,10 +22,10 @@ class Monitoring_evaluation_model extends CI_Model {
         $query = $this->db->get('tbl_monitoring_evaluation');
         $result = $query->row_array();
 
-        //Add columns
+        //columns
         $columns = array_keys($result);
 
-        //Add data to response
+        //data to response
         foreach ($columns as $column) {
             array_push($response, array('name' => $column, 'y' => $result[$column]));
         }
@@ -239,13 +239,13 @@ class Monitoring_evaluation_model extends CI_Model {
 
     public function get_clients_ever_started_on_prep_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(County) category, Sub_County name,SUM(clients_ever_initiated)y, UPPER(Sub_County) drilldown", FALSE);
+        $this->db->select("UPPER(County) category, Sub_County name,SUM(clients_ever_initiated)y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('drilldown');
+        $this->db->group_by('category');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_monitoring_evaluation');
         $sub_data = $query->result_array();
@@ -285,13 +285,13 @@ class Monitoring_evaluation_model extends CI_Model {
 
     public function get_clients_currently_on_prep_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(County) category, Sub_County name,SUM(current_clients)y, UPPER(Sub_County) drilldown", FALSE);
+        $this->db->select("UPPER(County) category, Sub_County name,SUM(current_clients)y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('drilldown');
+        $this->db->group_by('category');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_monitoring_evaluation');
         $sub_data = $query->result_array();

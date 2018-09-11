@@ -1,7 +1,7 @@
 <div role="tabpanel" class="tab-pane" id="laboratory_creatinine">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Access to Creatinine Testing in Facilities</strong>
@@ -19,9 +19,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Creatinine Testing Equipment Availability</strong>
@@ -39,9 +37,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Offsite vs Onsite Creatinine Testing</strong>
