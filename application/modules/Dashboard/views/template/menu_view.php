@@ -23,7 +23,6 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#laboratory_summary" aria-controls="laboratory_summary" role="tab" data-toggle="tab">Summary</a></li>
                         <li><a href="#laboratory_creatinine" aria-controls="laboratory_creatinine" role="tab" data-toggle="tab">Creatinine</a></li>
                         <li><a href="#laboratory_hep_b" aria-controls="laboratory_hep_b" role="tab" data-toggle="tab">Hep B</a></li>
                         <li><a href="#laboratory_hep_c" aria-controls="laboratory_hep_c" role="tab" data-toggle="tab">Hep C</a></li>

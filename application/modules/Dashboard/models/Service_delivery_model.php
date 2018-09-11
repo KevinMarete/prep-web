@@ -111,13 +111,13 @@ class Service_delivery_model extends CI_Model {
             }
         }
         $this->db->group_by('name');
-        $this->db->where('Hiv_Service_Provided !=','PrEP');
-        $this->db->where('Hiv_Service_Provided !=','PEP');
-        $this->db->where('Hiv_Service_Provided !=','HTS');
-        $this->db->where('Hiv_Service_Provided !=','ART');
-        $this->db->where('Hiv_Service_Provided !=','PMTCT');
-        $this->db->where('Hiv_Service_Provided !=','KP Service');
-        $this->db->where('Hiv_Service_Provided !=','VMMC');
+        $this->db->where('Hiv_Service_Provided !=', 'PrEP');
+        $this->db->where('Hiv_Service_Provided !=', 'PEP');
+        $this->db->where('Hiv_Service_Provided !=', 'HTS');
+        $this->db->where('Hiv_Service_Provided !=', 'ART');
+        $this->db->where('Hiv_Service_Provided !=', 'PMTCT');
+        $this->db->where('Hiv_Service_Provided !=', 'KP Service');
+        $this->db->where('Hiv_Service_Provided !=', 'VMMC');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_hiv_service_offered');
         return $this->get_hiv_services_offered_drilldown(array('main' => $query->result_array()), $filters);
@@ -206,26 +206,6 @@ class Service_delivery_model extends CI_Model {
         }
         $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
         return array_merge($main_data, $drilldown_data);
-    }
-
-    public function get_facility_level_prep_availability_numbers($filters) {
-        $columns = array();
-        $this->db->select("Level level,COUNT(*) Numbers", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('level');
-        $this->db->order_by('Numbers', 'DESC');
-        $query = $this->db->get('tbl_facility_details');
-        $results = $query->result_array();
-
-        foreach ($results as $result) {
-            array_push($columns, $result['level']);
-        }
-
-        return array('main' => $results, 'columns' => $columns);
     }
 
     public function get_current_service_delivery_points_distribution_numbers($filters) {

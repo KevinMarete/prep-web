@@ -1,7 +1,7 @@
 <div role="tabpanel" class="tab-pane active" id="service_delivery">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Facilities by Level
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>PrEP Focal Person in Facilities</strong>
@@ -39,9 +39,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Hiv Services in Facilities
@@ -56,6 +54,8 @@
                     </div>
                 </div>
             </div>
+        </div><!--end row-->
+        <div class="row">
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
@@ -76,21 +76,23 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>PrEP Availability by Facility Level</strong>
+                        <strong>Populations Targeted for PrEP by Facilities 
+                            <span class="label label-danger">Conflicting ID for PWID and MSM</span>
+                        </strong>
                     </div>
                     <div class="chart-stage">
-                        <div id="facility_level_prep_availability_table"></div>
+                        <div id="population_receiving_prep_chart"></div>
                     </div>
                     <div class="chart-notes">
-                        <span class="facility_level_prep_availability_table_heading heading"></span>
+                        <span class="population_receiving_prep_chart_heading heading"></span>
                     </div>
                 </div>
             </div>
+        </div><!--end row-->
+        <div class="row">
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
@@ -104,8 +106,6 @@
                     <span class="current_service_delivery_points_distribution_table_heading heading"></span>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
             <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
@@ -116,21 +116,6 @@
                     </div>
                     <div class="chart-notes">
                         <span class="preferred_service_delivery_point_table_heading heading"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
-                        <strong>Populations Targeted for PrEP by Facilities 
-                            <span class="label label-danger">Conflicting ID for PWID and MSM</span>
-                        </strong>
-                    </div>
-                    <div class="chart-stage">
-                        <div id="population_receiving_prep_chart"></div>
-                    </div>
-                    <div class="chart-notes">
-                        <span class="population_receiving_prep_chart_heading heading"></span>
                     </div>
                 </div>
             </div>

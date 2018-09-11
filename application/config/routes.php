@@ -55,10 +55,10 @@ $route['default_controller'] = 'Home';
 $route['manager'] = 'Manager';
 $route['home'] = 'Home';
 $route['manager/manage_users'] = 'Manager/Manager/manage_users';
-$route['manager/facility_update'] = 'Manager/Manager/facility_update';
+$route['manager/facility'] = 'Manager/Manager/Facility';
 
-$route['manager/user_list'] = 'Manager/User_manager/user_list';
-$route['manager/user_add'] = 'Manager/User_manager/user_add';
+$route['manager/user_list'] = 'Manager/User/user_list';
+$route['manager/user_add'] = 'Manager/User/user_add';
 
 $route['manager/loginme'] = 'Manager/Auth/Auth_login/loginMe';
 $route['manager/register'] = 'Manager/register';

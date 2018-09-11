@@ -37,11 +37,11 @@ class Manager extends BaseController {
     public function manage_users() {
         $this->isLoggedIn();
         $data['page_title'] = 'prep | User';
-        $data['content_view'] = 'pages/user_manager_view';
+        $data['content_view'] = 'pages/user_view';
         $this->load->view('template/template_view', $data);
     }
 
-    public function facility_update() {
+    public function facility() {
         $this->isLoggedIn();
         $data['page_title'] = 'prep | Facility';
         $data['content_view'] = 'pages/facility_view';

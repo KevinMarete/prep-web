@@ -1,10 +1,10 @@
 <div role="tabpanel" class="tab-pane" id="laboratory_hep_c">
     <div class="container-fluid">
         <div class="row">          
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Access to Hep-C Testing in Facilities (By County)</strong>
+                        <strong>Access to Hep-C Testing in Facilities</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#access_hep_c_testing_facilities_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -22,21 +22,6 @@
             <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Access to Hep-C Testing in Facilities</strong>
-                    </div>
-                    <div class="chart-stage">
-                        <div id="access_hep_c_testing_facilities_table"></div>
-                    </div>
-                    <div class="chart-notes">
-                        <span class="access_hep_c_testing_facilities_table_heading heading"></span>
-                    </div>
-                </div>
-            </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
                         <strong>Hep-C Testing Equipment Availability</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#hep_c_testing_equipment_availability_chart_filter_modal" class="btn btn-warning btn-xs">
@@ -52,12 +37,10 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Offsite vs Onsite Hep-C Testing (By County)</strong>
+                        <strong>Offsite vs Onsite Hep-C Testing</strong>
                         <div class="nav navbar-right">
                             <button data-toggle="modal" data-target="#offsite_onsite_hep_c_testing_chart_filter_modal" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-filter"></span>
@@ -69,6 +52,34 @@
                     </div>
                     <div class="chart-notes">
                         <span class="offsite_onsite_hep_c_testing_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Hep-C Reagents in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="hep_c_reagents_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="hep_c_reagents_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Access to Hep-C Testing in Facilities</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="access_hep_c_testing_facilities_table"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="access_hep_c_testing_facilities_table_heading heading"></span>
                     </div>
                 </div>
             </div>

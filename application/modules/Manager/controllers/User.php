@@ -3,15 +3,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Description of User_manager
+ * Description of User
  *
  * @author kariukye
  */
-class User_manager extends CI_Controller {
+class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('User_manager_model', 'user');
+        $this->load->model('User_model', 'user');
     }
 
     public function user_list() {
@@ -24,10 +24,10 @@ class User_manager extends CI_Controller {
             $row[] = $user->first_name;
             $row[] = $user->last_name;
             $row[] = $user->email;
-            $row[] = $user->roleId;
+            $row[] = $user->role;
             $row[] = $user->mobile;
             $row[] = '<a class="btn btn-sm btn-default" href="javascript:void(0)" title="Edit" onclick="edit_user(' . "'" . $user->id . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-				  <a class="btn btn-sm btn-default" href="javascript:void(0)" title="Hapus" onclick="delete_user(' . "'" . $user->id . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+				  <a class="btn btn-sm btn-default" href="javascript:void(0)" title="Delete" onclick="delete_user(' . "'" . $user->id . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
