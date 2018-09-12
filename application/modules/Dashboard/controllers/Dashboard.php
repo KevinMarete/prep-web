@@ -149,10 +149,8 @@ class Dashboard extends BaseController {
             $main_data = $this->Monitoring_evaluation_model->get_rapid_assessment_screening_tools($filters);
         } else if ($chartname == 'prep_summary_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_prep_summmary_tools($filters);
-        } else if ($chartname == 'clients_ever_started_on_prep_chart') {
-            $main_data = $this->Monitoring_evaluation_model->get_clients_ever_started_on_prep($filters);
-        } else if ($chartname == 'clients_currently_on_prep_chart') {
-            $main_data = $this->Monitoring_evaluation_model->get_clients_currently_on_prep($filters);
+        } else if ($chartname == 'clients_on_prep_chart') {
+            $main_data = $this->Monitoring_evaluation_model->get_clients_on_prep($filters);
         } else if ($chartname == 'demand_creation_activities_chart') {
             $main_data = $this->Communication_advocacy_model->get_demand_creation_activities($filters);
         } else if ($chartname == 'prep_education_availability_chart') {

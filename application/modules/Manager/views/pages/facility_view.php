@@ -210,7 +210,7 @@
                                 <label class="control-label col-md-3">Level</label>
                                 <div class="col-md-9">
                                     <select name="Level" class="form-control">
-                                        <option value="">Level</option>
+                                        <option value="">Select Level</option>
                                         <option value="County Hospital">County Hospital</option>
                                         <option value="County Referral Hospital">County Referral Hospital</option>
                                         <option value="DICE">DICE</option>
@@ -227,7 +227,7 @@
                                 <label class="control-label col-md-3">Owner</label>
                                 <div class="col-md-9">
                                     <select name="Owner" class="form-control">
-                                        <option value="">Owner</option>
+                                        <option value="">Select Owner</option>
                                         <option value="FBO">FBO</option>
                                         <option value="GOVERNMENT (PUBLIC)">GOVERNMENT (PUBLIC)</option>
                                         <option value="NGO">NGO</option>
@@ -241,7 +241,7 @@
                                 <label class="control-label col-md-3">Focal Person</label>
                                 <div class="col-md-9">
                                     <select name="Focal_Person" class="form-control">
-                                        <option value="">Focal Person</option>
+                                        <option value="">Select Focal Person</option>
                                         <option value="YES">YES</option>
                                         <option value="NO">NO</option>
                                     </select>
@@ -252,7 +252,7 @@
                                 <label class="control-label col-md-3">Partner Support</label>
                                 <div class="col-md-9">
                                     <select name="Partner_Support" class="form-control">
-                                        <option value="">Partner Support</option>
+                                        <option value="">Select Partner Support</option>
                                         <option value="YES">YES</option>
                                         <option value="NO">NO</option>
                                     </select>
