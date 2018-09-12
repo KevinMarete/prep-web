@@ -1,7 +1,7 @@
 <div role="tabpanel" class="tab-pane" id="human_resource">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Distribution of Trained Personnel in Facilities by County</strong>
@@ -16,6 +16,19 @@
                     </div>
                     <div class="chart-notes">
                         <span class="distibution_of_facilities_trained_personnel_chart_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>Training by Cadre</strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="cadre_trained_chart"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="cadre_trained_chart_heading heading"></span>
                     </div>
                 </div>
             </div>

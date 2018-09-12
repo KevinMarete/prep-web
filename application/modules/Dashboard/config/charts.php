@@ -290,6 +290,15 @@ $config['distibution_of_facilities_trained_personnel_chart_has_drilldown'] = TRU
 $config['distibution_of_facilities_trained_personnel_chart_filters'] = array('Sub_County', 'County');
 $config['distibution_of_facilities_trained_personnel_chart_filters_default'] = array();
 
+//cadre_trained_chart 
+$config['cadre_trained_chart_chartview'] = 'charts/pie_view';
+$config['cadre_trained_chart_title'] = 'Training by Cadre';
+$config['cadre_trained_chart_yaxis_title'] = 'Cadre';
+$config['cadre_trained_chart_source'] = 'Source: www.prep.nascop.org';
+$config['cadre_trained_chart_has_drilldown'] = FALSE;
+$config['cadre_trained_chart_filters'] = array('Sub_County', 'County');
+$config['cadre_trained_chart_filters_default'] = array();
+
 //health_care_workers_trained_on_prep_chart 
 $config['health_care_workers_trained_on_prep_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['health_care_workers_trained_on_prep_chart_title'] = 'Health Care Workers Trained for PrEP in Facilities (By County)';

@@ -55,6 +55,26 @@ class Human_resource_model extends CI_Model {
         return array_merge($main_data, $drilldown_data);
     }
 
+    public function get_cadre_trained($filters) {
+        $columns = array();
+        $this->db->select("Cadre name,COUNT(*)y", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->limit(50);
+        $query = $this->db->get('tbl_cadre');
+        $results = $query->result_array();
+
+        foreach ($results as $result) {
+            array_push($columns, $result['name']);
+        }
+
+        return array('main' => $results, 'columns' => $columns);
+    }
+
     public function get_health_care_workers_trained_on_prep($filters) {
         $columns = array();
         $hcw_trained_data = array(
