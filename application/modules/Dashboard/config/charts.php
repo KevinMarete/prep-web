@@ -66,11 +66,11 @@ $config['population_receiving_prep_chart_filters'] = array('Sub_County', 'County
 $config['population_receiving_prep_chart_filters_default'] = array();
 
 //partner_support_chart 
-$config['partner_support_chart_chartview'] = 'charts/stacked_column_percent_view';
+$config['partner_support_chart_chartview'] = 'charts/column_drilldown_view';
 $config['partner_support_chart_title'] = 'Partner Support';
-$config['partner_support_chart_yaxis_title'] = 'Percent 100';
+$config['partner_support_chart_yaxis_title'] = 'count';
 $config['partner_support_chart_source'] = 'Source: www.prep.nascop.org';
-$config['partner_support_chart_has_drilldown'] = FALSE;
+$config['partner_support_chart_has_drilldown'] = TRUE;
 $config['partner_support_chart_filters'] = array('Sub_County', 'County');
 $config['partner_support_chart_filters_default'] = array();
 
@@ -84,9 +84,9 @@ $config['key_populations_targeted_by_prep_partner_chart_filters'] = array('Sub_C
 $config['key_populations_targeted_by_prep_partner_chart_filters_default'] = array();
 
 //service_delivery_point_by_partner_chart 
-$config['service_delivery_point_by_partner_chart_chartview'] = 'charts/stacked_column_view';
+$config['service_delivery_point_by_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
 $config['service_delivery_point_by_partner_chart_title'] = 'Service Delivery Points by Partners';
-$config['service_delivery_point_by_partner_chart_yaxis_title'] = 'Count';
+$config['service_delivery_point_by_partner_chart_yaxis_title'] = 'Percent 100';
 $config['service_delivery_point_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
 $config['service_delivery_point_by_partner_chart_has_drilldown'] = FALSE;
 $config['service_delivery_point_by_partner_chart_filters'] = array('Sub_County', 'County');
