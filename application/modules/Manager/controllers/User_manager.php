@@ -24,7 +24,7 @@ class User_manager extends CI_Controller {
             $row[] = $user->first_name;
             $row[] = $user->last_name;
             $row[] = $user->email;
-            $row[] = $user->roleId;
+            $row[] = $user->role;
             $row[] = $user->mobile;
             $row[] = '<a class="btn btn-sm btn-default" href="javascript:void(0)" title="Edit" onclick="edit_user(' . "'" . $user->id . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
 				  <a class="btn btn-sm btn-default" href="javascript:void(0)" title="Hapus" onclick="delete_user(' . "'" . $user->id . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';

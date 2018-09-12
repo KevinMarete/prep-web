@@ -84,7 +84,7 @@
                     $('[name="first_name"]').val(data.first_name);
                     $('[name="last_name"]').val(data.last_name);
                     $('[name="email"]').val(data.email);
-                    $('[name="role"]').val(data.role);
+                    $('[name="roleId"]').val(data.roleId);
                     $('[name="mobile"]').val(data.mobile);
 
                     $('#modal_form').modal('show');

@@ -20,7 +20,9 @@ class User_manager_model extends CI_Model {
     }
 
     private function _get_datatables_query() {
-        $this->db->from($this->table);
+        $this->db->select('u.id,u.first_name,u.last_name,u.email,r.role,u.mobile');
+        $this->db->from('auth_tbl_users u');
+        $this->db->join('auth_tbl_roles r', 'r.roleId=u.roleId');
         $i = 0;
         foreach ($this->column_search as $item) {
             if ($_POST['search']['value']) {
