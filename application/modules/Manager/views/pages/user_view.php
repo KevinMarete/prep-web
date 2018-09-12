@@ -74,12 +74,11 @@
             $('.help-block').empty();
 
             $.ajax({
-                url: "<?php echo base_url('Manager/User_manager/user_edit/') ?>/" + id,
+                url: "<?php echo base_url('Manager/User/user_edit/') ?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function (data)
                 {
-
                     $('[name="id"]').val(data.id);
                     $('[name="first_name"]').val(data.first_name);
                     $('[name="last_name"]').val(data.last_name);
@@ -110,9 +109,9 @@
             var url;
 
             if (save_method == 'add') {
-                url = "<?php echo base_url('Manager/User_manager/user_add') ?>";
+                url = "<?php echo base_url('Manager/User/user_add') ?>";
             } else {
-                url = "<?php echo base_url('Manager/User_manager/user_update') ?>";
+                url = "<?php echo base_url('Manager/User/user_update') ?>";
             }
 
             // user adding data to database
@@ -157,7 +156,7 @@
             {
                 // ajax delete data to database
                 $.ajax({
-                    url: "<?php echo base_url('Manager/User_manager/user_delete') ?>/" + id,
+                    url: "<?php echo base_url('Manager/User/user_delete') ?>/" + id,
                     type: "POST",
                     dataType: "JSON",
                     success: function (data)
