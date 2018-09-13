@@ -49,29 +49,13 @@ class Facility extends CI_Controller {
 
     public function facility_add() {
         $this->_validate();
-        $data = array(
-            'facility' => $this->input->post('facility'),
-            'Sub_County' => $this->input->post('Sub_County'),
-            'Level' => $this->input->post('Level'),
-            'Owner' => $this->input->post('Owner'),
-            'Focal_Person' => $this->input->post('Focal_Person'),
-            'Partner_Support' => $this->input->post('Partner_Support')
-        );
-        $insert = $this->facility->save($data);
+        $insert = $this->facility->save($_POST);
         echo json_encode(array("status" => TRUE));
     }
 
     public function facility_update() {
         $this->_validate();
-        $data = array(
-            'facility' => $this->input->post('facility'),
-            'Sub_County' => $this->input->post('Sub_County'),
-            'Level' => $this->input->post('Level'),
-            'Owner' => $this->input->post('Owner'),
-            'Focal_Person' => $this->input->post('Focal_Person'),
-            'Partner_Support' => $this->input->post('Partner_Support')
-        );
-        $this->facility->update(array('ID' => $this->input->post('ID')), $data);
+        $this->facility->update(array('ID' => $this->input->post('ID')), $_POST);
         echo json_encode(array("status" => TRUE));
     }
 

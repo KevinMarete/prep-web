@@ -1,9 +1,10 @@
 <!--highcharts-->
-<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/highcharts.js'; ?>"></script>
-<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/exporting.js'; ?>"></script>
-<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/offline-exporting.js'; ?>"></script>
-<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/drilldown.js'; ?>"></script>
-<script src="<?php echo base_url() . 'public/dashboard/lib/highcharts/js/export-data.js'; ?>"></script>
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/maps/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
 <!--bootstrap-->
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/bootstrap/dist/js/bootstrap.min.js'; ?>"></script>
 <!--bootstrap-toggle-->
