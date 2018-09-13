@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?php echo $page_title; ?></title>
         <?php $this->load->view('template/style_view'); ?>
+
+        <!--Load Script View-->
+        <?php $this->load->view('template/script_view'); ?>
+
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
         <!--navbar_view-->
@@ -85,37 +89,13 @@
 
 
                 <div class="tab-pane fade col-md-12" id="facilities" role="tabpanel" aria-labelledby="facilities">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Facility Distribution by County<span class="label label-warning">Drilldown</span>
-                        </div>
-                        <div class="panel-body">
-                            <div id="facility_count_distribution_chart"></div>
-                        </div>
-                        <div class="panel-footer">
-                            <span class="facility_count_distribution_chart_heading heading"></span>
-                        </div>
-                    </div>
                     <div id="container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
                 </div>
 
 
 
                 <div class="tab-pane fade col-md-12" id="partners" role="tabpanel" aria-labelledby="partners">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Partner Facility Numbers<span class="label label-warning">Drilldown</span>
-                        </div>
-                        <div class="chart-wrapper">
-                            <div class="chart-stage">
-                                <div id="partner_facility_table"></div>
-                            </div>
-                            <div class="chart-notes">
-                                <span class="partner_facility_table_heading heading"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
+                    <div id="partner_container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
                 </div>
 
                 </div>
@@ -125,6 +105,7 @@
             var api_data;
             $.get("json/kenya.json", function (datam, status) {
                 api_data = datam.data;
+                console.log(api_data)
                 var data = Highcharts.geojson(api_data),
                         separators = Highcharts.geojson(api_data, 'mapline'),
                         // Some responsiveness
@@ -269,88 +250,72 @@
                     </div>
                 </div>
           </div>
-          <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="galleryModalLabel">Gallery Title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
 
-            <div id="carousel-example-generic" class="col-md-12 carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-              </ol>
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                  <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
-                  <div class="carousel-caption">
-                    <h5>First</h5>
-                    <p>First caption</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
-                  <div class="carousel-caption">
-                    <h5>Second Title</h5>
-                    <p>Second Caption</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="...">
-                  <div class="carousel-caption">
-                    <h5>Third Title</h5>
-                    <p>Third Caption</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Controls -->
-              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-          </div>
-          </div>
-          </div>
 
           &nbsp;
           <div class="container">
           <div class="row">
             <hr>
-            <div class="col-md-4">
-              <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="..." class="img-thumbnail">
-              <h5>Gallery Title</h5>
-              <p><a href="#" data-toggle="modal" data-target="#galleryModal">View</a></p>
-            </div>
-            <div class="col-md-4">
-              <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="..." class="img-thumbnail">
-              <h5>Gallery Title</h5>
-              <p><a href="#" data-toggle="modal" data-target="#galleryModal"  >View</a></p>
-            </div>
-            <div class="col-md-4">
-              <img src="https://picsum.photos/g/900/600/?random" class="img-responsive center-block" alt="..." class="img-thumbnail">
-              <h5>Gallery Title</h5>
-              <p><a href="#" data-toggle="modal" data-target="#galleryModal" >View</a></p>
-            </div>
+            <?php foreach ($gallery_dir as $k => $v) {  $gallery_title = stripslashes($k); $gallery_id = str_replace(' ','-',$gallery_title); ?>
 
+              <!--Gallery Thumbnail-->
+              <div class="col-md-4">
+                <img data-toggle="modal" data-target="#<?php echo $gallery_id ?>Modal" src="<?php echo base_url().'public/home/resources/gallery/'.stripslashes($k).'/'.$v[0] ?>" class="img-responsive img-thumbnail center-block" alt="<?php echo stripslashes($k); ?>">
+                <h5><?php echo stripslashes($k); ?></h5>
+                <p><a href="#" data-toggle="modal" data-target="#<?php echo $gallery_id ?>Modal">View</a></p>
+              </div>
+
+              <!--Gallery Modal-->
+              <div class="modal fade" id="<?php echo $gallery_id ?>Modal" tabindex="-1" role="dialog" aria-labelledby="<?php echo $gallery_id ?>ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="<?php echo $gallery_id ?>Label"><?php echo $gallery_title; ?></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+                <div id="<?php echo $gallery_id ?>Carousel" class="col-md-12 carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <?php for($i=0;$i<=count($v);$i++){ ?>
+                      <li data-target="#<?php echo $gallery_id ?>Carousel" data-slide-to="<?php echo $i ?>" <?php if($i==0){echo 'active';} ?>></li>
+                    <?php } ?>
+                  </ol>
+
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <?php foreach ($v as $img) {?>
+                      <div class="item <?php if($img == $v[0]){echo 'active';} ?>">
+                        <img src="<?php echo base_url().'public/home/resources/gallery/'.stripslashes($k).'/'.$img ?>" class="img-responsive center-block" alt="<?php echo $img ?>">
+                        <div class="carousel-caption">
+                        </div>
+                      </div>
+                    <?php }?>
+                  </div>
+
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#<?php echo $gallery_id ?>Carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#<?php echo $gallery_id ?>Carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              </div>
+              </div>
+              </div>
+
+
+            <?php } ?>
           </div>
         </div>
         </div>
@@ -368,16 +333,20 @@
             </div>
             &nbsp;
             <div class="row">
-              <div class="col-sm-6 col-md-4">
+
+                <?php foreach ($guidelines_dir as $k => $v) {  ?>
+                  <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">
-                    <img src="https://picsum.photos/g/300/450/" alt="">
+                    <img src="<?php echo base_url().'public/home/resources/guidelines/'.$v ?>" alt="">
                     <div class="caption">
-                      <h5>Prep Booklet V2 2018</h5>
-                      <p>Description of Prep Booklet V2 of 2018.</p>
-                      <p><a href="#">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
+                      <h5><?php echo $v ?></h5>
+                      <p></p>
+                      <p><a href="<?php echo base_url().'public/home/resources/guidelines/'.$v ?>">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
                     </div>
                   </div>
-              </div>
+                  </div>
+                <?php }?>
+
         </div>
     </section>
 
@@ -405,26 +374,16 @@
             </div>
             &nbsp;
             <div class="row">
-              <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <img src="https://picsum.photos/g/300/450/" alt="">
-                    <div class="caption">
-                      <h5>Prep Booklet V2 2018</h5>
-                      <p>Description of Prep Booklet V2 of 2018</p>
-                      <p><a href="#">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
-                    </div>
+              <?php foreach ($publications_dir as $k => $v) { ?>
+                <div class="thumbnail">
+                  <img src="<?php echo base_url().'public/home/resources/publications/'.$v ?>" alt="">
+                  <div class="caption">
+                    <h5><?php echo $v ?></h5>
+                    <p></p>
+                    <p><a href="<?php echo base_url().'public/home/resources/publications/'.$v ?>">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
                   </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <img src="https://picsum.photos/g/300/450/" alt="">
-                    <div class="caption">
-                      <h5>Prep Booklet V3 2019</h5>
-                      <p>Description of Prep Booklet V3 of 2019</p>
-                      <p><a href="#">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
-                    </div>
-                  </div>
-              </div>
+                </div>
+            <?php }?>
             </div>
         </div>
     </section>
@@ -445,7 +404,7 @@
                   <div class="caption">
                     <h5>Prep Booklet 2018 V2 - English </h5>
                     <p>Description of Version 2 Prep Booklet of 2018 in English(GB)</p>
-                    <p><a href="#">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
+                    <p><a href="<?php echo base_url().'public/home/resources/faqs/Prep_Booklet_2018_v2_-_English.pdf'; ?>">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
                   </div>
                 </div>
             </div>
@@ -458,7 +417,7 @@
     <?php $this->load->view('template/footer_view');
     ?>
     <!--script_view-->
-    <?php $this->load->view('template/script_view'); ?>
+
 
     <script>
 

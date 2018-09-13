@@ -2,10 +2,17 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+
 class Home extends MX_Controller {
 
     public function index() {
+        $this->load->helper('directory');
+        $this->load->helper('file');
         $data['page_title'] = 'PrEP | Home';
+        $data['gallery_dir'] = directory_map('./public/home/resources/gallery');
+        $data['guidelines_dir'] = directory_map('./public/home/resources/guidelines');
+        $data['publications_dir'] = directory_map('./public/home/resources/publications');
         $this->load->view('template/template_view', $data);
     }
 
