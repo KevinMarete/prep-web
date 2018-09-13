@@ -9,133 +9,290 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Monitoring_evaluation_model extends CI_Model {
 
-    public function get_overall_availability_of_ME_tools($filters) {
-        $columns = array();
-        $response = array();
-
-        $this->db->select("COUNT(IF(rapid_assessment_screening_tool = 'YES', 1, NULL)) 'Rapid Assessment Screening Tool',COUNT(IF(PrEP_summary_reporting_tool = 'YES', 1, NULL)) 'PrEP Summary Reporting Tool',COUNT(IF(PrEP_register = 'YES', 1, NULL)) 'PrEP Register',COUNT(IF(clinical_encounter_form = 'YES', 1, NULL)) 'Clinical Encounter Form',COUNT(IF(arv_lmis_tool = 'YES', 1, NULL)) 'ARV LMIS Tool', COUNT(IF(pharmacovigilance_reporting_tools = 'YES', 1, NULL)) 'Pharmacovigilance Reporting Tools'", FALSE);
+    public function get_lmis_tools($filters) {
+        $this->db->select("arv_lmis_tool name,COUNT(*)y, UPPER(arv_lmis_tool) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_monitoring_evaluation');
-        $result = $query->row_array();
-
-        //columns
-        $columns = array_keys($result);
-
-        //data to response
-        foreach ($columns as $column) {
-            array_push($response, array('name' => $column, 'y' => $result[$column]));
-        }
-        return array('main' => $response, 'columns' => $columns);
+        return $this->get_lmis_tools_drilldown(array('main' => $query->result_array()), $filters);
     }
 
-    public function get_lmis_tools($filters) {
-        $columns = array();
-        $lmis_tools_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`arv_lmis_tool` = 'YES', 1, NULL)) YES, COUNT(IF(`arv_lmis_tool` = 'NO', 1, NULL)) NO", FALSE);
+    public function get_lmis_tools_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(arv_lmis_tool) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_monitoring_evaluation');
-        $results = $query->result_array();
+        $sub_data = $query->result_array();
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($lmis_tools_data as $index => $lmis_tools) {
-                    if ($lmis_tools['name'] == 'YES') {
-                        array_push($lmis_tools_data[$index]['data'], $result['YES']);
-                    } else if ($lmis_tools['name'] == 'NO') {
-                        array_push($lmis_tools_data[$index]['data'], $result['NO']);
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $lmis_tools_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_clinical_encounter_forms($filters) {
-        $columns = array();
-        $clinical_encounter_forms_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`clinical_encounter_form` = 'YES', 1, NULL)) YES, COUNT(IF(`clinical_encounter_form` = 'NO', 1, NULL)) NO", FALSE);
+        $this->db->select("clinical_encounter_form name,COUNT(*)y, UPPER(clinical_encounter_form) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_monitoring_evaluation');
-        $results = $query->result_array();
+        return $this->get_clinical_encounter_forms_drilldown(array('main' => $query->result_array()), $filters);
+    }
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($clinical_encounter_forms_data as $index => $clinical_encounter_forms) {
-                    if ($clinical_encounter_forms['name'] == 'YES') {
-                        array_push($clinical_encounter_forms_data[$index]['data'], $result['YES']);
-                    } else if ($clinical_encounter_forms['name'] == 'NO') {
-                        array_push($clinical_encounter_forms_data[$index]['data'], $result['NO']);
+    public function get_clinical_encounter_forms_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(clinical_encounter_form) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $clinical_encounter_forms_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_pharmacovigilance_tools($filters) {
-        $columns = array();
-        $pharmacovigilance_tools_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`pharmacovigilance_reporting_tools` = 'YES', 1, NULL)) YES, COUNT(IF(`pharmacovigilance_reporting_tools` = 'NO', 1, NULL)) NO", FALSE);
+        $this->db->select("pharmacovigilance_reporting_tools name,COUNT(*)y, UPPER(pharmacovigilance_reporting_tools) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('county');
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_monitoring_evaluation');
-        $results = $query->result_array();
+        return $this->get_pharmacovigilance_tools_drilldown(array('main' => $query->result_array()), $filters);
+    }
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($pharmacovigilance_tools_data as $index => $pharmacovigilance_tools) {
-                    if ($pharmacovigilance_tools['name'] == 'YES') {
-                        array_push($pharmacovigilance_tools_data[$index]['data'], $result['YES']);
-                    } else if ($pharmacovigilance_tools['name'] == 'NO') {
-                        array_push($pharmacovigilance_tools_data[$index]['data'], $result['NO']);
+    public function get_pharmacovigilance_tools_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(pharmacovigilance_reporting_tools) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
                     }
                 }
             }
         }
-        return array('main' => $pharmacovigilance_tools_data, 'columns' => $columns);
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
     }
 
     public function get_prep_registers($filters) {
+        $this->db->select("PrEP_register name,COUNT(*)y, UPPER(PrEP_register) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        return $this->get_prep_registers_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_prep_registers_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(PrEP_register) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_rapid_assessment_screening_tools($filters) {
+        $this->db->select("rapid_assessment_screening_tool name,COUNT(*)y, UPPER(rapid_assessment_screening_tool) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        return $this->get_rapid_assessment_screening_tools_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_rapid_assessment_screening_tools_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(rapid_assessment_screening_tool) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_prep_summmary_tools($filters) {
+        $this->db->select("PrEP_summary_reporting_tool name,COUNT(*)y, UPPER(PrEP_summary_reporting_tool) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        return $this->get_prep_summmary_tools_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_prep_summmary_tools_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(PrEP_summary_reporting_tool) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_distribution_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+    public function get_clients_on_prep($filters) {
         $columns = array();
         $prep_registers_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
+            array('type' => 'column', 'name' => 'Clients Ever Initiated', 'data' => array()),
+            array('type' => 'column', 'name' => 'Current Clients', 'data' => array())
         );
 
-        $this->db->select("UPPER(County) county, COUNT(IF(`PrEP_register` = 'YES', 1, NULL)) YES, COUNT(IF(`PrEP_register` = 'NO', 1, NULL)) NO", FALSE);
+        $this->db->select("UPPER(County) county, SUM(clients_ever_initiated) 'Clients Ever Initiated', SUM(current_clients) 'Current Clients'", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -149,10 +306,10 @@ class Monitoring_evaluation_model extends CI_Model {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
                 foreach ($prep_registers_data as $index => $prep_registers) {
-                    if ($prep_registers['name'] == 'YES') {
-                        array_push($prep_registers_data[$index]['data'], $result['YES']);
-                    } else if ($prep_registers['name'] == 'NO') {
-                        array_push($prep_registers_data[$index]['data'], $result['NO']);
+                    if ($prep_registers['name'] == 'Current Clients') {
+                        array_push($prep_registers_data[$index]['data'], $result['Current Clients']);
+                    } else if ($prep_registers['name'] == 'Clients Ever Initiated') {
+                        array_push($prep_registers_data[$index]['data'], $result['Clients Ever Initiated']);
                     }
                 }
             }
@@ -160,159 +317,40 @@ class Monitoring_evaluation_model extends CI_Model {
         return array('main' => $prep_registers_data, 'columns' => $columns);
     }
 
-    public function get_rapid_assessment_screening_tools($filters) {
-        $columns = array();
-        $rapid_assessment_screening_tools_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`rapid_assessment_screening_tool` = 'YES', 1, NULL)) YES, COUNT(IF(`rapid_assessment_screening_tool` = 'NO', 1, NULL)) NO", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('county');
-        $query = $this->db->get('tbl_monitoring_evaluation');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($rapid_assessment_screening_tools_data as $index => $rapid_assessment_screening_tools) {
-                    if ($rapid_assessment_screening_tools['name'] == 'YES') {
-                        array_push($rapid_assessment_screening_tools_data[$index]['data'], $result['YES']);
-                    } else if ($rapid_assessment_screening_tools['name'] == 'NO') {
-                        array_push($rapid_assessment_screening_tools_data[$index]['data'], $result['NO']);
-                    }
-                }
-            }
-        }
-        return array('main' => $rapid_assessment_screening_tools_data, 'columns' => $columns);
-    }
-
-    public function get_prep_summmary_tools($filters) {
-        $columns = array();
-        $prep_summmary_tools_data = array(
-            array('type' => 'column', 'name' => 'NO', 'data' => array()),
-            array('type' => 'column', 'name' => 'YES', 'data' => array())
-        );
-
-        $this->db->select("UPPER(County) county, COUNT(IF(`PrEP_summary_reporting_tool` = 'YES', 1, NULL)) YES, COUNT(IF(`PrEP_summary_reporting_tool` = 'NO', 1, NULL)) NO", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('county');
-        $query = $this->db->get('tbl_monitoring_evaluation');
-        $results = $query->result_array();
-
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['county'];
-                foreach ($prep_summmary_tools_data as $index => $prep_summmary_tools) {
-                    if ($prep_summmary_tools['name'] == 'YES') {
-                        array_push($prep_summmary_tools_data[$index]['data'], $result['YES']);
-                    } else if ($prep_summmary_tools['name'] == 'NO') {
-                        array_push($prep_summmary_tools_data[$index]['data'], $result['NO']);
-                    }
-                }
-            }
-        }
-        return array('main' => $prep_summmary_tools_data, 'columns' => $columns);
-    }
-
-    public function get_clients_ever_started_on_prep($filters) {
-        $this->db->select("County name,SUM(clients_ever_initiated)y, UPPER(County) drilldown", FALSE);
+    public function get_distribution_drilldown_level2($drilldown_data, $filters) {
+        $this->db->select("UPPER(County) category, Sub_County name,COUNT(*)y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
         $this->db->group_by('name');
-        $this->db->order_by('y', 'Desc');
+        $this->db->order_by('y', 'DESC');
         $query = $this->db->get('tbl_monitoring_evaluation');
-        return $this->get_clients_ever_started_on_prep_drilldown(array('main' => $query->result_array()), $filters);
-    }
+        $population_data = $query->result_array();
 
-    public function get_clients_ever_started_on_prep_drilldown($main_data, $filters) {
-        $drilldown_data = array();
-        $this->db->select("UPPER(County) category, Sub_County name,SUM(clients_ever_initiated)y", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('category');
-        $this->db->order_by('y', 'Desc');
-        $query = $this->db->get('tbl_monitoring_evaluation');
-        $sub_data = $query->result_array();
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                foreach ($main_data['data'] as $item) {
+                    $filter_value = $item['name'];
+                    $filter_name = $item['drilldown'];
 
-        if ($main_data) {
-            foreach ($main_data['main'] as $counter => $main) {
-                $category = $main['drilldown'];
+                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
 
-                $drilldown_data['drilldown'][$counter]['id'] = $category;
-                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
-                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
-
-                foreach ($sub_data as $sub) {
-                    if ($category == $sub['category']) {
-                        unset($sub['category']);
-                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    foreach ($population_data as $population) {
+                        if ($filter_name == $population['category']) {
+                            unset($population['category']);
+                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                        }
                     }
+                    $counter += 1;
                 }
             }
         }
-        return array_merge($main_data, $drilldown_data);
-    }
-
-    public function get_clients_currently_on_prep($filters) {
-        $this->db->select("County name,SUM(current_clients)y, UPPER(County) drilldown", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('name');
-        $this->db->order_by('y', 'Desc');
-        $this->db->limit(50);
-        $query = $this->db->get('tbl_monitoring_evaluation');
-        return $this->get_clients_currently_on_prep_drilldown(array('main' => $query->result_array()), $filters);
-    }
-
-    public function get_clients_currently_on_prep_drilldown($main_data, $filters) {
-        $drilldown_data = array();
-        $this->db->select("UPPER(County) category, Sub_County name,SUM(current_clients)y", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('category');
-        $this->db->order_by('y', 'Desc');
-        $query = $this->db->get('tbl_monitoring_evaluation');
-        $sub_data = $query->result_array();
-
-        if ($main_data) {
-            foreach ($main_data['main'] as $counter => $main) {
-                $category = $main['drilldown'];
-
-                $drilldown_data['drilldown'][$counter]['id'] = $category;
-                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
-                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
-
-                foreach ($sub_data as $sub) {
-                    if ($category == $sub['category']) {
-                        unset($sub['category']);
-                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
-                    }
-                }
-            }
-        }
-        return array_merge($main_data, $drilldown_data);
+        return $drilldown_data;
     }
 
 }

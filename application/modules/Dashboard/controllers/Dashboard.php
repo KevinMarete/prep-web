@@ -115,6 +115,8 @@ class Dashboard extends BaseController {
             $main_data = $this->Laboratory_service_model->get_offsite_onsite_hep_c_testing_numbers($filters);
         } else if ($chartname == 'distibution_of_facilities_trained_personnel_chart') {
             $main_data = $this->Human_resource_model->get_distibution_of_facilities_trained_personnel($filters);
+        } else if ($chartname == 'cadre_trained_chart') {
+            $main_data = $this->Human_resource_model->get_cadre_trained($filters);
         } else if ($chartname == 'health_care_workers_trained_on_prep_chart') {
             $main_data = $this->Human_resource_model->get_health_care_workers_trained_on_prep($filters);
         } else if ($chartname == 'health_care_workers_trained_on_prep_table') {
@@ -135,8 +137,6 @@ class Dashboard extends BaseController {
             $main_data = $this->Commodity_management_model->get_prep_product_dispensed($filters);
         } else if ($chartname == 'prep_dispensing_software_table') {
             $main_data = $this->Commodity_management_model->get_prep_dispensing_software_numbers($filters);
-        } else if ($chartname == 'overall_availability_of_me_tools_chart') {
-            $main_data = $this->Monitoring_evaluation_model->get_overall_availability_of_ME_tools($filters);
         } else if ($chartname == 'lmis_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_lmis_tools($filters);
         } else if ($chartname == 'clinical_encounter_forms_chart') {
@@ -149,10 +149,8 @@ class Dashboard extends BaseController {
             $main_data = $this->Monitoring_evaluation_model->get_rapid_assessment_screening_tools($filters);
         } else if ($chartname == 'prep_summary_tools_chart') {
             $main_data = $this->Monitoring_evaluation_model->get_prep_summmary_tools($filters);
-        } else if ($chartname == 'clients_ever_started_on_prep_chart') {
-            $main_data = $this->Monitoring_evaluation_model->get_clients_ever_started_on_prep($filters);
-        } else if ($chartname == 'clients_currently_on_prep_chart') {
-            $main_data = $this->Monitoring_evaluation_model->get_clients_currently_on_prep($filters);
+        } else if ($chartname == 'clients_on_prep_chart') {
+            $main_data = $this->Monitoring_evaluation_model->get_clients_on_prep($filters);
         } else if ($chartname == 'demand_creation_activities_chart') {
             $main_data = $this->Communication_advocacy_model->get_demand_creation_activities($filters);
         } else if ($chartname == 'prep_education_availability_chart') {
