@@ -121,6 +121,7 @@
                 Highcharts.mapChart('container', {
                     chart: {
                         events: {
+
                             drilldown: function (e) {
                                 if (!e.seriesOptions) {
                                     var county_name = e.point.name.replace(' ', '_').toLowerCase();
@@ -202,7 +203,17 @@
                                     color: '#ee6e6e'
                                 }
                             }
-                        }
+                        },
+                        series: {
+                  cursor: 'pointer',
+                  point: {
+                      events: {
+                          click: function () {
+                              alert('Category: ' + this.category + ', value: ' + this.y);
+                          }
+                      }
+                  }
+              }
                     },
                     series: [{
                             data: data,
