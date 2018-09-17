@@ -10,7 +10,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">PrEP</a>
+                        <a class="navbar-brand" href="#"></a>
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                         <ul class="nav navbar-nav">
@@ -40,23 +40,25 @@
         <div class="container">
             <div class="row">
                 <div class="banner-info">
-                    <div class="text-center banner-text">
+                    <div class="text-left banner-text margin-top-md">
                         <p class="white">Vision</p>
-                        <span class="text-center"><hr class="botm-line-auto"></span>
-                        <h3 class="white">Zero New Infections in Kenya</h3>
+                        <span class="pull-left"><hr class="botm-line-auto"></span>
+                        <br/>
+                        <h4 class="white"><i>Zero New Infections in Kenya</i></h4>
                         &nbsp;
                         <p class="white">Our Goal</p>
-                        <span class="text-center"><hr class="botm-line-auto"></span>
-                        <h3 class="white">Contribute to ending the AIDS epidemic by 2030 and achieving universal access to comprehensive and highly effective HIV prevention</h3>
+                        <span class="pull-left"><hr class="botm-line-auto"></span>
+                        <br/>
+                        <h4 class="white"><i>Contribute to ending the AIDS epidemic by 2030 and achieving <br/> universal access to comprehensive and highly effective HIV prevention</i></h4>
                         &nbsp;
                         &nbsp;
-
                         <p class="white">Mission</p>
-                        <span class="text-center"><hr class="botm-line-auto"></span>
-                        <h3 class="white">To provide sustainable access to safe, affordable and quality PrEP services in combination with other HIV prevention interventions</h3>
+                        <span class="pull-left"><hr class="botm-line-auto"></span>
+                        <br/>
+                        <h4 class="white"><i>To provide sustainable access to safe, affordable and quality PrEP services <br/> in combination with other HIV prevention interventions</i></h4>
                         <a href="#faq" class="btn btn-appoint">What is PrEP?</a>
                     </div>
-                    <div class="overlay-detail text-center">
+                    <div class="overlay-detail text-left">
                         <a href="#service"><i class="fa fa-angle-down"></i></a>
                     </div>
                 </div>

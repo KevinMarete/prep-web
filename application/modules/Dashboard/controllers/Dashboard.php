@@ -7,7 +7,7 @@ class Dashboard extends BaseController {
 
     public function index() {
         $this->isLoggedIn();
-        $data['page_title'] = 'prep | Dashboard';
+        $data['page_title'] = 'PrEP | Dashboard';
         $this->load->view('template/dashboard_view', $data);
     }
 

@@ -2,6 +2,7 @@
     <div class="container-fluid">
         <button class="btn btn-default btn-sm" onclick="add_facility()"><i class="glyphicon glyphicon-plus"></i> Add facility</button>
         <button class="btn btn-default btn-sm" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
+        <span class="label label-danger">To reformat db table IDs</span>
         <br />
         <br />
         <table id="table" class="table table-condensed table-hover table-bordered table-responsive" width="100%">
@@ -22,7 +23,7 @@
     </div>
 
     <script type="text/javascript">
-        
+
         var subcountyURL = '../API/subcounty';
         //subcounties
         $.getJSON(subcountyURL, function (data) {
@@ -96,6 +97,8 @@
                     $('[name="Owner"]').val(data.Owner);
                     $('[name="Focal_Person"]').val(data.Focal_Person);
                     $('[name="Partner_Support"]').val(data.Partner_Support);
+                    $('[name="Latitude"]').val(data.Latitude);
+                    $('[name="Longitude"]').val(data.Longitude);
 
                     $('#modal_form').modal('show');
                     $('.modal-title').text('Edit facility');
@@ -103,7 +106,7 @@
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
-                    alert('Error get data from ajax');
+                    alert('Error get data');
                 }
             });
         }
@@ -256,6 +259,20 @@
                                         <option value="YES">YES</option>
                                         <option value="NO">NO</option>
                                     </select>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Latitude</label>
+                                <div class="col-md-9">
+                                    <input name="Latitude" placeholder="Latitude" class="form-control" type="text">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Longitude</label>
+                                <div class="col-md-9">
+                                    <input name="Longitude" placeholder="Longitude" class="form-control" type="text">
                                     <span class="help-block"></span>
                                 </div>
                             </div>

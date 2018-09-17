@@ -18,7 +18,7 @@ class Manager extends BaseController {
     public function home() {
         $this->isLoggedIn();
         redirect('dashboard');
-        $data['page_title'] = 'prep';
+        $data['page_title'] = 'PrEP';
         $this->load->view('template/template_view', $data);
     }
 
@@ -29,21 +29,21 @@ class Manager extends BaseController {
 
     public function file_upload() {
         $this->isLoggedIn();
-        $data['page_title'] = 'prep | Doc';
+        $data['page_title'] = 'PrEP | Doc';
         $data['content_view'] = 'pages/file_upload_view';
         $this->load->view('template/template_view', $data);
     }
 
     public function manage_users() {
         $this->isLoggedIn();
-        $data['page_title'] = 'prep | User';
+        $data['page_title'] = 'PrEP | User';
         $data['content_view'] = 'pages/user_view';
         $this->load->view('template/template_view', $data);
     }
 
     public function facility() {
         $this->isLoggedIn();
-        $data['page_title'] = 'prep | Facility';
+        $data['page_title'] = 'PrEP | Facility';
         $data['content_view'] = 'pages/facility_view';
         $this->load->view('template/template_view', $data);
     }

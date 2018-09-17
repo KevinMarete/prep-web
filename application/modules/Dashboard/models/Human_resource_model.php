@@ -64,7 +64,7 @@ class Human_resource_model extends CI_Model {
             }
         }
         $this->db->group_by('name');
-        $this->db->limit(50);
+        $this->db->order_by('y');
         $query = $this->db->get('tbl_cadre');
         $results = $query->result_array();
 

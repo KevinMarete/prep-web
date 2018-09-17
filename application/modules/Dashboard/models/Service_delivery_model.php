@@ -313,21 +313,23 @@ class Service_delivery_model extends CI_Model {
         if ($drilldown_data) {
             $counter = sizeof($drilldown_data['drilldown']);
             foreach ($drilldown_data['drilldown'] as $main_data) {
-                foreach ($main_data['data'] as $item) {
-                    $filter_value = $item['name'];
-                    $filter_name = $item['drilldown'];
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_value = $item['name'];
+                        $filter_name = $item['drilldown'];
 
-                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
-                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
-                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                        $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                        $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                        $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
 
-                    foreach ($population_data as $population) {
-                        if ($filter_name == $population['category']) {
-                            unset($population['category']);
-                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                        foreach ($population_data as $population) {
+                            if ($filter_name == $population['category']) {
+                                unset($population['category']);
+                                $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                            }
                         }
+                        $counter += 1;
                     }
-                    $counter += 1;
                 }
             }
         }

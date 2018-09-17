@@ -102,7 +102,7 @@ $config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
 $config['hcw_trained_by_partner_chart_filters_default'] = array();
 
 //partner_facility_table 
-//$config['partner_facility_table_chartview'] = 'charts/table_view';
+$config['partner_facility_table_chartview'] = 'charts/table_view';
 $config['partner_facility_table_title'] = 'Partner Facility Numbers ';
 $config['partner_facility_table_yaxis_title'] = 'Count';
 $config['partner_facility_table_source'] = 'Source: www.prep.nascop.org';

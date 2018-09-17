@@ -67,7 +67,9 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Partner Facility Numbers</strong>
+                        <strong>Partner Facility Numbers
+                            <span class="label label-danger">Revisit grouping</span>
+                        </strong>
                     </div>
                     <div class="chart-stage">
                         <div id="partner_facility_table"></div>
