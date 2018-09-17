@@ -48,10 +48,10 @@
                       <a class="nav-link active" href="#summary" id="summary-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="true" >Summary</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#facilities" id="facilities-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false" >Facilities</a>
+                      <a class="nav-link" href="#facilities" id="facilities-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false" >Facilities offering PrEP</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#partners" id="partners-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false" >Partners</a>
+                      <a class="nav-link" href="#partners" id="partners-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false"> PrEP Implementing Partners</a>
                     </li>
                   </ul>
                 </div>
@@ -61,9 +61,9 @@
                     <div class="col-sm-6 col-md-4">
                         <div class="">
                           <div class="text-center">
-                            <h1 class="large_numbers">1,600,000</h1>
+                            <h1 class="large_numbers">1,500,000</h1>
                             <hr>
-                            <p>Number of People with HIV (2016)</p>
+                            <p>Number of People with HIV (2018)</p>
                           </div>
                         </div>
                     </div>
@@ -79,9 +79,9 @@
                     <div class="col-sm-6 col-md-4">
                         <div class="">
                           <div class="caption text-center">
-                            <h1 class="large_numbers">23,000</h1>
+                            <h1 class="large_numbers">19,000</h1>
                             <hr>
-                            <p>Prep Clients (2016)</p>
+                            <p>PrEP Clients (2018)</p>
                           </div>
                         </div>
                     </div>
@@ -374,7 +374,7 @@
             </div>
             &nbsp;
             <div class="row">
-              <?php foreach ($publications_dir as $k => $v) { ?>
+              <?php if(!empty($publications_dir)){foreach ($publications_dir as $k => $v) { ?>
                 <div class="thumbnail">
                   <img src="<?php echo base_url().'public/home/resources/publications/'.$v ?>" alt="">
                   <div class="caption">
@@ -383,7 +383,7 @@
                     <p><a href="<?php echo base_url().'public/home/resources/publications/'.$v ?>">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
                   </div>
                 </div>
-            <?php }?>
+            <?php } }?>
             </div>
         </div>
     </section>

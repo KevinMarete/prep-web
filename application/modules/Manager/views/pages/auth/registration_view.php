@@ -16,7 +16,7 @@
                 <div class="col-md-6 col-md-offset-3"><!--col-md-4 is used to create the no of colums in the grid also use for medimum and large devices-->
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading text-center">
-                            <img src="<?php echo base_url() . 'public/login/img/user_favicon.ico'; ?>" class="img-responsive center-block" alt="prep_logo">
+                            <img src="<?php echo base_url() . 'public/manager/img/nascop_logo.png'; ?>" class="img-responsive center-block" alt="prep_logo">
                             <h1>PrEP</h1>
                             <h2 class="panel-title"> <b>Please Sign Up</b></h2>
                         </div>
