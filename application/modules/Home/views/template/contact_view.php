@@ -20,11 +20,21 @@
                 <div class="contact-info">
                     <h3 class="cnt-ttl">Having Any Query!</h3>
                     <div class="space"></div>
-                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="sendmessage">
+                      <?php
+                        if (isset($message_display)) {
+                          echo $message_display;
+                          }
+                        ?>
+                    </div>
                     <div id="errormessage"></div>
-                    <form action="" method="post" role="form" class="contactForm">
+                    <form action="<?php echo site_url().'home/sendEmailFromHome'; ?>" method="post" role="form" class="contactForm">
                         <div class="form-group">
                             <input type="email" class="form-control br-radius-zero" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control br-radius-zero" name="password" id="email" placeholder="Password" data-rule="password" data-msg="Please enter a valid email" />
                             <div class="validation"></div>
                         </div>
                         <div class="form-group">

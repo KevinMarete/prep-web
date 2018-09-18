@@ -11,7 +11,7 @@ class Home extends MX_Controller {
         $this->load->helper('file');
         $data['page_title'] = 'PrEP | Home';
         $data['gallery_dir'] = directory_map('./public/home/resources/gallery');
-        $data['guidelines_dir'] = directory_map('./public/home/resources/guidelines');
+        $data['guidelines_dir'] = directory_map('./public/home/resources/guidelines/pdf');
         $data['publications_dir'] = directory_map('./public/home/resources/publications');
         $this->load->view('template/template_view', $data);
     }
@@ -53,11 +53,55 @@ class Home extends MX_Controller {
         return $filters;
     }
 
+
+
     public function get_data($chartname, $filters) {
         if ($chartname == 'facility_count_distribution_chart') {
             $main_data = $this->home_model->get_facility_count($filters);
         }
         return $main_data;
     }
+
+    public function sendEmailFromHome(){
+
+
+        //User Details: Email and Name
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        //Email Details
+        $subject =  $this->input->post('subject');
+        $message =  $this->input->post('message');
+
+
+        $this->load->library('email');
+
+        //Set config
+        $config = array();
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_port'] = 465;
+        $config['smtp_user'] = $email;
+        $config['smtp_pass'] = $password;
+
+        //Init Config
+        $this->email->initialize($config);
+
+
+        //Send Email
+        $this->email->from($email, $name);
+        $this->email->to('ulizanascop@gmail.com');
+
+
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+          if($this->email->send()){
+            $data['message_display'] = 'Email Sent !';
+          } else {
+            $data['message_display'] =  '<p class="error_msg">Invalid Gmail Account or Password !</p>';
+          }
+      }
+
 
 }

@@ -44,3 +44,7 @@
 <script src="<?php echo base_url() . 'public/home/js/jquery.easing.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'public/home/js/custom.js'; ?>"></script>
 <script src="<?php echo base_url() . 'public/home/contactform/contactform.js'; ?>"></script>
+
+<!-- Generic PDF JS -->
+<script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/pdfjs/build/pdf.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/pdfjs/web/viewer.js'; ?>"></script>

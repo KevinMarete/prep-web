@@ -345,16 +345,14 @@
             &nbsp;
             <div class="row">
 
-                <?php foreach ($guidelines_dir as $k => $v) {  ?>
-                  <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <img src="<?php echo base_url().'public/home/resources/guidelines/'.$v ?>" alt="">
-                    <div class="caption">
-                      <h5><?php echo $v ?></h5>
-                      <p></p>
-                      <p><a href="<?php echo base_url().'public/home/resources/guidelines/'.$v ?>">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
+                <?php foreach ($guidelines_dir as $k => $v) { if($v) {$filename = pathinfo($v, PATHINFO_FILENAME);}else{ $filename = 'generic';}  ?>
+                  <div class="col-sm-6 col-md-2" style="height:200px;width:200px">
+                    <div class="">
+                      <a href="<?php echo base_url().'public/home/resources/guidelines/pdf/'.$filename.'.pdf' ?>"><img class="img-thumbnail" title="<?php echo $filename; ?>" style="max-height:100px" src="<?php echo base_url().'public/home/resources/guidelines/thumbs/'.$filename.'.png' ?>" alt=""></a>
+                      <div class="caption">
+                        <p></p>
+                      </div>
                     </div>
-                  </div>
                   </div>
                 <?php }?>
 
