@@ -23,8 +23,8 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#gallery_section">Gallery</a></li>
                                     <li><a href="#guidelines_policies_tools">National Policies and Guidelines</a></li>
+                                    <li><a href="#gallery_section">Gallery</a></li>
                                     <li><a href="#publications">Publications</a></li>
                                 </ul>
                             </li>
