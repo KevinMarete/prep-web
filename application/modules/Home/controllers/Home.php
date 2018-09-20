@@ -11,7 +11,7 @@ class Home extends MX_Controller {
         $this->load->helper('file');
         $data['page_title'] = 'PrEP | Home';
         $data['gallery_dir'] = directory_map('./public/home/resources/gallery');
-        $data['guidelines_dir'] = directory_map('./public/home/resources/guidelines/pdf');
+        $data['guidelines_dir'] = directory_map('./public/home/resources/guidelines');
         $data['publications_dir'] = directory_map('./public/home/resources/publications');
         $this->load->view('template/template_view', $data);
     }

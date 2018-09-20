@@ -48,3 +48,8 @@
 <!-- Generic PDF JS -->
 <script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/pdfjs/build/pdf.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/pdfjs/web/viewer.js'; ?>"></script>
+
+<!--D3 Js -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+<!--Kenya GeoJson-->
+<script type="text/javascript" src="http://code.highcharts.com/mapdata/countries/ke/ke-all.js" ></script>

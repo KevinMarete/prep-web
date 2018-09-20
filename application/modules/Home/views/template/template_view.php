@@ -53,6 +53,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#partners" id="partners-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false"> PrEP Implementing Partners</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#incidences" id="incidencs-tab" data-toggle="tab" role="tab" aria-controls="summary" aria-selected="false">Incidences</a>
+                    </li>
                   </ul>
                 </div>
 
@@ -98,10 +101,16 @@
                     <div id="partner_container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
                 </div>
 
+                <div class="tab-pane fade col-md-12" id="incidences" role="tabpanel" aria-labelledby="incidences">
+                    <div id="incidences_container" style="height: 500px ; margin-left: 0" class="col-md-10 col-md-offset-2"></div>
+                </div>
+
                 </div>
             </div>
         </div>
         <script>
+        //D3 js Map Incidences
+
             var api_data;
             $.get("json/kenya.json", function (datam, status) {
                 api_data = datam.data;
@@ -251,7 +260,7 @@
     </section>
     <!--about-->
 
-    <section id="gallery" class="section-padding">
+    <section id="gallery_section" class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-12">
@@ -261,7 +270,6 @@
                     </div>
                 </div>
           </div>
-
 
           &nbsp;
           <div class="container">
@@ -332,7 +340,7 @@
         </div>
     </section>
 
-    <section id="policies" class="section-padding">
+    <section id="guidelines_policies_tools" class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-12">
@@ -343,22 +351,39 @@
                 </div>
             </div>
             &nbsp;
-            <div class="row">
 
-                <?php foreach ($guidelines_dir as $k => $v) { if($v) {$filename = pathinfo($v, PATHINFO_FILENAME);}else{ $filename = 'generic';}  ?>
-                  <div class="col-sm-6 col-md-2" style="height:200px;width:200px">
-                    <div class="">
-                      <a href="<?php echo base_url().'public/home/resources/guidelines/pdf/'.$filename.'.pdf' ?>"><img class="img-thumbnail" title="<?php echo $filename; ?>" style="max-height:100px" src="<?php echo base_url().'public/home/resources/guidelines/thumbs/'.$filename.'.png' ?>" alt=""></a>
-                      <div class="caption">
+            <div class="row">
+              <ul class="nav nav-tabs" id="guidelines_tabs" role="tablist" >
+                <?php $j = 0;?>
+                <?php foreach($guidelines_dir as $k=>$v) { $guidelines_title = stripslashes($k); $guidelines_id = str_replace(' ','-',$guidelines_title); ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($j ==0){echo 'active';} ?>" href="#<?php echo $guidelines_id ?>" id="<?php echo $guidelines_id ?>-tab" data-toggle="tab" role="tab" aria-controls="<?php echo $guidelines_id ?>" ><?php echo ucfirst($guidelines_title); ?></a>
+                </li>
+              <?php $j++; } ?>
+              </ul>
+            </div>
+            &nbsp;
+          <div class="tab-content" id="guidelines_tabsContent">
+              <?php $j=0; foreach($guidelines_dir as $k=>$v) { $guidelines_title = stripslashes($k); $guidelines_id = str_replace(' ','-',$guidelines_title); ?>
+              <div class="tab-pane fade <?php if($j ==0){echo 'active';} ?> in col-md-12" id="<?php echo $guidelines_id; ?>" role="tabpanel" aria-labelledby="<?php echo $guidelines_id; ?>-tab" >
+                  <div class="row" >
+                  <?php foreach($v as $pdf) { $pdfname = pathinfo($pdf, PATHINFO_FILENAME); ?>
+                  <div class="col-sm-6 col-md-3" style="height:250px;width:250px">
+                      <div class="thumbnail">
+                        <img  class="img-responsive" src="<?php echo base_url().'public/home/img/pdfThumbs/'.$pdfname.'.png' ?>" alt="">
+                        <h4><a href="<?php echo base_url().'public/home/resources/guidelines/'.$guidelines_title.'/'.$pdf ?>"><?php echo $pdfname; ?></a></h4>
                         <p></p>
                       </div>
-                    </div>
                   </div>
                 <?php }?>
-
+              </div>
+            </div>
+            <?php $j++; }?>
         </div>
     </section>
-
+    <div class="section-padding-min">
+      &nbsp;
+    </div>
     <section id="publications" class="section-padding">
         <div class="container">
             <div class="row">
@@ -369,7 +394,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!--div class="row">
               <div class="input-group col-xs-12">
                 <label for="Year">Year</label>
                 <select class="" name="Year">
@@ -380,7 +405,7 @@
                   <option value="">Partners</option>
                 </select>
               </div>
-            </div>
+            </div-->
             &nbsp;
             <div class="row">
               <?php if(!empty($publications_dir)){foreach ($publications_dir as $k => $v) { ?>
@@ -407,18 +432,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
+            <div class="col-sm-6 col-md-4" style="height:250px;width:250px">
+                <div class="thumbnail" >
                   <img src="<?php echo base_url(); ?>public/home/img/prep_faqSheet_cover.png" alt="Prep FAQs" class="img-responsive">
                   <div class="caption">
-                    <h5>Prep Booklet 2018 V2 - English </h5>
-                    <p>Description of Version 2 Prep Booklet of 2018 in English(GB)</p>
-                    <p><a href="<?php echo base_url().'public/home/resources/faqs/Prep_Booklet_2018_v2_-_English.pdf'; ?>">Download <i class="fa fa-download" aria-hidden="true"></i></a></p>
+                    <h4><a href="<?php echo base_url().'public/home/resources/faqs/Prep_Booklet_2018_v2_-_English.pdf'; ?>">Prep Booklet 2018 V2 - English <i class="fa fa-download" aria-hidden="true"></i></a> </h4>
                   </div>
                 </div>
             </div>
         </div>
     </section>
+    <div class="section-padding-min">&nbsp;</div>
     <!--/ about-->
     <!--contact-->
     <?php $this->load->view('template/contact_view'); ?>
@@ -431,11 +455,18 @@
     <script>
 
     $('#status_tabs a[href="#summary"]').tab('show')
+    $('#guidelines_tabs a').first().tab('show')
 
     $('#status_tabs a').on('click', function (e) {
         e.preventDefault()
         $(this).tab('show')
     })
+
+    $('#guidelines_tabs a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+
 
     </script>
 

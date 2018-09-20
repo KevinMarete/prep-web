@@ -53,6 +53,10 @@ a, a:hover, a:focus, a:active{
     padding: 60px 0px;
 
 }
+.section-padding-min{
+    padding: 30px 0px;
+
+}
 h2 {
     line-height: 20px;
     margin: 0;

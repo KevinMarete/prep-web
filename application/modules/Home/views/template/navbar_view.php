@@ -23,9 +23,9 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a></li>
-                                    <li><a href="#policies" aria-controls="policies" role="tab" data-toggle="tab">National Policies and Guidelines</a></li>
-                                    <li><a href="#publications" aria-controls="publications" role="tab" data-toggle="tab">Publications</a></li>
+                                    <li><a href="#gallery_section">Gallery</a></li>
+                                    <li><a href="#guidelines_policies_tools">National Policies and Guidelines</a></li>
+                                    <li><a href="#publications">Publications</a></li>
                                 </ul>
                             </li>
                             <li class=""><a href="#faq">FAQ</a></li>
