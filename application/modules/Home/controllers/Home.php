@@ -62,12 +62,15 @@ class Home extends MX_Controller {
         return $main_data;
     }
 
-    public function sendEmailFromHome(){
+    public function get_facilities_drilldown($sub_county){
+      $facility_data = $this->home_model->get_facility_names_drilldown($sub_county);
+      echo json_encode($facility_data);
+    }
 
+    public function sendEmailFromHome(){
 
         //User Details: Email and Name
         $email = $this->input->post('email');
-        $password = $this->input->post('password');
 
         //Email Details
         $subject =  $this->input->post('subject');
@@ -75,21 +78,25 @@ class Home extends MX_Controller {
 
 
         $this->load->library('email');
+        $this->load->library('encrypt');
 
         //Set config
         $config = array();
         $config['protocol'] = 'smtp';
         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
         $config['smtp_port'] = 465;
-        $config['smtp_user'] = $email;
-        $config['smtp_pass'] = $password;
+        $config['smtp_user'] = 'wndethi@gmail.com';
+        $config['smtp_pass'] = '';
+        $config['mailtype'] = 'html';
+        $config['charset']  = 'utf-8';
 
         //Init Config
         $this->email->initialize($config);
-
+        $this->email->set_mailtype("html");
+        $this->email->set_newline("\r\n");
 
         //Send Email
-        $this->email->from($email, $name);
+        $this->email->from($email);
         $this->email->to('ulizanascop@gmail.com');
 
 
@@ -97,10 +104,11 @@ class Home extends MX_Controller {
         $this->email->message($message);
 
           if($this->email->send()){
-            $data['message_display'] = 'Email Sent !';
+            echo json_encode(array('message' => 'Mail Sent Successfully'));
           } else {
-            $data['message_display'] =  '<p class="error_msg">Invalid Gmail Account or Password !</p>';
+              echo json_encode(array('message' => 'Mail Fail'));
           }
+
       }
 
 

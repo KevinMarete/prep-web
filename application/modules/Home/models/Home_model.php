@@ -55,4 +55,13 @@ class Home_model extends CI_Model {
         return array_merge($main_data, $drilldown_data);
     }
 
+    public function get_facility_names_drilldown($sub_county_name){
+      $this->db->select("UPPER(facility)");
+      $this->db->where("Sub_County", $sub_county_name);
+      $this->db->group_by("facility");
+      $query = $this->db->get('tbl_facility_details');
+      $facility_data = $query->result_array();
+      return $facility_data;
+    }
+
 }

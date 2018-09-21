@@ -20,21 +20,27 @@
                 <div class="contact-info">
                     <h3 class="cnt-ttl">Having Any Query!</h3>
                     <div class="space"></div>
-                    <div id="sendmessage">
-                      <?php
-                        if (isset($message_display)) {
-                          echo $message_display;
-                          }
-                        ?>
+                    <div>
+                      <?php echo $this->session->flashdata('mail_sent'); ?>
                     </div>
-                    <div id="errormessage"></div>
-                    <form action="<?php echo site_url().'home/sendEmailFromHome'; ?>" method="post" role="form" class="contactForm">
+
+                    <!-- Pop up Modal on Email Send -->
+                    <div id="emailModal" class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div id="emailReturnMessage" class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                    <form id="email" action="<?php echo site_url().'home/sendEmailFromHome'; ?>" method="post" role="form" class="contactForm">
                         <div class="form-group">
                             <input type="email" class="form-control br-radius-zero" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control br-radius-zero" name="password" id="email" placeholder="Password" data-rule="password" data-msg="Please enter a valid email" />
                             <div class="validation"></div>
                         </div>
                         <div class="form-group">
@@ -55,3 +61,17 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+$('#email').submit(function(e){
+  e.preventDefault();
+  axios({
+     method:'post',
+     url: '<?php echo site_url().'home/sendEmailFromHome'; ?>',
+     data: $('#email').serialize()
+  }).then(function(response){
+    $('#emailReturnMessage').html('<p>'+response.data.message+'</p>');
+    $('#emailModal').modal();
+    $('#email').reset();
+  })
+})
+</script>

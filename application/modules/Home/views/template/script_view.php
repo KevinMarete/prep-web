@@ -53,3 +53,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
 <!--Kenya GeoJson-->
 <script type="text/javascript" src="http://code.highcharts.com/mapdata/countries/ke/ke-all.js" ></script>
+<!--Axios-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js" ></script>
