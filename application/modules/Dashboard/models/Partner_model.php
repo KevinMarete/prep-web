@@ -18,7 +18,7 @@ class Partner_model extends CI_Model {
         }
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
-        $query = $this->db->get('tbl_prep_facilities');
+        $query = $this->db->get('tbl_facility_details');
         return $this->get_partner_support_drilldown(array('main' => $query->result_array()), $filters);
     }
 
@@ -32,7 +32,7 @@ class Partner_model extends CI_Model {
         }
         $this->db->group_by('drilldown');
         $this->db->order_by('y', 'Desc');
-        $query = $this->db->get('tbl_prep_facilities');
+        $query = $this->db->get('tbl_facility_details');
         $sub_data = $query->result_array();
 
         if ($main_data) {
@@ -64,7 +64,7 @@ class Partner_model extends CI_Model {
         }
         $this->db->group_by('name');
         $this->db->order_by('y', 'DESC');
-        $query = $this->db->get('tbl_prep_facilities');
+        $query = $this->db->get('tbl_facility_details');
         $population_data = $query->result_array();
 
         if ($drilldown_data) {
@@ -195,14 +195,14 @@ class Partner_model extends CI_Model {
     }
 
     public function get_hcw_trained_by_partner($filters) {
-        $this->db->select("ps.implementing_partner name,COUNT(IF(tp.hcw_trained_on_prep = 'YES', 1, NULL))y, ps.implementing_partner drilldown", FALSE);
+        $this->db->select("ps.implementing_partner name,COUNT(IF(tp.hcw_trained_on_prep = 'Yes', 1, 0))y, ps.implementing_partner drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->from('tbl_partner_support ps');
-        $this->db->join('tbl_trained_personnel tp', 'tp.id=ps.id', 'left');
+        $this->db->from('tbl_trained_personnel tp');
+        $this->db->join('tbl_partner_support ps', 'tp.id=ps.id');
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get();
@@ -211,14 +211,14 @@ class Partner_model extends CI_Model {
 
     public function get_hcw_trained_by_partner_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(ps.implementing_partner) category, tp.hcw_trained_on_prep name,COUNT(IF(tp.hcw_trained_on_prep = 'YES', 1, NULL))y", FALSE);
+        $this->db->select("UPPER(ps.implementing_partner) category, tp.hcw_trained_on_prep name,COUNT(IF(tp.hcw_trained_on_prep = 'Yes', 1, 0))y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->from('tbl_partner_support ps');
-        $this->db->join('tbl_trained_personnel tp', 'tp.id=ps.id', 'left');
+        $this->db->from('tbl_trained_personnel tp');
+        $this->db->join('tbl_partner_support ps', 'tp.id=ps.id');
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
         $sub_data = $this->db->get()->result_array();
@@ -244,13 +244,13 @@ class Partner_model extends CI_Model {
 
     public function get_partner_facility_numbers($filters) {
         $columns = array();
-        $this->db->select("implementing_partner partner,Level,County,Sub_County,COUNT(*) Numbers", FALSE);
+        $this->db->select("implementing_partner partner,County,Sub_County,COUNT(*) Numbers", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('County');
+        $this->db->group_by('partner, County, Sub_County');
         $this->db->order_by('Numbers', 'DESC');
         $query = $this->db->get('tbl_partner_support');
         $results = $query->result_array();

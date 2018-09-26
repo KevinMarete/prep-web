@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="#">
                 <span class="glyphicon glyphicon-dashboard"></span>
             </a>
-            <a class="navbar-brand" href="#">DASHBOARD</a>
+            <a class="navbar-brand" href="#">PREP DASHBOARD</a>
         </div>
         <nav class="collapse navbar-collapse" id="filter-navbar">
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />
