@@ -5,8 +5,8 @@
                 <div class="form-group">
                     <select id="filter_item" multiple="multiple" name="filter_item[]" data-filter_type="" class="form-control"></select>
                 </div>
-                <button id="btn_clear" class="btn btn-danger btn-md"><span class="glyphicon glyphicon-refresh"></span></button>
-                <button id="btn_filter" class="btn btn-warning btn-md"><span class="glyphicon glyphicon-filter"></span></button>
+                <button id="btn_clear" class="btn btn-danger btn-md"><span class="glyphicon glyphicon-refresh"></span> RESET</button>
+                <button id="btn_filter" class="btn btn-warning btn-md"><span class="glyphicon glyphicon-filter"></span> FILTER</button>
             </div>
         </div>
     </div>

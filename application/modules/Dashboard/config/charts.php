@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //facilities_level_distribution_chart 
 $config['facilities_level_distribution_chart_chartview'] = 'charts/column_drilldown_view';
-$config['facilities_level_distribution_chart_title'] = 'Distribution of Facilities by Level';
-$config['facilities_level_distribution_chart_yaxis_title'] = 'facility count';
+$config['facilities_level_distribution_chart_title'] = 'Distribution of Facilities (By Level)';
+$config['facilities_level_distribution_chart_yaxis_title'] = 'No. of Facilities';
 $config['facilities_level_distribution_chart_source'] = 'Source: www.prep.nascop.org';
 $config['facilities_level_distribution_chart_has_drilldown'] = TRUE;
 $config['facilities_level_distribution_chart_filters'] = array('Sub_County', 'County');
@@ -14,7 +14,7 @@ $config['facilities_level_distribution_chart_filters_default'] = array();
 //prep_focal_person_chart 
 $config['prep_focal_person_chart_chartview'] = 'charts/column_drilldown_view';
 $config['prep_focal_person_chart_title'] = 'PrEP Focal Person in Facilities';
-$config['prep_focal_person_chart_yaxis_title'] = 'Count';
+$config['prep_focal_person_chart_yaxis_title'] = 'No. of Focal People';
 $config['prep_focal_person_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_focal_person_chart_has_drilldown'] = TRUE;
 $config['prep_focal_person_chart_filters'] = array('Sub_County', 'County');
@@ -22,8 +22,8 @@ $config['prep_focal_person_chart_filters_default'] = array();
 
 //hiv_services_offered_chart 
 $config['hiv_services_offered_chart_chartview'] = 'charts/column_drilldown_view';
-$config['hiv_services_offered_chart_title'] = 'Distribution of Hiv Services in Facilities';
-$config['hiv_services_offered_chart_yaxis_title'] = 'facility count';
+$config['hiv_services_offered_chart_title'] = 'Distribution of HIV Services in Facilities';
+$config['hiv_services_offered_chart_yaxis_title'] = 'No. of HIV Services';
 $config['hiv_services_offered_chart_source'] = 'Source: www.prep.nascop.org';
 $config['hiv_services_offered_chart_has_drilldown'] = TRUE;
 $config['hiv_services_offered_chart_filters'] = array('Sub_County', 'County');
@@ -32,43 +32,34 @@ $config['hiv_services_offered_chart_filters_default'] = array();
 //current_service_delivery_points_distribution_chart 
 $config['current_service_delivery_points_distribution_chart_chartview'] = 'charts/column_drilldown_view';
 $config['current_service_delivery_points_distribution_chart_title'] = 'Distribution of Current Service Delivery Points';
-$config['current_service_delivery_points_distribution_chart_yaxis_title'] = 'facility count';
+$config['current_service_delivery_points_distribution_chart_yaxis_title'] = 'No. of Current Service Delivery Points';
 $config['current_service_delivery_points_distribution_chart_source'] = 'Source: www.prep.nascop.org';
 $config['current_service_delivery_points_distribution_chart_has_drilldown'] = TRUE;
 $config['current_service_delivery_points_distribution_chart_filters'] = array('Sub_County', 'County');
 $config['current_service_delivery_points_distribution_chart_filters_default'] = array();
 
-//current_service_delivery_points_distribution_table 
-$config['current_service_delivery_points_distribution_table_chartview'] = 'charts/table_view';
-$config['current_service_delivery_points_distribution_table_title'] = 'Distribution of Current Service Delivery Points (By County)';
-$config['current_service_delivery_points_distribution_table_yaxis_title'] = 'Percent of 100';
-$config['current_service_delivery_points_distribution_table_source'] = 'Source: www.prep.nascop.org';
-$config['current_service_delivery_points_distribution_table_has_drilldown'] = FALSE;
-$config['current_service_delivery_points_distribution_table_filters'] = array('Sub_County', 'County');
-$config['current_service_delivery_points_distribution_table_filters_default'] = array();
-
-//preferred_service_delivery_point_table 
-$config['preferred_service_delivery_point_table_chartview'] = 'charts/table_view';
-$config['preferred_service_delivery_point_table_title'] = 'Distribution of Preferred Service Delivery Points';
-$config['preferred_service_delivery_point_table_yaxis_title'] = 'Percent 100';
-$config['preferred_service_delivery_point_table_source'] = 'Source: www.prep.nascop.org';
-$config['preferred_service_delivery_point_table_has_drilldown'] = FALSE;
-$config['preferred_service_delivery_point_table_filters'] = array('Sub_County', 'County');
-$config['preferred_service_delivery_point_table_filters_default'] = array();
-
 //population_receiving_prep_chart 
 $config['population_receiving_prep_chart_chartview'] = 'charts/column_drilldown_view';
 $config['population_receiving_prep_chart_title'] = 'Populations Targeted for PrEP by Facilities';
-$config['population_receiving_prep_chart_yaxis_title'] = 'Count';
+$config['population_receiving_prep_chart_yaxis_title'] = 'No. of Facilities';
 $config['population_receiving_prep_chart_source'] = 'Source: www.prep.nascop.org';
 $config['population_receiving_prep_chart_has_drilldown'] = TRUE;
 $config['population_receiving_prep_chart_filters'] = array('Sub_County', 'County');
 $config['population_receiving_prep_chart_filters_default'] = array();
 
+//preferred_service_delivery_point_table 
+$config['preferred_service_delivery_point_table_chartview'] = 'charts/table_view';
+$config['preferred_service_delivery_point_table_title'] = 'Distribution of Preferred Service Delivery Points';
+$config['preferred_service_delivery_point_table_yaxis_title'] = '';
+$config['preferred_service_delivery_point_table_source'] = 'Source: www.prep.nascop.org';
+$config['preferred_service_delivery_point_table_has_drilldown'] = FALSE;
+$config['preferred_service_delivery_point_table_filters'] = array('Sub_County', 'County');
+$config['preferred_service_delivery_point_table_filters_default'] = array();
+
 //partner_support_chart 
 $config['partner_support_chart_chartview'] = 'charts/column_drilldown_view';
 $config['partner_support_chart_title'] = 'Partner Support';
-$config['partner_support_chart_yaxis_title'] = 'count';
+$config['partner_support_chart_yaxis_title'] = 'No. of Facilities';
 $config['partner_support_chart_source'] = 'Source: www.prep.nascop.org';
 $config['partner_support_chart_has_drilldown'] = TRUE;
 $config['partner_support_chart_filters'] = array('Sub_County', 'County');
@@ -77,25 +68,16 @@ $config['partner_support_chart_filters_default'] = array();
 //key_populations_targeted_by_prep_partner_chart 
 $config['key_populations_targeted_by_prep_partner_chart_chartview'] = 'charts/column_drilldown_view';
 $config['key_populations_targeted_by_prep_partner_chart_title'] = 'Key Populations Targeted by PrEP Partners';
-$config['key_populations_targeted_by_prep_partner_chart_yaxis_title'] = 'Count';
+$config['key_populations_targeted_by_prep_partner_chart_yaxis_title'] = 'No. of Facilities';
 $config['key_populations_targeted_by_prep_partner_chart_source'] = 'Source: www.prep.nascop.org';
 $config['key_populations_targeted_by_prep_partner_chart_has_drilldown'] = TRUE;
 $config['key_populations_targeted_by_prep_partner_chart_filters'] = array('Sub_County', 'County');
 $config['key_populations_targeted_by_prep_partner_chart_filters_default'] = array();
 
-//service_delivery_point_by_partner_chart 
-$config['service_delivery_point_by_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['service_delivery_point_by_partner_chart_title'] = 'Service Delivery Points by Partners';
-$config['service_delivery_point_by_partner_chart_yaxis_title'] = 'Percent 100';
-$config['service_delivery_point_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
-$config['service_delivery_point_by_partner_chart_has_drilldown'] = FALSE;
-$config['service_delivery_point_by_partner_chart_filters'] = array('Sub_County', 'County');
-$config['service_delivery_point_by_partner_chart_filters_default'] = array();
-
 //hcw_trained_by_partner_chart 
 $config['hcw_trained_by_partner_chart_chartview'] = 'charts/column_drilldown_view';
 $config['hcw_trained_by_partner_chart_title'] = 'Distribution of Trained Workers by Partners ';
-$config['hcw_trained_by_partner_chart_yaxis_title'] = 'Count';
+$config['hcw_trained_by_partner_chart_yaxis_title'] = 'No. of Facilities';
 $config['hcw_trained_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
 $config['hcw_trained_by_partner_chart_has_drilldown'] = TRUE;
 $config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
@@ -104,11 +86,20 @@ $config['hcw_trained_by_partner_chart_filters_default'] = array();
 //partner_facility_table 
 $config['partner_facility_table_chartview'] = 'charts/table_view';
 $config['partner_facility_table_title'] = 'Partner Facility Numbers ';
-$config['partner_facility_table_yaxis_title'] = 'Count';
+$config['partner_facility_table_yaxis_title'] = 'No. of Facilities';
 $config['partner_facility_table_source'] = 'Source: www.prep.nascop.org';
 $config['partner_facility_table_has_drilldown'] = TRUE;
 $config['partner_facility_table_filters'] = array('Sub_County', 'County');
 $config['partner_facility_table_filters_default'] = array();
+
+//service_delivery_point_by_partner_chart 
+$config['service_delivery_point_by_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
+$config['service_delivery_point_by_partner_chart_title'] = 'Service Delivery Points by Partners';
+$config['service_delivery_point_by_partner_chart_yaxis_title'] = '';
+$config['service_delivery_point_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
+$config['service_delivery_point_by_partner_chart_has_drilldown'] = FALSE;
+$config['service_delivery_point_by_partner_chart_filters'] = array('Sub_County', 'County');
+$config['service_delivery_point_by_partner_chart_filters_default'] = array();
 
 //access_creatinine_testing_facilities_chart 
 $config['access_creatinine_testing_facilities_chart_chartview'] = 'charts/column_drilldown_view';

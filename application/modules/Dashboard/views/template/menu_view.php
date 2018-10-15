@@ -10,21 +10,20 @@
             <a class="navbar-brand" href="#">
                 <span class="glyphicon glyphicon-dashboard"></span>
             </a>
-            <a class="navbar-brand" href="#">PREP DASHBOARD</a>
+            <a class="navbar-brand" href="#">PrEP DASHBOARD</a>
         </div>
         <nav class="collapse navbar-collapse" id="filter-navbar">
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />
             <ul class="nav navbar-nav navbar-right" id="main_tabs">
                 <li class="active"><a href="#service_delivery" aria-controls="service_delivery" role="tab" data-toggle="tab">Service Delivery</a></li>
-              
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                         Partner
+                         Partner Service
                         <span class="caret"></span>                     
                     </a>
                     <ul class="dropdown-menu">
                           <li><a href="#partner" aria-controls="partner" role="tab" data-toggle="tab">Partner</a></li>
-                          <li><a href="#partner_lab" aria-controls="partner_lab" role="tab" data-toggle="tab">Lab</a></li>
+                          <!--<li><a href="#partner_lab" aria-controls="partner_lab" role="tab" data-toggle="tab">Lab</a></li>-->
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -40,24 +39,19 @@
                 </li>
                 <li><a href="#human_resource" aria-controls="human_resource" role="tab" data-toggle="tab">Human Resource</a></li>
                 <li><a href="#commodity_management" aria-controls="commodity_management" role="tab" data-toggle="tab">Commodity Management</a></li>
-                <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring and Evaluation</a></li>
-                <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication and Advocacy</a></li>
-                <li><a href="<?php echo base_url('manager/file_upload'); ?>" onclick="window.location.reload(true);"><span class="glyphicon glyphicon-wrench"></span>Setting</a>
+                <li><a href="#monitoring_evaluation" aria-controls="monitoring_evaluation" role="tab" data-toggle="tab">Monitoring &amp; Evaluation</a></li>
+                <li><a href="#communication_advocacy" aria-controls="communication_advocacy" role="tab" data-toggle="tab">Communication &amp; Advocacy</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-user"></i>  <i class="caret"></i>                      
+                        <i class="glyphicon glyphicon-user"></i> <?= ucwords($this->session->userdata('first_name').' '.$this->session->userdata('last_name')); ?> <i class="caret"></i>                      
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
                             <a href="#">
                                 <b><?= $this->session->userdata('role'); ?></b>
-                                <br>
-                                <br>
-                                <i class="glyphicon glyphicon-user"></i> 
-                                <?= $this->session->userdata('first_name'); ?>
-                                <?= $this->session->userdata('last_name'); ?>
                             </a> 
                         </li>
+                        <li><a href="<?php echo base_url('manager/file_upload'); ?>" onclick="window.location.reload(true);"> <span class="glyphicon glyphicon-wrench"></span> My Settings</a>
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url() . 'manager/logout'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>

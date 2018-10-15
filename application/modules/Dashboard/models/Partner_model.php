@@ -5,12 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Description of Partner_model
  *
- * @author kariukye
+ * @author Marete
  */
 class Partner_model extends CI_Model {
 
     public function get_partner_support($filters) {
-        $this->db->select("Partner_Support name,COUNT(*)y, UPPER(Partner_Support) drilldown", FALSE);
+        $this->db->select("Partner_Support name,COUNT(*)y, UPPER(REPLACE(Partner_Support, ' ', '_')) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -24,13 +24,13 @@ class Partner_model extends CI_Model {
 
     public function get_partner_support_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(Partner_Support) category, County name,COUNT(*)y, UPPER(County) drilldown", FALSE);
+        $this->db->select("UPPER(REPLACE(Partner_Support, ' ', '_')) category, County name,COUNT(*)y, UPPER(CONCAT_WS('_', REPLACE(Partner_Support, ' ', '_'), REPLACE(County, ' ', '_'))) drilldown, '#7798BF' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('drilldown');
+        $this->db->group_by('category, drilldown');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_facility_details');
         $sub_data = $query->result_array();
@@ -56,13 +56,13 @@ class Partner_model extends CI_Model {
     }
 
     public function get_partner_support_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(County) category, Sub_County name,COUNT(*)y", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(Partner_Support, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->group_by('name');
+        $this->db->group_by('category, name');
         $this->db->order_by('y', 'DESC');
         $query = $this->db->get('tbl_facility_details');
         $population_data = $query->result_array();
@@ -92,7 +92,7 @@ class Partner_model extends CI_Model {
     }
 
     public function get_key_populations_targeted_by_prep_partner($filters) {
-        $this->db->select("ps.implementing_partner name,COUNT(pp.Population)y, ps.implementing_partner drilldown", FALSE);
+        $this->db->select("ps.implementing_partner name,COUNT(pp.Population)y, UPPER(REPLACE(ps.implementing_partner, ' ', '_')) drilldown", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -108,7 +108,7 @@ class Partner_model extends CI_Model {
 
     public function get_key_populations_targeted_by_prep_partner_drilldown($main_data, $filters) {
         $drilldown_data = array();
-        $this->db->select("UPPER(ps.implementing_partner) category, pp.Population name,COUNT(pp.Population)y", FALSE);
+        $this->db->select("UPPER(REPLACE(ps.implementing_partner, ' ', '_')) category, pp.Population name,COUNT(pp.Population) y, '#7798BF' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -116,7 +116,7 @@ class Partner_model extends CI_Model {
         }
         $this->db->from('tbl_partner_support ps');
         $this->db->join('tbl_prep_population pp', 'pp.id=ps.id', 'left');
-        $this->db->group_by('name');
+        $this->db->group_by('category, name');
         $this->db->order_by('y', 'Desc');
         $sub_data = $this->db->get()->result_array();
 

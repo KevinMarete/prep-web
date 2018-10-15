@@ -60,9 +60,15 @@
                 }
             },
             tooltip: {
-                pointFormat: '{point.key} <b>{point.y:,.1f}</b>',
-                shared: true,
-                useHTML: true
+                formatter: function () {
+                    var total_sum = 0;
+                    $.each(this.series.data, function(i, v){
+                        total_sum += v.y;
+                    });
+                    var rV = '<b>' + this.key + '</b><br/>'
+                    rV += '<span style="color:'+ this.series.color + '"><b>'+ this.series.name +'</b></span>: ' + Highcharts.numberFormat(this.y, 0) + '('+Highcharts.numberFormat((this.y / total_sum) * 100, 1)+' %)<br/>'
+                    return rV;
+                }
             },
             plotOptions: {
                 column: {
@@ -71,21 +77,8 @@
                     colorByPoint: true,
                     dataLabels: {
                         enabled: true,
-                        //format: '{point.y:.1f}%',
-                        rotation: -90,
+                        rotation: 0,
                     }
-                },
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                        style: {
-                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                        }
-                    },
-                    showInLegend: true
                 },
                 series: {
                     borderWidth: 0,
