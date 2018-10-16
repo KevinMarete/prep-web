@@ -22,7 +22,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            Key Populations Targeted by PrEP Partners <span class="label label-warning">Drilldown</span>
+                            Key Populations Targeted by PrEP Partners
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -54,7 +54,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            Distribution of Trained Workers by Partners <span class="label label-warning">Drilldown</span>
+                            Distribution of Trained Workers by Partners
                         </strong>
                     </div>
                     <div class="chart-stage">

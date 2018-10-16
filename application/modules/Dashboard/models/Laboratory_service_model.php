@@ -110,6 +110,7 @@ class Laboratory_service_model extends CI_Model {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->where_in('Creatinine_Testing', 'YES');
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_laboratory_service');

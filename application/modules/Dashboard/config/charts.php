@@ -66,11 +66,11 @@ $config['partner_support_chart_filters'] = array('Sub_County', 'County');
 $config['partner_support_chart_filters_default'] = array();
 
 //key_populations_targeted_by_prep_partner_chart 
-$config['key_populations_targeted_by_prep_partner_chart_chartview'] = 'charts/column_drilldown_view';
+$config['key_populations_targeted_by_prep_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
 $config['key_populations_targeted_by_prep_partner_chart_title'] = 'Key Populations Targeted by PrEP Partners';
-$config['key_populations_targeted_by_prep_partner_chart_yaxis_title'] = 'No. of Facilities';
+$config['key_populations_targeted_by_prep_partner_chart_yaxis_title'] = '';
 $config['key_populations_targeted_by_prep_partner_chart_source'] = 'Source: www.prep.nascop.org';
-$config['key_populations_targeted_by_prep_partner_chart_has_drilldown'] = TRUE;
+$config['key_populations_targeted_by_prep_partner_chart_has_drilldown'] = FALSE;
 $config['key_populations_targeted_by_prep_partner_chart_filters'] = array('Sub_County', 'County');
 $config['key_populations_targeted_by_prep_partner_chart_filters_default'] = array();
 
@@ -84,7 +84,7 @@ $config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
 $config['hcw_trained_by_partner_chart_filters_default'] = array();
 
 //partner_facility_table 
-$config['partner_facility_table_chartview'] = 'charts/table_view';
+$config['partner_facility_table_chartview'] = 'charts/column_drilldown_view';
 $config['partner_facility_table_title'] = 'Partner Facility Numbers ';
 $config['partner_facility_table_yaxis_title'] = 'No. of Facilities';
 $config['partner_facility_table_source'] = 'Source: www.prep.nascop.org';
@@ -104,7 +104,7 @@ $config['service_delivery_point_by_partner_chart_filters_default'] = array();
 //access_creatinine_testing_facilities_chart 
 $config['access_creatinine_testing_facilities_chart_chartview'] = 'charts/column_drilldown_view';
 $config['access_creatinine_testing_facilities_chart_title'] = 'Access to Creatinine Testing in Facilities';
-$config['access_creatinine_testing_facilities_chart_yaxis_title'] = 'facility count';
+$config['access_creatinine_testing_facilities_chart_yaxis_title'] = 'No. of Facilities';
 $config['access_creatinine_testing_facilities_chart_source'] = 'Source: www.prep.nascop.org';
 $config['access_creatinine_testing_facilities_chart_has_drilldown'] = TRUE;
 $config['access_creatinine_testing_facilities_chart_filters'] = array('Sub_County', 'County');
@@ -113,7 +113,7 @@ $config['access_creatinine_testing_facilities_chart_filters_default'] = array();
 //creatinine_testing_equipment_availability_chart 
 $config['creatinine_testing_equipment_availability_chart_chartview'] = 'charts/column_drilldown_view';
 $config['creatinine_testing_equipment_availability_chart_title'] = 'Creatinine Testing Equipment';
-$config['creatinine_testing_equipment_availability_chart_yaxis_title'] = 'facility count';
+$config['creatinine_testing_equipment_availability_chart_yaxis_title'] = 'No. of Facilities';
 $config['creatinine_testing_equipment_availability_chart_source'] = 'Source: www.prep.nascop.org';
 $config['creatinine_testing_equipment_availability_chart_has_drilldown'] = TRUE;
 $config['creatinine_testing_equipment_availability_chart_filters'] = array('Sub_County', 'County');
@@ -122,7 +122,7 @@ $config['creatinine_testing_equipment_availability_chart_filters_default'] = arr
 //offsite_onsite_creatinine_testing_chart 
 $config['offsite_onsite_creatinine_testing_chart_chartview'] = 'charts/column_drilldown_view';
 $config['offsite_onsite_creatinine_testing_chart_title'] = 'Offsite vs Onsite Creatinine Testing';
-$config['offsite_onsite_creatinine_testing_chart_yaxis_title'] = 'facility count';
+$config['offsite_onsite_creatinine_testing_chart_yaxis_title'] = 'No. of Facilities';
 $config['offsite_onsite_creatinine_testing_chart_source'] = 'Source: www.prep.nascop.org';
 $config['offsite_onsite_creatinine_testing_chart_has_drilldown'] = TRUE;
 $config['offsite_onsite_creatinine_testing_chart_filters'] = array('Sub_County', 'County');
@@ -131,7 +131,7 @@ $config['offsite_onsite_creatinine_testing_chart_filters_default'] = array();
 //creatinine_reagents_chart
 $config['creatinine_reagents_chart_chartview'] = 'charts/column_drilldown_view';
 $config['creatinine_reagents_chart_title'] = 'Creatinine Reagents in Facilities';
-$config['creatinine_reagents_chart_yaxis_title'] = 'facility count';
+$config['creatinine_reagents_chart_yaxis_title'] = 'No. of Facilities';
 $config['creatinine_reagents_chart_source'] = 'Source: www.prep.nascop.org';
 $config['creatinine_reagents_chart_has_drilldown'] = TRUE;
 $config['creatinine_reagents_chart_filters'] = array('Sub_County', 'County');
@@ -383,7 +383,7 @@ $config['prep_dispensing_software_table_filters_default'] = array();
 //lmis_tools_chart 
 $config['lmis_tools_chart_chartview'] = 'charts/column_drilldown_view';
 $config['lmis_tools_chart_title'] = 'LMIS Tools';
-$config['lmis_tools_chart_yaxis_title'] = 'facility count';
+$config['lmis_tools_chart_yaxis_title'] = 'No. of Facilities';
 $config['lmis_tools_chart_source'] = 'Source: www.prep.nascop.org';
 $config['lmis_tools_chart_has_drilldown'] = TRUE;
 $config['lmis_tools_chart_filters'] = array('Sub_County', 'County');
@@ -392,7 +392,7 @@ $config['lmis_tools_chart_filters_default'] = array();
 //clinical_encounter_forms_chart 
 $config['clinical_encounter_forms_chart_chartview'] = 'charts/column_drilldown_view';
 $config['clinical_encounter_forms_chart_title'] = 'Clinical Encounter Forms';
-$config['clinical_encounter_forms_chart_yaxis_title'] = 'facility count';
+$config['clinical_encounter_forms_chart_yaxis_title'] = 'No. of Facilities';
 $config['clinical_encounter_forms_chart_source'] = 'Source: www.prep.nascop.org';
 $config['clinical_encounter_forms_chart_has_drilldown'] = TRUE;
 $config['clinical_encounter_forms_chart_filters'] = array('Sub_County', 'County');
@@ -401,7 +401,7 @@ $config['clinical_encounter_forms_chart_filters_default'] = array();
 //pharmacovigilance_tools_chart 
 $config['pharmacovigilance_tools_chart_chartview'] = 'charts/column_drilldown_view';
 $config['pharmacovigilance_tools_chart_title'] = 'Pharmacovigilance Tools';
-$config['pharmacovigilance_tools_chart_yaxis_title'] = 'facility count';
+$config['pharmacovigilance_tools_chart_yaxis_title'] = 'No. of Facilities';
 $config['pharmacovigilance_tools_chart_source'] = 'Source: www.prep.nascop.org';
 $config['pharmacovigilance_tools_chart_has_drilldown'] = TRUE;
 $config['pharmacovigilance_tools_chart_filters'] = array('Sub_County', 'County');
@@ -410,7 +410,7 @@ $config['pharmacovigilance_tools_chart_filters_default'] = array();
 //prep_register_chart 
 $config['prep_register_chart_chartview'] = 'charts/column_drilldown_view';
 $config['prep_register_chart_title'] = 'PrEP Register';
-$config['prep_register_chart_yaxis_title'] = 'facility count';
+$config['prep_register_chart_yaxis_title'] = 'No. of Facilities';
 $config['prep_register_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_register_chart_has_drilldown'] = TRUE;
 $config['prep_register_chart_filters'] = array('Sub_County', 'County');
@@ -419,7 +419,7 @@ $config['prep_register_chart_filters_default'] = array();
 //rapid_assessment_screening_tool_chart 
 $config['rapid_assessment_screening_tools_chart_chartview'] = 'charts/column_drilldown_view';
 $config['rapid_assessment_screening_tools_chart_title'] = 'Rapid Assessment Screening Tools';
-$config['rapid_assessment_screening_tools_chart_yaxis_title'] = 'facility count';
+$config['rapid_assessment_screening_tools_chart_yaxis_title'] = 'No. of Facilities';
 $config['rapid_assessment_screening_tools_chart_source'] = 'Source: www.prep.nascop.org';
 $config['rapid_assessment_screening_tools_chart_has_drilldown'] = TRUE;
 $config['rapid_assessment_screening_tools_chart_filters'] = array('Sub_County', 'County');
@@ -428,7 +428,7 @@ $config['rapid_assessment_screening_tools_chart_filters_default'] = array();
 //prep_summary_tools_chart 
 $config['prep_summary_tools_chart_chartview'] = 'charts/column_drilldown_view';
 $config['prep_summary_tools_chart_title'] = 'PrEP Summary Tools';
-$config['prep_summary_tools_chart_yaxis_title'] = 'facility count';
+$config['prep_summary_tools_chart_yaxis_title'] = 'No. of Facilities';
 $config['prep_summary_tools_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_summary_tools_chart_has_drilldown'] = TRUE;
 $config['prep_summary_tools_chart_filters'] = array('Sub_County', 'County');
@@ -437,7 +437,7 @@ $config['prep_summary_tools_chart_filters_default'] = array();
 //clients_on_prep_chart 
 $config['clients_on_prep_chart_chartview'] = 'charts/stacked_column_view';
 $config['clients_on_prep_chart_title'] = 'Clients on PrEP';
-$config['clients_on_prep_chart_yaxis_title'] = 'Clients';
+$config['clients_on_prep_chart_yaxis_title'] = 'No. of Clients';
 $config['clients_on_prep_chart_source'] = 'Source: www.prep.nascop.org';
 $config['clients_on_prep_chart_has_drilldown'] = FALSE;
 $config['clients_on_prep_chart_filters'] = array('Sub_County', 'County');
@@ -446,7 +446,7 @@ $config['clients_on_prep_chart_filters_default'] = array();
 //demand_creation_activities_chart 
 $config['demand_creation_activities_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['demand_creation_activities_chart_title'] = 'Availability of Demand Creation Activities in Facilities';
-$config['demand_creation_activities_chart_yaxis_title'] = 'Percent of 100';
+$config['demand_creation_activities_chart_yaxis_title'] = 'Percentage(100%)';
 $config['demand_creation_activities_chart_source'] = 'Source: www.prep.nascop.org';
 $config['demand_creation_activities_chart_has_drilldown'] = FALSE;
 $config['demand_creation_activities_chart_filters'] = array('Sub_County', 'County');
@@ -455,7 +455,7 @@ $config['demand_creation_activities_chart_filters_default'] = array();
 //prep_education_availability_chart
 $config['prep_education_availability_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['prep_education_availability_chart_title'] = 'Availability of Activities about PrEP Education in Facilities';
-$config['prep_education_availability_chart_yaxis_title'] = 'Percent of 100';
+$config['prep_education_availability_chart_yaxis_title'] = 'Percentage(100%)';
 $config['prep_education_availability_chart_source'] = 'Source: www.prep.nascop.org';
 $config['prep_education_availability_chart_has_drilldown'] = FALSE;
 $config['prep_education_availability_chart_filters'] = array('Sub_County', 'County');
@@ -464,7 +464,7 @@ $config['prep_education_availability_chart_filters_default'] = array();
 //iec_materials_chart 
 $config['iec_materials_chart_chartview'] = 'charts/stacked_column_percent_view';
 $config['iec_materials_chart_title'] = 'Availability of IEC Materials';
-$config['iec_materials_chart_yaxis_title'] = 'Percent of 100';
+$config['iec_materials_chart_yaxis_title'] = 'Percentage(100%)';
 $config['iec_materials_chart_source'] = 'Source: www.prep.nascop.org';
 $config['iec_materials_chart_has_drilldown'] = FALSE;
 $config['iec_materials_chart_filters'] = array('Sub_County', 'County');
