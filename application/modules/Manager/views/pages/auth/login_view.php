@@ -17,7 +17,7 @@
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading text-center">
                             <img src="<?php echo base_url() . 'public/manager/img/nascop_logo.png'; ?>" class="img-responsive center-block" alt="prep_logo">
-                            <h1>PrEP</h1>
+                            <h3>PrEP DASHBOARD</h3>
                             <h3 class="panel-title"><b>Please Sign In</b></h3>
                         </div>
                         <?php

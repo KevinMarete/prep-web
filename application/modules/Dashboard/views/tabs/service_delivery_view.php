@@ -73,7 +73,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            Populations Targeted for PrEP by Facilities <span class="label label-warning">Drilldown</span>
+                            Provision of PrEP to different population types by Facility <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -81,23 +81,6 @@
                     </div>
                     <div class="chart-notes">
                         <span class="population_receiving_prep_chart_heading heading"></span>
-                    </div>
-                </div>
-            </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
-                        <strong>
-                            Distribution of Preferred Service Delivery Points (SDPs)
-                        </strong>
-                    </div>
-                    <div class="chart-stage">
-                        <div id="preferred_service_delivery_point_table"></div>
-                    </div>
-                    <div class="chart-notes">
-                        <span class="preferred_service_delivery_point_table_heading heading"></span>
                     </div>
                 </div>
             </div>

@@ -28,19 +28,25 @@ class Auth_login extends CI_Controller {
             //check email password match and if matches login in user
             $data = $this->Auth_login_model->login_user($user_login['email'], $user_login['password']);
             if (!empty($data)) {
-                //Array to store session data
-                $sessionArray = array(
-                    'email' => $data['email'],
-                    'last_name' => $data['last_name'],
-                    'mobile' => $data['mobile'],
-                    'first_name' => $data['first_name'],
-                    'roleId' => $data['roleId'],
-                    'role' => $data['role'],
-                    'isLoggedIn' => TRUE
-                );
-                $this->session->set_userdata($sessionArray);
-                //function load dashboard_view if email password match
-                $this->home();
+                if($data['is_authorized']){
+                    //Array to store session data
+                    $sessionArray = array(
+                        'email' => $data['email'],
+                        'last_name' => $data['last_name'],
+                        'mobile' => $data['mobile'],
+                        'first_name' => $data['first_name'],
+                        'roleId' => $data['roleId'],
+                        'role' => $data['role'],
+                        'isLoggedIn' => TRUE
+                    );
+                    $this->session->set_userdata($sessionArray);
+                    //function load dashboard_view if email password match
+                    $this->home();
+                }else{
+                    //login success but user is not authorized and has to contact admin
+                    $this->session->set_flashdata('error_msg', 'Your account is not Activated!, Please contact us at support@nascop.or.ke');
+                    $this->load->view("Manager/pages/auth/login_view");
+                }
             } else {
                 //login fails if user does not provide matching registered email and password
                 $this->session->set_flashdata('error_msg', 'Email password mismatch!!,Try again.');

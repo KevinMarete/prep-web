@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Description of Monitoring_evaluation_model
  *
- * @author k
+ * @author Marete
  */
 class Monitoring_evaluation_model extends CI_Model {
 

@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Description of Communication_advocacy_model
  *
- * @author k
+ * @author Marete
  */
 class Communication_advocacy_model extends CI_Model {
 

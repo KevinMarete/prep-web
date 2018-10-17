@@ -22,6 +22,7 @@
             chart: {
                 type: 'bar'
             },
+            colors: ['#008080', '#aaaebc', '#5cb85c', '#434348', '#5bc0de', '#f7a35c', '#8085e9', '#ff4d4d', '#bdb76b', '#FF1493', '#CD5C5C', '#0000CD'],
             title: {
                 text: '<?php echo $chart_title; ?>'
             },
@@ -40,9 +41,15 @@
                 }
             },
             tooltip: {
-                pointFormat: '{point.key} <b>{point.y:,.0f}</b>',
-                shared: true,
-                useHTML: true
+                formatter: function () {
+                    var total_sum = 0;
+                    $.each(this.series.data, function(i, v){
+                        total_sum += v.y;
+                    });
+                    var rV = '<b>' + this.key + '</b><br/>'
+                    rV += '<span style="color:'+ this.series.color + '"><b>Total</b></span>: ' + Highcharts.numberFormat(this.y, 0) + '('+Highcharts.numberFormat((this.y / total_sum) * 100, 1)+' %)<br/>'
+                    return rV;
+                }
             },
             plotOptions: {
                 column: {

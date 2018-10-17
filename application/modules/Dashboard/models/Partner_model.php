@@ -196,7 +196,13 @@ class Partner_model extends CI_Model {
     }
 
     public function get_hcw_trained_by_partner($filters) {
-        $this->db->select("ps.implementing_partner name, SUM(IF(tp.hcw_trained_on_prep IS NOT NULL, tp.hcw_trained_on_prep, 0))y, UPPER(REPLACE(ps.implementing_partner, ' ', '_')) drilldown", FALSE);
+        $columns = array();
+        $partner_data = array(
+            array('type' => 'column', 'name' => 'Trained', 'data' => array()),
+            array('type' => 'column', 'name' => 'Untrained', 'data' => array())
+        );
+
+        $this->db->select("UPPER(ps.implementing_partner) partner, COUNT(IF(tp.trained_on_prep = 'Yes', 1, NULL)) trained, COUNT(IF(tp.trained_on_prep = 'No', 1, Null)) untrained", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -204,81 +210,23 @@ class Partner_model extends CI_Model {
         }
         $this->db->from('tbl_trained_personnel tp');
         $this->db->join('tbl_partner_support ps', 'tp.id=ps.id');
-        $this->db->group_by('name');
-        $this->db->order_by('y', 'Desc');
+        $this->db->group_by('partner');
         $query = $this->db->get();
-        return $this->get_hcw_trained_by_partner_drilldown(array('main' => $query->result_array()), $filters);
-    }
+        $results = $query->result_array();
 
-    public function get_hcw_trained_by_partner_drilldown($main_data, $filters) {
-        $drilldown_data = array();
-        $this->db->select("UPPER(REPLACE(ps.implementing_partner, ' ', '_')) category, ps.County name,COUNT(IF(tp.hcw_trained_on_prep = 'Yes', 1, 0))y, UPPER(CONCAT_WS('_', REPLACE(ps.implementing_partner, ' ', '_'), REPLACE(ps.County, ' ', '_'))) drilldown, '#7798BF' color", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->from('tbl_trained_personnel tp');
-        $this->db->join('tbl_partner_support ps', 'tp.id=ps.id');
-        $this->db->group_by('category, drilldown');
-        $this->db->order_by('y', 'Desc');
-        $sub_data = $this->db->get()->result_array();
-
-        if ($main_data) {
-            foreach ($main_data['main'] as $counter => $main) {
-                $category = $main['drilldown'];
-
-                $drilldown_data['drilldown'][$counter]['id'] = $category;
-                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
-                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
-
-                foreach ($sub_data as $sub) {
-                    if ($category == $sub['category']) {
-                        unset($sub['category']);
-                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
-                    }
+        if ($results) {
+            foreach ($results as $result) {
+                $columns[] = $result['partner'];
+                foreach ($partner_data as $index => $partner) {
+                    if ($partner['name'] == 'Trained') {
+                        array_push($partner_data[$index]['data'], $result['trained']);
+                    } else if ($partner['name'] == 'Untrained') {
+                        array_push($partner_data[$index]['data'], $result['untrained']);
+                    } 
                 }
             }
         }
-        $drilldown_data = $this->get_hcw_trained_by_partner_drilldown_level2($drilldown_data, $filters);
-        return array_merge($main_data, $drilldown_data);
-    }
-
-    public function get_hcw_trained_by_partner_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(ps.implementing_partner, ' ', '_'), REPLACE(ps.County, ' ', '_'))) category, ps.Sub_County name, COUNT(IF(tp.hcw_trained_on_prep = 'Yes', 1, 0))y, '#90ee7e' color", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->from('tbl_trained_personnel tp');
-        $this->db->join('tbl_partner_support ps', 'tp.id=ps.id');
-        $this->db->group_by('category, name');
-        $this->db->order_by('y', 'Desc');
-        $population_data = $this->db->get()->result_array();
-
-        if ($drilldown_data) {
-            $counter = sizeof($drilldown_data['drilldown']);
-            foreach ($drilldown_data['drilldown'] as $main_data) {
-                foreach ($main_data['data'] as $item) {
-                    $filter_value = $item['name'];
-                    $filter_name = $item['drilldown'];
-
-                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
-                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
-                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
-
-                    foreach ($population_data as $population) {
-                        if ($filter_name == $population['category']) {
-                            unset($population['category']);
-                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
-                        }
-                    }
-                    $counter += 1;
-                }
-            }
-        }
-        return $drilldown_data;
+        return array('main' => $partner_data, 'columns' => $columns);
     }
 
     public function get_partner_facility_numbers($filters) {

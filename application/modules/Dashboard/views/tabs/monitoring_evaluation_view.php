@@ -5,7 +5,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            LMIS Tools <span class="label label-warning">Drilldown</span>
+                            Availability of LMIS Tools <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -20,7 +20,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            Clinical Encounter Forms <span class="label label-warning">Drilldown</span>
+                            Availability of Clinical Encounter Forms <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -37,7 +37,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            Pharmacovigilance Tools <span class="label label-warning">Drilldown</span>
+                            Availability of Pharmacovigilance Tools <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -52,7 +52,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            PrEP Register <span class="label label-warning">Drilldown</span>
+                            Availability of PrEP Register <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -69,7 +69,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            Rapid Assessment Screening Tools <span class="label label-warning">Drilldown</span>
+                            Availability of Rapid Assessment Screening Tools <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -84,7 +84,7 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
-                            PrEP Summary Tools <span class="label label-warning">Drilldown</span>
+                            Availability of PrEP Summary Tools <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>
                     <div class="chart-stage">
@@ -100,7 +100,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Clients on PrEP</strong>
+                        <strong>Clients ever on PrEP as at  February 2018</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="clients_on_prep_chart"></div>

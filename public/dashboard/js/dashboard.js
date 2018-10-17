@@ -1,12 +1,10 @@
 var countyURL = 'API/county'
 var subcountyURL = 'API/subcounty'
-//var subcountyURL='API/subcounty?county=?'
 var chartURL = 'Dashboard/get_chart'
 //main filters
 var mainFilterURLs = {
     'service_delivery': [{'link': countyURL, 'type': 'County'}],
     'partner': [{'link': countyURL, 'type': 'County'}],
-    'partner_lab': [{'link': countyURL, 'type': 'County'}],
     'laboratory_creatinine': [{'link': countyURL, 'type': 'County'}],
     'laboratory_hep_b': [{'link': countyURL, 'type': 'County'}],
     'laboratory_hep_c': [{'link': countyURL, 'type': 'County'}],
@@ -18,26 +16,24 @@ var mainFilterURLs = {
 //tab filters
 var tabFiltersURLs = {
     'service_delivery': [],
-    'partner': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#partner_support_chart_filter']}],
-    'partner_lab': [],
-    'laboratory_creatinine': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#access_creatinine_testing_facilities_chart_filter', '#creatinine_testing_equipment_availability_chart_filter', '#offsite_onsite_creatinine_testing_chart_filter', '#creatinine_reagents_chart_filter']}],
-    'laboratory_hep_b': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#access_hep_b_testing_facilities_chart_filter', '#hep_b_testing_equipment_availability_chart_filter', '#offsite_onsite_hep_b_testing_chart_filter']}],
-    'laboratory_hep_c': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#access_hep_c_testing_facilities_chart_filter', '#hep_c_testing_equipment_availability_chart_filter', '#offsite_onsite_hep_c_testing_chart_filter']}],
-    'human_resource': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#distibution_of_facilities_trained_personnel_chart_filter', '#health_care_workers_trained_on_prep_chart_filter']}],
-    'commodity_management': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#facility_source_of_arvs_by_county_chart_filter', '#prep_dispensing_points_chart_filter', '#prep_product_dispensed_chart_filter', '#prep_dispensing_software_chart_filter']}],
-    'monitoring_evaluation': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#lmis_tools_chart_filter', '#clinical_encounter_forms_chart_filter', '#pharmacovigilance_tools_chart_filter', '#prep_register_chart_filter', '#rapid_assessment_screening_tools_chart_filter']}],
-    'communication_advocacy': [{'link': subcountyURL, 'type': 'Sub_County', 'filters': ['#demand_creation_activities_chart_filter', '#prep_education_availability_chart_filter', '#iec_materials_chart_filter']}]
+    'partner': [],
+    'laboratory_creatinine': [],
+    'laboratory_hep_b': [],
+    'laboratory_hep_c': [],
+    'human_resource': [],
+    'commodity_management': [],
+    'monitoring_evaluation': [],
+    'communication_advocacy': []
 }
 //charts
 var charts = {
-    'service_delivery': ['facilities_level_distribution_chart', 'prep_focal_person_chart', 'hiv_services_offered_chart', 'current_service_delivery_points_distribution_chart', 'population_receiving_prep_chart', 'preferred_service_delivery_point_table'],
-    'partner': ['partner_support_chart', 'key_populations_targeted_by_prep_partner_chart', 'service_delivery_point_by_partner_chart', 'hcw_trained_by_partner_chart', 'partner_facility_table'],
-    'partner_lab': [],
-    'laboratory_creatinine': ['access_creatinine_testing_facilities_chart', 'creatinine_testing_equipment_availability_chart', 'offsite_onsite_creatinine_testing_chart', 'creatinine_reagents_chart', 'access_creatinine_testing_in_relation_to_equipment_availability_table', 'creatinine_reagents_availability_in_relation_to_equipment_table', 'creatinine_reagents_unavailability_in_relation_to_equipment_table'],
-    'laboratory_hep_b': ['access_hep_b_testing_facilities_chart', 'hep_b_testing_equipment_availability_chart', 'offsite_onsite_hep_b_testing_chart', 'hep_b_reagents_chart', 'access_hep_b_testing_facilities_table', 'offsite_onsite_hep_b_testing_table'],
-    'laboratory_hep_c': ['access_hep_c_testing_facilities_chart', 'hep_c_testing_equipment_availability_chart', 'offsite_onsite_hep_c_testing_chart', 'hep_c_reagents_chart', 'access_hep_c_testing_facilities_table', 'offsite_onsite_hep_c_testing_table'],
+    'service_delivery': ['facilities_level_distribution_chart', 'prep_focal_person_chart', 'hiv_services_offered_chart', 'current_service_delivery_points_distribution_chart', 'population_receiving_prep_chart'],
+    'partner': ['partner_support_chart', 'partner_facility_table', 'service_delivery_point_by_partner_chart', 'hcw_trained_by_partner_chart'],
+    'laboratory_creatinine': ['access_creatinine_testing_facilities_chart', 'offsite_onsite_creatinine_testing_chart', 'creatinine_testing_equipment_availability_chart', 'creatinine_reagents_chart'],
+    'laboratory_hep_b': ['access_hep_b_testing_facilities_chart', 'offsite_onsite_hep_b_testing_chart', 'hep_b_testing_equipment_availability_chart', 'hep_b_reagents_chart'],
+    'laboratory_hep_c': ['access_hep_c_testing_facilities_chart', 'offsite_onsite_hep_c_testing_chart', 'hep_c_testing_equipment_availability_chart', 'hep_c_reagents_chart'],
     'human_resource': ['distibution_of_facilities_trained_personnel_chart', 'cadre_trained_chart', 'health_care_workers_trained_on_prep_chart', 'health_care_workers_trained_on_prep_table'],
-    'commodity_management': ['facility_source_of_ARVs_chart', 'facility_source_of_arvs_by_county_chart', 'prep_dispensing_points_table', 'prep_dispensing_points_chart', 'prep_product_dispensed_chart', 'prep_dispensing_software_chart', 'prep_dispensing_software_table', 'prep_product_dispensed_table'],
+    'commodity_management': ['facility_source_of_ARVs_chart', 'facility_source_of_arvs_by_county_chart', 'prep_dispensing_points_table', 'prep_dispensing_points_chart', 'prep_product_dispensed_table', 'prep_product_dispensed_chart', 'prep_dispensing_software_table', 'prep_dispensing_software_chart'],
     'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart', 'clients_on_prep_chart'],
     'communication_advocacy': ['demand_creation_activities_chart', 'prep_education_availability_chart', 'iec_materials_chart']
 }
@@ -60,13 +56,24 @@ $(function () {
     $("#btn_clear").on("click", MainClearHandler);
     //Add This to Block SHIFT Key for multiselect 
     disableShiftKey()
+    //Move to chart
+    $("#tab_items").change(function(){
+        var chart_section = $(this).find(":selected").val();
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#"+chart_section).offset().top
+        }, 500);
+
+    });
 });
 
 function LoadTabContent(tabName) {
     //Refresh tab chart(s)
     if (charts[tabName].length > 0) {
+        $("#tab_items").empty();
         $.each(charts[tabName], function (key, chartName) {
             LoadSpinner('#' + chartName)
+            //Append chart names
+            $("#tab_items").append($("<option value='" + chartName + "'>" + chartName.toUpperCase() + "</option>"));
         });
     }
     //Set main filter
