@@ -24,7 +24,7 @@ class Dashboard extends BaseController {
         $main_data = array('main' => array(), 'drilldown' => array(), 'columns' => array());
         $main_data = $this->get_data($chartname, $selectedfilters);
         if ($this->config->item($chartname . '_has_drilldown')) {
-            $data['chart_drilldown_data'] = json_encode(@$main_data['drilldown'], JSON_NUMERIC_CHECK);
+            $data['chart_drilldown_data'] = json_encode(@array_values($main_data['drilldown']), JSON_NUMERIC_CHECK);
         } else {
             $data['chart_categories'] = json_encode(@$main_data['columns'], JSON_NUMERIC_CHECK);
         }
@@ -63,14 +63,12 @@ class Dashboard extends BaseController {
             $main_data = $this->Service_delivery_model->get_population_receiving_prep_numbers($filters);
         } else if ($chartname == 'partner_support_chart') {
             $main_data = $this->Partner_model->get_partner_support($filters);
-        } else if ($chartname == 'key_populations_targeted_by_prep_partner_chart') {
-            $main_data = $this->Partner_model->get_key_populations_targeted_by_prep_partner($filters);
+        } else if ($chartname == 'partner_facility_table') {
+            $main_data = $this->Partner_model->get_partner_facility_numbers($filters);
         } else if ($chartname == 'service_delivery_point_by_partner_chart') {
             $main_data = $this->Partner_model->get_partner_service_delivery_point($filters);
         } else if ($chartname == 'hcw_trained_by_partner_chart') {
             $main_data = $this->Partner_model->get_hcw_trained_by_partner($filters);
-        } else if ($chartname == 'partner_facility_table') {
-            $main_data = $this->Partner_model->get_partner_facility_numbers($filters);
         } else if ($chartname == 'access_creatinine_testing_facilities_chart') {
             $main_data = $this->Laboratory_service_model->get_access_creatinine_testing($filters);
         } else if ($chartname == 'offsite_onsite_creatinine_testing_chart') {

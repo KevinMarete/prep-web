@@ -56,7 +56,7 @@ class Partner_model extends CI_Model {
     }
 
     public function get_partner_support_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(Partner_Support, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(Partner_Support, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(Partner_Support, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -88,56 +88,162 @@ class Partner_model extends CI_Model {
                 }
             }
         }
-        return $drilldown_data;
+        return $this->get_partner_support_drilldown_level3($drilldown_data, $filters);
     }
 
-    public function get_key_populations_targeted_by_prep_partner($filters) {
-        $columns = array();
-        $population_data = array(
-            array('type' => 'column', 'name' => 'Adolescents & young girls & women', 'data' => array()),
-            array('type' => 'column', 'name' => 'Discordant Couples', 'data' => array()),
-            array('type' => 'column', 'name' => 'FSW - Female sex workers', 'data' => array()),
-            array('type' => 'column', 'name' => 'General Population', 'data' => array()),
-            array('type' => 'column', 'name' => 'MSM - Men who have sex with men', 'data' => array()),
-            array('type' => 'column', 'name' => 'Others', 'data' => array()),
-            array('type' => 'column', 'name' => 'PWID', 'data' => array())
-        );
-
-        $this->db->select("UPPER(ps.implementing_partner) partner, COUNT(IF(pp.Population = 'Adolescents & young girls & women', 1, NULL)) AGYW, COUNT(IF(pp.Population = 'Discordant Couples',1,Null)) DC, COUNT(IF(pp.Population='FSW - Female sex workers',1,NULL)) FSW, COUNT(IF(pp.Population='General Population',1,NULL)) GP,COUNT(IF(pp.Population='MSM - Men who have sex with men',1,NULL)) MSM, COUNT(IF(pp.Population='Others',1,NULL)) Others, COUNT(IF(pp.Population = 'PWID', 1, NULL)) PWID", FALSE);
+    public function get_partner_support_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(Partner_Support, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
-        $this->db->from('tbl_partner_support ps');
-        $this->db->join('tbl_prep_population pp', 'pp.id=ps.id', 'left');
-        $this->db->group_by('partner');
-        $query = $this->db->get();
-        $results = $query->result_array();
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_facility_details');
+        $facility_data = $query->result_array();
 
-        if ($results) {
-            foreach ($results as $result) {
-                $columns[] = $result['partner'];
-                foreach ($population_data as $index => $population) {
-                    if ($population['name'] == 'Adolescents & young girls & women') {
-                        array_push($population_data[$index]['data'], $result['AGYW']);
-                    } else if ($population['name'] == 'Discordant Couples') {
-                        array_push($population_data[$index]['data'], $result['DC']);
-                    } else if ($population['name'] == 'FSW - Female sex workers') {
-                        array_push($population_data[$index]['data'], $result['FSW']);
-                    } else if ($population['name'] == 'General Population') {
-                        array_push($population_data[$index]['data'], $result['GP']);
-                    } else if ($population['name'] == 'MSM - Men who have sex with men') {
-                        array_push($population_data[$index]['data'], $result['MSM']);
-                    } else if ($population['name'] == 'Others') {
-                        array_push($population_data[$index]['data'], $result['Others']);
-                    } else if ($population['name'] == 'PWID') {
-                        array_push($population_data[$index]['data'], $result['PWID']);
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
+                            }
+                        }
+                        $counter += 1;
                     }
                 }
             }
         }
-        return array('main' => $population_data, 'columns' => $columns);
+
+        return $drilldown_data;
+    }
+
+    public function get_partner_facility_numbers($filters) {
+        $this->db->select("implementing_partner name,COUNT(*)y, UPPER(REPLACE(implementing_partner, ' ', '_')) drilldown", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_partner_support');
+        return $this->get_partner_facility_numbers_drilldown(array('main' => $query->result_array()), $filters);
+    }
+
+    public function get_partner_facility_numbers_drilldown($main_data, $filters) {
+        $drilldown_data = array();
+        $this->db->select("UPPER(REPLACE(implementing_partner, ' ', '_')) category, County name,COUNT(*)y, UPPER(CONCAT_WS('_', REPLACE(implementing_partner, ' ', '_'), REPLACE(County, ' ', '_'))) drilldown, '#7798BF' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, drilldown');
+        $this->db->order_by('y', 'Desc');
+        $query = $this->db->get('tbl_partner_support');
+        $sub_data = $query->result_array();
+
+        if ($main_data) {
+            foreach ($main_data['main'] as $counter => $main) {
+                $category = $main['drilldown'];
+
+                $drilldown_data['drilldown'][$counter]['id'] = $category;
+                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
+                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                foreach ($sub_data as $sub) {
+                    if ($category == $sub['category']) {
+                        unset($sub['category']);
+                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
+                    }
+                }
+            }
+        }
+        $drilldown_data = $this->get_partner_facility_numbers_drilldown_level2($drilldown_data, $filters);
+        return array_merge($main_data, $drilldown_data);
+    }
+
+
+    public function get_partner_facility_numbers_drilldown_level2($drilldown_data, $filters) {
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(implementing_partner, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(implementing_partner, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_partner_support');
+        $population_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                foreach ($main_data['data'] as $item) {
+                    $filter_value = $item['name'];
+                    $filter_name = $item['drilldown'];
+
+                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+
+                    foreach ($population_data as $population) {
+                        if ($filter_name == $population['category']) {
+                            unset($population['category']);
+                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
+                        }
+                    }
+                    $counter += 1;
+                }
+            }
+        }
+        return $this->get_partner_facility_numbers_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_partner_facility_numbers_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(implementing_partner, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_partner_support');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
+
+        return $drilldown_data;
     }
 
     public function get_partner_service_delivery_point($filters) {
@@ -227,89 +333,6 @@ class Partner_model extends CI_Model {
             }
         }
         return array('main' => $partner_data, 'columns' => $columns);
-    }
-
-    public function get_partner_facility_numbers($filters) {
-        $this->db->select("implementing_partner name,COUNT(*)y, UPPER(REPLACE(implementing_partner, ' ', '_')) drilldown", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('name');
-        $this->db->order_by('y', 'Desc');
-        $query = $this->db->get('tbl_partner_support');
-        return $this->get_partner_facility_numbers_drilldown(array('main' => $query->result_array()), $filters);
-    }
-
-    public function get_partner_facility_numbers_drilldown($main_data, $filters) {
-        $drilldown_data = array();
-        $this->db->select("UPPER(REPLACE(implementing_partner, ' ', '_')) category, County name,COUNT(*)y, UPPER(CONCAT_WS('_', REPLACE(implementing_partner, ' ', '_'), REPLACE(County, ' ', '_'))) drilldown, '#7798BF' color", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('category, drilldown');
-        $this->db->order_by('y', 'Desc');
-        $query = $this->db->get('tbl_partner_support');
-        $sub_data = $query->result_array();
-
-        if ($main_data) {
-            foreach ($main_data['main'] as $counter => $main) {
-                $category = $main['drilldown'];
-
-                $drilldown_data['drilldown'][$counter]['id'] = $category;
-                $drilldown_data['drilldown'][$counter]['name'] = ucwords($category);
-                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
-
-                foreach ($sub_data as $sub) {
-                    if ($category == $sub['category']) {
-                        unset($sub['category']);
-                        $drilldown_data['drilldown'][$counter]['data'][] = $sub;
-                    }
-                }
-            }
-        }
-        $drilldown_data = $this->get_partner_facility_numbers_drilldown_level2($drilldown_data, $filters);
-        return array_merge($main_data, $drilldown_data);
-    }
-
-
-    public function get_partner_facility_numbers_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(implementing_partner, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $this->db->group_by('category, name');
-        $this->db->order_by('y', 'DESC');
-        $query = $this->db->get('tbl_partner_support');
-        $population_data = $query->result_array();
-
-        if ($drilldown_data) {
-            $counter = sizeof($drilldown_data['drilldown']);
-            foreach ($drilldown_data['drilldown'] as $main_data) {
-                foreach ($main_data['data'] as $item) {
-                    $filter_value = $item['name'];
-                    $filter_name = $item['drilldown'];
-
-                    $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
-                    $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
-                    $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
-
-                    foreach ($population_data as $population) {
-                        if ($filter_name == $population['category']) {
-                            unset($population['category']);
-                            $drilldown_data['drilldown'][$counter]['data'][] = $population;
-                        }
-                    }
-                    $counter += 1;
-                }
-            }
-        }
-        return $drilldown_data;
     }
 
 }

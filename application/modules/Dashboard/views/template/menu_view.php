@@ -42,7 +42,7 @@
                                 <b><?= $this->session->userdata('role'); ?></b>
                             </a> 
                         </li>
-                        <li><a href="<?php echo base_url('manager/file_upload'); ?>" onclick="window.location.reload(true);"> <span class="glyphicon glyphicon-wrench"></span> My Settings</a>
+                        <li><a href="<?php echo base_url('manager/file_upload'); ?>" target="_blank" onclick="window.location.reload(true);"> <span class="glyphicon glyphicon-wrench"></span> My Settings</a>
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url() . 'manager/logout'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>

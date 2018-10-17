@@ -17,8 +17,7 @@
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading text-center">
                             <img src="<?php echo base_url() . 'public/manager/img/nascop_logo.png'; ?>" class="img-responsive center-block" alt="prep_logo">
-                            <h3>PrEP DASHBOARD</h3>
-                            <h3 class="panel-title"><b>Please Sign In</b></h3>
+                            <h3 class="panel-title"><b>PrEP DASHBOARD</b></h3>
                         </div>
                         <?php
                         $success_msg = $this->session->flashdata('success_msg');
@@ -50,12 +49,7 @@
                                         <input class="form-control" placeholder="Password" name="password" id="password" type="password" autofocus required>
                                         <span class="help-block glyphicon glyphicon-lock form-control-feedback"></span>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                        </label>
-                                    </div>
-                                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="login" id="login_button">
+                                    <input class="btn btn-md btn-primary btn-block" type="submit" value="Login" name="login" id="login_button">
                                 </fieldset>
                             </form>
                             <center><b>Not yet registered ?</b> 

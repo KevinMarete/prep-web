@@ -31,7 +31,7 @@
             </div>
         </div><!--end row-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Health Care Workers Trained for PrEP (National)</strong>
@@ -44,9 +44,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end row-->
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>Health Care Workers Trained for PrEP in Facilities (By County)</strong>

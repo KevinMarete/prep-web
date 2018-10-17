@@ -56,7 +56,7 @@ class Human_resource_model extends CI_Model {
     }
 
     public function get_distibution_of_facilities_trained_personnel_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(trained_on_prep, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(trained_on_prep, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(trained_on_prep, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -88,6 +88,41 @@ class Human_resource_model extends CI_Model {
                 }
             }
         }
+        return $this->get_distibution_of_facilities_trained_personnel_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_distibution_of_facilities_trained_personnel_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(trained_on_prep, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_trained_personnel');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
         return $drilldown_data;
     }
 
@@ -112,27 +147,23 @@ class Human_resource_model extends CI_Model {
     }
 
     public function get_health_care_workers_trained_on_prep_numbers($filters) {
-
         $columns = array();
-        $response = array();
-
-        $this->db->select("COUNT(IF(hcw_trained_on_prep > 0, 1, NULL) AND IF(hcw_trained_on_prep <= 3, 1, NULL)) '1-3', COUNT(IF(hcw_trained_on_prep > 3, 1, NULL) AND IF(hcw_trained_on_prep <= 6, 1, NULL)) '4-6', COUNT(IF(hcw_trained_on_prep > 6, 1, NULL)) '>7'", FALSE);
+        $this->db->select("CASE WHEN (hcw_trained_on_prep > 0 AND hcw_trained_on_prep <= 3) THEN '1-3' WHEN (hcw_trained_on_prep > 3 AND hcw_trained_on_prep <= 6) THEN '4-6' WHEN (hcw_trained_on_prep > 7) THEN '>7' ELSE NULL END AS name, CASE WHEN (hcw_trained_on_prep > 0 AND hcw_trained_on_prep <= 3) THEN COUNT(1) WHEN (hcw_trained_on_prep > 3 AND hcw_trained_on_prep <= 6) THEN COUNT(1) WHEN (hcw_trained_on_prep > 7) THEN COUNT(1) ELSE NULL END AS y", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->group_by('name');
+        $this->db->order_by('y', 'DESC');
         $query = $this->db->get('tbl_trained_personnel');
-        $result = $query->row_array();
+        $results = $query->result_array();
 
-        //add columns
-        $columns = array_keys($result);
-
-        //add data to response
-        foreach ($columns as $column) {
-            array_push($response, array('hcw_trained_on_prep' => $column, 'Numbers' => $result[$column]));
+        foreach ($results as $result) {
+            array_push($columns, $result['name']);
         }
-        return array('main' => $response, 'columns' => $columns);
+
+        return array('main' => $results, 'columns' => $columns); 
     }
 
     public function get_health_care_workers_trained_on_prep($filters) {

@@ -17,8 +17,7 @@
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading text-center">
                             <img src="<?php echo base_url() . 'public/manager/img/nascop_logo.png'; ?>" class="img-responsive center-block" alt="prep_logo">
-                            <h1>PrEP</h1>
-                            <h2 class="panel-title"> <b>Please Sign Up</b></h2>
+                            <h2 class="panel-title"> <b>PrEP DASHBOARD</b></h2>
                         </div>
                         <?php
                         $success_msg = $this->session->flashdata('success_msg');

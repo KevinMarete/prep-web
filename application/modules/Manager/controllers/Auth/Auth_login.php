@@ -44,7 +44,7 @@ class Auth_login extends CI_Controller {
                     $this->home();
                 }else{
                     //login success but user is not authorized and has to contact admin
-                    $this->session->set_flashdata('error_msg', 'Your account is not Activated!, Please contact us at support@nascop.or.ke');
+                    $this->session->set_flashdata('error_msg', 'Your account is not Activated! Please contact us at support@nascop.or.ke');
                     $this->load->view("Manager/pages/auth/login_view");
                 }
             } else {
@@ -90,7 +90,7 @@ class Auth_login extends CI_Controller {
     public function user_logout() {
         $this->session->sess_destroy();
         //$this->load->view("Home/template/template_view");
-        redirect('Home');
+        redirect('manager');
     }
 
 }

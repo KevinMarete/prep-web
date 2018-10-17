@@ -32,7 +32,7 @@ var charts = {
     'laboratory_creatinine': ['access_creatinine_testing_facilities_chart', 'offsite_onsite_creatinine_testing_chart', 'creatinine_testing_equipment_availability_chart', 'creatinine_reagents_chart'],
     'laboratory_hep_b': ['access_hep_b_testing_facilities_chart', 'offsite_onsite_hep_b_testing_chart', 'hep_b_testing_equipment_availability_chart', 'hep_b_reagents_chart'],
     'laboratory_hep_c': ['access_hep_c_testing_facilities_chart', 'offsite_onsite_hep_c_testing_chart', 'hep_c_testing_equipment_availability_chart', 'hep_c_reagents_chart'],
-    'human_resource': ['distibution_of_facilities_trained_personnel_chart', 'cadre_trained_chart', 'health_care_workers_trained_on_prep_chart', 'health_care_workers_trained_on_prep_table'],
+    'human_resource': ['distibution_of_facilities_trained_personnel_chart', 'cadre_trained_chart', 'health_care_workers_trained_on_prep_table', 'health_care_workers_trained_on_prep_chart'],
     'commodity_management': ['facility_source_of_ARVs_chart', 'facility_source_of_arvs_by_county_chart', 'prep_dispensing_points_table', 'prep_dispensing_points_chart', 'prep_product_dispensed_table', 'prep_product_dispensed_chart', 'prep_dispensing_software_table', 'prep_dispensing_software_chart'],
     'monitoring_evaluation': ['lmis_tools_chart', 'clinical_encounter_forms_chart', 'pharmacovigilance_tools_chart', 'prep_register_chart', 'rapid_assessment_screening_tools_chart', 'prep_summary_tools_chart', 'clients_on_prep_chart'],
     'communication_advocacy': ['demand_creation_activities_chart', 'prep_education_availability_chart', 'iec_materials_chart']

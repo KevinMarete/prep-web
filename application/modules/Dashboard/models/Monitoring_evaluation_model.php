@@ -57,7 +57,7 @@ class Monitoring_evaluation_model extends CI_Model {
     }
 
     public function get_lmis_tools_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(arv_lmis_tool, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(arv_lmis_tool, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(arv_lmis_tool, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -84,6 +84,41 @@ class Monitoring_evaluation_model extends CI_Model {
                             if ($filter_name == $subcounty['category']) {
                                 unset($subcounty['category']);
                                 $drilldown_data['drilldown'][$counter]['data'][] = $subcounty;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
+        return $this->get_lmis_tools_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_lmis_tools_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(arv_lmis_tool, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
                             }
                         }
                         $counter += 1;
@@ -141,7 +176,7 @@ class Monitoring_evaluation_model extends CI_Model {
     }
 
     public function get_clinical_encounter_forms_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(clinical_encounter_form, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(clinical_encounter_form, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(clinical_encounter_form, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -168,6 +203,41 @@ class Monitoring_evaluation_model extends CI_Model {
                             if ($filter_name == $subcounty['category']) {
                                 unset($subcounty['category']);
                                 $drilldown_data['drilldown'][$counter]['data'][] = $subcounty;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
+        return $this->get_clinical_encounter_forms_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_clinical_encounter_forms_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(clinical_encounter_form, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
                             }
                         }
                         $counter += 1;
@@ -225,7 +295,7 @@ class Monitoring_evaluation_model extends CI_Model {
     }
 
     public function get_pharmacovigilance_tools_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(pharmacovigilance_reporting_tools, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(pharmacovigilance_reporting_tools, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(pharmacovigilance_reporting_tools, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -252,6 +322,41 @@ class Monitoring_evaluation_model extends CI_Model {
                             if ($filter_name == $subcounty['category']) {
                                 unset($subcounty['category']);
                                 $drilldown_data['drilldown'][$counter]['data'][] = $subcounty;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
+        return $this->get_pharmacovigilance_tools_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_pharmacovigilance_tools_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(pharmacovigilance_reporting_tools, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
                             }
                         }
                         $counter += 1;
@@ -310,7 +415,7 @@ class Monitoring_evaluation_model extends CI_Model {
     }
 
     public function get_prep_registers_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(PrEP_register, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(PrEP_register, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(PrEP_register, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -337,6 +442,41 @@ class Monitoring_evaluation_model extends CI_Model {
                             if ($filter_name == $subcounty['category']) {
                                 unset($subcounty['category']);
                                 $drilldown_data['drilldown'][$counter]['data'][] = $subcounty;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
+        return $this->get_prep_registers_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_prep_registers_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(PrEP_register, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
                             }
                         }
                         $counter += 1;
@@ -394,7 +534,7 @@ class Monitoring_evaluation_model extends CI_Model {
     }
 
     public function get_rapid_assessment_screening_tools_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(rapid_assessment_screening_tool, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(rapid_assessment_screening_tool, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(rapid_assessment_screening_tool, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -421,6 +561,41 @@ class Monitoring_evaluation_model extends CI_Model {
                             if ($filter_name == $subcounty['category']) {
                                 unset($subcounty['category']);
                                 $drilldown_data['drilldown'][$counter]['data'][] = $subcounty;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
+        return $this->get_rapid_assessment_screening_tools_drilldown_level3($drilldown_data, $filters);
+    }
+
+    public function get_rapid_assessment_screening_tools_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(rapid_assessment_screening_tool, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
                             }
                         }
                         $counter += 1;
@@ -478,7 +653,7 @@ class Monitoring_evaluation_model extends CI_Model {
     }
 
     public function get_prep_summmary_tools_drilldown_level2($drilldown_data, $filters) {
-        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(PrEP_summary_reporting_tool, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, '#90ee7e' color", FALSE);
+        $this->db->select("UPPER(CONCAT_WS('_', REPLACE(PrEP_summary_reporting_tool, ' ', '_'), REPLACE(County, ' ', '_'))) category, Sub_County name, COUNT(*)y, UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(PrEP_summary_reporting_tool, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) drilldown, '#90ee7e' color", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -512,8 +687,45 @@ class Monitoring_evaluation_model extends CI_Model {
                 }
             }
         }
+        return $this->get_prep_summmary_tools_drilldown_level3($drilldown_data, $filters);
+    }
+
+
+    public function get_prep_summmary_tools_drilldown_level3($drilldown_data, $filters){
+        $this->db->select("UPPER(CONCAT_WS('_', CONCAT_WS('_', REPLACE(PrEP_summary_reporting_tool, ' ', '_'), REPLACE(County, ' ', '_')), REPLACE(Sub_County, ' ', '_'))) category, facility name, COUNT(*)y, '#dabdab' color", FALSE);
+        if (!empty($filters)) {
+            foreach ($filters as $category => $filter) {
+                $this->db->where_in($category, $filter);
+            }
+        }
+        $this->db->group_by('category, name');
+        $this->db->order_by('y', 'DESC');
+        $query = $this->db->get('tbl_monitoring_evaluation');
+        $facility_data = $query->result_array();
+
+        if ($drilldown_data) {
+            $counter = sizeof($drilldown_data['drilldown']);
+            foreach ($drilldown_data['drilldown'] as $main_data) {
+                if(!empty($main_data['data'])){
+                    foreach ($main_data['data'] as $item) {
+                        $filter_name = $item['drilldown'];
+                        foreach ($facility_data as $facility) {
+                            if ($filter_name == $facility['category']) {
+                                unset($facility['category']);
+                                $drilldown_data['drilldown'][$counter]['id'] = $filter_name;
+                                $drilldown_data['drilldown'][$counter]['name'] = ucwords($filter_name);
+                                $drilldown_data['drilldown'][$counter]['colorByPoint'] = true;
+                                $drilldown_data['drilldown'][$counter]['data'][] = $facility;
+                            }
+                        }
+                        $counter += 1;
+                    }
+                }
+            }
+        }
         return $drilldown_data;
     }
+
 
     public function get_clients_on_prep($filters) {
         $columns = array();
