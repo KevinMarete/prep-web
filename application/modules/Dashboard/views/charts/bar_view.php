@@ -58,7 +58,6 @@
                     colorByPoint: true,
                     dataLabels: {
                         enabled: true,
-                        //format: '{point.name}: {point.percentage:.1f}%',
                         color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black'
                     }
                 },

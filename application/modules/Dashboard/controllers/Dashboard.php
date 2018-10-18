@@ -49,7 +49,9 @@ class Dashboard extends BaseController {
     }
 
     public function get_data($chartname, $filters) {
-        if ($chartname == 'facilities_level_distribution_chart') {
+        if ($chartname == 'facility_distribution_map') {
+            $main_data = $this->Service_delivery_model->get_facility_distribution_map($filters);
+        } else if ($chartname == 'facilities_level_distribution_chart') {
             $main_data = $this->Service_delivery_model->get_facilities_level_distribution($filters);
         } else if ($chartname == 'prep_focal_person_chart') {
             $main_data = $this->Service_delivery_model->get_prep_focal_person($filters);
@@ -139,6 +141,11 @@ class Dashboard extends BaseController {
             $main_data = $this->Communication_advocacy_model->get_iec_materials($filters);
         }
         return $main_data;
+    }
+
+    public function getcountymap($county_name){
+        $county_data = $this->Service_delivery_model->get_facility_distribution_map_drilldown($county_name);
+        echo json_encode($county_data);
     }
 
 }

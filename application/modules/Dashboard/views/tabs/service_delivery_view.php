@@ -5,6 +5,23 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
+                            Distribution of Facilities (By County/SubCounty) <span class="label label-warning">Drilldown</span>
+                        </strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="facility_distribution_map"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="facility_distribution_map_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>
                             Distribution of Facilities (By Level) <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>

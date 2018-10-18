@@ -2,6 +2,15 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//facility_distribution_map 
+$config['facility_distribution_map_chartview'] = 'charts/maps_view';
+$config['facility_distribution_map_title'] = 'Distribution of Facilities (By County/SubCounty)';
+$config['facility_distribution_map_yaxis_title'] = 'No. of Facilities';
+$config['facility_distribution_map_source'] = 'Source: www.prep.nascop.org';
+$config['facility_distribution_map_has_drilldown'] = FALSE;
+$config['facility_distribution_map_filters'] = array();
+$config['facility_distribution_map_filters_default'] = array();
+
 //facilities_level_distribution_chart 
 $config['facilities_level_distribution_chart_chartview'] = 'charts/column_drilldown_view';
 $config['facilities_level_distribution_chart_title'] = 'Distribution of Facilities (By Level)';

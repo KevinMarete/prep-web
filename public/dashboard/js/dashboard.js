@@ -27,7 +27,7 @@ var tabFiltersURLs = {
 }
 //charts
 var charts = {
-    'service_delivery': ['facilities_level_distribution_chart', 'prep_focal_person_chart', 'hiv_services_offered_chart', 'current_service_delivery_points_distribution_chart', 'population_receiving_prep_chart'],
+    'service_delivery': ['facility_distribution_map', 'facilities_level_distribution_chart', 'prep_focal_person_chart', 'hiv_services_offered_chart', 'current_service_delivery_points_distribution_chart', 'population_receiving_prep_chart'],
     'partner': ['partner_support_chart', 'partner_facility_table', 'service_delivery_point_by_partner_chart', 'hcw_trained_by_partner_chart'],
     'laboratory_creatinine': ['access_creatinine_testing_facilities_chart', 'offsite_onsite_creatinine_testing_chart', 'creatinine_testing_equipment_availability_chart', 'creatinine_reagents_chart'],
     'laboratory_hep_b': ['access_hep_b_testing_facilities_chart', 'offsite_onsite_hep_b_testing_chart', 'hep_b_testing_equipment_availability_chart', 'hep_b_reagents_chart'],
