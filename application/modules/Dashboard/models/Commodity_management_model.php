@@ -32,12 +32,12 @@ class Commodity_management_model extends CI_Model {
     public function get_facility_source_of_arvs_by_county($filters) {
         $columns = array();
         $arv_source_data = array(
-            array('type' => 'column', 'name' => 'KEMSA-Central Site', 'data' => array()),
-            array('type' => 'column', 'name' => 'Central Sites', 'data' => array()),
-            array('type' => 'column', 'name' => 'KEMSA-Standalone', 'data' => array())
+            array('type' => 'column', 'name' => 'Central Site', 'data' => array()),
+            array('type' => 'column', 'name' => 'Satellites', 'data' => array()),
+            array('type' => 'column', 'name' => 'Standalone', 'data' => array())
         );
 
-        $this->db->select("UPPER(County) county, COUNT(IF(ARV_Source = 'Stand Alone', 1, NULL)) 'KEMSA-Standalone', ,COUNT(IF(ARV_Source = 'Satellites', 1, NULL)) 'Central Sites', COUNT(IF(ARV_Source = 'Central Site', 1, NULL)) 'KEMSA-Central Site'", FALSE);
+        $this->db->select("UPPER(County) county, COUNT(IF(ARV_Source = 'Stand Alone', 1, NULL)) Standalone, COUNT(IF(ARV_Source = 'Satellites', 1, NULL)) Satellites, COUNT(IF(ARV_Source = 'Central Site', 1, NULL)) Central_Site", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -51,12 +51,12 @@ class Commodity_management_model extends CI_Model {
             foreach ($results as $result) {
                 $columns[] = $result['county'];
                 foreach ($arv_source_data as $index => $arv_source) {
-                    if ($arv_source['name'] == 'KEMSA-Standalone') {
-                        array_push($arv_source_data[$index]['data'], $result['KEMSA-Standalone']);
-                    } else if ($arv_source['name'] == 'Central Sites') {
-                        array_push($arv_source_data[$index]['data'], $result['Central Sites']);
-                    } else if ($arv_source['name'] == 'KEMSA-Central Site') {
-                        array_push($arv_source_data[$index]['data'], $result['KEMSA-Central Site']);
+                    if ($arv_source['name'] == 'Standalone') {
+                        array_push($arv_source_data[$index]['data'], $result['Standalone']);
+                    } else if ($arv_source['name'] == 'Satellites') {
+                        array_push($arv_source_data[$index]['data'], $result['Satellites']);
+                    } else if ($arv_source['name'] == 'Central Site') {
+                        array_push($arv_source_data[$index]['data'], $result['Central_Site']);
                     }
                 }
             }

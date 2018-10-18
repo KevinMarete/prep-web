@@ -305,7 +305,7 @@ class Partner_model extends CI_Model {
         $columns = array();
         $partner_data = array(
             array('type' => 'column', 'name' => 'Trained', 'data' => array()),
-            array('type' => 'column', 'name' => 'Untrained', 'data' => array())
+            array('type' => 'column', 'name' => 'Not Trained', 'data' => array())
         );
 
         $this->db->select("UPPER(ps.implementing_partner) partner, COUNT(IF(tp.trained_on_prep = 'Yes', 1, NULL)) trained, COUNT(IF(tp.trained_on_prep = 'No', 1, Null)) untrained", FALSE);
@@ -326,7 +326,7 @@ class Partner_model extends CI_Model {
                 foreach ($partner_data as $index => $partner) {
                     if ($partner['name'] == 'Trained') {
                         array_push($partner_data[$index]['data'], $result['trained']);
-                    } else if ($partner['name'] == 'Untrained') {
+                    } else if ($partner['name'] == 'Not Trained') {
                         array_push($partner_data[$index]['data'], $result['untrained']);
                     } 
                 }
