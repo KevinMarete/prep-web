@@ -1,10 +1,3 @@
-<!--highcharts-->
-<script type="text/javascript" src="https://code.highcharts.com/maps/highmaps.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/data.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
 <!--bootstrap-->
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/bootstrap/dist/js/bootstrap.min.js'; ?>"></script>
 <!--bootstrap-toggle-->
@@ -33,13 +26,11 @@
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/bootbox/js/bootbox.min.js'; ?>"></script>
 <!-- external libs from cdnjs -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 <!-- pivotTable-->
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/pivotTable/js/pivot.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/pivotTable/js/export_renderers.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/pivotTable/js/d3_renderers.js'; ?>"></script>
 
 <script src="<?php echo base_url() . 'public/home/js/jquery.easing.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'public/home/js/custom.js'; ?>"></script>
@@ -48,11 +39,6 @@
 <!-- Generic PDF JS -->
 <script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/pdfjs/build/pdf.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/home/lib/pdfjs/web/viewer.js'; ?>"></script>
-
-<!--D3 Js -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
-<!--Kenya GeoJson-->
-<script type="text/javascript" src="http://code.highcharts.com/mapdata/countries/ke/ke-all.js" ></script>
 <!--Axios-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js" ></script>
 

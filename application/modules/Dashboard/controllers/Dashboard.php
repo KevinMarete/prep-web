@@ -142,10 +142,5 @@ class Dashboard extends BaseController {
         }
         return $main_data;
     }
-
-    public function getcountymap($county_name){
-        $county_data = $this->Service_delivery_model->get_facility_distribution_map_drilldown($county_name);
-        echo json_encode($county_data);
-    }
-
+    
 }

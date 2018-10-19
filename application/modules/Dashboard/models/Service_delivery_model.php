@@ -11,75 +11,56 @@ class Service_delivery_model extends CI_Model {
 
     public function get_facility_distribution_map($filters){
         $columns = array();
-        $response = array(
-            'type' => 'FeatureCollection',
-            'features' => array()
-        );
-        $this->db->select("feature", FALSE);
-        if (!empty($filters)) {
-            foreach ($filters as $category => $filter) {
-                $this->db->where_in($category, $filter);
-            }
-        }
-        $query = $this->db->get('tbl_county');
-        $results = $query->result_array();
-
-        //Get number of facilities per county
-        $facilities = $this->get_facilities_count('County');
-
-        foreach ($results as $result) {
-            $geocode_data = json_decode($result['feature'], TRUE);
-            $facility_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $geocode_data['properties']['name']));
-            $geocode_data['properties']['facility_count'] =  0;
-            if(array_key_exists($facility_name, $facilities)){
-                $geocode_data['properties']['facility_count'] =  $facilities[$facility_name];
-            }
-            $response['features'][] = $geocode_data;
-        }
-        return array('main' => $response, 'columns' => $columns);
-    }
-
-    public function get_facility_distribution_map_drilldown($county_name){
-        $columns = array();
-        $response = array(
-            'type' => 'FeatureCollection',
-            'features' => array()
-        );
-        $this->db->select("s.feature", FALSE);
-        $this->db->from('tbl_subcounty s');
-        $this->db->join('tbl_county c', 'c.id = s.county_id');
-        $this->db->like('c.name', $county_name);
-        $query = $this->db->get();
-        $results = $query->result_array();
-
-        //Get number of facilities per sub_county
-        $facilities = $this->get_facilities_count('Sub_County', $county_name);
-        foreach ($results as $result) {
-            $geocode_data = json_decode($result['feature'], TRUE);
-            $facility_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $geocode_data['properties']['name']));
-            $geocode_data['properties']['facility_count'] =  0;
-            if(array_key_exists($facility_name, $facilities)){
-                $geocode_data['properties']['facility_count'] =  $facilities[$facility_name];
-            }
-            $response['features'][] = $geocode_data;
-        }
-        return $response;
-    }
-
-    public function get_facilities_count($column, $filter_name = NULL){
         $response = array();
-        $this->db->select("$column name, COUNT(*) total", FALSE);
-        if($filter_name != NULL){
-            $this->db->like('County', $filter_name);
-        }
+
+        //Get county data
+        $this->db->select("County name, COUNT(*) total", FALSE);
         $this->db->group_by('name');
         $this->db->order_by('total', 'Desc');
         $query = $this->db->get('tbl_facility_details');
-        $results = $query->result_array();
-        foreach ($results as $result) {
-            $response[strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $result['name']))] = $result['total'];
+        $counties = $query->result_array();
+
+        //Get subcounty data
+        $this->db->select("Sub_County name, County, COUNT(*) total", FALSE);
+        $this->db->group_by('name, County');
+        $this->db->order_by('total', 'Desc');
+        $query = $this->db->get('tbl_facility_details');
+        $subcounties = $query->result_array();
+
+        //Get facilities data
+        $this->db->select("facility name, County, Sub_County", FALSE);
+        $this->db->group_by('name, County', 'Sub_County');
+        $query = $this->db->get('tbl_facility_details');
+        $facilities = $query->result_array();
+
+        //Construct the response (County)
+        foreach ($counties as $county) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $county['name']));
+            $response[$county_name] = array(
+                'total' => $county['total'],
+                'subcounties' => array()
+            ); 
         }
-        return $response;
+
+        //Construct the response (Subcounty)
+        foreach ($subcounties as $subcounty) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['County']));
+            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['name']));
+            $response[$county_name]['subcounties'][$subcounty_name] = array(
+                'total' => $subcounty['total'],
+                'facilities' => array()
+            ); 
+        }
+
+        //Construct the response (Facility)
+        foreach ($facilities as $facility) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['County']));
+            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['Sub_County']));
+            $facility_name = ucwords(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['name']));
+            $response[$county_name]['subcounties'][$subcounty_name]['facilities'][] = $facility_name; 
+        }
+
+        return array('main' => $response, 'columns' => $columns);
     }
 
     public function get_facilities_level_distribution($filters) {
