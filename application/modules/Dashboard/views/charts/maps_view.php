@@ -27,6 +27,8 @@
 		    	}
 		    });
 
+		    var chart;
+
 		    //Instantiate the map
 		    Highcharts.mapChart(mapDIV, {
 		        chart: {
@@ -34,7 +36,7 @@
 		                drilldown: function (e) {
 		                    if (!e.seriesOptions) {
 		                        var county_name = e.point.name.replace(" ", "_").replace("'", "").replace("-", "_").toLowerCase();
-		                        var chart = this,
+		                        chart = this,
 		                            mapKey = 'public/dashboard/json/counties/' + county_name + '.json' ,
 		                            // Handle error, the timeout is cleared on success
 		                            fail = setTimeout(function () {
@@ -81,7 +83,6 @@
 									      	formatter: function() {
 									      		var subcounty_name = this.key.replace(" ", "_").replace("'", "").replace("-", "_").toLowerCase();
 									      		var rV = '<b>' + this.key + '</b><br/>';
-		                          
 		                                		if(county_name in chart_data){
 		                                			//Confirm subcounty
 		                                			if(subcounty_name in chart_data[county_name]['subcounties']){
@@ -104,8 +105,22 @@
 
 		                    this.setTitle(null, { text: e.point.name });
 		                },
-		                drillup: function () {
+		                drillup: function (e) {
 		                    this.setTitle(null, { text: '' });
+		                    chart.update({
+							    tooltip: {
+							      	formatter: function() {
+							      		var county_name = this.key.replace(" ", "_").replace("'", "").replace("-", "_").toLowerCase();
+							      		var rV = '<b>' + this.key + '</b><br/>';
+                                		if(county_name in chart_data){
+                                			rV += '<span><b>Total</b></span>: ' + Highcharts.numberFormat(chart_data[county_name]['total'], 0)+'<br/>';
+						    			}else{
+					        				rV += '<span><b>Total</b></span>: 0 <br/>';
+					        			}
+					                    return rV;
+							      	}
+							    }
+							});
 		                }
 		            }
 		        },
