@@ -8,6 +8,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Marete
  */
 class Partner_model extends CI_Model {
+    public function get_partner_distribution_map($filters){
+        $columns = array();
+        $response = array();
+
+        //Get county data
+        $this->db->select("County name, COUNT(DISTINCT implementing_partner) total", FALSE);
+        $this->db->group_by('name');
+        $this->db->order_by('total', 'Desc');
+        $query = $this->db->get('tbl_partner_support');
+        $counties = $query->result_array();
+
+        //Get subcounty data
+        $this->db->select("Sub_County name, County, COUNT(DISTINCT implementing_partner) total", FALSE);
+        $this->db->group_by('name, County');
+        $this->db->order_by('total', 'Desc');
+        $query = $this->db->get('tbl_partner_support');
+        $subcounties = $query->result_array();
+
+        //Get facilities data
+        $this->db->select("CONCAT(implementing_partner, '(facilities=',COUNT(facility), ')') name, County, Sub_County", FALSE);
+        $this->db->group_by('implementing_partner, County, Sub_County');
+        $query = $this->db->get('tbl_partner_support');
+        $facilities = $query->result_array();
+
+        //Construct the response (County)
+        foreach ($counties as $county) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $county['name']));
+            $response[$county_name] = array(
+                'total' => $county['total'],
+                'subcounties' => array()
+            ); 
+        }
+
+        //Construct the response (Subcounty)
+        foreach ($subcounties as $subcounty) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['County']));
+            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['name']));
+            $response[$county_name]['subcounties'][$subcounty_name] = array(
+                'total' => $subcounty['total'],
+                'facilities' => array()
+            ); 
+        }
+
+        //Construct the response (Facility)
+        foreach ($facilities as $facility) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['County']));
+            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['Sub_County']));
+            $facility_name = ucwords(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['name']));
+            $response[$county_name]['subcounties'][$subcounty_name]['facilities'][] = $facility_name; 
+        }
+
+        return array('main' => $response, 'columns' => $columns);
+    }
 
     public function get_partner_support($filters) {
         $this->db->select("Partner_Support name,COUNT(*)y, UPPER(REPLACE(Partner_Support, ' ', '_')) drilldown", FALSE);

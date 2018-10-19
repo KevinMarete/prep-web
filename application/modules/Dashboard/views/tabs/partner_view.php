@@ -5,6 +5,23 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>
+                            Distribution of Partners (By County/SubCounty) <span class="label label-warning">Drilldown</span>
+                        </strong>
+                    </div>
+                    <div class="chart-stage">
+                        <div id="partner_distribution_map"></div>
+                    </div>
+                    <div class="chart-notes">
+                        <span class="partner_distribution_map_heading heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        <strong>
                             Availability of implementing partner support <span class="label label-warning">Drilldown</span>
                         </strong>
                     </div>

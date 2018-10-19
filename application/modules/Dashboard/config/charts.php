@@ -56,6 +56,15 @@ $config['population_receiving_prep_chart_has_drilldown'] = TRUE;
 $config['population_receiving_prep_chart_filters'] = array('Sub_County', 'County');
 $config['population_receiving_prep_chart_filters_default'] = array();
 
+//partner_distribution_map 
+$config['partner_distribution_map_chartview'] = 'charts/maps_view';
+$config['partner_distribution_map_title'] = 'Distribution of Partners (By County/SubCounty)';
+$config['partner_distribution_map_yaxis_title'] = 'No. of Partners';
+$config['partner_distribution_map_source'] = 'Source: www.prep.nascop.org';
+$config['partner_distribution_map_has_drilldown'] = FALSE;
+$config['partner_distribution_map_filters'] = array();
+$config['partner_distribution_map_filters_default'] = array();
+
 //partner_support_chart 
 $config['partner_support_chart_chartview'] = 'charts/column_drilldown_view';
 $config['partner_support_chart_title'] = 'Availability of implementing partner support';

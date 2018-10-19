@@ -29,7 +29,7 @@ class Service_delivery_model extends CI_Model {
 
         //Get facilities data
         $this->db->select("facility name, County, Sub_County", FALSE);
-        $this->db->group_by('name, County', 'Sub_County');
+        $this->db->group_by('name, County, Sub_County');
         $query = $this->db->get('tbl_facility_details');
         $facilities = $query->result_array();
 
