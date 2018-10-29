@@ -1,5 +1,8 @@
 <!--highcharts-->
-<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/highmaps.js';?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/highcharts.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/map.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/data.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/cn-all.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/exporting.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/offline-exporting.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/highmaps/js/drilldown.js';?>"></script>
