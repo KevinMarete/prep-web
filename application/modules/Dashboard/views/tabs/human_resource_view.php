@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Facilities with Personnel Trained on PrEP  <span class="label label-warning">Drilldown</span></strong>
+                        <strong>Distribution of facilities by number of staff trained  <span class="label label-warning">Drilldown</span></strong>
                     </div>
                     <div class="chart-stage">
                         <div id="distibution_of_facilities_trained_personnel_chart"></div>
@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Health Care Workers Trained for PrEP (National)</strong>
+                        <strong>Distribution of facilities by number of HCW trained (National)</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="health_care_workers_trained_on_prep_table"></div>
@@ -47,7 +47,7 @@
             <div class="col-md-8">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Health Care Workers Trained for PrEP in Facilities (By County)</strong>
+                        <strong>Distribution of facilities by number of HCW trained (By County)</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="health_care_workers_trained_on_prep_chart"></div>

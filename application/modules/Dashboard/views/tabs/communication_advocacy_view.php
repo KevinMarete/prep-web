@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="chart-wrapper">
                     <div class="chart-title">
-                        <strong>Availability of Activities about PrEP Education in Facilities</strong>
+                        <strong>Availability of Demand Creation Activities in the Community</strong>
                     </div>
                     <div class="chart-stage">
                         <div id="prep_education_availability_chart"></div>

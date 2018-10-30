@@ -8,59 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Marete
  */
 class Partner_model extends CI_Model {
-    public function get_partner_distribution_map($filters){
-        $columns = array();
-        $response = array();
-
-        //Get county data
-        $this->db->select("County name, COUNT(DISTINCT implementing_partner) total", FALSE);
-        $this->db->group_by('name');
-        $this->db->order_by('total', 'Desc');
-        $query = $this->db->get('tbl_partner_support');
-        $counties = $query->result_array();
-
-        //Get subcounty data
-        $this->db->select("Sub_County name, County, COUNT(DISTINCT implementing_partner) total", FALSE);
-        $this->db->group_by('name, County');
-        $this->db->order_by('total', 'Desc');
-        $query = $this->db->get('tbl_partner_support');
-        $subcounties = $query->result_array();
-
-        //Get facilities data
-        $this->db->select("CONCAT(implementing_partner, '(facilities=',COUNT(facility), ')') name, County, Sub_County", FALSE);
-        $this->db->group_by('implementing_partner, County, Sub_County');
-        $query = $this->db->get('tbl_partner_support');
-        $facilities = $query->result_array();
-
-        //Construct the response (County)
-        foreach ($counties as $county) {
-            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $county['name']));
-            $response[$county_name] = array(
-                'total' => $county['total'],
-                'subcounties' => array()
-            ); 
-        }
-
-        //Construct the response (Subcounty)
-        foreach ($subcounties as $subcounty) {
-            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['County']));
-            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['name']));
-            $response[$county_name]['subcounties'][$subcounty_name] = array(
-                'total' => $subcounty['total'],
-                'facilities' => array()
-            ); 
-        }
-
-        //Construct the response (Facility)
-        foreach ($facilities as $facility) {
-            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['County']));
-            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['Sub_County']));
-            $facility_name = ucwords(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['name']));
-            $response[$county_name]['subcounties'][$subcounty_name]['facilities'][] = $facility_name; 
-        }
-
-        return array('main' => $response, 'columns' => $columns);
-    }
 
     public function get_partner_support($filters) {
         $this->db->select("Partner_Support name,COUNT(*)y, UPPER(REPLACE(Partner_Support, ' ', '_')) drilldown", FALSE);
@@ -178,6 +125,60 @@ class Partner_model extends CI_Model {
         }
 
         return $drilldown_data;
+    }
+
+    public function get_partner_distribution_map($filters){
+        $columns = array();
+        $response = array();
+
+        //Get county data
+        $this->db->select("County name, COUNT(DISTINCT implementing_partner) total", FALSE);
+        $this->db->group_by('name');
+        $this->db->order_by('total', 'Desc');
+        $query = $this->db->get('tbl_partner_support');
+        $counties = $query->result_array();
+
+        //Get subcounty data
+        $this->db->select("Sub_County name, County, COUNT(DISTINCT implementing_partner) total", FALSE);
+        $this->db->group_by('name, County');
+        $this->db->order_by('total', 'Desc');
+        $query = $this->db->get('tbl_partner_support');
+        $subcounties = $query->result_array();
+
+        //Get facilities data
+        $this->db->select("CONCAT(implementing_partner, '(facilities=',COUNT(facility), ')') name, County, Sub_County", FALSE);
+        $this->db->group_by('implementing_partner, County, Sub_County');
+        $query = $this->db->get('tbl_partner_support');
+        $facilities = $query->result_array();
+
+        //Construct the response (County)
+        foreach ($counties as $county) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $county['name']));
+            $response[$county_name] = array(
+                'total' => $county['total'],
+                'subcounties' => array()
+            ); 
+        }
+
+        //Construct the response (Subcounty)
+        foreach ($subcounties as $subcounty) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['County']));
+            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $subcounty['name']));
+            $response[$county_name]['subcounties'][$subcounty_name] = array(
+                'total' => $subcounty['total'],
+                'facilities' => array()
+            ); 
+        }
+
+        //Construct the response (Facility)
+        foreach ($facilities as $facility) {
+            $county_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['County']));
+            $subcounty_name = strtolower(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['Sub_County']));
+            $facility_name = ucwords(str_ireplace(array("'", " ", "-"), array("", "_", "_"), $facility['name']));
+            $response[$county_name]['subcounties'][$subcounty_name]['facilities'][] = $facility_name; 
+        }
+
+        return array('main' => $response, 'columns' => $columns);
     }
 
     public function get_partner_facility_numbers($filters) {
@@ -306,14 +307,12 @@ class Partner_model extends CI_Model {
             array('type' => 'column', 'name' => 'DICE', 'data' => array()),
             array('type' => 'column', 'name' => 'FP Clinic', 'data' => array()),
             array('type' => 'column', 'name' => 'IPD', 'data' => array()),
-            array('type' => 'column', 'name' => 'MCH', 'data' => array()),
-            array('type' => 'column', 'name' => 'ONE STOP SHOP', 'data' => array()),
             array('type' => 'column', 'name' => 'OPD', 'data' => array()),
-            array('type' => 'column', 'name' => 'PMTCT Clinic', 'data' => array()),
+            array('type' => 'column', 'name' => 'PMTCT/MCH', 'data' => array()),
             array('type' => 'column', 'name' => 'Other', 'data' => array())
         );
 
-        $this->db->select("UPPER(ps.implementing_partner) partner, COUNT(IF(sdp.Service_Delivery_Point = 'CCC', 1, NULL)) CCC,COUNT(IF(sdp.Service_Delivery_Point = 'DICE',1,Null)) DICE,COUNT(IF(sdp.Service_Delivery_Point='FP Clinic',1,NULL)) 'FP Clinic',COUNT(IF(sdp.Service_Delivery_Point='IPD',1,NULL)) IPD,COUNT(IF(sdp.Service_Delivery_Point='MCH',1,NULL)) MCH,COUNT(IF(sdp.Service_Delivery_Point='ONE STOP SHOP',1,NULL)) 'ONE STOP SHOP',COUNT(IF(sdp.Service_Delivery_Point = 'OPD', 1, NULL)) OPD,COUNT(IF(sdp.Service_Delivery_Point = 'PMTCT Clinic', 1, NULL)) 'PMTCT Clinic', COUNT(IF(sdp.Service_Delivery_Point = 'other', 1, NULL)) Other", FALSE);
+        $this->db->select("UPPER(ps.implementing_partner) partner, COUNT(IF(sdp.Service_Delivery_Point = 'CCC', 1, NULL)) CCC,COUNT(IF(sdp.Service_Delivery_Point = 'DICE',1,Null)) DICE,COUNT(IF(sdp.Service_Delivery_Point='FP Clinic',1,NULL)) 'FP Clinic',COUNT(IF(sdp.Service_Delivery_Point='IPD',1,NULL)) IPD,COUNT(IF(sdp.Service_Delivery_Point = 'OPD', 1, NULL)) OPD,COUNT(IF(sdp.Service_Delivery_Point = 'PMTCT/MCH', 1, NULL)) 'PMTCT/MCH', COUNT(IF(sdp.Service_Delivery_Point = 'other', 1, NULL)) Other", FALSE);
         if (!empty($filters)) {
             foreach ($filters as $category => $filter) {
                 $this->db->where_in($category, $filter);
@@ -321,6 +320,7 @@ class Partner_model extends CI_Model {
         }
         $this->db->from('tbl_service_delivery_point sdp');
         $this->db->join('tbl_partner_support ps', 'sdp.id=ps.id');
+        $this->db->where_not_in('sdp.Service_Delivery_Point', 'ONE STOP SHOP(Everything in one room)');
         $this->db->group_by('partner');
         $query = $this->db->get();
         $results = $query->result_array();
@@ -337,12 +337,8 @@ class Partner_model extends CI_Model {
                         array_push($service_delivery_distribution_data[$index]['data'], $result['FP Clinic']);
                     } else if ($service_delivery_distribution['name'] == 'IPD') {
                         array_push($service_delivery_distribution_data[$index]['data'], $result['IPD']);
-                    } else if ($service_delivery_distribution['name'] == 'MCH') {
-                        array_push($service_delivery_distribution_data[$index]['data'], $result['MCH']);
-                    } else if ($service_delivery_distribution['name'] == 'ONE STOP SHOP') {
-                        array_push($service_delivery_distribution_data[$index]['data'], $result['ONE STOP SHOP']);
-                    } else if ($service_delivery_distribution['name'] == 'PMTCT Clinic') {
-                        array_push($service_delivery_distribution_data[$index]['data'], $result['PMTCT Clinic']);
+                    } else if ($service_delivery_distribution['name'] == 'PMTCT/MCH') {
+                        array_push($service_delivery_distribution_data[$index]['data'], $result['PMTCT/MCH']);
                     } else if ($service_delivery_distribution['name'] == 'OPD') {
                         array_push($service_delivery_distribution_data[$index]['data'], $result['OPD']);
                     } else if ($service_delivery_distribution['name'] == 'Other') {

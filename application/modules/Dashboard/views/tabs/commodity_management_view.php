@@ -46,11 +46,6 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>PrEP Dispensing Points in Facilities (By County)</strong>
-                        <div class="nav navbar-right">
-                            <button data-toggle="modal" data-target="#prep_dispensing_points_chart_filter_modal" class="btn btn-warning btn-xs">
-                                <span class="glyphicon glyphicon-filter"></span>
-                            </button>
-                        </div>
                     </div>
                     <div class="chart-stage">
                         <div id="prep_dispensing_points_chart"></div>
@@ -79,11 +74,6 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>PrEP Product Dispensed in Facilities (By County)</strong>
-                        <div class="nav navbar-right">
-                            <button data-toggle="modal" data-target="#prep_product_dispensed_chart_filter_modal" class="btn btn-warning btn-xs">
-                                <span class="glyphicon glyphicon-filter"></span>
-                            </button>
-                        </div>
                     </div>
                     <div class="chart-stage">
                         <div id="prep_product_dispensed_chart"></div>
@@ -112,11 +102,6 @@
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         <strong>PrEP Dispensing Software in Facilities (By County)</strong>
-                        <div class="nav navbar-right">
-                            <button data-toggle="modal" data-target="#prep_dispensing_software_chart_filter_modal" class="btn btn-warning btn-xs">
-                                <span class="glyphicon glyphicon-filter"></span>
-                            </button>
-                        </div>
                     </div>
                     <div class="chart-stage">
                         <div id="prep_dispensing_software_chart"></div>

@@ -432,6 +432,7 @@ class Service_delivery_model extends CI_Model {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->where_not_in('Service_Delivery_Point', 'ONE STOP SHOP(Everything in one room)');
         $this->db->group_by('name');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_service_delivery_point');
@@ -446,6 +447,7 @@ class Service_delivery_model extends CI_Model {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->where_not_in('Service_Delivery_Point', 'ONE STOP SHOP(Everything in one room)');
         $this->db->group_by('category, drilldown');
         $this->db->order_by('y', 'Desc');
         $query = $this->db->get('tbl_service_delivery_point');
@@ -478,6 +480,7 @@ class Service_delivery_model extends CI_Model {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->where_not_in('Service_Delivery_Point', 'ONE STOP SHOP(Everything in one room)');
         $this->db->group_by('category, name');
         $this->db->order_by('y', 'DESC');
         $query = $this->db->get('tbl_service_delivery_point');
@@ -517,6 +520,7 @@ class Service_delivery_model extends CI_Model {
                 $this->db->where_in($category, $filter);
             }
         }
+        $this->db->where_not_in('Service_Delivery_Point', 'ONE STOP SHOP(Everything in one room)');
         $this->db->group_by('category, name');
         $this->db->order_by('y', 'DESC');
         $query = $this->db->get('tbl_service_delivery_point');

@@ -52,6 +52,7 @@
                 shared: true
             },
             series: [{
+                showInLegend: false, 
                 name: '<?php echo $chart_xaxis_title; ?>',
                 colorByPoint: true,
                 data: <?php echo $chart_series_data; ?>

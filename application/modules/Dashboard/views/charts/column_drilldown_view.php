@@ -88,6 +88,7 @@
                 }
             },
             series: [{
+                    showInLegend: false, 
                     name: '<?php echo $chart_yaxis_title; ?>',
                     colorByPoint: true,
                     data: <?php echo $chart_series_data; ?>
