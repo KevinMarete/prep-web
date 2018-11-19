@@ -39,7 +39,7 @@
                         }
                         ?>
 
-                        <div class="panel-body">
+                        <div class="panel-body" id="reg_form">
                             <form role="form" action="<?php echo base_url() . 'manager/user'; ?>" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-md-3">First Name</label>
@@ -66,6 +66,58 @@
                                     <label class="control-label col-md-3">Mobile Number</label>
                                     <div class="col-md-9">
                                         <input class="form-control" placeholder="07xxxxxxxx" name="user_mobile" type="text" required="">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Organization</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="e.g NASCOP" name="user_org" type="text" required="">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Scope</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" name="user_scope" type="text" required="">
+                                        <option value="0">Select Scope</option>
+                                            <?php foreach($scopes as $scope) {?>
+                                                <option value="<?php echo $scope->id ?>"><?php echo $scope->scope; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Role</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" name="user_role" type="text" required="">
+                                        <option value="0">Select Role</option>
+                                            <?php foreach($roles as $role) {?>
+                                                <option value="<?php echo $role->roleId ?>"><?php echo $role->role ?></option>
+                                            <?php }?>
+                                        </select>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">County</label>
+                                    <div class="col-md-9">
+                                    <select class="form-control" name="user_county" type="text" required="" v-model="county">
+                                        <option value="0">Select County</option>
+                                            <?php foreach($counties as $county){ ?>
+                                                <option value="<?php echo $county->id ?>"><?php echo ucfirst($county->name)?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Sub County</label>
+                                    <div class="col-md-9">
+                                    <select class="form-control" name="user_subcounty" type="text" required="">
+                                    <option v-for="subcounty in subcounties" :value="subcounty.id">{{subcounty.name}}</option>
+                                    </select>
                                         <span class="help-block"></span>
                                     </div>
                                 </div>

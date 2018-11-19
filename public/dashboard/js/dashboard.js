@@ -39,7 +39,7 @@ var charts = {
 }
 var filters = {}
 var tabName = 'service_delivery'
-
+setMainFilter(tabName)
 //Autoload
 $(function () {
     //Load default tab charts
@@ -77,7 +77,7 @@ function LoadTabContent(tabName) {
         });
     }
     //Set main filter
-    setMainFilter(tabName)
+    //setMainFilter(tabName)
     //Set tab filter
     setTabFilter(tabName)
 }
@@ -110,9 +110,9 @@ function setTabFilter(tabName) {
                         CreateSelectBox(filterID, '100%', 10)
                         //Add data to selectbox
                         $(filterID + " option").remove();
-                        $.each(data, function (i, v) {
+                       /* $.each(data, function (i, v) {
                             $(filterID).append($("<option value='" + v.name + "'>" + v.name.toUpperCase() + "</option>"));
-                        });
+                        });*/
                         $(filterID).multiselect('rebuild');
                         $(filterID).data('filter_type', value.type);
                     });
@@ -186,13 +186,15 @@ function disableShiftKey() {
 function LoadChart(divID, chartURL, chartName, selectedfilters) {
     //Load Spinner
     LoadSpinner(divID)
+
+    console.log(selectedfilters);
     //Clear filter messages
     $("." + chartName + "_heading").html('');
     //Load Chart*
     $(divID).load(chartURL, {'name': chartName, 'selectedfilters': selectedfilters}, function () {
         //Pre-select filters for charts
         $.each($(divID + '_filters').data('filters'), function (key, data) {
-            $(divID + "_filter").val(data).multiselect('refresh');
+            //$(divID + "_filter").val(data).multiselect('refresh');
             //Output filters
             var filtermsg = '<b><u>' + key.toUpperCase() + ':</u></b><br/>'
             if ($.isArray(data)) {
@@ -216,6 +218,7 @@ function TabFilterHandler(e) {
     var filtername = $(e.target).attr('href');
     if (filtername !== '#' && filtername.charAt(0) == "#") {
         filters = {}
+        console.log(filters);
         //Set tabName
         tabName = filtername.replace('#', '');
         //Clear heading

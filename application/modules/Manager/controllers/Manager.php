@@ -3,10 +3,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/BaseController.php';
 
+
+
 class Manager extends BaseController {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('User_options_model');
     }
 
     //function login view
@@ -24,7 +27,19 @@ class Manager extends BaseController {
 
     //function register user
     public function register() {
-        $this->load->view('pages/auth/registration_view');
+        //Get user role, location options
+        $data['counties'] = $this->User_options_model->getCounties();
+        $data['scopes'] = $this->User_options_model->getScopes();
+        $data['roles'] = $this->User_options_model->getRoles();
+        $data['organizations'] = $this->User_options_model->getOrganizations();
+        
+        //Load registration view
+        $this->load->view('pages/auth/registration_view', $data);
+    }
+
+    //get subcounties
+    public function getSubCounties($county){
+        return $this->User_options_model->getSubCounties($county);
     }
 
     public function file_upload() {
