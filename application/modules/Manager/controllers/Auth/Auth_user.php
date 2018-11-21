@@ -86,7 +86,7 @@ class Auth_user extends CI_Controller {
 
         //Send Email
         $this->email->from('wndethiw@gmail.com');
-        $this->email->to('ndethiw@gmail.com');
+        $this->email->to('kmarete@clintonhealthaccess.org');
 
 
         $this->email->subject($subject);
