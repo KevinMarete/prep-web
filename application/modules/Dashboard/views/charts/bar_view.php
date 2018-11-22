@@ -47,7 +47,7 @@
                         total_sum += v.y;
                     });
                     var rV = '<b>' + this.key + '</b><br/>'
-                    rV += '<span style="color:'+ this.series.color + '"><b>Total</b></span>: ' + Highcharts.numberFormat(this.y, 0) + '('+Highcharts.numberFormat((this.y / total_sum) * 100, 1)+' %)<br/>'
+                    rV += '<span style="color:'+ this.series.color + '"><b>Total</b></span>: ' + Highcharts.numberFormat(this.y, 0)+'/'+total_sum+ ' ('+Highcharts.numberFormat((this.y / total_sum) * 100, 1)+' %)<br/>'
                     return rV;
                 }
             },

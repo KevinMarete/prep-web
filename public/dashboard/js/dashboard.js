@@ -186,8 +186,8 @@ function disableShiftKey() {
 function LoadChart(divID, chartURL, chartName, selectedfilters) {
     //Load Spinner
     LoadSpinner(divID)
-
-    console.log(selectedfilters);
+    
+    //console.log(selectedfilters);
     //Clear filter messages
     $("." + chartName + "_heading").html('');
     //Load Chart*
@@ -217,14 +217,15 @@ function LoadSpinner(divID) {
 function TabFilterHandler(e) {
     var filtername = $(e.target).attr('href');
     if (filtername !== '#' && filtername.charAt(0) == "#") {
-        filters = {}
-        console.log(filters);
+        //filters = {}
         //Set tabName
         tabName = filtername.replace('#', '');
         //Clear heading
         $(".heading").empty();
         //Load selected tab charts
-        LoadTabContent(tabName)
+        console.log($("#btn_filter").trigger("click"));
+        //LoadTabContent(tabName)
+        
     }
 }
 
