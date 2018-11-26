@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3">Mobile Number</label>
+                                    <label class="control-label col-md-3">Mobile No.</label>
                                     <div class="col-md-9">
                                         <input class="form-control" placeholder="07xxxxxxxx" name="user_mobile" type="text" required="">
                                         <span class="help-block"></span>
