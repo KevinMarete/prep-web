@@ -39,10 +39,11 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li>
                             <a href="#">
-                                <b><?= $this->session->userdata('role'); ?></b>
+                                <b><?= $this->session->userdata('role');?></b>
                             </a> 
                         </li>
-                        <li><a href="<?php echo base_url('manager/file_upload'); ?>" target="_blank" onclick="window.location.reload(true);"> <span class="glyphicon glyphicon-wrench"></span> My Settings</a>
+                        <li><a href="<?php echo base_url('manager/user/profile/').'/'. $this->session->userdata('id'); ?>" target="_blank" onclick="window.location.reload(true);"> <span class="glyphicon glyphicon-cog"></span>&nbsp;My Settings</a>
+                        <li><a href="<?php echo base_url('manager/file_upload'); ?>" target="_blank" onclick="window.location.reload(true);"> <span class="glyphicon glyphicon-wrench"></span>&nbsp;Admin</a>
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url() . 'manager/logout'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>

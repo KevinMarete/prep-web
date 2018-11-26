@@ -31,6 +31,7 @@ class Auth_login extends CI_Controller {
                 if($data['is_authorized']){
                     //Array to store session data
                     $sessionArray = array(
+                        'id' => $data['id'],
                         'email' => $data['email'],
                         'last_name' => $data['last_name'],
                         'mobile' => $data['mobile'],

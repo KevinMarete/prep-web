@@ -12,6 +12,7 @@ class User extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model', 'user');
+        $this->load->model('User_options_model');
     }
 
     public function user_list() {
@@ -44,6 +45,23 @@ class User extends CI_Controller {
     public function user_edit($id) {
         $data = $this->user->get_by_id($id);
         echo json_encode($data);
+    }
+
+    public function profile($id){
+        if($id == $this->session->userdata('id')){
+            $data['user'] = $this->user->get_by_id($id);
+            $data['counties'] = $this->User_options_model->getCounties();
+            $data['scopes'] = $this->User_options_model->getScopes();
+            $data['roles'] = $this->User_options_model->getRoles();
+            $data['page_title'] = 'PrEP | User';
+            $data['content_view'] = 'pages/auth/user_profile_view';
+            $this->load->view('template/template_view_alt', $data);
+        }
+        else{
+           $data['heading'] = 'Unauthorized Access';
+           $data['message'] = 'You need to be logged in as current user.';
+           $this->load->view('errors/html/error_general', $data);
+        }
     }
 
     public function user_add() {
