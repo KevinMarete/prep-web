@@ -83,23 +83,23 @@ $config['partner_facility_table_has_drilldown'] = TRUE;
 $config['partner_facility_table_filters'] = array('Sub_County', 'County');
 $config['partner_facility_table_filters_default'] = array();
 
-//hcw_trained_by_partner_chart 
-$config['hcw_trained_by_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
-$config['hcw_trained_by_partner_chart_title'] = 'Distribution of facilities that have trained staff by partner ';
-$config['hcw_trained_by_partner_chart_yaxis_title'] = 'No. of Facilities';
-$config['hcw_trained_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
-$config['hcw_trained_by_partner_chart_has_drilldown'] = FALSE;
-$config['hcw_trained_by_partner_chart_filters'] = array('Sub_County', 'County');
-$config['hcw_trained_by_partner_chart_filters_default'] = array();
-
 //service_delivery_point_by_partner_chart 
 $config['service_delivery_point_by_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
 $config['service_delivery_point_by_partner_chart_title'] = 'Service Delivery Points by Partners';
 $config['service_delivery_point_by_partner_chart_yaxis_title'] = '';
 $config['service_delivery_point_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
 $config['service_delivery_point_by_partner_chart_has_drilldown'] = FALSE;
-$config['service_delivery_point_by_partner_chart_filters'] = array('Sub_County', 'County');
+$config['service_delivery_point_by_partner_chart_filters'] = array('ps.Sub_County', 'ps.County');
 $config['service_delivery_point_by_partner_chart_filters_default'] = array();
+
+//hcw_trained_by_partner_chart 
+$config['hcw_trained_by_partner_chart_chartview'] = 'charts/stacked_column_percent_view_without_dataLabels';
+$config['hcw_trained_by_partner_chart_title'] = 'Distribution of facilities that have trained staff by partner ';
+$config['hcw_trained_by_partner_chart_yaxis_title'] = 'No. of Facilities';
+$config['hcw_trained_by_partner_chart_source'] = 'Source: www.prep.nascop.org';
+$config['hcw_trained_by_partner_chart_has_drilldown'] = FALSE;
+$config['hcw_trained_by_partner_chart_filters'] = array('ps.Sub_County', 'ps.County');
+$config['hcw_trained_by_partner_chart_filters_default'] = array();
 
 //access_creatinine_testing_facilities_chart 
 $config['access_creatinine_testing_facilities_chart_chartview'] = 'charts/column_drilldown_view';
