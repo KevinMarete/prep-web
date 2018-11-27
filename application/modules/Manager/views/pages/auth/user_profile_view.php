@@ -1,10 +1,21 @@
 <!-- Add/Edit modal -->
-<div class="" id="modal_form" role="dialog">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="NASCOP">
+        <meta name="author" content="NASCOP">
+        <title>PrEP | Register</title>
+        <!--styles_view-->
+        <?php $this->load->view('style_view'); ?>
+</head>
+<body>
+<div class="" id="reg_form" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title">Person Form</h3>
+                    <h3 class="modal-title"><?= $user->first_name.' '.$user->last_name ?></h3>
                 </div>
                 <div class="modal-body form">
                     <form action="#" id="form" class="form-horizontal">
@@ -53,7 +64,7 @@
                                     <label class="control-label col-md-3">Organization</label>
                                     <div class="col-md-9">
                                         <input class="form-control" placeholder="e.g NASCOP" name="user_org" type="text" required="" value="<?= $user->organization ?>" >
-                                        <span class="help-block"><?php $user->organization ?? 'Please enter your Organization.' ?></span>
+                                        <span class="help-block"><?php if (empty($user->organization)) {echo 'Please enter your Organization.';}  ?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -74,10 +85,10 @@
                                     <select class="form-control" name="user_county" type="text" required="" v-model="county">
                                         <option value="0">Select County</option>
                                             <?php foreach($counties as $county){ ?>
-                                                <option value="<?php echo $county->id ?>" <?php if($county->id == $user->county) {echo ' selected';}?> ><?php echo ucfirst($county->name)?></option>
+                                                <option value="<?php echo $county->id ?>" <?php if($county->id == $user->county) {echo ' selected';} else{ $scope_help = 'Please select county.'; }?> ><?php echo ucfirst($county->name)?></option>
                                             <?php } ?>
                                         </select>
-                                        <span class="help-block"></span>
+                                        <span class="help-block"><?= $county_help ?? '' ?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -87,6 +98,12 @@
                                     <option v-for="subcounty in subcounties" :value="subcounty.id">{{subcounty.name}}</option>
                                     </select>
                                         <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for=""></label>
+                                    <div class="col-md-9">
+                                    <button type="button" >Change Password</button>
                                     </div>
                                 </div>
                         </div>
@@ -99,3 +116,5 @@
             </div>
         </div>
     </div><!-- /.modal -->
+    <?php $this->load->view('script_view'); ?>
+</body>
