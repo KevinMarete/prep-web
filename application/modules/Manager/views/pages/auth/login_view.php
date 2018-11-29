@@ -52,10 +52,10 @@
                                     <input class="btn btn-md btn-primary btn-block" type="submit" value="Login" name="login" id="login_button">
                                 </fieldset>
                             </form>
-                            <center><b>Not yet registered ?</b> 
-                                <br>
-                                </b>
-                                <a href="<?php echo base_url('manager/register'); ?>">Register here <i class="fa fa-arrow-circle-o-right"></i></a>
+                            <center>
+                                <b>Not yet registered ?</b><br>
+                                <b><a href="<?php echo base_url('manager/register'); ?>">Register here <i class="fa fa-arrow-circle-o-right"></i></a></b><br/>
+                                <b><a href="http://prep.nascop.org">Go to Portal <i class="fa fa-arrow-circle-o-right"></i></a></b><br/>
                             </center>
                         </div>
                     </div>
