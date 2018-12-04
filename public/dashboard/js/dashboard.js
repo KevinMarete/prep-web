@@ -223,7 +223,8 @@ function TabFilterHandler(e) {
         //Clear heading
         $(".heading").empty();
         //Load selected tab charts
-        console.log($("#btn_filter").trigger("click"));
+        //console.log($("#btn_filter").trigger("click"));
+        $("#btn_filter").trigger("click");
         //LoadTabContent(tabName)
         
     }
