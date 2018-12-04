@@ -31,3 +31,17 @@ thead input {
     text-align: center;
     margin: auto
 }
+
+.sticky-chat{
+    position:fixed;
+    z-index:2;
+    bottom:200px;
+    right:50px;
+}
+
+.sticky-chat-button{
+    position:fixed;
+    z-index:1;
+    bottom:250px;
+    right:51px;
+}

@@ -44,4 +44,6 @@
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/pivotTable/js/export_renderers.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/lib/pivotTable/js/d3_renderers.js'; ?>"></script>
 <!--dashboard-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script type="text/javascript" src="<?php echo base_url() . 'public/dashboard/js/dashboard.js'; ?>"></script>
+

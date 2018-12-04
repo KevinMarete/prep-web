@@ -32,6 +32,8 @@
             <?php $this->load->view('tabs/monitoring_evaluation_view'); ?>
             <!--communication_advocacy_view-->
             <?php $this->load->view('tabs/communication_advocacy_view'); ?>
+            <!--Chat View-->
+            <?php $this->load->view('chat/chat_view'); ?>
         </div>
         <!--footer-->
         <hr>

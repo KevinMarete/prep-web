@@ -286,3 +286,11 @@ function MainClearHandler(e) {
     //Trigger filter event
     $("#btn_filter").trigger("click");
 }
+
+//Toggle Chat Window Visibility
+    var app = new Vue({
+        el:'#chatModal',
+        data:{
+            showChat:true
+        }
+    })
