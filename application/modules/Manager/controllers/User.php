@@ -164,8 +164,29 @@ class User extends CI_Controller {
             'last_name' => $this->input->post('last_name'),
             'email' => $this->input->post('email'),
             'mobile' => $this->input->post('mobile'),
-            'password' => md5($this->input->post('password')),
             'roleId' => $this->input->post('roleId'),
+            'organization' => $this->input->post('user_org'),
+            'scope' => $this->input->post('user_scope'),
+            'county' => $this->input->post('user_county'),
+            'subcounty' => $this->input->post('user_subcounty'),
+            'createdDtm' => date('Y-m-d H:i:s'),
+            'updatedDtm' => date('Y-m-d H:i:s')
+        );
+
+        //check if password change toggle is set to TRUE
+        if($this->input->post('password_change_toggle') == 'on'){
+            $this->user_update_password();
+        }
+
+        $this->user->update(array('id' => $this->input->post('id')), $data);
+        echo json_encode(array("status" => TRUE, 'message'=> 'User Updated Successfully.'));
+    }
+
+    public function user_update_password(){
+        $this->_password_validate();
+        $new_password_confirm = $this->input->post('new_password_confirm');
+        $data = array(
+            'new_password_confirm' => md5($new_password_confirm),
             'createdDtm' => date('Y-m-d H:i:s'),
             'updatedDtm' => date('Y-m-d H:i:s')
         );
@@ -177,6 +198,32 @@ class User extends CI_Controller {
         $this->user->delete_by_id($id);
         echo json_encode(array("status" => TRUE));
     }
+
+    private function _password_validate(){
+        $data = array();
+        $data['error_string'] = array();
+        $data['inputerror'] = array();
+        $data['status'] = TRUE;
+
+        //Check if password is empty
+        if($this->input->post('password')==''){
+            $data['inputerror'][] = 'password';
+            $data['error_string'][] = 'Password is required';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('new_password') != $this->input->post('new_password_confirm')){
+            $data['inputerror'][] = 'new_password_confirm';
+            $data['error_string'][] = 'Passwords must match';
+            $data['status'] = FALSE;
+        }
+
+        if ($data['status'] === FALSE) {
+            echo json_encode($data);
+            exit();
+        }
+    }
+
 
     private function _validate() {
         $data = array();

@@ -10,16 +10,19 @@
         <?php $this->load->view('style_view'); ?>
 </head>
 <body>
+<a class ="btn btn-primary" href="<?php echo base_url().'dashboard' ?>"><span class ="glyphicon glyphicon-arrow-left">&nbsp;</span>Go back to dashboard</a>
 <div class="" id="reg_form" role="dialog">
         <div class="modal-dialog">
+            <div :class="updateStatus">{{updateMessage}}</div>
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h3 class="modal-title"><?= $user->first_name.' '.$user->last_name ?></h3>
                 </div>
+                <form v-on:submit.prevent ="updateUser" id="userUpdateForm" class="form-horizontal" method="post">
                 <div class="modal-body form">
-                    <form action="#" id="form" class="form-horizontal">
-                        <input type="hidden" value="" name="id"/> 
+                    
+                        <input type="hidden" value="<?=$user->id?>" name="id"/> 
                         <div class="form-body">
                             <div class="form-group">
                                 <label class="control-label col-md-3">First Name</label>
@@ -54,7 +57,7 @@
                                 <div class="col-md-9">
                                     <select name="roleId" class="form-control">
                                     <?php foreach($roles as $role){ ?>
-                                        <option value="<?= $role->roleId ?>" <?php if($role->roleId == $user->roleId) {echo 'selected';}else{$scope_help = 'Please select Role.';}  ?> ><?= $role->role ?></option>
+                                        <option value="<?= $role->roleId ?>" <?php if($role->roleId == $user->roleId) {echo 'selected';} ?> ><?= $role->role ?></option>
                                     <?php }?>
                                     </select>
                                     <span class="help-block"></span>
@@ -73,7 +76,7 @@
                                         <select class="form-control" name="user_scope" type="text" required="">
                                         <option value="0">Select Scope</option>
                                             <?php foreach($scopes as $scope) {?>
-                                                <option value="<?php echo $scope->id ?>"  <?php if($scope->id == $user->scope) {echo ' selected'; } else { $scope_help = 'Please select Scope.';}?> ><?php echo $scope->scope; ?></option>
+                                                <option value="<?php echo $scope->id ?>"  <?php if($scope->id == $user->scope) {echo ' selected'; }?> ><?php echo $scope->scope; ?></option>
                                             <?php } ?>
                                         </select>
                                         <span class="help-block error-msg"><?= $scope_help ?? '' ?></span>
@@ -85,10 +88,10 @@
                                     <select class="form-control" name="user_county" type="text" required="" v-model="county">
                                         <option value="0">Select County</option>
                                             <?php foreach($counties as $county){ ?>
-                                                <option value="<?php echo $county->id ?>" <?php if($county->id == $user->county) {echo ' selected';} else{ $scope_help = 'Please select county.'; }?> ><?php echo ucfirst($county->name)?></option>
+                                                <option value="<?php echo $county->id ?>" <?php if($county->id == $user->county) {echo ' selected'; $county_help = $county->name;} if(empty($user->county)){$county_help = "Please select County";}?> ><?php echo ucfirst($county->name)?></option>
                                             <?php } ?>
                                         </select>
-                                        <span class="help-block"><?= $county_help ?? '' ?></span>
+                                        <span class="help-block"><?= $county_help ?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -101,18 +104,42 @@
                                     </div>
                                 </div>
                                 <div class = "form-group">
-                                    <label for=""></label>
+                                    <label class="control-label col-md-3">Change Password</label>
                                     <div class="col-md-9">
-                                    <button type="button" >Change Password</button>
+                                    <input v-on:click="changePwd=!changePwd" type="checkbox" name="password_change_toggle">
                                     </div>
                                 </div>
-                        </div>
-                    </form>
+                            <div v-bind:class="{hidden:changePwd}" class = "">
+                                <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Current Password</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" name="password" type="password">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">New Password</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" name="new_password" type="password">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Confirm New Password</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" name="new_password_confirm" type="password">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                   
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btnSave" onclick="save()" class="btn btn-default">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" id="btnSave" class="btn btn-default">
                 </div>
+                </form>
             </div>
         </div>
     </div><!-- /.modal -->
