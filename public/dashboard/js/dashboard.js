@@ -288,10 +288,33 @@ function MainClearHandler(e) {
     $("#btn_filter").trigger("click");
 }
 
+//Get url
+var url = new URL(window.location.href);
+
 //Toggle Chat Window Visibility
     var app = new Vue({
         el:'#chatModal',
         data:{
-            showChat:true
+            showChat:true,
+            chatUrl:url.origin+':8000/chat',
+            chatSrcdoc: ''
+        },
+        methods:{
+            getChatView:function(){
+                var self = this;
+                axios({
+                    method:'get',
+                    url:url.origin+':8000/chat'
+                }).then(function(response){
+                    //Set chatView variable to returned data
+                    //self.chatView = response.data
+                }).catch(function(error){
+                    console.log(error)
+                    self.chatSrcdoc = '<small class="text-danger">Chat server at  <b>'+self.chatUrl+'</b> is unavailable.Try again later.</small>'
+                });
+            }
+        },
+        mounted:function(){
+            this.getChatView();
         }
     })
