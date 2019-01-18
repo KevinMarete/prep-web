@@ -45,3 +45,8 @@ thead input {
     bottom:250px;
     right:51px;
 }
+
+.bulma-nav-bg{
+    background-color: #00D1B2 !important;
+    border:none !important;
+}

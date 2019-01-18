@@ -295,26 +295,31 @@ var url = new URL(window.location.href);
     var app = new Vue({
         el:'#chatModal',
         data:{
-            showChat:true,
-            chatUrl:url.origin+':8000/chat',
-            chatSrcdoc: ''
+            message: '',
+            subject: '',
+            response:'',
+            showChat:true
         },
         methods:{
-            getChatView:function(){
+            sendMessage:function(user_id){
+
+                //Get form data
+                supportForm = document.getElementById('supportForm');
+                formData = new FormData();
+                
+                //Get this variable
                 var self = this;
+
+                //Axios
                 axios({
-                    method:'get',
-                    url:url.origin+':8000/chat'
+                    method:'post',
+                    url:url.origin+'/prep/dashboard/askSupport/'+user_id,
+                    data:formData
                 }).then(function(response){
-                    //Set chatView variable to returned data
-                    //self.chatView = response.data
+                    console.log(response.data)
                 }).catch(function(error){
-                    console.log(error)
-                    self.chatSrcdoc = '<small class="text-danger">Chat server at  <b>'+self.chatUrl+'</b> is unavailable.Try again later.</small>'
+                    console.log(error)                
                 });
             }
-        },
-        mounted:function(){
-            this.getChatView();
         }
     })

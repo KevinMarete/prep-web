@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse bulma-nav-bg navbar-fixed-top " role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -8,9 +8,10 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <span class="glyphicon glyphicon-dashboard"></span>
+                <img src= <?php echo base_url("public/dashboard/img/coat-of-arms-64.png"); ?> class="d-inline-block align-top" alt="Government of Kenya Coat of Arms" width="30" height="30">
+                <img src= <?php echo base_url("public/dashboard/img/jipende-jiprep-rec.png"); ?> class="d-inline-block align-top" alt="Jipende JiPrep" height="30">
+                &nbsp; PrEP Dashboard
             </a>
-            <a class="navbar-brand" href="#">PrEP DASHBOARD</a>
         </div>
         <nav class="collapse navbar-collapse" id="filter-navbar">
             <input type="hidden" name="filter_tab" id="filter_tab" value="" />

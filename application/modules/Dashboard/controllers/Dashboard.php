@@ -8,6 +8,7 @@ class Dashboard extends BaseController {
     public function index() {
         $this->isLoggedIn();
         $data['page_title'] = 'PrEP | Dashboard';
+        $data['session_data'] = $this->session->userdata();
         $this->load->view('template/dashboard_view', $data);
     }
 
@@ -143,6 +144,53 @@ class Dashboard extends BaseController {
             $main_data = $this->Communication_advocacy_model->get_iec_materials($filters);
         }
         return $main_data;
+    }
+
+
+    public function askSupport($user_id){
+            
+            //Get user details
+            $email = $this->session->userdata('email');
+            $fname = $this->session->userdata('first_name');
+            $lname = $this->session->userdata('last_name');
+            
+            //Get user message and subject
+            $subject = $this->input->post('subject');
+            $message = $this->input->post('message');
+        
+          
+                $this->load->library('email');
+                $this->load->library('encrypt');
+        
+                //Set config
+                $config = array();
+                $config['protocol'] = 'smtp';
+                $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+                $config['smtp_port'] = 465;
+                $config['smtp_user'] = 'wndethi@gmail.com';
+                $config['smtp_pass'] = '2schw8yz';
+                $config['mailtype'] = 'html';
+                $config['charset']  = 'utf-8';
+        
+                //Init Config
+                $this->email->initialize($config);
+                $this->email->set_mailtype("html");
+                $this->email->set_newline("\r\n");
+        
+                //Send Email
+                $this->email->from($email);
+                $this->email->to('watkibx@gmail.com');
+        
+        
+                $this->email->subject('PrEP Dashboard Query: '.$subject. ' from'. $fname.' '.$lname);
+                $this->email->message($message);
+        
+                if($this->email->send()){
+                    echo json_encode(array("success"=>"Email sent successfully"));
+                }
+                else{
+                    echo json_encode(array("error"=>"Email sending failed."));
+                }
     }
     
 }

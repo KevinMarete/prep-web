@@ -69,7 +69,7 @@ class User extends CI_Controller {
         $data = array(
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
-            'emal' => $this->input->post('email'),
+            'email' => $this->input->post('email'),
             'password' => md5($this->input->post('password')),
             'roleId' => $this->input->post('roleId'),
             'createdDtm' => date('Y-m-d H:i:s'),
