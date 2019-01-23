@@ -297,15 +297,18 @@ var url = new URL(window.location.href);
         data:{
             message: '',
             subject: '',
-            response:'',
+            returnMsg:'',
+            returnStatus: '',
+            generalClass:'',
             showChat:true
         },
         methods:{
             sendMessage:function(user_id){
 
                 //Get form data
-                supportForm = document.getElementById('supportForm');
-                formData = new FormData();
+                var supportForm = document.getElementById('supportForm');
+                var formData = new FormData(supportForm);
+                console.log(formData);
                 
                 //Get this variable
                 var self = this;
@@ -316,7 +319,17 @@ var url = new URL(window.location.href);
                     url:url.origin+'/prep/dashboard/askSupport/'+user_id,
                     data:formData
                 }).then(function(response){
-                    console.log(response.data)
+                    console.log(response.data);
+                    self.generalClass = 'alert';
+                    self.returnStatus = 'bg-'+response.data.status;
+                    self.returnMsg = response.data.message;
+                    
+                    setTimeout(()=>{
+                        self.showChat = true;
+                        self.returnMsg ='';
+                        self.generalClass = '';
+                    }, 2000);
+    
                 }).catch(function(error){
                     console.log(error)                
                 });

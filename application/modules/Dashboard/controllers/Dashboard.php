@@ -179,17 +179,17 @@ class Dashboard extends BaseController {
         
                 //Send Email
                 $this->email->from($email);
-                $this->email->to('watkibx@gmail.com');
+                $this->email->to('ulizanascop@gmail.com');
         
         
-                $this->email->subject('PrEP Dashboard Query: '.$subject. ' from'. $fname.' '.$lname);
+                $this->email->subject('PrEP Dashboard Query: '.$subject. ' from '. $fname.' '.$lname);
                 $this->email->message($message);
         
                 if($this->email->send()){
-                    echo json_encode(array("success"=>"Email sent successfully"));
+                    echo json_encode(array("status"=>"success", "message"=>"Email sent successfully"));
                 }
                 else{
-                    echo json_encode(array("error"=>"Email sending failed."));
+                    echo json_encode(array("status"=>"danger","message"=>"Email sending failed."));
                 }
     }
     
