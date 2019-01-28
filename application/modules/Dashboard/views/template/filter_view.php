@@ -10,6 +10,13 @@
                 <div class="form-group">
                     <select id="tab_items" class="form-control"></select>
                 </div>
+                <div class = "form-group">
+                    <select class="form-control" id="assessmentPeriod">
+                        <?php foreach($assessment_periods as $period) {?>
+                            <option value="<?php echo $period."-01"; ?>"><?php echo $period; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
             </div>
         </div>
     </div>

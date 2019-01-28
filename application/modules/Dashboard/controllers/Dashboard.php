@@ -9,6 +9,7 @@ class Dashboard extends BaseController {
         $this->isLoggedIn();
         $data['page_title'] = 'PrEP | Dashboard';
         $data['session_data'] = $this->session->userdata();
+        $data['assessment_periods'] = $this->getAssessmentPeriods();
         $this->load->view('template/dashboard_view', $data);
     }
 
@@ -191,6 +192,54 @@ class Dashboard extends BaseController {
                 else{
                     echo json_encode(array("status"=>"danger","message"=>"Email sending failed."));
                 }
+    }
+
+    //Get Assessment periods
+    public function getAssessmentPeriods(){
+        
+        //Get all assessment dates
+        $query = $this->db->query('SELECT `Assessment Date` FROM `tbl_prep_facilities` GROUP BY `Assessment Date`
+        ');
+        $dates = $query->result_array();
+
+        //Get first value of dates array and extract month and year
+        $firstValue = current($dates);
+        $firstPeriod = $this->getMonthYear($firstValue['Assessment Date']);
+
+        //Push first month year period into periods array
+        $periods = [];
+        array_push($periods, $firstPeriod);
+       
+        //Loop through dall dates
+        foreach($dates as $key => $date){
+
+            //Get month year period and compare if same with the first value, if distinct add to periods array
+            $period = $this->getMonthYear($date['Assessment Date']);
+            if($firstPeriod != $period){
+                array_push($periods, $period);
+            }
+        }
+
+        //Return periods
+        return $periods;
+
+    }
+
+    public function getMonthYear($date){
+        //Explode fulldate to get month, day, year elements
+        $fullDate = explode('/', $date);
+
+        //Get month in short and year
+        $monthNumber = $fullDate[0];
+
+        $dateObject = DateTime::createFromFormat('!m', $monthNumber);
+        $monthName = $dateObject->format('F');
+
+        $year = $fullDate[2];
+        $period = $year.'-'.$monthName;
+
+        //Return period
+        return $period;
     }
     
 }

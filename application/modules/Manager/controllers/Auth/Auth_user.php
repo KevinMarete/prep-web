@@ -21,16 +21,16 @@ class Auth_user extends CI_Controller {
             'last_name' => $this->input->post('last_name'),
             'email' => $this->input->post('user_email'),
             'mobile' => $this->input->post('user_mobile'),
-            'organization' => $this->input->post('user_org'),
             'scope' => $this->input->post('user_scope'),
-            'county' => $this->input->post('user_county'),
-            'subcounty' => $this->input->post('user_subcounty'),
+            'scope_options' => $this->input->post('scopeOptions'),
             'password' => md5($this->input->post('user_password')),
             'auth_token' => $auth_token,
             'roleId' => $this->input->post('roleId'),
             'createdDtm' => date('Y-m-d H:i:s'),
             'updatedDtm' => date('Y-m-d H:i:s')
         );
+
+        var_dump($user);
 
         $email_check = $this->Auth_user_model->email_check($user['email']);
         //check if email is already registered, if not register user
@@ -40,7 +40,7 @@ class Auth_user extends CI_Controller {
             //Get user data and send to admin                      
             $user_data = $this->Auth_user_model->getRegisteredUser($user['email']);
             
-            $this->sendEmailToAdmin($user_data[0]['id'],$user['first_name'], $user['last_name'],$user_data, $auth_token);
+            //$this->sendEmailToAdmin($user_data[0]['id'],$user['first_name'], $user['last_name'],$user_data, $auth_token);
 
             //Reload Page
             $this->session->set_flashdata('success_msg', 'Registration Successfully.Now login to your account.');

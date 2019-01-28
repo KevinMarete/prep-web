@@ -31,7 +31,12 @@ class User_options_model extends CI_Model {
     }
 
     public function getOrganizations(){
-        $org = $this->db->get('auth_tbl_organizations');
+        $org = $this->db->get('tbl_partner');
         return $org->result();
+    }
+
+    public function getAllOptions($scope){
+        $options = $this->db->get('tbl_'.$scope);
+        echo json_encode($options->result_array());
     }
 }

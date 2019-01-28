@@ -42,6 +42,11 @@ class Manager extends BaseController {
         return $this->User_options_model->getSubCounties($county);
     }
 
+    //get all subcounties
+    public function getAllOptions($scope){
+        return $this->User_options_model->getAllOptions($scope);
+    }
+
     public function file_upload() {
         $this->isLoggedIn();
         $data['page_title'] = 'PrEP | Doc';
