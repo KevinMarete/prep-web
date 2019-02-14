@@ -51,3 +51,6 @@
         $('.<?= $page_name; ?>').addClass("active-page");
     });
 </script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+
