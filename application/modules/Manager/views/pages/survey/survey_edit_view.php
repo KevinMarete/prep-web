@@ -55,13 +55,13 @@
                         <h4>Add Question</h4>
                     </div>
                         <div class = "modal-body">
-                        <form id="addQuestion" action="POST" v-on:submit.prevent="saveQuestion()">
+                        <form role="form" id="addQuestion" action="POST" v-on:submit.prevent="saveQuestion()">
                         <div class = "form-body">
                             <div class ="form-group">
                                     <label class="control-label col-md-3">Question Text</label>
                                     <div class="col-md-9">
                                         <textarea name="question_text" placeholder="" class="form-control" ></textarea>
-                                        <span class="help-block">Enter the text of the question here.</span>
+                                        <span class="help-block"></span>
                                     </div>
                                 </div>
                                 <div class ="form-group">
@@ -69,9 +69,10 @@
                                     <div class="col-md-9">
                                         <select v-model="answerType" name="answerType" id="answerType">
                                             <?php foreach($answerTypes as $type) { ?>
-                                                <option value="<?=$type->alias?>"><?=$type->name?></option>
+                                                <option value="<?=$type['slug']?>"><?=$type['name']?></option>
                                             <?php }?>
                                         </select>
+                                        <span class="help-block"></span>
                                     </div>
                                 </div>
                             </div>
@@ -84,9 +85,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
+</div>
 <script src="<?php echo base_url() . 'public/manager/js/survey_edit.js'; ?>"></script>

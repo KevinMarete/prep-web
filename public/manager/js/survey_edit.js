@@ -5,6 +5,7 @@ var url = new URL(window.location.href);
 var survey_edit = new Vue({
     el: '#survey_edit',
     data:{
+        answerType:'prose',
         s_description:'',
         s_title:'',
         response_msg:'',
@@ -32,6 +33,8 @@ var survey_edit = new Vue({
                     self.visibility = false,
                     self.response_msg ='';
                     self.response_status = '';
+                    self.$watch('answerType', function(val){self.getAnswerTypeView(val)}, {immediate:true})
+
                 }, 2000);
 
                 //get Question Generator
@@ -45,6 +48,9 @@ var survey_edit = new Vue({
         },
         getQuestionGenerator(survey_id){
             console.log('sldjlfjdlf');
-        }
+        },
+        getAnswerTypeView(val){
+            console.log(val)
+        },
     }
 });
