@@ -106,5 +106,17 @@ class Survey extends CI_Controller {
         }
     }
 
+    //Get lists for survey questions 
+    public function getLists(){
+        //Get all lists
+        $lists = $this->survey->getAllLists();
+        
+        if($lists){
+            echo json_encode($lists);
+        }else{
+            echo '[]'; 
+        }
+    }
+
 
 }

@@ -69,10 +69,31 @@
                                     <div class="col-md-9">
                                         <select v-model="answerType" name="answerType" id="answerType">
                                             <?php foreach($answerTypes as $type) { ?>
-                                                <option value="<?=$type['slug']?>"><?=$type['name']?></option>
+                                                <option value="<?=$type['name']?>"><?=$type['name']?></option>
                                             <?php }?>
                                         </select>
                                         <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <!--Insert AnswerType component here.-->
+                                <div class="form-group">
+                                    <label class="control-label col-md-3" for="">{{answerTypeLabel}}</label>
+                                    <div class="col-md-9">
+                                        <answer-type-options v-bind:type="answerType" @update-options="updateOptions" inline-template>
+                                                <div>
+                                                    <div v-if="type==='List'">
+                                                        <select v-model="selected" v-on:change="updateListOption">
+                                                            <option v-for="option in options" :value="option.tbl">{{option.list}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div v-if="type==='Multichoice'">
+                                                    
+                                                    </div>
+                                                    <div v-if="type==='Prose'">
+                                                        <div class="alert alert-info">Answer will be typed.</div>
+                                                    </div>
+                                                </div>
+                                        </answer-type-options>
                                     </div>
                                 </div>
                             </div>

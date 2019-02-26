@@ -1,16 +1,94 @@
 //Get URL
 var url = new URL(window.location.href);
 
+            //define component to hold answer type options
+            Vue.component('answer-type-options', {
+                data:function(){
+                    return {
+                        options:[],
+                        selected:''
+                    }
+                },
+                watch:{
+                    type:function(val){
+                        this.getAnswerTypeView(val);
+                    },
+                    options:function(){
+                        this.updateOpts();
+                    }
+                }, 
+                methods:{
+                    getAnswerTypeView(val){
+                        switch(val){
+                            case 'List':
+                               this.getList()
+                            break;
+                            case 'Multichoice':
+                                this.getMultichoice()
+                            break;
+                            case 'Prose':
+                                this.getProse()
+                            break;
+                            default:
+                                return '<div>&nbsp;</div>'
+                        }
+                    },
+                    getList(){
+                        var self = this
+                        axios.get(url.origin+'/prep/manager/survey/getLists').
+                        then(function(response){
+                            self.options = response.data;
+                        }).catch(function(error){
+                            return error
+                        })
+                    },
+                    getMultichoice(){
+                        var self = this
+                        self.options = '[]';
+
+                    },
+                    getProse(){
+                        var self = this
+                        self.options = '[]';
+                    },
+                    updateOpts(){
+                        var self=this;
+                        this.$emit('update-options', this.options);
+                    },
+                    updateListOption(e){
+                        var self=this;
+                        this.$parent.$emit('updateListParent', this.selected)
+                        console.log(e)
+                    }
+                },
+                props:['type','typesList'],
+                created(){
+                    this.selected = this.typesList
+                },
+                template:'<div></div>',
+            })
+
+
+
 //Vue JS
 var survey_edit = new Vue({
     el: '#survey_edit',
     data:{
-        answerType:'prose',
+        options:[],
+        answerTypeList:'sdfdf',
+        answerTypeLabel:'',
+        answerType:'Prose',
         s_description:'',
         s_title:'',
         response_msg:'',
         response_status:'',
         visibility:true,
+    },
+    components:{name:'answer-type-options'},
+    created(){
+        this.$on('updateListParent', (selection) =>{
+            this.answerTypeList = selection;
+        })
     },
     methods:{
         addQuestion(){
@@ -37,20 +115,26 @@ var survey_edit = new Vue({
 
                 }, 2000);
 
-                //get Question Generator
-                self.getQuestionGenerator();
-
             }).catch(function(error){
                 self.response_msg = error.message,
                 self.response_status = 'alert alert-danger'                
             })
 
         },
-        getQuestionGenerator(survey_id){
-            console.log('sldjlfjdlf');
-        },
         getAnswerTypeView(val){
-            console.log(val)
+            
+            //set this to variable self
+            var self = this;
+            self.answerTypeLabel = val;
+
+
         },
+         updateOptions(e){
+             this.options = e;
+         },
+         updateListParent(e){
+             this.answerTypeList = e.target.value
+             console.log(this.answerTypeList)
+         }
     }
 });
