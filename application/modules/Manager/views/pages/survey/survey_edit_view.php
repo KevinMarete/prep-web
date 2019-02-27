@@ -87,7 +87,16 @@
                                                         </select>
                                                     </div>
                                                     <div v-if="type==='Multichoice'">
-                                                    
+                                                    <a class="btn btn-sm btn-default col-md-3" @click="addChoice"> + Add Choice</a>
+                                                        <div>&nbsp;</div>
+                                                        <div class="col-md-9">
+                                                            <div class="row">
+                                                                <div v-for="choice in choices">
+                                                                    <textarea :id="choice.id" class="form-control col-md-6" @blur="updateChoices" >{{choice.value}}</textarea>                                                            
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div v-if="type==='Prose'">
                                                         <div class="alert alert-info">Answer will be typed.</div>

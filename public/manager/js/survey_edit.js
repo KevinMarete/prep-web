@@ -6,7 +6,16 @@ var url = new URL(window.location.href);
                 data:function(){
                     return {
                         options:[],
-                        selected:''
+                        selected:'',
+                        choices:[{
+                            value:'',
+                            id:0
+                        }]
+                    }
+                },
+                computed:{
+                    choices_id(){
+                        return this.choices.length
                     }
                 },
                 watch:{
@@ -59,11 +68,21 @@ var url = new URL(window.location.href);
                         var self=this;
                         this.$parent.$emit('updateListParent', this.selected)
                         console.log(e)
+                    },
+                    addChoice(e){
+                        var self=this;
+                        this.choices.push({value:'',id:this.choices_id})
+                        //this.$parent.$emit('updateChoices', e)
+                    },
+                    updateChoices(e){
+                        var self= this;
+                        this.choices[e.target.id].value = e.target.value;
                     }
                 },
                 props:['type','typesList'],
                 created(){
                     this.selected = this.typesList
+                    this.choices
                 },
                 template:'<div></div>',
             })
@@ -74,6 +93,7 @@ var url = new URL(window.location.href);
 var survey_edit = new Vue({
     el: '#survey_edit',
     data:{
+        multipleChoices:[],
         options:[],
         answerTypeList:'sdfdf',
         answerTypeLabel:'',
@@ -88,6 +108,10 @@ var survey_edit = new Vue({
     created(){
         this.$on('updateListParent', (selection) =>{
             this.answerTypeList = selection;
+        }),
+
+        this.$on('updateChoices', (choices) => {
+            this.multipleChoices = choices;
         })
     },
     methods:{
@@ -135,6 +159,9 @@ var survey_edit = new Vue({
          updateListParent(e){
              this.answerTypeList = e.target.value
              console.log(this.answerTypeList)
+         },
+         updateChoices(e){
+             this.multipleChoices.push(e);
          }
     }
 });
