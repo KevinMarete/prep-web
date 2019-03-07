@@ -13,8 +13,6 @@ class Survey extends CI_Controller {
         parent::__construct();
         $this->load->model('Survey_model', 'survey');
     }
-
-
      //Survey index page
      public function index() {
         $data['page_title'] = 'Prep Surveys';
@@ -116,6 +114,22 @@ class Survey extends CI_Controller {
         }else{
             echo '[]'; 
         }
+    }
+
+    public function addQuestions(){
+        
+        //formulate question array
+        $questions_array = array(
+            'survey_id' => $this->uri->segment(3),
+            'question_text' => $this->input->post('question_text'),
+            'choice_type' => $this->input->post('answer_type')
+        );
+
+        //formulate choices array
+        $choices = $this->input->post("choices");
+
+        //send to save function
+        $this->survey->saveQuestion($questions_array, $choices);
     }
 
 

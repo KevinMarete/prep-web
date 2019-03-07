@@ -67,7 +67,7 @@
                                 <div class ="form-group">
                                     <label class="control-label col-md-3">Answer Type</label>
                                     <div class="col-md-9">
-                                        <select v-model="answerType" name="answerType" id="answerType">
+                                        <select v-model="answerType" name="answer_type" id="answerType">
                                             <?php foreach($answerTypes as $type) { ?>
                                                 <option value="<?=$type['name']?>"><?=$type['name']?></option>
                                             <?php }?>
@@ -82,7 +82,7 @@
                                         <answer-type-options v-bind:type="answerType" @update-options="updateOptions" inline-template>
                                                 <div>
                                                     <div v-if="type==='List'">
-                                                        <select v-model="selected" v-on:change="updateListOption">
+                                                        <select name="choices[]" v-model="selected" v-on:change="updateListOption">
                                                             <option v-for="option in options" :value="option.tbl">{{option.list}}</option>
                                                         </select>
                                                     </div>
@@ -92,14 +92,16 @@
                                                         <div class="col-md-9">
                                                             <div class="row">
                                                                 <div v-for="choice in choices">
-                                                                    <textarea :id="choice.id" class="form-control col-md-6" @blur="updateChoices" >{{choice.value}}</textarea>                                                            
+                                                                    <textarea name="choices[]" :id="choice.id" class="form-control col-md-6" @blur="updateChoices" >{{choice.value}}</textarea>                                                            
                                                                     <div>&nbsp;</div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div v-if="type==='Prose'">
-                                                        <div class="alert alert-info">Answer will be typed.</div>
+                                                        <div class="alert alert-info">Answer will be typed.
+                                                            <input type="hidden" name="choices[]">
+                                                        </div>
                                                     </div>
                                                 </div>
                                         </answer-type-options>
@@ -108,7 +110,10 @@
                             </div>
                         </form>
                     <div class ="modal-footer">
-                    
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="Add">
+                            <a class="btn btn-default" >Close</a>                
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,38 @@ class Survey_model extends CI_Model {
     var $question_types_table = 'tbl_survey_question_types';
     var $list_answer_type_lists = 'tbl_survey_lists';
 
+    //save questions
+    public function saveQuestion($questions_array, $choices){
+        //insert into questions table
+        $this->db->insert($this->questions_table, $questions_array);
+        
+        //get auto increment id
+        $question_id = $this->db->insert_id();
+
+        //insert into choices table
+        $this->saveChoices($question_id, $choices);
+
+        //check if insert successful
+        if($this->db->affected_rows()>0){
+            echo json_encode(array('status'=>'success','message'=>'Questions and choices saved successfully.'));
+        }else{
+            echo json_encode(array('status'=>'danger','message'=>'Error saving questions/choices.'));
+        }
+    
+    }
+
+    //save choices
+    public function saveChoices($question_id, $choices){
+
+        $i=1;
+
+        foreach($choices as $choice){
+            $choices_array = array('question_id'=> $question_id , 'choice_text'=> $choice, 'choice_weight'=>$i);
+            $this->db->insert($this->choices_table, $choices_array);
+            $i++;
+        }
+    }
+
 
     //get all surveys
     public function getAllSurveys(){
