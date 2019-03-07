@@ -57,6 +57,10 @@ $route['home'] = 'Home';
 $route['manager/manage_users'] = 'Manager/Manager/manage_users';
 $route['manager/facility'] = 'Manager/Manager/Facility';
 
+$route['manager/survey'] = 'Manager/Survey';
+$route['manager/survey/admin'] = 'Manager/Survey/admin';
+$route['manager/survey/surveys_list'] = 'Manager/Survey/surveys_list';
+
 $route['manager/user_list'] = 'Manager/User/user_list';
 $route['manager/user_add'] = 'Manager/User/user_add';
 

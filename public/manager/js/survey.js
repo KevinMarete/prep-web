@@ -16,14 +16,14 @@ $(document).ready(function(){
                 {"sTitle":"End Date", "mData":"end_date"},
                 {"sTitle":"Actions", "mData":"id",
                     "mRender":function(data, type, row){
-                        return '<a class="btn btn-primary" href="/prep/manager/survey/editSurvey/'+data+'">Edit</a>&nbsp;&nbsp;<a class="btn btn-default" v-on:click="">Delete</a>';
+                        return '<a class="btn btn-primary" href="../../Manager/Survey/editSurvey/'+data+'">Edit</a>&nbsp;&nbsp;<a class="btn btn-default" v-on:click="">Delete</a>';
                     }
                 }
             ],
             "processing":true,
             "serverSide":true,
             "sAjaxDataProp":"",
-            "sAjaxSource":'/prep/manager/survey/surveys_list'         
+            "sAjaxSource":'../../Manager/Survey/surveys_list'         
     });
 })
 
@@ -49,7 +49,7 @@ var survey = new Vue({
             var formData = new FormData(form);
 
             //Send form data 
-            axios.post(url.origin+'/prep/manager/survey/addSurvey', formData).
+            axios.post(url.origin+'../../Manager/Survey/addSurvey', formData).
             then(function(response){
                 self.response_msg = response.data.message;
                 self.response_status = 'alert alert-'+response.data.status;
