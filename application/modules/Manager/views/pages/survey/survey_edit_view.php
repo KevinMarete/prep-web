@@ -54,8 +54,11 @@
                         <button v-on:click="visibility=!visibility" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4>Add Question</h4>
                     </div>
+                        <div id ="questionHolder">
+                            <div></div>          
+                        </div>
                         <div class = "modal-body">
-                        <form role="form" id="addQuestion" action="POST" v-on:submit.prevent="saveQuestion()">
+                        <form role="form" id="saveQuestion" action="POST" v-on:submit.prevent="saveQuestion()">
                         <div class = "form-body">
                             <div class ="form-group">
                                     <label class="control-label col-md-3">Question Text</label>
@@ -88,7 +91,8 @@
                                                     </div>
                                                     <div v-if="type==='Multichoice'">
                                                     <a class="btn btn-sm btn-default col-md-3" @click="addChoice"> + Add Choice</a>
-                                                        <div>&nbsp;</div>
+                                                        <div class="row">&nbsp;</div>
+                                                        <div class="row">&nbsp;</div>
                                                         <div class="col-md-9">
                                                             <div class="row">
                                                                 <div v-for="choice in choices">
@@ -108,13 +112,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     <div class ="modal-footer">
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" value="Add">
-                            <a class="btn btn-default" >Close</a>                
+                            <a v-on:click="visibility=!visibility" class="btn btn-default" >Close</a>                
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

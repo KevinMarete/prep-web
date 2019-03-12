@@ -116,11 +116,11 @@ class Survey extends CI_Controller {
         }
     }
 
-    public function addQuestions(){
+    public function saveQuestion(){
         
         //formulate question array
         $questions_array = array(
-            'survey_id' => $this->uri->segment(3),
+            'survey_id' => $this->uri->segment(4),
             'question_text' => $this->input->post('question_text'),
             'choice_type' => $this->input->post('answer_type')
         );

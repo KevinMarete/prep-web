@@ -103,6 +103,7 @@ var survey_edit = new Vue({
         response_msg:'',
         response_status:'',
         visibility:true,
+        survey_id:'',
     },
     components:{name:'answer-type-options'},
     created(){
@@ -144,6 +145,19 @@ var survey_edit = new Vue({
                 self.response_status = 'alert alert-danger'                
             })
 
+        },
+        saveQuestion(){
+            //get this variable
+            var self = this;
+
+            //get form data
+            var form = document.getElementById('saveQuestion');
+            var formData = new FormData(form);
+            
+            //Send form data
+            axios.post(url.origin+'/prep/manager/survey/saveQuestion/'+survey_id, formData).then(function(response){
+                console.log(response)
+            })
         },
         getAnswerTypeView(val){
             
