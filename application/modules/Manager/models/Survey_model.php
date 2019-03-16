@@ -79,4 +79,13 @@ class Survey_model extends CI_Model {
         return $query->result_array();
     }
 
+    //get all questions and choices
+    public function getAllQuestionsChoices() {
+        $this->db->select('q.*, c.*');
+        $this->db->from('tbl_survey_questions q');
+        $this->db->join('tbl_survey_choices c', 'c.question_id = q.id');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

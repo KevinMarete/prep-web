@@ -116,6 +116,17 @@ class Survey extends CI_Controller {
         }
     }
 
+    //Get list of all questions and choices
+    public function getAllQuestions(){
+        $questions = $this->survey->getAllQuestionsChoices();
+
+        if($questions){
+            echo json_encode($questions);
+        }else{
+            echo '[]';
+        }
+    }
+
     public function saveQuestion(){
         
         //formulate question array

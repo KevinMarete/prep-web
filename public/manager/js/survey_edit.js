@@ -104,6 +104,7 @@ var survey_edit = new Vue({
         response_status:'',
         visibility:true,
         survey_id:'',
+        questions:[]
     },
     components:{name:'answer-type-options'},
     created(){
@@ -114,6 +115,9 @@ var survey_edit = new Vue({
         this.$on('updateChoices', (choices) => {
             this.multipleChoices = choices;
         })
+    },
+    mounted(){
+        this.fetchQuestions(this.questions);
     },
     methods:{
         addQuestion(){
@@ -176,6 +180,14 @@ var survey_edit = new Vue({
          },
          updateChoices(e){
              this.multipleChoices.push(e);
+         },
+         fetchQuestions(questions){
+             axios.get(url.origin+'/prep/manager/survey/getAllQuestions/').then(function(response){
+                questions.push(response.data)
+                console.log(questions)
+             }).catch(function(){
+
+             })
          }
     }
 });
